@@ -217,8 +217,8 @@ public class CustomShippingMethodsController {
 
     @PreAuthorize("hasRole('SHIPPING')")
     @RequestMapping(value = "/admin/shipping/weightBased/removeCountry.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> deleteCountry(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> deleteCountry(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         String country = request.getParameter("regionCode");
 
         AjaxResponse resp = new AjaxResponse();
@@ -262,8 +262,8 @@ public class CustomShippingMethodsController {
 
     @PreAuthorize("hasRole('SHIPPING')")
     @RequestMapping(value = "/admin/shipping/weightBased/removePrice.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> deletePrice(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> deletePrice(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         String weight = request.getParameter("weight");
         String region = request.getParameter("region");
         int maxWeight = 0;
@@ -341,8 +341,8 @@ public class CustomShippingMethodsController {
      */
     @PreAuthorize("hasRole('SHIPPING')")
     @RequestMapping(value = "/admin/shipping/checkRegionCode.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> checkRegionCode(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> checkRegionCode(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         String code = request.getParameter("code");
 
         AjaxResponse resp = new AjaxResponse();
@@ -387,8 +387,8 @@ public class CustomShippingMethodsController {
 
     @PreAuthorize("hasRole('SHIPPING')")
     @RequestMapping(value = "/admin/shipping/weightBased/page.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageCustomShipping(HttpServletRequest request,
+    @ResponseBody
+    public ResponseEntity<String> pageCustomShipping(HttpServletRequest request,
                                               HttpServletResponse response) {
 
         AjaxResponse resp = new AjaxResponse();
@@ -468,8 +468,8 @@ public class CustomShippingMethodsController {
 
     @PreAuthorize("hasRole('SHIPPING')")
     @RequestMapping(value = "/admin/shipping/weightBasedDetails/page.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageCustomShippingDetails(HttpServletRequest request,
+    @ResponseBody
+    public ResponseEntity<String> pageCustomShippingDetails(HttpServletRequest request,
                                                      HttpServletResponse response) {
 
         String region = request.getParameter("region");

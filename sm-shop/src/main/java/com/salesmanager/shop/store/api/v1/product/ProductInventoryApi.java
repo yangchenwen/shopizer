@@ -39,8 +39,8 @@ public class ProductInventoryApi {
             @ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")
     })
-    public @ResponseBody
-    ReadableInventory create(
+    @ResponseBody
+    public ReadableInventory create(
             @Valid @RequestBody PersistableInventory inventory,
             @ApiIgnore MerchantStore merchantStore,
             @ApiIgnore Language language) {
@@ -96,8 +96,8 @@ public class ProductInventoryApi {
             @ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")
     })
-    public @ResponseBody
-    ReadableEntityList<ReadableInventory> get(
+    @ResponseBody
+    public ReadableEntityList<ReadableInventory> get(
             @PathVariable Long id,
             @ApiIgnore MerchantStore merchantStore,
             @ApiIgnore Language language,
@@ -117,8 +117,8 @@ public class ProductInventoryApi {
             @ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")
     })
-    public @ResponseBody
-    ReadableInventory get(
+    @ResponseBody
+    public ReadableInventory get(
             @PathVariable Long id,
             @PathVariable Long inventoryId,
             @ApiIgnore MerchantStore merchantStore,
@@ -138,8 +138,8 @@ public class ProductInventoryApi {
             @ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")
     })
-    public @ResponseBody
-    ReadableInventory get(
+    @ResponseBody
+    public ReadableInventory get(
             @PathVariable Long id,
             @PathVariable String code,
             @ApiIgnore MerchantStore merchantStore,

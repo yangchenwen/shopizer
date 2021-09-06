@@ -183,8 +183,8 @@ public class CategoryController {
     @SuppressWarnings({"unchecked"})
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/categories/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageCategories(HttpServletRequest request) {
+    @ResponseBody
+    public ResponseEntity<String> pageCategories(HttpServletRequest request) {
         String categoryName = request.getParameter("name");
         String categoryCode = request.getParameter("code");
         AjaxResponse resp = new AjaxResponse();
@@ -240,8 +240,8 @@ public class CategoryController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/categories/remove.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> deleteCategory(HttpServletRequest request, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> deleteCategory(HttpServletRequest request, Locale locale) {
         String sid = request.getParameter("categoryId");
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
         AjaxResponse resp = new AjaxResponse();
@@ -268,8 +268,8 @@ public class CategoryController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/categories/moveCategory.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> moveCategory(HttpServletRequest request, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> moveCategory(HttpServletRequest request, Locale locale) {
         String parentid = request.getParameter("parentId");
         String childid = request.getParameter("childId");
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
@@ -315,8 +315,8 @@ public class CategoryController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/categories/checkCategoryCode.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> checkCategoryCode(HttpServletRequest request) {
+    @ResponseBody
+    public ResponseEntity<String> checkCategoryCode(HttpServletRequest request) {
         String code = request.getParameter("code");
         String id = request.getParameter("id");
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);

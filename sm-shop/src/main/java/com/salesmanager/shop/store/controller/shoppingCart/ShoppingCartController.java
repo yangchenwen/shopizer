@@ -99,8 +99,8 @@ public class ShoppingCartController extends AbstractController {
      * @throws Exception
      */
     @RequestMapping(value = {"/addShoppingCartItem"}, method = RequestMethod.POST)
-    public @ResponseBody
-    ShoppingCartData addShoppingCartItem(@RequestBody final ShoppingCartItem item, final HttpServletRequest request, final HttpServletResponse response, final Locale locale) throws Exception {
+    @ResponseBody
+    public ShoppingCartData addShoppingCartItem(@RequestBody final ShoppingCartItem item, final HttpServletRequest request, final HttpServletResponse response, final Locale locale) throws Exception {
 
         ShoppingCartData shoppingCart = null;
 
@@ -367,8 +367,8 @@ public class ShoppingCartController extends AbstractController {
      * @throws Exception
      */
     @RequestMapping(value = {"/updateShoppingCartItem.html"}, method = {RequestMethod.POST})
-    public @ResponseBody
-    String updateShoppingCartItem(@RequestBody final ShoppingCartItem[] shoppingCartItems, final HttpServletRequest request, final HttpServletResponse response) {
+    @ResponseBody
+    public String updateShoppingCartItem(@RequestBody final ShoppingCartItem[] shoppingCartItems, final HttpServletRequest request, final HttpServletResponse response) {
 
         AjaxResponse ajaxResponse = new AjaxResponse();
 

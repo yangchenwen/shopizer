@@ -73,8 +73,8 @@ public class CustomProductGroupsController {
     @SuppressWarnings({"rawtypes", "unchecked"})
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/groups/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageCustomGroups(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pageCustomGroups(HttpServletRequest request, HttpServletResponse response) {
 
         AjaxResponse resp = new AjaxResponse();
 
@@ -159,8 +159,8 @@ public class CustomProductGroupsController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/groups/remove.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> removeCustomProductGroup(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> removeCustomProductGroup(HttpServletRequest request, HttpServletResponse response) {
 
         String groupCode = request.getParameter("code");
 
@@ -185,8 +185,8 @@ public class CustomProductGroupsController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/groups/update.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> activateProductGroup(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> activateProductGroup(HttpServletRequest request, HttpServletResponse response) {
         String values = request.getParameter("_oldValues");
         String active = request.getParameter("active");
 
@@ -248,8 +248,8 @@ public class CustomProductGroupsController {
     @SuppressWarnings({"rawtypes", "unchecked"})
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/group/details/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageProducts(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pageProducts(HttpServletRequest request, HttpServletResponse response) {
 
         String code = request.getParameter("code");
         AjaxResponse resp = new AjaxResponse();
@@ -300,8 +300,8 @@ public class CustomProductGroupsController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/group/details/addItem.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> addItem(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> addItem(HttpServletRequest request, HttpServletResponse response) {
 
         String code = request.getParameter("code");
         String productId = request.getParameter("productId");
@@ -353,8 +353,8 @@ public class CustomProductGroupsController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/group/details/removeItem.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> removeItem(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> removeItem(HttpServletRequest request, HttpServletResponse response) {
 
         String code = request.getParameter("code");
         String productId = request.getParameter("productId");

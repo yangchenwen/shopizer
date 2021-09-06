@@ -86,8 +86,8 @@ public class ProductPriceController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/prices/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pagePrices(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pagePrices(HttpServletRequest request, HttpServletResponse response) {
 
         String sProductId = request.getParameter("productId");
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
@@ -418,8 +418,8 @@ public class ProductPriceController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/price/remove.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> deleteProductPrice(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> deleteProductPrice(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         String sPriceid = request.getParameter("priceId");
 
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);

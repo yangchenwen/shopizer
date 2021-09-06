@@ -65,8 +65,8 @@ public class ImagesController {
      * @throws ServiceException
      */
     @RequestMapping("/static/files/{storeCode}/{imageType}/{imageName}.{extension}")
-    public @ResponseBody
-    byte[] printImage(@PathVariable final String storeCode, @PathVariable final String imageType, @PathVariable final String imageName, @PathVariable final String extension) throws IOException, ServiceException {
+    @ResponseBody
+    public byte[] printImage(@PathVariable final String storeCode, @PathVariable final String imageType, @PathVariable final String imageName, @PathVariable final String extension) throws IOException, ServiceException {
 
         // example -> /static/files/DEFAULT/CONTENT/myImage.png
 
@@ -107,8 +107,8 @@ public class ImagesController {
      * @Deprecated
      */
     @RequestMapping("/static/{storeCode}/{imageType}/{productCode}/{imageName}.{extension}")
-    public @ResponseBody
-    byte[] printImage(@PathVariable final String storeCode, @PathVariable final String productCode, @PathVariable final String imageType, @PathVariable final String imageName, @PathVariable final String extension) throws IOException {
+    @ResponseBody
+    public byte[] printImage(@PathVariable final String storeCode, @PathVariable final String productCode, @PathVariable final String imageType, @PathVariable final String imageName, @PathVariable final String extension) throws IOException {
 
         // product image
         // example small product image -> /static/DEFAULT/products/TB12345/product1.jpg
@@ -154,8 +154,8 @@ public class ImagesController {
      */
     @RequestMapping(value = "/static/products/{storeCode}/{productCode}/{imageSize}/{imageName}.{extension}",
             produces = {"image/gif", "image/jpg", "image/png", "application/octet-stream"})
-    public @ResponseBody
-    byte[] printImage(@PathVariable final String storeCode, @PathVariable final String productCode, @PathVariable final String imageSize, @PathVariable final String imageName, @PathVariable final String extension, HttpServletRequest request) throws IOException {
+    @ResponseBody
+    public byte[] printImage(@PathVariable final String storeCode, @PathVariable final String productCode, @PathVariable final String imageSize, @PathVariable final String imageName, @PathVariable final String extension, HttpServletRequest request) throws IOException {
 
         // product image small
         // example small product image -> /static/products/DEFAULT/TB12345/SMALL/product1.jpg
@@ -201,8 +201,8 @@ public class ImagesController {
      */
     @RequestMapping(value = "/static/products/{storeCode}/{productCode}/{imageName}.{extension}",
             produces = {"image/gif", "image/jpg", "image/png", "application/octet-stream"})
-    public @ResponseBody
-    byte[] printImage(@PathVariable final String storeCode, @PathVariable final String productCode, @PathVariable final String imageName, @PathVariable final String extension, HttpServletRequest request) throws IOException {
+    @ResponseBody
+    public byte[] printImage(@PathVariable final String storeCode, @PathVariable final String productCode, @PathVariable final String imageName, @PathVariable final String extension, HttpServletRequest request) throws IOException {
 
         // product image
         // example small product image -> /static/products/DEFAULT/TB12345/product1.jpg?size=small

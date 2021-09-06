@@ -30,8 +30,8 @@ public class CacheApi {
     private CacheUtils cache;
 
     @DeleteMapping(value = "/auth/cache/store/{storeId}/clear")
-    public @ResponseBody
-    ResponseEntity<String> clearCache(@PathVariable("storeId") String storeCode,
+    @ResponseBody
+    public ResponseEntity<String> clearCache(@PathVariable("storeId") String storeCode,
                                       @RequestParam(name = "cacheKey", required = false) String cacheKey) {
 
         try {

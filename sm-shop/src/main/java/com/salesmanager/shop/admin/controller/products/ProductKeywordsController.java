@@ -132,8 +132,8 @@ public class ProductKeywordsController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/product/removeKeyword.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> removeKeyword(@RequestParam("id") long productId, HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> removeKeyword(@RequestParam("id") long productId, HttpServletRequest request, HttpServletResponse response, Locale locale) {
 
         String code = request.getParameter("code");
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
@@ -218,8 +218,8 @@ public class ProductKeywordsController {
     @SuppressWarnings("unchecked")
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/product/keywords/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageKeywords(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pageKeywords(HttpServletRequest request, HttpServletResponse response) {
 
         String sProductId = request.getParameter("id");
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);

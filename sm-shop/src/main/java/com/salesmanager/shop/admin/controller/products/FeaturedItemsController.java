@@ -70,8 +70,8 @@ public class FeaturedItemsController {
     @SuppressWarnings({"rawtypes", "unchecked"})
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/catalogue/featured/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageProducts(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pageProducts(HttpServletRequest request, HttpServletResponse response) {
 
         AjaxResponse resp = new AjaxResponse();
 
@@ -121,8 +121,8 @@ public class FeaturedItemsController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/catalogue/featured/addItem.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> addItem(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> addItem(HttpServletRequest request, HttpServletResponse response) {
 
         String productId = request.getParameter("productId");
         AjaxResponse resp = new AjaxResponse();
@@ -173,8 +173,8 @@ public class FeaturedItemsController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/catalogue/featured/removeItem.html&removeEntity=FEATURED", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> removeItem(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> removeItem(HttpServletRequest request, HttpServletResponse response) {
 
         String productId = request.getParameter("productId");
         AjaxResponse resp = new AjaxResponse();

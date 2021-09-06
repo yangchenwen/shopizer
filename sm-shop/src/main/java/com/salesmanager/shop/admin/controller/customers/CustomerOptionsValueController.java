@@ -218,8 +218,8 @@ public class CustomerOptionsValueController {
     @SuppressWarnings("unchecked")
     @PreAuthorize("hasRole('CUSTOMER')")
     @RequestMapping(value = "/admin/customers/options/values/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageOptions(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pageOptions(HttpServletRequest request, HttpServletResponse response) {
 
         AjaxResponse resp = new AjaxResponse();
 
@@ -262,8 +262,8 @@ public class CustomerOptionsValueController {
 
     @PreAuthorize("hasRole('CUSTOMER')")
     @RequestMapping(value = "/admin/customers/options/values/remove.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> deleteOptionValue(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> deleteOptionValue(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         String sid = request.getParameter("id");
 
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);

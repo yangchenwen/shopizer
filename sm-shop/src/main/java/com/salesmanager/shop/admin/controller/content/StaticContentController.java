@@ -67,8 +67,8 @@ public class StaticContentController {
     @SuppressWarnings({"unchecked"})
     @PreAuthorize("hasRole('CONTENT')")
     @RequestMapping(value = "/admin/content/static/page.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageStaticContent(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pageStaticContent(HttpServletRequest request, HttpServletResponse response) {
 
         AjaxResponse resp = new AjaxResponse();
         final HttpHeaders httpHeaders = new HttpHeaders();
@@ -191,8 +191,8 @@ public class StaticContentController {
      */
     @PreAuthorize("hasRole('CONTENT')")
     @RequestMapping(value = "/admin/content/static/removeFile.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> removeFile(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> removeFile(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         String fileName = request.getParameter("name");
 
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);

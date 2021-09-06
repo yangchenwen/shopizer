@@ -109,8 +109,8 @@ public class ProductImagesController {
     @SuppressWarnings({"rawtypes", "unchecked"})
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/images/page.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageProductImages(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pageProductImages(HttpServletRequest request, HttpServletResponse response) {
 
         String sProductId = request.getParameter("productId");
 
@@ -179,8 +179,8 @@ public class ProductImagesController {
     @SuppressWarnings({"rawtypes", "unchecked"})
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/images/url/page.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageProductImagesUrl(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pageProductImagesUrl(HttpServletRequest request, HttpServletResponse response) {
 
         String sProductId = request.getParameter("productId");
 
@@ -351,8 +351,8 @@ public class ProductImagesController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/images/remove.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> deleteImage(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> deleteImage(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         String sImageId = request.getParameter("id");
 
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
@@ -395,8 +395,8 @@ public class ProductImagesController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/images/defaultImage.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> setDefaultImage(final HttpServletRequest request,
+    @ResponseBody
+    public ResponseEntity<String> setDefaultImage(final HttpServletRequest request,
                                            final HttpServletResponse response,
                                            final Locale locale) {
         final String sImageId = request.getParameter("id");

@@ -74,8 +74,8 @@ public class OrderActionsControler {
 
     @PreAuthorize("hasRole('ORDER')")
     @RequestMapping(value = "/admin/orders/captureOrder.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> captureOrder(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> captureOrder(HttpServletRequest request, HttpServletResponse response, Locale locale) {
 
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
 
@@ -135,8 +135,8 @@ public class OrderActionsControler {
 
     @PreAuthorize("hasRole('ORDER')")
     @RequestMapping(value = "/admin/orders/refundOrder.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> refundOrder(@RequestBody Refund refund, HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> refundOrder(@RequestBody Refund refund, HttpServletRequest request, HttpServletResponse response, Locale locale) {
 
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
 
@@ -267,8 +267,8 @@ public class OrderActionsControler {
     @SuppressWarnings("unchecked")
     @PreAuthorize("hasRole('ORDER')")
     @RequestMapping(value = "/admin/orders/listTransactions.html", method = RequestMethod.GET)
-    public @ResponseBody
-    ResponseEntity<String> listTransactions(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    @ResponseBody
+    public ResponseEntity<String> listTransactions(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         String sId = request.getParameter("id");
 
@@ -335,8 +335,8 @@ public class OrderActionsControler {
 
     @PreAuthorize("hasRole('ORDER')")
     @RequestMapping(value = "/admin/orders/sendInvoice.html", method = RequestMethod.GET)
-    public @ResponseBody
-    ResponseEntity<String> sendInvoice(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    @ResponseBody
+    public ResponseEntity<String> sendInvoice(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         String sId = request.getParameter("id");
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
@@ -398,8 +398,8 @@ public class OrderActionsControler {
 
     @PreAuthorize("hasRole('ORDER')")
     @RequestMapping(value = "/admin/orders/updateStatus.html", method = RequestMethod.GET)
-    public @ResponseBody
-    ResponseEntity<String> updateStatus(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    @ResponseBody
+    public ResponseEntity<String> updateStatus(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         String sId = request.getParameter("id");
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
@@ -481,8 +481,8 @@ public class OrderActionsControler {
 
     @PreAuthorize("hasRole('ORDER')")
     @RequestMapping(value = "/admin/orders/sendDownloadEmail.html", method = RequestMethod.GET)
-    public @ResponseBody
-    ResponseEntity<String> sendDownloadEmail(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    @ResponseBody
+    public ResponseEntity<String> sendDownloadEmail(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         String sId = request.getParameter("id");
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);

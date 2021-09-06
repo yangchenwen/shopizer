@@ -45,8 +45,8 @@ public class ProductGroupApi {
             @ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")
     })
-    public @ResponseBody
-    ProductGroup creteGroup(
+    @ResponseBody
+    public ProductGroup creteGroup(
             @RequestBody ProductGroup group,
             @ApiIgnore MerchantStore merchantStore,
             @ApiIgnore Language language,
@@ -82,8 +82,8 @@ public class ProductGroupApi {
             @ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")
     })
-    public @ResponseBody
-    java.util.List<ProductGroup> list(
+    @ResponseBody
+    public java.util.List<ProductGroup> list(
             @ApiIgnore MerchantStore merchantStore,
             @ApiIgnore Language language,
             HttpServletResponse response)
@@ -113,8 +113,8 @@ public class ProductGroupApi {
             @ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")
     })
-    public @ResponseBody
-    ReadableProductList getProductItemsByGroup(
+    @ResponseBody
+    public ReadableProductList getProductItemsByGroup(
             @PathVariable final String code,
             @ApiIgnore MerchantStore merchantStore,
             @ApiIgnore Language language,
@@ -144,8 +144,8 @@ public class ProductGroupApi {
             @ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")
     })
-    public @ResponseBody
-    ReadableProductList addProductToGroup(
+    @ResponseBody
+    public ReadableProductList addProductToGroup(
             @PathVariable Long productId,
             @PathVariable String code,
             @ApiIgnore MerchantStore merchantStore,
@@ -187,8 +187,8 @@ public class ProductGroupApi {
             @ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")
     })
-    public @ResponseBody
-    ReadableProductList removeProductFromGroup(
+    @ResponseBody
+    public ReadableProductList removeProductFromGroup(
             @PathVariable Long productId,
             @PathVariable String code,
             @ApiIgnore MerchantStore merchantStore,

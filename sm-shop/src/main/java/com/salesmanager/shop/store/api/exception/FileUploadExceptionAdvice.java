@@ -18,8 +18,8 @@ public class FileUploadExceptionAdvice {
 
     @ExceptionHandler(MaxUploadSizeExceededException.class)
     @ResponseStatus(HttpStatus.PAYLOAD_TOO_LARGE)
-    public @ResponseBody
-    ErrorEntity handleFileException(Exception exception) {
+    @ResponseBody
+    public ErrorEntity handleFileException(Exception exception) {
         log.error(exception.getMessage(), exception);
         ErrorEntity errorEntity = new ErrorEntity();
 

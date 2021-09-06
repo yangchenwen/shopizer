@@ -77,8 +77,8 @@ public class ProductApi {
             method = RequestMethod.POST)
     @ApiImplicitParams({@ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")})
-    public @ResponseBody
-    PersistableProduct create(@Valid @RequestBody PersistableProduct product,
+    @ResponseBody
+    public PersistableProduct create(@Valid @RequestBody PersistableProduct product,
                               @ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language, HttpServletRequest request,
                               HttpServletResponse response) {
 
@@ -92,8 +92,8 @@ public class ProductApi {
     @ApiImplicitParams({@ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")})
     @ApiOperation(httpMethod = "PUT", value = "Update product", notes = "", produces = "application/json", response = PersistableProduct.class)
-    public @ResponseBody
-    PersistableProduct update(@PathVariable Long id,
+    @ResponseBody
+    public PersistableProduct update(@PathVariable Long id,
                               @Valid @RequestBody PersistableProduct product, @ApiIgnore MerchantStore merchantStore,
                               HttpServletRequest request, HttpServletResponse response) {
 
@@ -334,8 +334,8 @@ public class ProductApi {
             "/v1/auth/product/{productId}/category/{categoryId}"}, method = RequestMethod.POST)
     @ApiImplicitParams({@ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")})
-    public @ResponseBody
-    ReadableProduct addProductToCategory(@PathVariable Long productId,
+    @ResponseBody
+    public ReadableProduct addProductToCategory(@PathVariable Long productId,
                                          @PathVariable Long categoryId, @ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language,
                                          HttpServletResponse response) throws Exception {
 
@@ -381,8 +381,8 @@ public class ProductApi {
             "/v1/auth/product/{productId}/category/{categoryId}"}, method = RequestMethod.DELETE)
     @ApiImplicitParams({@ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")})
-    public @ResponseBody
-    ReadableProduct removeProductFromCategory(@PathVariable Long productId,
+    @ResponseBody
+    public ReadableProduct removeProductFromCategory(@PathVariable Long productId,
                                               @PathVariable Long categoryId, @ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language,
                                               HttpServletResponse response) {
 
@@ -432,8 +432,8 @@ public class ProductApi {
     @PostMapping(value = {"/v2/private/product/definition"})
     @ApiImplicitParams({@ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")})
-    public @ResponseBody
-    Entity createV2(@Valid @RequestBody PersistableProductDefinition product,
+    @ResponseBody
+    public Entity createV2(@Valid @RequestBody PersistableProductDefinition product,
                     @ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language) {
 
         // make sure product id is null
@@ -460,8 +460,8 @@ public class ProductApi {
     @GetMapping(value = {"/v2/private/product/definition/{id}"})
     @ApiImplicitParams({@ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")})
-    public @ResponseBody
-    ReadableProductDefinition getV2(
+    @ResponseBody
+    public ReadableProductDefinition getV2(
             @PathVariable Long id,
             @ApiIgnore MerchantStore merchantStore,
             @ApiIgnore Language language) {

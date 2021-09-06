@@ -60,8 +60,8 @@ public class ReferenceController {
 
     @SuppressWarnings("unchecked")
     @RequestMapping(value = {"/admin/reference/provinces.html", "/shop/reference/provinces.html"}, method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> getProvinces(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> getProvinces(HttpServletRequest request, HttpServletResponse response) {
 
         String countryCode = request.getParameter("countryCode");
         String lang = request.getParameter("lang");
@@ -118,8 +118,8 @@ public class ReferenceController {
     }
 
     @RequestMapping(value = "/shop/reference/countryName")
-    public @ResponseBody
-    String countryName(@RequestParam String countryCode, HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public String countryName(@RequestParam String countryCode, HttpServletRequest request, HttpServletResponse response) {
 
         try {
             Language language = languageUtils.getRequestLanguage(request, response);
@@ -141,8 +141,8 @@ public class ReferenceController {
     }
 
     @RequestMapping(value = "/shop/reference/zoneName")
-    public @ResponseBody
-    String zoneName(@RequestParam String zoneCode, HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public String zoneName(@RequestParam String zoneCode, HttpServletRequest request, HttpServletResponse response) {
 
         try {
             Language language = languageUtils.getRequestLanguage(request, response);
@@ -165,8 +165,8 @@ public class ReferenceController {
 
     @SuppressWarnings("unchecked")
     @RequestMapping(value = {"/shop/reference/creditCardDates.html"}, method = RequestMethod.GET)
-    public @ResponseBody
-    ResponseEntity<String> getCreditCardDates(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> getCreditCardDates(HttpServletRequest request, HttpServletResponse response) {
 
         List<String> years = null;
         String serialized = null;
@@ -206,8 +206,8 @@ public class ReferenceController {
 
     @SuppressWarnings("unchecked")
     @RequestMapping(value = {"/shop/reference/monthsOfYear.html"}, method = RequestMethod.GET)
-    public @ResponseBody
-    ResponseEntity<String> getMonthsOfYear(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> getMonthsOfYear(HttpServletRequest request, HttpServletResponse response) {
 
         List<String> days = null;
         String serialized = null;

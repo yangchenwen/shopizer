@@ -70,8 +70,8 @@ public class ProductReviewController {
     @SuppressWarnings({"rawtypes", "unchecked"})
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/reviews/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageProductReviews(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pageProductReviews(HttpServletRequest request, HttpServletResponse response) {
 
         String sProductId = request.getParameter("productId");
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
@@ -147,8 +147,8 @@ public class ProductReviewController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/reviews/remove.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> deleteProductReview(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> deleteProductReview(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         String sReviewid = request.getParameter("reviewId");
 
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);

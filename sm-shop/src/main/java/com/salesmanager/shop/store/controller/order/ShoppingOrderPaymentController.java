@@ -74,8 +74,8 @@ public class ShoppingOrderPaymentController extends AbstractController {
      * @throws Exception
      */
     @RequestMapping(value = {"/order/payment/{action}/{paymentmethod}.html"}, method = RequestMethod.POST)
-    public @ResponseBody
-    String paymentAction(@Valid @ModelAttribute(value = "order") ShopOrder order,
+    @ResponseBody
+    public String paymentAction(@Valid @ModelAttribute(value = "order") ShopOrder order,
                          @PathVariable String action, @PathVariable String paymentmethod, HttpServletRequest request,
                          HttpServletResponse response, Locale locale) throws Exception {
 

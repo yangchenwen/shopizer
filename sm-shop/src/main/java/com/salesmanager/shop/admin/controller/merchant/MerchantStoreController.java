@@ -83,8 +83,8 @@ public class MerchantStoreController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/admin/store/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageStores(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pageStores(HttpServletRequest request, HttpServletResponse response) {
 
         AjaxResponse resp = new AjaxResponse();
 
@@ -356,8 +356,8 @@ public class MerchantStoreController {
 
     @PreAuthorize("hasRole('AUTH')")
     @RequestMapping(value = "/admin/store/checkStoreCode.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> checkStoreCode(HttpServletRequest request, HttpServletResponse response,
+    @ResponseBody
+    public ResponseEntity<String> checkStoreCode(HttpServletRequest request, HttpServletResponse response,
                                           Locale locale) {
         String code = request.getParameter("code");
 
@@ -395,8 +395,8 @@ public class MerchantStoreController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/admin/store/remove.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> removeMerchantStore(HttpServletRequest request, Locale locale)
+    @ResponseBody
+    public ResponseEntity<String> removeMerchantStore(HttpServletRequest request, Locale locale)
             throws Exception {
 
         String sMerchantStoreId = request.getParameter("storeId");

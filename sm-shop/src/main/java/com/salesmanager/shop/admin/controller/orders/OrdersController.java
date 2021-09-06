@@ -75,8 +75,8 @@ public class OrdersController {
     @PreAuthorize("hasRole('ORDER')")
     @SuppressWarnings({"unchecked", "unused"})
     @RequestMapping(value = "/admin/orders/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageOrders(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> pageOrders(HttpServletRequest request, HttpServletResponse response, Locale locale) {
 
         AjaxPageableResponse resp = new AjaxPageableResponse();
 

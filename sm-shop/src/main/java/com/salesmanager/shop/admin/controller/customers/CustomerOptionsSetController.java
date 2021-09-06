@@ -164,8 +164,8 @@ public class CustomerOptionsSetController {
     @SuppressWarnings("unchecked")
     @PreAuthorize("hasRole('CUSTOMER')")
     @RequestMapping(value = "/admin/customers/optionsset/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageOptionsSet(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pageOptionsSet(HttpServletRequest request, HttpServletResponse response) {
 
         AjaxResponse resp = new AjaxResponse();
 
@@ -243,8 +243,8 @@ public class CustomerOptionsSetController {
 
     @PreAuthorize("hasRole('CUSTOMER')")
     @RequestMapping(value = "/admin/customers/optionsset/remove.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> deleteOptionSet(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> deleteOptionSet(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         String sid = request.getParameter("id");
 
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
@@ -282,8 +282,8 @@ public class CustomerOptionsSetController {
 
     @PreAuthorize("hasRole('CUSTOMER')")
     @RequestMapping(value = "/admin/customers/optionsset/update.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> updateOrder(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> updateOrder(HttpServletRequest request, HttpServletResponse response) {
         String values = request.getParameter("_oldValues");
         String order = request.getParameter("order");
 

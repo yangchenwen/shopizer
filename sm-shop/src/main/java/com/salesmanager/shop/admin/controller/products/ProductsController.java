@@ -67,8 +67,8 @@ public class ProductsController {
     @SuppressWarnings({"rawtypes", "unchecked"})
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageProducts(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pageProducts(HttpServletRequest request, HttpServletResponse response) {
 
         //TODO what if ROOT
 
@@ -188,8 +188,8 @@ public class ProductsController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/remove.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> deleteProduct(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> deleteProduct(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         String sid = request.getParameter("productId");
 
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);

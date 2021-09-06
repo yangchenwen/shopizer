@@ -55,8 +55,8 @@ public class ShoppingCartApi {
     @ApiOperation(httpMethod = "POST", value = "Add product to shopping cart when no cart exists, this will create a new cart id", notes = "No customer ID in scope. Add to cart for non authenticated users, as simple as {\"product\":1232,\"quantity\":1}", produces = "application/json", response = ReadableShoppingCart.class)
     @ApiImplicitParams({@ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")})
-    public @ResponseBody
-    ReadableShoppingCart addToCart(
+    @ResponseBody
+    public ReadableShoppingCart addToCart(
             @Valid @RequestBody PersistableShoppingCartItem shoppingCartItem,
             @ApiIgnore MerchantStore merchantStore,
             @ApiIgnore Language language) {
@@ -152,8 +152,8 @@ public class ShoppingCartApi {
     @ApiOperation(httpMethod = "GET", value = "Get a chopping cart by code", notes = "", produces = "application/json", response = ReadableShoppingCart.class)
     @ApiImplicitParams({@ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")})
-    public @ResponseBody
-    ReadableShoppingCart getByCode(@PathVariable String code,
+    @ResponseBody
+    public ReadableShoppingCart getByCode(@PathVariable String code,
                                    @ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language, HttpServletResponse response) {
 
         try {
@@ -183,8 +183,8 @@ public class ShoppingCartApi {
     @ApiOperation(httpMethod = "POST", value = "Add product to a specific customer shopping cart", notes = "", produces = "application/json", response = ReadableShoppingCart.class)
     @ApiImplicitParams({@ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")})
-    public @ResponseBody
-    ReadableShoppingCart addToCart(@PathVariable Long id,
+    @ResponseBody
+    public ReadableShoppingCart addToCart(@PathVariable Long id,
                                    @Valid @RequestBody PersistableShoppingCartItem shoppingCartItem, @ApiIgnore MerchantStore merchantStore,
                                    @ApiIgnore Language language, HttpServletResponse response) {
 
@@ -198,8 +198,8 @@ public class ShoppingCartApi {
     @ApiOperation(httpMethod = "GET", value = "Get a shopping cart by customer id. Customer must be authenticated", notes = "", produces = "application/json", response = ReadableShoppingCart.class)
     @ApiImplicitParams({@ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")})
-    public @ResponseBody
-    ReadableShoppingCart getByCustomer(@PathVariable Long id, // customer
+    @ResponseBody
+    public ReadableShoppingCart getByCustomer(@PathVariable Long id, // customer
                                        // id
                                        @RequestParam Optional<String> cart, // cart code
                                        @ApiIgnore MerchantStore merchantStore, @ApiIgnore Language language, HttpServletRequest request,
@@ -231,8 +231,8 @@ public class ShoppingCartApi {
     @ApiOperation(httpMethod = "GET", value = "Get a shopping cart by authenticated customer", notes = "", produces = "application/json", response = ReadableShoppingCart.class)
     @ApiImplicitParams({@ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")})
-    public @ResponseBody
-    ReadableShoppingCart getByCustomer(
+    @ResponseBody
+    public ReadableShoppingCart getByCustomer(
             @RequestParam Optional<String> cart, // cart code
             @ApiIgnore MerchantStore merchantStore,
             @ApiIgnore Language language,

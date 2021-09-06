@@ -405,8 +405,8 @@ public class CustomerController {
      */
     @PreAuthorize("hasRole('CUSTOMER')")
     @RequestMapping(value = {"/admin/customers/attributes/save.html"}, method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> saveCustomerAttributes(HttpServletRequest request, Locale locale) throws Exception {
+    @ResponseBody
+    public ResponseEntity<String> saveCustomerAttributes(HttpServletRequest request, Locale locale) throws Exception {
 
         AjaxResponse resp = new AjaxResponse();
         final HttpHeaders httpHeaders = new HttpHeaders();
@@ -549,8 +549,8 @@ public class CustomerController {
 
     @SuppressWarnings("unchecked")
     @RequestMapping(value = "/admin/customers/page.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageCustomers(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pageCustomers(HttpServletRequest request, HttpServletResponse response) {
 
         AjaxPageableResponse resp = new AjaxPageableResponse();
 
@@ -625,8 +625,8 @@ public class CustomerController {
 
     @PreAuthorize("hasRole('CUSTOMER')")
     @RequestMapping(value = "/admin/customers/resetPassword.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> resetPassword(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> resetPassword(HttpServletRequest request, HttpServletResponse response) {
 
         String customerId = request.getParameter("customerId");
 
@@ -673,8 +673,8 @@ public class CustomerController {
 
     @PreAuthorize("hasRole('CUSTOMER')")
     @RequestMapping(value = "/admin/customers/setCredentials.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> setCredentials(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> setCredentials(HttpServletRequest request, HttpServletResponse response) {
 
         String customerId = request.getParameter("customerId");
         String userName = request.getParameter("userName");

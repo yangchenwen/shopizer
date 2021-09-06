@@ -93,8 +93,8 @@ public class ContentImageController {
     @SuppressWarnings({"unchecked"})
     @PreAuthorize("hasRole('CONTENT')")
     @RequestMapping(value = "/admin/content/images/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageImages(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pageImages(HttpServletRequest request, HttpServletResponse response) {
         AjaxResponse resp = new AjaxResponse();
 
         try {
@@ -213,8 +213,8 @@ public class ContentImageController {
      */
     @PreAuthorize("hasRole('CONTENT')")
     @RequestMapping(value = "/admin/content/removeImage.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> removeImage(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> removeImage(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         String imageName = request.getParameter("name");
 
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);

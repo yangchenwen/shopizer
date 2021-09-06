@@ -37,8 +37,8 @@ public class FilesController extends AbstractController {
      * @throws ServiceException
      */
     @RequestMapping("/static/files/{storeCode}/{fileName}.{extension}")
-    public @ResponseBody
-    byte[] downloadFile(@PathVariable final String storeCode, @PathVariable final String fileName, @PathVariable final String extension, HttpServletRequest request, HttpServletResponse response) throws IOException, ServiceException {
+    @ResponseBody
+    public byte[] downloadFile(@PathVariable final String storeCode, @PathVariable final String fileName, @PathVariable final String extension, HttpServletRequest request, HttpServletResponse response) throws IOException, ServiceException {
 
         // example -> /files/<store code>/myfile.css
         FileContentType fileType = FileContentType.STATIC_FILE;
@@ -68,8 +68,8 @@ public class FilesController extends AbstractController {
      */
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping("/admin/files/downloads/{storeCode}/{fileName}.{extension}")
-    public @ResponseBody
-    byte[] downloadProduct(@PathVariable final String storeCode, @PathVariable final String fileName, @PathVariable final String extension, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    @ResponseBody
+    public byte[] downloadProduct(@PathVariable final String storeCode, @PathVariable final String fileName, @PathVariable final String extension, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         FileContentType fileType = FileContentType.PRODUCT_DIGITAL;
 

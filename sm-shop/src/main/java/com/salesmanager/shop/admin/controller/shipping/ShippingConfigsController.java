@@ -101,8 +101,8 @@ public class ShippingConfigsController {
     @SuppressWarnings({"unchecked"})
     @PreAuthorize("hasRole('SHIPPING')")
     @RequestMapping(value = "/admin/shipping/countries/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageCountries(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pageCountries(HttpServletRequest request, HttpServletResponse response) {
         String countryName = request.getParameter("name");
         AjaxResponse resp = new AjaxResponse();
 
@@ -156,8 +156,8 @@ public class ShippingConfigsController {
 
     @PreAuthorize("hasRole('SHIPPING')")
     @RequestMapping(value = "/admin/shipping/countries/update.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> updateCountry(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> updateCountry(HttpServletRequest request, HttpServletResponse response) {
         String values = request.getParameter("_oldValues");
         String supported = request.getParameter("supported");
 

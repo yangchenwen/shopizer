@@ -84,8 +84,8 @@ public class GroupsController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/admin/groups/delete.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> delete(Model model,
+    @ResponseBody
+    public ResponseEntity<String> delete(Model model,
                                   Locale locale, HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         // display menu
@@ -222,8 +222,8 @@ public class GroupsController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/admin/groups/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageGroups(HttpServletRequest request,
+    @ResponseBody
+    public ResponseEntity<String> pageGroups(HttpServletRequest request,
                                       HttpServletResponse response, Locale locale) {
 
         AjaxResponse resp = new AjaxResponse();

@@ -309,8 +309,8 @@ public class ManufacturerController {
     @SuppressWarnings("unchecked")
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/catalogue/manufacturer/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageManufacturers(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pageManufacturers(HttpServletRequest request, HttpServletResponse response) {
 
         AjaxResponse resp = new AjaxResponse();
         try {
@@ -354,8 +354,8 @@ public class ManufacturerController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/catalogue/manufacturer/remove.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> deleteManufacturer(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> deleteManufacturer(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         Long sid = Long.valueOf(request.getParameter("id"));
 
         AjaxResponse resp = new AjaxResponse();
@@ -399,8 +399,8 @@ public class ManufacturerController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/manufacturer/checkCode.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> checkCode(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> checkCode(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         String code = request.getParameter("code");
         String id = request.getParameter("id");
 

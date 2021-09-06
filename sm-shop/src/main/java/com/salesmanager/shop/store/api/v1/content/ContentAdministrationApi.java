@@ -150,8 +150,8 @@ public class ContentAdministrationApi {
     @GetMapping(value = "/content/images/download")
     @ApiImplicitParams({@ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")})
-    public @ResponseBody
-    String download(
+    @ResponseBody
+    public String download(
             @RequestParam(value = "path", required = true) String path,
             @ApiIgnore MerchantStore merchantStore,
             @ApiIgnore Language language) {

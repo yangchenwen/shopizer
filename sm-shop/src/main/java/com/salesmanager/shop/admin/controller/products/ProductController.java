@@ -705,8 +705,8 @@ public class ProductController {
      */
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/product/removeImage.html")
-    public @ResponseBody
-    ResponseEntity<String> removeImage(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> removeImage(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         String iid = request.getParameter("imageId");
 
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
@@ -790,8 +790,8 @@ public class ProductController {
     @SuppressWarnings({"rawtypes", "unchecked"})
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/product-categories/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageProductCategories(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pageProductCategories(HttpServletRequest request, HttpServletResponse response) {
 
         String sProductId = request.getParameter("productId");
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
@@ -865,8 +865,8 @@ public class ProductController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/product-categories/remove.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> deleteProductFromCategory(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> deleteProductFromCategory(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         String sCategoryid = request.getParameter("categoryId");
         String sProductId = request.getParameter("productId");
 

@@ -119,8 +119,8 @@ public class DigitalProductController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/product/removeDigitalProduct.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> removeFile(@RequestParam("fileId") long fileId, HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> removeFile(@RequestParam("fileId") long fileId, HttpServletRequest request, HttpServletResponse response, Locale locale) {
 
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
 

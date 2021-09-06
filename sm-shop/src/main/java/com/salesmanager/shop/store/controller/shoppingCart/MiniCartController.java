@@ -36,8 +36,8 @@ public class MiniCartController extends AbstractController {
     private ShoppingCartFacade shoppingCartFacade;
 
     @RequestMapping(value = {"/displayMiniCartByCode"}, method = {RequestMethod.GET, RequestMethod.POST})
-    public @ResponseBody
-    ShoppingCartData displayMiniCart(final String shoppingCartCode, HttpServletRequest request, Model model) {
+    @ResponseBody
+    public ShoppingCartData displayMiniCart(final String shoppingCartCode, HttpServletRequest request, Model model) {
 
         Language language = (Language) request.getAttribute(Constants.LANGUAGE);
 
@@ -62,8 +62,8 @@ public class MiniCartController extends AbstractController {
     }
 
     @RequestMapping(value = {"/removeMiniShoppingCartItem"}, method = {RequestMethod.GET, RequestMethod.POST})
-    public @ResponseBody
-    ShoppingCartData removeShoppingCartItem(Long lineItemId, final String shoppingCartCode, HttpServletRequest request, Model model) throws Exception {
+    @ResponseBody
+    public ShoppingCartData removeShoppingCartItem(Long lineItemId, final String shoppingCartCode, HttpServletRequest request, Model model) throws Exception {
         Language language = (Language) request.getAttribute(Constants.LANGUAGE);
         MerchantStore merchantStore = (MerchantStore) request.getAttribute(Constants.MERCHANT_STORE);
         ShoppingCartData cart = shoppingCartFacade.getShoppingCartData(null, merchantStore, shoppingCartCode, language);

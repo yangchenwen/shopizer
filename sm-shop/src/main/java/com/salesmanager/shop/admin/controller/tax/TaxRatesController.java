@@ -101,8 +101,8 @@ public class TaxRatesController {
     @SuppressWarnings("unchecked")
     @PreAuthorize("hasRole('TAX')")
     @RequestMapping(value = "/admin/tax/taxrates/page.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageTaxRates(HttpServletRequest request,
+    @ResponseBody
+    public ResponseEntity<String> pageTaxRates(HttpServletRequest request,
                                         HttpServletResponse response) {
 
         AjaxResponse resp = new AjaxResponse();
@@ -297,8 +297,8 @@ public class TaxRatesController {
 
     @PreAuthorize("hasRole('TAX')")
     @RequestMapping(value = "/admin/tax/taxrates/remove.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> removeTaxRate(HttpServletRequest request, Locale locale) throws Exception {
+    @ResponseBody
+    public ResponseEntity<String> removeTaxRate(HttpServletRequest request, Locale locale) throws Exception {
 
         //do not remove super admin
 

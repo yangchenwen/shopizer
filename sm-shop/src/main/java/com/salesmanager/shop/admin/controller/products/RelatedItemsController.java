@@ -84,8 +84,8 @@ public class RelatedItemsController {
     @SuppressWarnings({"rawtypes", "unchecked"})
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/catalogue/related/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageRelatedItems(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pageRelatedItems(HttpServletRequest request, HttpServletResponse response) {
 
         String sProductId = request.getParameter("productId");
         AjaxResponse resp = new AjaxResponse();
@@ -146,8 +146,8 @@ public class RelatedItemsController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/catalogue/related/addItem.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> addItem(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> addItem(HttpServletRequest request, HttpServletResponse response) {
 
         String productId = request.getParameter("productId");
         String baseProductId = request.getParameter("baseProductId");
@@ -214,8 +214,8 @@ public class RelatedItemsController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/catalogue/related/removeItem.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> removeItem(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> removeItem(HttpServletRequest request, HttpServletResponse response) {
 
         String productId = request.getParameter("productId");
         String baseProductId = request.getParameter("baseProductId");

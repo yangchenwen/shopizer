@@ -38,8 +38,8 @@ public class SearchApi {
             @ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")
     })
-    public @ResponseBody
-    SearchProductList search(
+    @ResponseBody
+    public SearchProductList search(
             @RequestBody SearchProductRequest searchRequest,
             @ApiIgnore MerchantStore merchantStore,
             @ApiIgnore Language language,
@@ -52,8 +52,8 @@ public class SearchApi {
             @ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")
     })
-    public @ResponseBody
-    ValueList autocomplete(
+    @ResponseBody
+    public ValueList autocomplete(
             @RequestBody SearchProductRequest searchRequest,
             @ApiIgnore MerchantStore merchantStore,
             @ApiIgnore Language language,

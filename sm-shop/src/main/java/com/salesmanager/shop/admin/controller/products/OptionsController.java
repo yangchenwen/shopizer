@@ -187,8 +187,8 @@ public class OptionsController {
     @SuppressWarnings("unchecked")
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/options/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageOptions(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pageOptions(HttpServletRequest request, HttpServletResponse response) {
 
         String optionName = request.getParameter("name");
 
@@ -258,8 +258,8 @@ public class OptionsController {
     }
 
     @RequestMapping(value = "/admin/options/remove.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> deleteOption(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> deleteOption(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         String sid = request.getParameter("optionId");
 
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);

@@ -18,8 +18,8 @@ public class RestErrorHandler {
     @RequestMapping(produces = "application/json")
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public @ResponseBody
-    ErrorEntity handleServiceException(Exception exception) {
+    @ResponseBody
+    public ErrorEntity handleServiceException(Exception exception) {
         log.error(exception.getMessage(), exception);
         ErrorEntity errorEntity = createErrorEntity(null, exception.getMessage(),
                 exception.getLocalizedMessage());
@@ -32,8 +32,8 @@ public class RestErrorHandler {
     @RequestMapping(produces = "application/json")
     @ExceptionHandler(ServiceRuntimeException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public @ResponseBody
-    ErrorEntity handleServiceException(ServiceRuntimeException exception) {
+    @ResponseBody
+    public ErrorEntity handleServiceException(ServiceRuntimeException exception) {
         log.error(exception.getErrorMessage(), exception);
         ErrorEntity errorEntity = createErrorEntity(exception.getErrorCode(), exception.getErrorMessage(),
                 exception.getLocalizedMessage());
@@ -43,8 +43,8 @@ public class RestErrorHandler {
     @RequestMapping(produces = "application/json")
     @ExceptionHandler(ConversionRuntimeException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public @ResponseBody
-    ErrorEntity handleServiceException(ConversionRuntimeException exception) {
+    @ResponseBody
+    public ErrorEntity handleServiceException(ConversionRuntimeException exception) {
         log.error(exception.getErrorMessage(), exception);
         ErrorEntity errorEntity = createErrorEntity(exception.getErrorCode(), exception.getErrorMessage(),
                 exception.getLocalizedMessage());
@@ -54,8 +54,8 @@ public class RestErrorHandler {
     @RequestMapping(produces = "application/json")
     @ExceptionHandler(ResourceNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public @ResponseBody
-    ErrorEntity handleServiceException(ResourceNotFoundException exception) {
+    @ResponseBody
+    public ErrorEntity handleServiceException(ResourceNotFoundException exception) {
         log.error(exception.getErrorMessage(), exception);
 
         ErrorEntity errorEntity = createErrorEntity(exception.getErrorCode(), exception.getErrorMessage(),
@@ -66,8 +66,8 @@ public class RestErrorHandler {
     @RequestMapping(produces = "application/json")
     @ExceptionHandler(UnauthorizedException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    public @ResponseBody
-    ErrorEntity handleServiceException(UnauthorizedException exception) {
+    @ResponseBody
+    public ErrorEntity handleServiceException(UnauthorizedException exception) {
         log.error(exception.getErrorMessage(), exception);
 
         ErrorEntity errorEntity = createErrorEntity(exception.getErrorCode(), exception.getErrorMessage(),
@@ -78,8 +78,8 @@ public class RestErrorHandler {
     @RequestMapping(produces = "application/json")
     @ExceptionHandler(RestApiException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public @ResponseBody
-    ErrorEntity handleRestApiException(RestApiException exception) {
+    @ResponseBody
+    public ErrorEntity handleRestApiException(RestApiException exception) {
         log.error(exception.getErrorMessage(), exception);
 
         ErrorEntity errorEntity = createErrorEntity(exception.getErrorCode(), exception.getErrorMessage(),

@@ -112,8 +112,8 @@ public class ProductPropertySetApi {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")})
-    public @ResponseBody
-    List<ReadableProductOptionSet> list(
+    @ResponseBody
+    public List<ReadableProductOptionSet> list(
             @ApiIgnore MerchantStore merchantStore,
             @ApiIgnore Language language,
             @RequestParam(value = "productType", required = false) String type) {

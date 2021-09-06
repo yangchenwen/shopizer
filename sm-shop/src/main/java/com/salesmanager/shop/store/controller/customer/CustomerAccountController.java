@@ -138,8 +138,8 @@ public class CustomerAccountController extends AbstractController {
     }
 
     @RequestMapping(value = "/accountSummary.json", method = RequestMethod.GET)
-    public @ResponseBody
-    ReadableCustomer customerInformation(@RequestParam String userName, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    @ResponseBody
+    public ReadableCustomer customerInformation(@RequestParam String userName, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         MerchantStore store = getSessionAttribute(Constants.MERCHANT_STORE, request);
 
@@ -273,8 +273,8 @@ public class CustomerAccountController extends AbstractController {
      */
     @PreAuthorize("hasRole('AUTH_CUSTOMER')")
     @RequestMapping(value = {"/attributes/save.html"}, method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> saveCustomerAttributes(HttpServletRequest request, Locale locale) throws Exception {
+    @ResponseBody
+    public ResponseEntity<String> saveCustomerAttributes(HttpServletRequest request, Locale locale) throws Exception {
 
         AjaxResponse resp = new AjaxResponse();
         final HttpHeaders httpHeaders = new HttpHeaders();

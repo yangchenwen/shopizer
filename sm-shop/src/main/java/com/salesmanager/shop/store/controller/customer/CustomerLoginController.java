@@ -143,8 +143,8 @@ public class CustomerLoginController extends AbstractController {
 
     //http://localhost:8080/sm-shop/shop/customer/authenticate.html?userName=shopizer&password=password&storeCode=DEFAULT
     @RequestMapping(value = "/authenticate.html", method = RequestMethod.GET)
-    public @ResponseBody
-    String basicLogon(@RequestParam String userName, @RequestParam String password, @RequestParam String storeCode, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    @ResponseBody
+    public String basicLogon(@RequestParam String userName, @RequestParam String password, @RequestParam String storeCode, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         AjaxResponse jsonObject = this.logon(userName, password, storeCode, request, response);
         return jsonObject.toJSONString();
@@ -161,8 +161,8 @@ public class CustomerLoginController extends AbstractController {
      * @throws Exception
      */
     @RequestMapping(value = "/logon.html", method = RequestMethod.POST)
-    public @ResponseBody
-    String jsonLogon(@ModelAttribute SecuredCustomer securedCustomer, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    @ResponseBody
+    public String jsonLogon(@ModelAttribute SecuredCustomer securedCustomer, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         AjaxResponse jsonObject = this.logon(securedCustomer.getUserName(), securedCustomer.getPassword(), securedCustomer.getStoreCode(), request, response);
         return jsonObject.toJSONString();

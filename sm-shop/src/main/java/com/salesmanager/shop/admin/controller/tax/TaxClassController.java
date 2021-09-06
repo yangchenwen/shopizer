@@ -62,8 +62,8 @@ public class TaxClassController {
 
     @PreAuthorize("hasRole('TAX')")
     @RequestMapping(value = "/admin/tax/taxclass/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageTaxClasses(HttpServletRequest request,
+    @ResponseBody
+    public ResponseEntity<String> pageTaxClasses(HttpServletRequest request,
                                           HttpServletResponse response, Locale locale) {
 
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
@@ -166,8 +166,8 @@ public class TaxClassController {
 
     @PreAuthorize("hasRole('TAX')")
     @RequestMapping(value = "/admin/tax/taxclass/remove.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> removeTaxClass(HttpServletRequest request, Locale locale) throws Exception {
+    @ResponseBody
+    public ResponseEntity<String> removeTaxClass(HttpServletRequest request, Locale locale) throws Exception {
 
         //do not remove super admin
 

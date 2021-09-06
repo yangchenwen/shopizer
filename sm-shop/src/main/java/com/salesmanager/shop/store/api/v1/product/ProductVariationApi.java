@@ -105,8 +105,8 @@ public class ProductVariationApi {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "store", dataType = "String", defaultValue = "DEFAULT"),
             @ApiImplicitParam(name = "lang", dataType = "String", defaultValue = "en")})
-    public @ResponseBody
-    ReadableEntityList<ReadableProductVariation> list(
+    @ResponseBody
+    public ReadableEntityList<ReadableProductVariation> list(
             @ApiIgnore MerchantStore merchantStore,
             @ApiIgnore Language language,
             @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,

@@ -95,8 +95,8 @@ public class UserController {
     @SuppressWarnings("unchecked")
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/admin/users/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageUsers(HttpServletRequest request,
+    @ResponseBody
+    public ResponseEntity<String> pageUsers(HttpServletRequest request,
                                      HttpServletResponse response) {
 
         AjaxResponse resp = new AjaxResponse();
@@ -358,8 +358,8 @@ public class UserController {
 
     @PreAuthorize("hasRole('AUTH')")
     @RequestMapping(value = "/admin/users/checkUserCode.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> checkUserCode(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> checkUserCode(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         String code = request.getParameter("code");
         String id = request.getParameter("id");
 
@@ -574,8 +574,8 @@ public class UserController {
 
     @PreAuthorize("hasRole('AUTH')")
     @RequestMapping(value = "/admin/users/remove.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> removeUser(HttpServletRequest request, Locale locale) throws Exception {
+    @ResponseBody
+    public ResponseEntity<String> removeUser(HttpServletRequest request, Locale locale) throws Exception {
 
         //do not remove super admin
 
@@ -659,8 +659,8 @@ public class UserController {
 
     //password reset functionality  ---  Sajid Shajahan
     @RequestMapping(value = "/admin/users/resetPassword.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> resetPassword(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> resetPassword(HttpServletRequest request, HttpServletResponse response, Locale locale) {
 
         AjaxResponse resp = new AjaxResponse();
         final HttpHeaders httpHeaders = new HttpHeaders();
@@ -714,8 +714,8 @@ public class UserController {
 
     //password reset functionality  ---  Sajid Shajahan
     @RequestMapping(value = "/admin/users/resetPasswordSecurityQtn.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> resetPasswordSecurityQtn(@ModelAttribute(value = "userReset") UserReset userReset, HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> resetPasswordSecurityQtn(@ModelAttribute(value = "userReset") UserReset userReset, HttpServletRequest request, HttpServletResponse response, Locale locale) {
 
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
         Language userLanguage = null;

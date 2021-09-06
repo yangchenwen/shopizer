@@ -79,8 +79,8 @@ public class ProductAttributeController {
     @SuppressWarnings({"rawtypes", "unchecked"})
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/attributes/page.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageAttributes(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pageAttributes(HttpServletRequest request, HttpServletResponse response) {
 
         //String attribute = request.getParameter("attribute");
         String sProductId = request.getParameter("productId");
@@ -367,8 +367,8 @@ public class ProductAttributeController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/attributes/attribute/remove.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> deleteProductPrice(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> deleteProductPrice(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         String sAttributeid = request.getParameter("attributeId");
 
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
@@ -406,8 +406,8 @@ public class ProductAttributeController {
     @SuppressWarnings({"rawtypes", "unchecked"})
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/products/attributes/getAttributeType.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> checkAttributeType(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> checkAttributeType(HttpServletRequest request, HttpServletResponse response, Locale locale) {
 
         String sOptionId = request.getParameter("optionId");
 

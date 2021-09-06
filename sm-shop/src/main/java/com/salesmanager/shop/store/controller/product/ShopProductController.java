@@ -313,8 +313,8 @@ public class ShopProductController {
     }
 
     @RequestMapping(value = {"/{productId}/calculatePrice.json"}, method = RequestMethod.POST)
-    public @ResponseBody
-    ReadableProductPrice calculatePrice(@RequestParam(value = "attributeIds[]") Long[] attributeIds, @PathVariable final Long productId, final HttpServletRequest request, final HttpServletResponse response, final Locale locale) throws Exception {
+    @ResponseBody
+    public ReadableProductPrice calculatePrice(@RequestParam(value = "attributeIds[]") Long[] attributeIds, @PathVariable final Long productId, final HttpServletRequest request, final HttpServletResponse response, final Locale locale) throws Exception {
 
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.MERCHANT_STORE);
         Language language = (Language) request.getAttribute("LANGUAGE");

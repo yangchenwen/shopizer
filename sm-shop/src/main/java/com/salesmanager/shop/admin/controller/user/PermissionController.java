@@ -59,8 +59,8 @@ public class PermissionController {
     @SuppressWarnings("unchecked")
     @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "/admin/permissions/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pagePermissions(HttpServletRequest request,
+    @ResponseBody
+    public ResponseEntity<String> pagePermissions(HttpServletRequest request,
                                            HttpServletResponse response) {
         //String permissionName = request.getParameter("name");
 

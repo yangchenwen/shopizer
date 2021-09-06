@@ -237,8 +237,8 @@ public class OptionsValueController {
     @SuppressWarnings("unchecked")
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/optionsvalues/paging.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> pageOptions(HttpServletRequest request, HttpServletResponse response) {
+    @ResponseBody
+    public ResponseEntity<String> pageOptions(HttpServletRequest request, HttpServletResponse response) {
 
         String optionName = request.getParameter("name");
 
@@ -294,8 +294,8 @@ public class OptionsValueController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/optionsvalues/remove.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> deleteOptionValue(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> deleteOptionValue(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         String sid = request.getParameter("optionValueId");
 
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
@@ -334,8 +334,8 @@ public class OptionsValueController {
 
     @PreAuthorize("hasRole('PRODUCTS')")
     @RequestMapping(value = "/admin/optionsvalues/removeImage.html", method = RequestMethod.POST)
-    public @ResponseBody
-    ResponseEntity<String> removeImage(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+    @ResponseBody
+    public ResponseEntity<String> removeImage(HttpServletRequest request, HttpServletResponse response, Locale locale) {
         String optionValueId = request.getParameter("optionId");
 
         MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
