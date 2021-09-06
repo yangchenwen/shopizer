@@ -28,105 +28,103 @@ import com.salesmanager.core.model.merchant.MerchantStore;
 @EntityListeners(value = AuditListener.class)
 @Table(name = "PRODUCT_TYPE")
 public class ProductType extends SalesManagerEntity<Long, ProductType> implements Auditable {
-  private static final long serialVersionUID = 1L;
+    public final static String GENERAL_TYPE = "GENERAL";
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Column(name = "PRODUCT_TYPE_ID", unique = true, nullable = false)
+    @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME",
+            valueColumnName = "SEQ_COUNT", pkColumnValue = "PRD_TYPE_SEQ_NEXT_VAL")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
+    private Long id;
 
-  public final static String GENERAL_TYPE = "GENERAL";
+    @Embedded
+    private AuditSection auditSection = new AuditSection();
 
-  @Id
-  @Column(name = "PRODUCT_TYPE_ID", unique = true, nullable = false)
-  @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME",
-      valueColumnName = "SEQ_COUNT", pkColumnValue = "PRD_TYPE_SEQ_NEXT_VAL")
-  @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
-  private Long id;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "productType")
+    private Set<ProductTypeDescription> descriptions = new HashSet<ProductTypeDescription>();
 
-  @Embedded
-  private AuditSection auditSection = new AuditSection();
-  
-  @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "productType")
-  private Set<ProductTypeDescription> descriptions = new HashSet<ProductTypeDescription>();
+    @Column(name = "PRD_TYPE_CODE")
+    private String code;
 
-  @Column(name = "PRD_TYPE_CODE")
-  private String code;
+    @Column(name = "PRD_TYPE_ADD_TO_CART")
+    private Boolean allowAddToCart;
 
-  @Column(name = "PRD_TYPE_ADD_TO_CART")
-  private Boolean allowAddToCart;
-  
-  @Column(name = "PRD_TYPE_VISIBLE")
-  private Boolean visible;
+    @Column(name = "PRD_TYPE_VISIBLE")
+    private Boolean visible;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "MERCHANT_ID", nullable = true)
-  private MerchantStore merchantStore;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MERCHANT_ID", nullable = true)
+    private MerchantStore merchantStore;
 
-  public ProductType() {}
+    public ProductType() {
+    }
 
-  @Override
-  public Long getId() {
-    return id;
-  }
+    @Override
+    public Long getId() {
+        return id;
+    }
 
-  @Override
-  public void setId(Long id) {
-    this.id = id;
-  }
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-  @Override
-  public AuditSection getAuditSection() {
-    return auditSection;
-  }
+    @Override
+    public AuditSection getAuditSection() {
+        return auditSection;
+    }
 
-  @Override
-  public void setAuditSection(AuditSection auditSection) {
-    this.auditSection = auditSection;
-  }
+    @Override
+    public void setAuditSection(AuditSection auditSection) {
+        this.auditSection = auditSection;
+    }
 
-  public boolean isAllowAddToCart() {
-    return allowAddToCart;
-  }
+    public boolean isAllowAddToCart() {
+        return allowAddToCart;
+    }
 
-  public void setAllowAddToCart(boolean allowAddToCart) {
-    this.allowAddToCart = allowAddToCart;
-  }
+    public String getCode() {
+        return code;
+    }
 
-  public String getCode() {
-    return code;
-  }
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-  public void setCode(String code) {
-    this.code = code;
-  }
+    public Boolean getAllowAddToCart() {
+        return allowAddToCart;
+    }
 
-  public Boolean getAllowAddToCart() {
-    return allowAddToCart;
-  }
+    public void setAllowAddToCart(boolean allowAddToCart) {
+        this.allowAddToCart = allowAddToCart;
+    }
 
-  public void setAllowAddToCart(Boolean allowAddToCart) {
-    this.allowAddToCart = allowAddToCart;
-  }
+    public void setAllowAddToCart(Boolean allowAddToCart) {
+        this.allowAddToCart = allowAddToCart;
+    }
 
-  public MerchantStore getMerchantStore() {
-    return merchantStore;
-  }
+    public MerchantStore getMerchantStore() {
+        return merchantStore;
+    }
 
-  public void setMerchantStore(MerchantStore merchantStore) {
-    this.merchantStore = merchantStore;
-  }
+    public void setMerchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+    }
 
-public Set<ProductTypeDescription> getDescriptions() {
-	return descriptions;
-}
+    public Set<ProductTypeDescription> getDescriptions() {
+        return descriptions;
+    }
 
-public void setDescriptions(Set<ProductTypeDescription> descriptions) {
-	this.descriptions = descriptions;
-}
+    public void setDescriptions(Set<ProductTypeDescription> descriptions) {
+        this.descriptions = descriptions;
+    }
 
-public Boolean getVisible() {
-	return visible;
-}
+    public Boolean getVisible() {
+        return visible;
+    }
 
-public void setVisible(Boolean visible) {
-	this.visible = visible;
-}
-
+    public void setVisible(Boolean visible) {
+        this.visible = visible;
+    }
 
 }

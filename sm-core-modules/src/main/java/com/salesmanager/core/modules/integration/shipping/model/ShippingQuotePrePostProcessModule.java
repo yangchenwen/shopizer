@@ -16,26 +16,24 @@ import com.salesmanager.core.modules.integration.IntegrationException;
 
 /**
  * Invoked before or after quote processing
- * @author carlsamson
  *
+ * @author carlsamson
  */
 public interface ShippingQuotePrePostProcessModule {
-	
-	
-	public String getModuleCode();
-	
 
-	public void prePostProcessShippingQuotes(
-			ShippingQuote quote, 
-			List<PackageDetails> packages, 
-			BigDecimal orderTotal, 
-			Delivery delivery, 
-			ShippingOrigin origin, 
-			MerchantStore store, 
-			IntegrationConfiguration globalShippingConfiguration, 
-			IntegrationModule currentModule, 
-			ShippingConfiguration shippingConfiguration, 
-			List<IntegrationModule> allModules, 
-			Locale locale) throws IntegrationException;
+    public String getModuleCode();
+
+    public void prePostProcessShippingQuotes(
+            ShippingQuote quote,
+            List<PackageDetails> packages,
+            BigDecimal orderTotal,
+            Delivery delivery,
+            ShippingOrigin origin,
+            MerchantStore store,
+            IntegrationConfiguration globalShippingConfiguration,
+            IntegrationModule currentModule,
+            ShippingConfiguration shippingConfiguration,
+            List<IntegrationModule> allModules,
+            Locale locale) throws IntegrationException;
 
 }

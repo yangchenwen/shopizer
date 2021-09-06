@@ -1,26 +1,23 @@
 package com.salesmanager.shop.store.security;
 
-import java.io.Serializable;
-
 import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
 
 public class AuthenticationRequest implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * Username and password must be used when using normal system authentication
-	 * for a registered customer
-	 */
-	@NotEmpty(message="{NotEmpty.customer.userName}")
-    private String username;
-	@NotEmpty(message="{message.password.required}")
-    private String password;
-    
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
+    /**
+     * Username and password must be used when using normal system authentication
+     * for a registered customer
+     */
+    @NotEmpty(message = "{NotEmpty.customer.userName}")
+    private String username;
+    @NotEmpty(message = "{message.password.required}")
+    private String password;
 
     public AuthenticationRequest() {
         super();
@@ -46,6 +43,5 @@ public class AuthenticationRequest implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
 
 }

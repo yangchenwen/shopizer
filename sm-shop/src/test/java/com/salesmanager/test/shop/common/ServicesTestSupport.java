@@ -22,11 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.math.BigDecimal;
@@ -76,60 +72,55 @@ public class ServicesTestSupport {
 
     protected PersistableManufacturer manufacturer(String code) {
 
-      PersistableManufacturer m = new PersistableManufacturer();
-      m.setCode(code);
-      m.setOrder(0);
+        PersistableManufacturer m = new PersistableManufacturer();
+        m.setCode(code);
+        m.setOrder(0);
 
-      ManufacturerDescription desc = new ManufacturerDescription();
-      desc.setLanguage("en");
-      desc.setName(code);
+        ManufacturerDescription desc = new ManufacturerDescription();
+        desc.setLanguage("en");
+        desc.setName(code);
 
-      m.getDescriptions().add(desc);
+        m.getDescriptions().add(desc);
 
-      return m;
-
+        return m;
 
     }
 
     protected PersistableCategory category(String code) {
 
-      PersistableCategory newCategory = new PersistableCategory();
-      newCategory.setCode(code);
-      newCategory.setSortOrder(1);
-      newCategory.setVisible(true);
-      newCategory.setDepth(1);
+        PersistableCategory newCategory = new PersistableCategory();
+        newCategory.setCode(code);
+        newCategory.setSortOrder(1);
+        newCategory.setVisible(true);
+        newCategory.setDepth(1);
 
+        CategoryDescription description = new CategoryDescription();
+        description.setLanguage("en");
+        description.setName(code);
 
-      CategoryDescription description = new CategoryDescription();
-      description.setLanguage("en");
-      description.setName(code);
+        List<CategoryDescription> descriptions = new ArrayList<>();
+        descriptions.add(description);
 
+        newCategory.setDescriptions(descriptions);
 
-      List<CategoryDescription> descriptions = new ArrayList<>();
-      descriptions.add(description);
-
-      newCategory.setDescriptions(descriptions);
-
-      return newCategory;
-
+        return newCategory;
 
     }
 
     protected PersistableProduct product(String code) {
 
+        PersistableProduct product = new PersistableProduct();
 
-      PersistableProduct product = new PersistableProduct();
+        product.setPrice(BigDecimal.TEN);
+        product.setSku(code);
 
-      product.setPrice(BigDecimal.TEN);
-      product.setSku(code);
+        ProductDescription description = new ProductDescription();
+        description.setName(code);
+        description.setLanguage("en");
 
-      ProductDescription description = new ProductDescription();
-      description.setName(code);
-      description.setLanguage("en");
+        product.getDescriptions().add(description);
 
-      product.getDescriptions().add(description);
-
-      return product;
+        return product;
 
     }
 
@@ -181,7 +172,6 @@ public class ServicesTestSupport {
         productDescription.setLanguage("en");
         product.getDescriptions().add(productDescription);
 
-
         final HttpEntity<PersistableProduct> entity = new HttpEntity<>(product, getHeader());
 
         final ResponseEntity<PersistableProduct> response = testRestTemplate.postForEntity("/api/v1/private/product?store=" + Constants.DEFAULT_STORE, entity, PersistableProduct.class);
@@ -199,9 +189,8 @@ public class ServicesTestSupport {
 
     protected ReadableShoppingCart sampleCart() {
 
-
-    	ReadableProduct product = sampleProduct("sampleCart");
-    	assertNotNull(product);
+        ReadableProduct product = sampleProduct("sampleCart");
+        assertNotNull(product);
 
         PersistableShoppingCartItem cartItem = new PersistableShoppingCartItem();
         cartItem.setProduct(product.getId());
@@ -213,8 +202,7 @@ public class ServicesTestSupport {
         assertNotNull(response);
         assertThat(response.getStatusCode(), is(CREATED));
 
-    	return response.getBody();
+        return response.getBody();
     }
-
 
 }

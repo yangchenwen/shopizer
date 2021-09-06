@@ -7,40 +7,37 @@ import com.salesmanager.shop.model.catalog.product.attribute.api.ReadableProduct
 
 public class ReadableProductOption extends ProductPropertyOption {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	private String name;
-	private String lang;
-	private List<ReadableProductOptionValueEntity> optionValues = new ArrayList<ReadableProductOptionValueEntity>();
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
+    private String name;
+    private String lang;
+    private List<ReadableProductOptionValueEntity> optionValues = new ArrayList<ReadableProductOptionValueEntity>();
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getLang() {
-		return lang;
-	}
+    public String getLang() {
+        return lang;
+    }
 
-	public void setLang(String lang) {
-		this.lang = lang;
-	}
+    public void setLang(String lang) {
+        this.lang = lang;
+    }
 
-	public List<ReadableProductOptionValueEntity> getOptionValues() {
-		return optionValues;
-	}
+    public List<ReadableProductOptionValueEntity> getOptionValues() {
+        return optionValues;
+    }
 
-	public void setOptionValues(List<ReadableProductOptionValueEntity> optionValues) {
-		this.optionValues = optionValues;
-	}
-
-
+    public void setOptionValues(List<ReadableProductOptionValueEntity> optionValues) {
+        this.optionValues = optionValues;
+    }
 
 }

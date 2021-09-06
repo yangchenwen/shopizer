@@ -6,49 +6,45 @@ import java.util.Set;
 import com.salesmanager.core.model.common.Criteria;
 
 public class PermissionCriteria extends Criteria {
-	
-	
-	private String permissionName;
 
-	
-	private Boolean available = null;
-	
-	private Set<Integer> groupIds;
-	
-	private List<String> availabilities;
+    private String permissionName;
 
+    private Boolean available = null;
 
-	public List<String> getAvailabilities() {
-		return availabilities;
-	}
+    private Set<Integer> groupIds;
 
-	public void setAvailabilities(List<String> availabilities) {
-		this.availabilities = availabilities;
-	}
+    private List<String> availabilities;
 
-	public Boolean getAvailable() {
-		return available;
-	}
+    public List<String> getAvailabilities() {
+        return availabilities;
+    }
 
-	public void setAvailable(Boolean available) {
-		this.available = available;
-	}
+    public void setAvailabilities(List<String> availabilities) {
+        this.availabilities = availabilities;
+    }
 
-	public String getPermissionName() {
-		return permissionName;
-	}
+    public Boolean getAvailable() {
+        return available;
+    }
 
-	public void setPermissionName(String permissionName) {
-		this.permissionName = permissionName;
-	}
+    public void setAvailable(Boolean available) {
+        this.available = available;
+    }
 
-	public Set<Integer> getGroupIds() {
-		return groupIds;
-	}
+    public String getPermissionName() {
+        return permissionName;
+    }
 
-	public void setGroupIds(Set<Integer> groupIds) {
-		this.groupIds = groupIds;
-	}
+    public void setPermissionName(String permissionName) {
+        this.permissionName = permissionName;
+    }
 
+    public Set<Integer> getGroupIds() {
+        return groupIds;
+    }
+
+    public void setGroupIds(Set<Integer> groupIds) {
+        this.groupIds = groupIds;
+    }
 
 }

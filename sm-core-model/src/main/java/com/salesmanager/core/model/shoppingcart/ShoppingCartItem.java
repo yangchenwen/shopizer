@@ -31,202 +31,191 @@ import com.salesmanager.core.model.common.audit.AuditSection;
 import com.salesmanager.core.model.common.audit.Auditable;
 import com.salesmanager.core.model.generic.SalesManagerEntity;
 
-
 @Entity
 @EntityListeners(value = AuditListener.class)
 @Table(name = "SHOPPING_CART_ITEM")
 public class ShoppingCartItem extends SalesManagerEntity<Long, ShoppingCartItem> implements Auditable, Serializable {
 
+    private static final long serialVersionUID = 1L;
 
-	private static final long serialVersionUID = 1L;
+    @Id
+    @Column(name = "SHP_CART_ITEM_ID", unique = true, nullable = false)
+    @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "SHP_CRT_ITM_SEQ_NEXT_VAL")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
+    private Long id;
 
-	@Id
-	@Column(name = "SHP_CART_ITEM_ID", unique=true, nullable=false)
-	@TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "SHP_CRT_ITM_SEQ_NEXT_VAL")
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
-	private Long id;
+    @JsonIgnore
+    @ManyToOne(targetEntity = ShoppingCart.class)
+    @JoinColumn(name = "SHP_CART_ID", nullable = false)
+    private ShoppingCart shoppingCart;
 
-	@JsonIgnore
-	@ManyToOne(targetEntity = ShoppingCart.class)
-	@JoinColumn(name = "SHP_CART_ID", nullable = false)
-	private ShoppingCart shoppingCart;
+    @Column(name = "QUANTITY")
+    private Integer quantity = new Integer(1);
 
-	@Column(name="QUANTITY")
-	private Integer quantity = new Integer(1);
+    @Embedded
+    private AuditSection auditSection = new AuditSection();
 
+    @Column(name = "PRODUCT_ID", nullable = false) //TODO CODE
+    private Long productId;
 
-	@Embedded
-	private AuditSection auditSection = new AuditSection();
+    @JsonIgnore
+    @Transient
+    private boolean productVirtual;
 
-	@Column(name="PRODUCT_ID", nullable=false) //TODO CODE
-	private Long productId;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "shoppingCartItem")
+    private Set<ShoppingCartAttributeItem> attributes = new HashSet<ShoppingCartAttributeItem>();
 
-	@JsonIgnore
-	@Transient
-	private boolean productVirtual;
+    @JsonIgnore
+    @Transient
+    private BigDecimal itemPrice;//item final price including all rebates
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "shoppingCartItem")
-	private Set<ShoppingCartAttributeItem> attributes = new HashSet<ShoppingCartAttributeItem>();
+    @JsonIgnore
+    @Transient
+    private BigDecimal subTotal;//item final price * quantity
 
-	@JsonIgnore
-	@Transient
-	private BigDecimal itemPrice;//item final price including all rebates
+    @JsonIgnore
+    @Transient
+    private FinalPrice finalPrice;//contains price details (raw prices)
 
-	@JsonIgnore
-	@Transient
-	private BigDecimal subTotal;//item final price * quantity
+    @JsonIgnore
+    @Transient
+    private Product product;
 
-	@JsonIgnore
-	@Transient
-	private FinalPrice finalPrice;//contains price details (raw prices)
+    @JsonIgnore
+    @Transient
+    private boolean obsolete = false;
 
-	@JsonIgnore
-	@Transient
-	private Product product;
+    public ShoppingCartItem(ShoppingCart shoppingCart, Product product) {
+        this(product);
+        this.shoppingCart = shoppingCart;
+    }
 
-	@JsonIgnore
-	@Transient
-	private boolean obsolete = false;
+    public ShoppingCartItem(Product product) {
+        this.product = product;
+        this.productId = product.getId();
+        this.quantity = 1;
+        this.productVirtual = product.isProductVirtual();
+    }
 
+    /**
+     * remove usage to limit possibility to implement bugs, would use constructors above to make sure all needed attributes are set correctly
+     **/
+    @Deprecated
+    public ShoppingCartItem() {
+    }
 
+    @Override
+    public AuditSection getAuditSection() {
+        return auditSection;
+    }
 
+    @Override
+    public void setAuditSection(AuditSection audit) {
+        this.auditSection = audit;
 
-	public ShoppingCartItem(ShoppingCart shoppingCart, Product product) {
-		this(product);
-		this.shoppingCart = shoppingCart;
-	}
+    }
 
-	public ShoppingCartItem(Product product) {
-		this.product = product;
-		this.productId = product.getId();
-		this.quantity = 1;
-		this.productVirtual = product.isProductVirtual();
-	}
+    @Override
+    public Long getId() {
+        return id;
+    }
 
-	/** remove usage to limit possibility to implement bugs, would use constructors above to make sure all needed attributes are set correctly **/
-	@Deprecated
-	public ShoppingCartItem() {
-	}
+    @Override
+    public void setId(Long id) {
+        this.id = id;
 
-	@Override
-	public AuditSection getAuditSection() {
-		return auditSection;
-	}
+    }
 
-	@Override
-	public void setAuditSection(AuditSection audit) {
-		this.auditSection = audit;
+    public Set<ShoppingCartAttributeItem> getAttributes() {
+        return attributes;
+    }
 
-	}
+    public void setAttributes(Set<ShoppingCartAttributeItem> attributes) {
+        this.attributes = attributes;
+    }
 
-	@Override
-	public Long getId() {
-		return id;
-	}
+    public BigDecimal getItemPrice() {
+        return itemPrice;
+    }
 
-	@Override
-	public void setId(Long id) {
-		this.id = id;
+    public void setItemPrice(BigDecimal itemPrice) {
+        this.itemPrice = itemPrice;
+    }
 
-	}
+    public Integer getQuantity() {
+        return quantity;
+    }
 
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
 
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
+    }
 
-	public void setAttributes(Set<ShoppingCartAttributeItem> attributes) {
-		this.attributes = attributes;
-	}
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
+    }
 
-	public Set<ShoppingCartAttributeItem> getAttributes() {
-		return attributes;
-	}
+    public Long getProductId() {
+        return productId;
+    }
 
-	public void setItemPrice(BigDecimal itemPrice) {
-		this.itemPrice = itemPrice;
-	}
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
 
-	public BigDecimal getItemPrice() {
-		return itemPrice;
-	}
+    public Product getProduct() {
+        return product;
+    }
 
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 
-	public Integer getQuantity() {
-		return quantity;
-	}
+    public void addAttributes(ShoppingCartAttributeItem shoppingCartAttributeItem) {
+        this.attributes.add(shoppingCartAttributeItem);
+    }
 
+    public void removeAttributes(ShoppingCartAttributeItem shoppingCartAttributeItem) {
+        this.attributes.remove(shoppingCartAttributeItem);
+    }
 
+    public void removeAllAttributes() {
+        this.attributes.removeAll(Collections.EMPTY_SET);
+    }
 
-	public ShoppingCart getShoppingCart() {
-		return shoppingCart;
-	}
+    public BigDecimal getSubTotal() {
+        return subTotal;
+    }
 
-	public void setShoppingCart(ShoppingCart shoppingCart) {
-		this.shoppingCart = shoppingCart;
-	}
+    public void setSubTotal(BigDecimal subTotal) {
+        this.subTotal = subTotal;
+    }
 
-	public void setProductId(Long productId) {
-		this.productId = productId;
-	}
+    public FinalPrice getFinalPrice() {
+        return finalPrice;
+    }
 
-	public Long getProductId() {
-		return productId;
-	}
+    public void setFinalPrice(FinalPrice finalPrice) {
+        this.finalPrice = finalPrice;
+    }
 
-	public void setProduct(Product product) {
-		this.product = product;
-	}
+    public boolean isObsolete() {
+        return obsolete;
+    }
 
-	public Product getProduct() {
-		return product;
-	}
+    public void setObsolete(boolean obsolete) {
+        this.obsolete = obsolete;
+    }
 
-	public void addAttributes(ShoppingCartAttributeItem shoppingCartAttributeItem)
-	{
-	    this.attributes.add(shoppingCartAttributeItem);
-	}
+    public boolean isProductVirtual() {
+        return productVirtual;
+    }
 
-	public void removeAttributes(ShoppingCartAttributeItem shoppingCartAttributeItem)
-	{
-	    this.attributes.remove(shoppingCartAttributeItem);
-	}
-
-	public void removeAllAttributes(){
-		this.attributes.removeAll(Collections.EMPTY_SET);
-	}
-
-	public void setSubTotal(BigDecimal subTotal) {
-		this.subTotal = subTotal;
-	}
-
-	public BigDecimal getSubTotal() {
-		return subTotal;
-	}
-
-	public void setFinalPrice(FinalPrice finalPrice) {
-		this.finalPrice = finalPrice;
-	}
-
-	public FinalPrice getFinalPrice() {
-		return finalPrice;
-	}
-
-	public boolean isObsolete() {
-		return obsolete;
-	}
-
-	public void setObsolete(boolean obsolete) {
-		this.obsolete = obsolete;
-	}
-
-
-	public boolean isProductVirtual() {
-		return productVirtual;
-	}
-
-	public void setProductVirtual(boolean productVirtual) {
-		this.productVirtual = productVirtual;
-	}
+    public void setProductVirtual(boolean productVirtual) {
+        this.productVirtual = productVirtual;
+    }
 
 }

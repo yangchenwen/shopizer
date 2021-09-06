@@ -22,120 +22,115 @@ import com.salesmanager.core.model.generic.SalesManagerEntity;
 import com.salesmanager.core.model.order.Order;
 
 @Entity
-@Table (name="ORDER_PRODUCT" )
+@Table(name = "ORDER_PRODUCT")
 public class OrderProduct extends SalesManagerEntity<Long, OrderProduct> {
-	private static final long serialVersionUID = 176131742783954627L;
-	
-	@Id
-	@Column (name="ORDER_PRODUCT_ID")
-	@TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "ORDER_PRODUCT_ID_NEXT_VALUE")
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
-	private Long id;
+    private static final long serialVersionUID = 176131742783954627L;
 
-	@Column (name="PRODUCT_SKU") //yess !!! rename to code
-	private String sku;
+    @Id
+    @Column(name = "ORDER_PRODUCT_ID")
+    @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "ORDER_PRODUCT_ID_NEXT_VALUE")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
+    private Long id;
 
-	@Column (name="PRODUCT_NAME" , length=64 , nullable=false)
-	private String productName;
+    @Column(name = "PRODUCT_SKU") //yess !!! rename to code
+    private String sku;
 
-	@Column (name="PRODUCT_QUANTITY")
-	private int productQuantity;
+    @Column(name = "PRODUCT_NAME", length = 64, nullable = false)
+    private String productName;
 
-	@Column (name="ONETIME_CHARGE" , nullable=false )
-	private BigDecimal oneTimeCharge;
+    @Column(name = "PRODUCT_QUANTITY")
+    private int productQuantity;
 
-	@JsonIgnore
-	@ManyToOne(targetEntity = Order.class)
-	@JoinColumn(name = "ORDER_ID", nullable = false)
-	private Order order;
+    @Column(name = "ONETIME_CHARGE", nullable = false)
+    private BigDecimal oneTimeCharge;
 
-	@OneToMany(mappedBy = "orderProduct", cascade = CascadeType.ALL)
-	private Set<OrderProductAttribute> orderAttributes = new HashSet<OrderProductAttribute>();
+    @JsonIgnore
+    @ManyToOne(targetEntity = Order.class)
+    @JoinColumn(name = "ORDER_ID", nullable = false)
+    private Order order;
 
-	@OneToMany(mappedBy = "orderProduct", cascade = CascadeType.ALL)
-	private Set<OrderProductPrice> prices = new HashSet<OrderProductPrice>();
+    @OneToMany(mappedBy = "orderProduct", cascade = CascadeType.ALL)
+    private Set<OrderProductAttribute> orderAttributes = new HashSet<OrderProductAttribute>();
 
-	@OneToMany(mappedBy = "orderProduct", cascade = CascadeType.ALL)
-	private Set<OrderProductDownload> downloads = new HashSet<OrderProductDownload>();
-	
-	public OrderProduct() {
-	}
+    @OneToMany(mappedBy = "orderProduct", cascade = CascadeType.ALL)
+    private Set<OrderProductPrice> prices = new HashSet<OrderProductPrice>();
 
-	public Long getId() {
-		return id;
-	}
+    @OneToMany(mappedBy = "orderProduct", cascade = CascadeType.ALL)
+    private Set<OrderProductDownload> downloads = new HashSet<OrderProductDownload>();
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public OrderProduct() {
+    }
 
+    public Long getId() {
+        return id;
+    }
 
-	public String getProductName() {
-		return productName;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
+    public String getProductName() {
+        return productName;
+    }
 
-	public int getProductQuantity() {
-		return productQuantity;
-	}
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
 
-	public void setProductQuantity(int productQuantity) {
-		this.productQuantity = productQuantity;
-	}
+    public int getProductQuantity() {
+        return productQuantity;
+    }
 
+    public void setProductQuantity(int productQuantity) {
+        this.productQuantity = productQuantity;
+    }
 
+    public Order getOrder() {
+        return order;
+    }
 
-	public Order getOrder() {
-		return order;
-	}
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 
-	public void setOrder(Order order) {
-		this.order = order;
-	}
+    public Set<OrderProductAttribute> getOrderAttributes() {
+        return orderAttributes;
+    }
 
+    public void setOrderAttributes(Set<OrderProductAttribute> orderAttributes) {
+        this.orderAttributes = orderAttributes;
+    }
 
-	public Set<OrderProductAttribute> getOrderAttributes() {
-		return orderAttributes;
-	}
+    public Set<OrderProductPrice> getPrices() {
+        return prices;
+    }
 
-	public void setOrderAttributes(Set<OrderProductAttribute> orderAttributes) {
-		this.orderAttributes = orderAttributes;
-	}
+    public void setPrices(Set<OrderProductPrice> prices) {
+        this.prices = prices;
+    }
 
-	public Set<OrderProductPrice> getPrices() {
-		return prices;
-	}
+    public Set<OrderProductDownload> getDownloads() {
+        return downloads;
+    }
 
-	public void setPrices(Set<OrderProductPrice> prices) {
-		this.prices = prices;
-	}
+    public void setDownloads(Set<OrderProductDownload> downloads) {
+        this.downloads = downloads;
+    }
 
-	public Set<OrderProductDownload> getDownloads() {
-		return downloads;
-	}
+    public String getSku() {
+        return sku;
+    }
 
-	public void setDownloads(Set<OrderProductDownload> downloads) {
-		this.downloads = downloads;
-	}
+    public void setSku(String sku) {
+        this.sku = sku;
+    }
 
+    public BigDecimal getOneTimeCharge() {
+        return oneTimeCharge;
+    }
 
-	public void setSku(String sku) {
-		this.sku = sku;
-	}
+    public void setOneTimeCharge(BigDecimal oneTimeCharge) {
+        this.oneTimeCharge = oneTimeCharge;
+    }
 
-	public String getSku() {
-		return sku;
-	}
-
-	public void setOneTimeCharge(BigDecimal oneTimeCharge) {
-		this.oneTimeCharge = oneTimeCharge;
-	}
-
-	public BigDecimal getOneTimeCharge() {
-		return oneTimeCharge;
-	}
-	
 }

@@ -1,9 +1,9 @@
 /*
- * Licensed to csti consulting 
+ * Licensed to csti consulting
  * You may obtain a copy of the License at
  *
  * http://www.csticonsulting.com
- * Copyright (c) 2006-Aug 24, 2010 Consultation CS-TI inc. 
+ * Copyright (c) 2006-Aug 24, 2010 Consultation CS-TI inc.
  *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
@@ -26,34 +26,34 @@ import com.salesmanager.core.model.common.description.Description;
 import com.salesmanager.core.model.reference.language.Language;
 
 @Entity
-@Table(name = "PRODUCT_REVIEW_DESCRIPTION", uniqueConstraints={
-	@UniqueConstraint(columnNames={
-		"PRODUCT_REVIEW_ID",
-		"LANGUAGE_ID"
-	})
+@Table(name = "PRODUCT_REVIEW_DESCRIPTION", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {
+                "PRODUCT_REVIEW_ID",
+                "LANGUAGE_ID"
+        })
 })
 
 @TableGenerator(name = "description_gen", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "product_review_description_seq", allocationSize = SchemaConstant.DESCRIPTION_ID_ALLOCATION_SIZE, initialValue = SchemaConstant.DESCRIPTION_ID_START_VALUE)
 public class ProductReviewDescription extends Description {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@ManyToOne(targetEntity = ProductReview.class)
-	@JoinColumn(name="PRODUCT_REVIEW_ID")
-	private ProductReview productReview;
+    @ManyToOne(targetEntity = ProductReview.class)
+    @JoinColumn(name = "PRODUCT_REVIEW_ID")
+    private ProductReview productReview;
 
-	public ProductReviewDescription() {
-	}
+    public ProductReviewDescription() {
+    }
 
-	public ProductReviewDescription(Language language, String name) {
-		this.setLanguage(language);
-		this.setName(name);
-	}
+    public ProductReviewDescription(Language language, String name) {
+        this.setLanguage(language);
+        this.setName(name);
+    }
 
-	public ProductReview getProductReview() {
-		return productReview;
-	}
+    public ProductReview getProductReview() {
+        return productReview;
+    }
 
-	public void setProductReview(ProductReview productReview) {
-		this.productReview = productReview;
-	}
+    public void setProductReview(ProductReview productReview) {
+        this.productReview = productReview;
+    }
 }

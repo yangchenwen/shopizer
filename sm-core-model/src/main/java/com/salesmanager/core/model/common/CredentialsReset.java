@@ -9,28 +9,28 @@ import javax.persistence.TemporalType;
 
 @Embeddable
 public class CredentialsReset {
-	
-	@Column (name ="RESET_CREDENTIALS_REQ", length=256)
-	private String credentialsRequest;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "RESET_CREDENTIALS_EXP")
-	private Date credentialsRequestExpiry = new Date();
+    @Column(name = "RESET_CREDENTIALS_REQ", length = 256)
+    private String credentialsRequest;
 
-	public String getCredentialsRequest() {
-		return credentialsRequest;
-	}
+    @Temporal(TemporalType.DATE)
+    @Column(name = "RESET_CREDENTIALS_EXP")
+    private Date credentialsRequestExpiry = new Date();
 
-	public void setCredentialsRequest(String credentialsRequest) {
-		this.credentialsRequest = credentialsRequest;
-	}
+    public String getCredentialsRequest() {
+        return credentialsRequest;
+    }
 
-	public Date getCredentialsRequestExpiry() {
-		return credentialsRequestExpiry;
-	}
+    public void setCredentialsRequest(String credentialsRequest) {
+        this.credentialsRequest = credentialsRequest;
+    }
 
-	public void setCredentialsRequestExpiry(Date credentialsRequestExpiry) {
-		this.credentialsRequestExpiry = credentialsRequestExpiry;
-	}
+    public Date getCredentialsRequestExpiry() {
+        return credentialsRequestExpiry;
+    }
+
+    public void setCredentialsRequestExpiry(Date credentialsRequestExpiry) {
+        this.credentialsRequestExpiry = credentialsRequestExpiry;
+    }
 
 }

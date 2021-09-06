@@ -32,309 +32,268 @@ import java.util.*;
 
 @Controller
 public class OptionsController {
-	
-	@Inject
-	LanguageService languageService;
-	
-	@Inject
-	ProductOptionService productOptionService;
-	
-	@Inject
-	LabelUtils messages;
-	
-	private static final Logger LOGGER = LoggerFactory.getLogger(OptionsController.class);
-	
-	
-	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/options/options.html", method=RequestMethod.GET)
-	public String displayOptions(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		setMenu(model,request);
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(OptionsController.class);
+    @Inject
+    LanguageService languageService;
+    @Inject
+    ProductOptionService productOptionService;
+    @Inject
+    LabelUtils messages;
 
+    @PreAuthorize("hasRole('PRODUCTS')")
+    @RequestMapping(value = "/admin/options/options.html", method = RequestMethod.GET)
+    public String displayOptions(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		
-		return "catalogue-options-list";
-		
-		
-		
-	}
-	
-	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/options/editOption.html", method=RequestMethod.GET)
-	public String displayOptionEdit(@RequestParam("id") long optionId, HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) throws Exception {
-		return displayOption(optionId,request,response,model,locale);
-	}
-	
-	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/options/createOption.html", method=RequestMethod.GET)
-	public String displayOption(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) throws Exception {
-		return displayOption(null,request,response,model,locale);
-	}
-	
-	private String displayOption(Long optionId, HttpServletRequest request, HttpServletResponse response,Model model,Locale locale) throws Exception {
+        setMenu(model, request);
 
-		
-		this.setMenu(model, request);
-		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-		
-		List<Language> languages = store.getLanguages();
+        return "catalogue-options-list";
 
-		Set<ProductOptionDescription> descriptions = new HashSet<ProductOptionDescription>();
-		
-		ProductOption option = new ProductOption();
-		
-		if(optionId!=null && optionId!=0) {//edit mode
-			
-			
-			option = productOptionService.getById(store, optionId);
-			
-			
-			if(option==null) {
-				return "redirect:/admin/options/options.html";
-			}
-			
-			Set<ProductOptionDescription> optionDescriptions = option.getDescriptions();
-			
-			
-			
-			for(Language l : languages) {
-			
-				ProductOptionDescription optionDescription = null;
-				
-				if(optionDescriptions!=null) {
-					
-					for(ProductOptionDescription description : optionDescriptions) {
-						
-						String code = description.getLanguage().getCode();
-						if(code.equals(l.getCode())) {
-							optionDescription = description;
-						}
-						
-					}
-					
-				}
-				
-				if(optionDescription==null) {
-					optionDescription = new ProductOptionDescription();
-					optionDescription.setLanguage(l);
-				}
-				
-				descriptions.add(optionDescription);
-			
-			}
+    }
 
-		} else {
-			
-			for(Language l : languages) {
-				
-				ProductOptionDescription desc = new ProductOptionDescription();
-				desc.setLanguage(l);
-				descriptions.add(desc);
-				
-			}
-			
-		}
-		
+    @PreAuthorize("hasRole('PRODUCTS')")
+    @RequestMapping(value = "/admin/options/editOption.html", method = RequestMethod.GET)
+    public String displayOptionEdit(@RequestParam("id") long optionId, HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) throws Exception {
+        return displayOption(optionId, request, response, model, locale);
+    }
 
-		option.setDescriptions(descriptions);
-		model.addAttribute("option", option);
-		return "catalogue-options-details";
-		
-		
-	}
-		
-	
-	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/options/save.html", method=RequestMethod.POST)
-	public String saveOption(@Valid @ModelAttribute("option") ProductOption option, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
-		
+    @PreAuthorize("hasRole('PRODUCTS')")
+    @RequestMapping(value = "/admin/options/createOption.html", method = RequestMethod.GET)
+    public String displayOption(HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) throws Exception {
+        return displayOption(null, request, response, model, locale);
+    }
 
-		//display menu
-		setMenu(model,request);
-		
-		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-		ProductOption dbEntity =	null;	
+    private String displayOption(Long optionId, HttpServletRequest request, HttpServletResponse response, Model model, Locale locale) throws Exception {
 
-		if(option.getId() != null && option.getId() >0) { //edit entry
-			//get from DB
-			dbEntity = productOptionService.getById(option.getId());
-			
-			if(dbEntity==null) {
-				return "redirect:/admin/options/options.html";
-			}
-		}
-		
-		//validate if it contains an existing code
-		ProductOption byCode = productOptionService.getByCode(store, option.getCode());
-		if(byCode!=null) {
-			ObjectError error = new ObjectError("code",messages.getMessage("message.code.exist", locale));
-			result.addError(error);
-		}
+        this.setMenu(model, request);
+        MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
 
-			
-		Map<String,Language> langs = languageService.getLanguagesMap();
-			
+        List<Language> languages = store.getLanguages();
 
-		List<ProductOptionDescription> descriptions = option.getDescriptionsList();
-		
-		if(descriptions!=null) {
-				
-				for(ProductOptionDescription description : descriptions) {
-					
-					String code = description.getLanguage().getCode();
-					Language l = langs.get(code);
-					description.setLanguage(l);
-					description.setProductOption(option);
-	
-				}
-				
-		}
-			
-		option.setDescriptions(new HashSet<ProductOptionDescription>(descriptions));
-		option.setMerchantStore(store);
+        Set<ProductOptionDescription> descriptions = new HashSet<ProductOptionDescription>();
 
-		
-		if (result.hasErrors()) {
-			return "catalogue-options-details";
-		}
-		
+        ProductOption option = new ProductOption();
 
-		
-		
-		productOptionService.saveOrUpdate(option);
+        if (optionId != null && optionId != 0) {//edit mode
 
+            option = productOptionService.getById(store, optionId);
 
-		
+            if (option == null) {
+                return "redirect:/admin/options/options.html";
+            }
 
-		model.addAttribute("success","success");
-		return "catalogue-options-details";
-	}
+            Set<ProductOptionDescription> optionDescriptions = option.getDescriptions();
 
-	
-	
-	@SuppressWarnings("unchecked")
-	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/options/paging.html", method=RequestMethod.POST)
-	public @ResponseBody ResponseEntity<String> pageOptions(HttpServletRequest request, HttpServletResponse response) {
-		
-		String optionName = request.getParameter("name");
+            for (Language l : languages) {
 
+                ProductOptionDescription optionDescription = null;
 
-		AjaxResponse resp = new AjaxResponse();
+                if (optionDescriptions != null) {
 
-		
-		try {
-			
-			
-			Language language = (Language)request.getAttribute("LANGUAGE");	
-		
-			MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-			
-			List<ProductOption> options = null;
-					
-			if(!StringUtils.isBlank(optionName)) {
-				
-				options = productOptionService.getByName(store, optionName, language);
-				
-			} else {
-				
-				options = productOptionService.listByStore(store, language);
-				
-			}
-					
-					
+                    for (ProductOptionDescription description : optionDescriptions) {
 
-			for(ProductOption option : options) {
-				
-				@SuppressWarnings("rawtypes")
-				Map entry = new HashMap();
-				entry.put("optionId", option.getId());
-				entry.put("display", option.isReadOnly());
-				ProductOptionDescription description = option.getDescriptions().iterator().next();
-				
-				entry.put("name", description.getName());
-				entry.put("type", option.getProductOptionType());//TODO resolve with option type label
-				resp.addDataEntry(entry);
-				
-				
-			}
-			
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
-			
+                        String code = description.getLanguage().getCode();
+                        if (code.equals(l.getCode())) {
+                            optionDescription = description;
+                        }
 
-		
-		} catch (Exception e) {
-			LOGGER.error("Error while paging options", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-		}
-		
-		String returnString = resp.toJSONString();
-		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
-		
-		
-	}
-	
-	
+                    }
 
-	
-	private void setMenu(Model model, HttpServletRequest request) throws Exception {
-		
-		//display menu
-		Map<String,String> activeMenus = new HashMap<String,String>();
-		activeMenus.put("catalogue", "catalogue");
-		activeMenus.put("catalogue-options", "catalogue-options");
-		
-		@SuppressWarnings("unchecked")
-		Map<String, Menu> menus = (Map<String, Menu>)request.getAttribute("MENUMAP");
-		
-		Menu currentMenu = (Menu)menus.get("catalogue");
-		model.addAttribute("currentMenu",currentMenu);
-		model.addAttribute("activeMenus",activeMenus);
-		//
-		
-	}
-	
-	@RequestMapping(value="/admin/options/remove.html", method=RequestMethod.POST)
-	public @ResponseBody ResponseEntity<String> deleteOption(HttpServletRequest request, HttpServletResponse response, Locale locale) {
-		String sid = request.getParameter("optionId");
+                }
 
-		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-		
-		AjaxResponse resp = new AjaxResponse();
+                if (optionDescription == null) {
+                    optionDescription = new ProductOptionDescription();
+                    optionDescription.setLanguage(l);
+                }
 
-		
-		try {
-			
-			Long id = Long.parseLong(sid);
-			
-			ProductOption entity = productOptionService.getById(id);
+                descriptions.add(optionDescription);
 
-			if(entity==null || entity.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
+            }
 
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
-				
-			} else {
-				
-				productOptionService.delete(entity);
-				resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
-				
-			}
-		
-		
-		} catch (Exception e) {
-			LOGGER.error("Error while deleting option", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
-		}
-		
-		String returnString = resp.toJSONString();
-		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
-	}
+        } else {
+
+            for (Language l : languages) {
+
+                ProductOptionDescription desc = new ProductOptionDescription();
+                desc.setLanguage(l);
+                descriptions.add(desc);
+
+            }
+
+        }
+
+        option.setDescriptions(descriptions);
+        model.addAttribute("option", option);
+        return "catalogue-options-details";
+
+    }
+
+    @PreAuthorize("hasRole('PRODUCTS')")
+    @RequestMapping(value = "/admin/options/save.html", method = RequestMethod.POST)
+    public String saveOption(@Valid @ModelAttribute("option") ProductOption option, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
+
+        //display menu
+        setMenu(model, request);
+
+        MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
+        ProductOption dbEntity = null;
+
+        if (option.getId() != null && option.getId() > 0) { //edit entry
+            //get from DB
+            dbEntity = productOptionService.getById(option.getId());
+
+            if (dbEntity == null) {
+                return "redirect:/admin/options/options.html";
+            }
+        }
+
+        //validate if it contains an existing code
+        ProductOption byCode = productOptionService.getByCode(store, option.getCode());
+        if (byCode != null) {
+            ObjectError error = new ObjectError("code", messages.getMessage("message.code.exist", locale));
+            result.addError(error);
+        }
+
+        Map<String, Language> langs = languageService.getLanguagesMap();
+
+        List<ProductOptionDescription> descriptions = option.getDescriptionsList();
+
+        if (descriptions != null) {
+
+            for (ProductOptionDescription description : descriptions) {
+
+                String code = description.getLanguage().getCode();
+                Language l = langs.get(code);
+                description.setLanguage(l);
+                description.setProductOption(option);
+
+            }
+
+        }
+
+        option.setDescriptions(new HashSet<ProductOptionDescription>(descriptions));
+        option.setMerchantStore(store);
+
+        if (result.hasErrors()) {
+            return "catalogue-options-details";
+        }
+
+        productOptionService.saveOrUpdate(option);
+
+        model.addAttribute("success", "success");
+        return "catalogue-options-details";
+    }
+
+    @SuppressWarnings("unchecked")
+    @PreAuthorize("hasRole('PRODUCTS')")
+    @RequestMapping(value = "/admin/options/paging.html", method = RequestMethod.POST)
+    public @ResponseBody
+    ResponseEntity<String> pageOptions(HttpServletRequest request, HttpServletResponse response) {
+
+        String optionName = request.getParameter("name");
+
+        AjaxResponse resp = new AjaxResponse();
+
+        try {
+
+            Language language = (Language) request.getAttribute("LANGUAGE");
+
+            MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
+
+            List<ProductOption> options = null;
+
+            if (!StringUtils.isBlank(optionName)) {
+
+                options = productOptionService.getByName(store, optionName, language);
+
+            } else {
+
+                options = productOptionService.listByStore(store, language);
+
+            }
+
+            for (ProductOption option : options) {
+
+                @SuppressWarnings("rawtypes")
+                Map entry = new HashMap();
+                entry.put("optionId", option.getId());
+                entry.put("display", option.isReadOnly());
+                ProductOptionDescription description = option.getDescriptions().iterator().next();
+
+                entry.put("name", description.getName());
+                entry.put("type", option.getProductOptionType());//TODO resolve with option type label
+                resp.addDataEntry(entry);
+
+            }
+
+            resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+
+        } catch (Exception e) {
+            LOGGER.error("Error while paging options", e);
+            resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+        }
+
+        String returnString = resp.toJSONString();
+        final HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        return new ResponseEntity<String>(returnString, httpHeaders, HttpStatus.OK);
+
+    }
+
+    private void setMenu(Model model, HttpServletRequest request) throws Exception {
+
+        //display menu
+        Map<String, String> activeMenus = new HashMap<String, String>();
+        activeMenus.put("catalogue", "catalogue");
+        activeMenus.put("catalogue-options", "catalogue-options");
+
+        @SuppressWarnings("unchecked")
+        Map<String, Menu> menus = (Map<String, Menu>) request.getAttribute("MENUMAP");
+
+        Menu currentMenu = (Menu) menus.get("catalogue");
+        model.addAttribute("currentMenu", currentMenu);
+        model.addAttribute("activeMenus", activeMenus);
+        //
+
+    }
+
+    @RequestMapping(value = "/admin/options/remove.html", method = RequestMethod.POST)
+    public @ResponseBody
+    ResponseEntity<String> deleteOption(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+        String sid = request.getParameter("optionId");
+
+        MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
+
+        AjaxResponse resp = new AjaxResponse();
+
+        try {
+
+            Long id = Long.parseLong(sid);
+
+            ProductOption entity = productOptionService.getById(id);
+
+            if (entity == null || entity.getMerchantStore().getId().intValue() != store.getId().intValue()) {
+
+                resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+                resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+
+            } else {
+
+                productOptionService.delete(entity);
+                resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+
+            }
+
+        } catch (Exception e) {
+            LOGGER.error("Error while deleting option", e);
+            resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+            resp.setErrorMessage(e);
+        }
+
+        String returnString = resp.toJSONString();
+        final HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        return new ResponseEntity<String>(returnString, httpHeaders, HttpStatus.OK);
+    }
 
 }

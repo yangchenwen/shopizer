@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
@@ -19,28 +18,19 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThat;
-import static org.springframework.http.HttpStatus.CREATED;
-import static org.springframework.http.HttpStatus.NOT_FOUND;
-import static org.springframework.http.HttpStatus.NO_CONTENT;
-import static org.springframework.http.HttpStatus.OK;
+import static org.junit.Assert.*;
+import static org.springframework.http.HttpStatus.*;
 
 @SpringBootTest(classes = ShopApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 @ExtendWith(SpringExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ShoppingCartAPIIntegrationTest extends ServicesTestSupport {
 
+    private static CartTestBean data = new CartTestBean();
     @Autowired
     private TestRestTemplate testRestTemplate;
-
-    private static CartTestBean data = new CartTestBean();
-
 
     /**
      * Add an Item & Create cart, whould give HTTP 201 & 1 qty
@@ -51,9 +41,9 @@ public class ShoppingCartAPIIntegrationTest extends ServicesTestSupport {
     @Order(1)
     public void addToCart() throws Exception {
 
-    	ReadableProduct product = sampleProduct("addToCart");
-    	assertNotNull(product);
-    	data.getProducts().add(product);
+        ReadableProduct product = sampleProduct("addToCart");
+        assertNotNull(product);
+        data.getProducts().add(product);
 
         PersistableShoppingCartItem cartItem = new PersistableShoppingCartItem();
         cartItem.setProduct(product.getId());
@@ -148,7 +138,6 @@ public class ShoppingCartAPIIntegrationTest extends ServicesTestSupport {
 
         PersistableShoppingCartItem[] productsQtyUpdates = {cartItem1, cartItem2, cartItem3};
 
-
         final HttpEntity<PersistableShoppingCartItem[]> cartEntity = new HttpEntity<>(productsQtyUpdates, getHeader());
         final ResponseEntity<ReadableShoppingCart> response = testRestTemplate.exchange(String.format("/api/v1/cart/" + data.getCartId() +
                         "/multi"),
@@ -176,7 +165,6 @@ public class ShoppingCartAPIIntegrationTest extends ServicesTestSupport {
 
         PersistableShoppingCartItem[] productsQtyUpdates = {cartItem1};
 
-
         final HttpEntity<PersistableShoppingCartItem[]> cartEntity = new HttpEntity<>(productsQtyUpdates, getHeader());
         final ResponseEntity<ReadableShoppingCart> response = testRestTemplate.exchange(String.format("/api/v1/cart/" + data.getCartId() +
                         "/multi"),
@@ -200,9 +188,9 @@ public class ShoppingCartAPIIntegrationTest extends ServicesTestSupport {
 
         final ResponseEntity<ReadableShoppingCart> response =
                 testRestTemplate.exchange(String.format("/api/v1/cart/" + data.getCartId() + "/product/" + String.valueOf(data.getProducts().get(1).getId())),
-                HttpMethod.DELETE,
-                null,
-                ReadableShoppingCart.class);
+                        HttpMethod.DELETE,
+                        null,
+                        ReadableShoppingCart.class);
 
         assertNotNull(response);
         assertThat(response.getStatusCode(), is(NO_CONTENT));

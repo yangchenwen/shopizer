@@ -7,19 +7,19 @@ import java.util.List;
 import com.salesmanager.shop.model.catalog.product.attribute.ProductAttribute;
 
 public class ProductPriceRequest implements Serializable {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private List<ProductAttribute> options = new ArrayList<ProductAttribute>();
 
-	public List<ProductAttribute> getOptions() {
-		return options;
-	}
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    private List<ProductAttribute> options = new ArrayList<ProductAttribute>();
 
-	public void setOptions(List<ProductAttribute> options) {
-		this.options = options;
-	}
+    public List<ProductAttribute> getOptions() {
+        return options;
+    }
+
+    public void setOptions(List<ProductAttribute> options) {
+        this.options = options;
+    }
 
 }

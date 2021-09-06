@@ -1,9 +1,9 @@
 package com.salesmanager.shop.tags;
 
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.jsp.JspException;
-
+import com.salesmanager.core.model.merchant.MerchantStore;
+import com.salesmanager.shop.constants.Constants;
+import com.salesmanager.shop.utils.FilePathUtils;
+import com.salesmanager.shop.utils.ImageFilePath;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,109 +12,94 @@ import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.tags.RequestContextAwareTag;
 
-import com.salesmanager.core.model.merchant.MerchantStore;
-import com.salesmanager.shop.constants.Constants;
-import com.salesmanager.shop.utils.FilePathUtils;
-import com.salesmanager.shop.utils.ImageFilePath;
-
-
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.jsp.JspException;
 
 public class ShopProductImageUrlTag extends RequestContextAwareTag {
-	
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 6319855234657139862L;
-	
-	private static final Logger LOGGER = LoggerFactory.getLogger(ShopProductImageUrlTag.class);
 
-	private final static String SMALL = "SMALL";
-	private final static String LARGE = "LARGE";
+    /**
+     *
+     */
+    private static final long serialVersionUID = 6319855234657139862L;
 
-	private String imageName;
-	private String sku;
-	private String size; //SMALL | LARGE
-	
-	@Inject
-	private FilePathUtils filePathUtils;
-	
-	@Inject
-	@Qualifier("img")
-	private ImageFilePath imageUtils;
-	
-	public int doStartTagInternal() throws JspException {
-		try {
-			
-			if (filePathUtils==null || imageUtils==null) {
-	            WebApplicationContext wac = getRequestContext().getWebApplicationContext();
-	            AutowireCapableBeanFactory factory = wac.getAutowireCapableBeanFactory();
-	            factory.autowireBean(this);
-	        }
+    private static final Logger LOGGER = LoggerFactory.getLogger(ShopProductImageUrlTag.class);
 
-			HttpServletRequest request = (HttpServletRequest) pageContext
-					.getRequest();
-			
-			MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.MERCHANT_STORE);
+    private final static String SMALL = "SMALL";
+    private final static String LARGE = "LARGE";
 
-			StringBuilder imagePath = new StringBuilder();
-			
-			String baseUrl = filePathUtils.buildRelativeStoreUri(request, merchantStore);
-			imagePath.append(baseUrl);
-			
-			if(StringUtils.isBlank(this.getSize()) || this.getSize().equals(SMALL)) {
-				imagePath.append(imageUtils.buildProductImageUtils(merchantStore, this.getSku(), this.getImageName())).toString();
-			} else {
-				imagePath.append(imageUtils.buildLargeProductImageUtils(merchantStore, this.getSku(), this.getImageName())).toString();
-			}
+    private String imageName;
+    private String sku;
+    private String size; //SMALL | LARGE
 
-			//System.out.println("Printing image -M " + imagePath.toString());
+    @Inject
+    private FilePathUtils filePathUtils;
 
-			pageContext.getOut().print(imagePath.toString());
+    @Inject
+    @Qualifier("img")
+    private ImageFilePath imageUtils;
 
+    public int doStartTagInternal() throws JspException {
+        try {
 
-			
-		} catch (Exception ex) {
-			LOGGER.error("Error while getting content url", ex);
-		}
-		return SKIP_BODY;
-	}
+            if (filePathUtils == null || imageUtils == null) {
+                WebApplicationContext wac = getRequestContext().getWebApplicationContext();
+                AutowireCapableBeanFactory factory = wac.getAutowireCapableBeanFactory();
+                factory.autowireBean(this);
+            }
 
+            HttpServletRequest request = (HttpServletRequest) pageContext
+                    .getRequest();
 
-	public int doEndTag() {
-		return EVAL_PAGE;
-	}
+            MerchantStore merchantStore = (MerchantStore) request.getAttribute(Constants.MERCHANT_STORE);
 
+            StringBuilder imagePath = new StringBuilder();
 
-	public void setImageName(String imageName) {
-		this.imageName = imageName;
-	}
+            String baseUrl = filePathUtils.buildRelativeStoreUri(request, merchantStore);
+            imagePath.append(baseUrl);
 
-	public String getImageName() {
-		return imageName;
-	}
+            if (StringUtils.isBlank(this.getSize()) || this.getSize().equals(SMALL)) {
+                imagePath.append(imageUtils.buildProductImageUtils(merchantStore, this.getSku(), this.getImageName())).toString();
+            } else {
+                imagePath.append(imageUtils.buildLargeProductImageUtils(merchantStore, this.getSku(), this.getImageName())).toString();
+            }
 
+            //System.out.println("Printing image -M " + imagePath.toString());
 
+            pageContext.getOut().print(imagePath.toString());
 
-	public void setSku(String sku) {
-		this.sku = sku;
-	}
+        } catch (Exception ex) {
+            LOGGER.error("Error while getting content url", ex);
+        }
+        return SKIP_BODY;
+    }
 
-	public String getSku() {
-		return sku;
-	}
+    public int doEndTag() {
+        return EVAL_PAGE;
+    }
 
-	public String getSize() {
-		return size;
-	}
+    public String getImageName() {
+        return imageName;
+    }
 
-	public void setSize(String size) {
-		this.size = size;
-	}
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
 
+    public String getSku() {
+        return sku;
+    }
 
+    public void setSku(String sku) {
+        this.sku = sku;
+    }
 
+    public String getSize() {
+        return size;
+    }
 
-	
+    public void setSize(String size) {
+        this.size = size;
+    }
 
 }

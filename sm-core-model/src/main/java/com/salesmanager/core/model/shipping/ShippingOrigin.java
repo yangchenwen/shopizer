@@ -23,127 +23,121 @@ import com.salesmanager.core.model.reference.zone.Zone;
 @Table(name = "SHIPING_ORIGIN")
 public class ShippingOrigin extends SalesManagerEntity<Long, ShippingOrigin> {
 
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1172536723717691214L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1172536723717691214L;
 
+    @Id
+    @Column(name = "SHIP_ORIGIN_ID", unique = true, nullable = false)
+    @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT",
+            pkColumnValue = "SHP_ORIG_SEQ_NEXT_VAL")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
+    private Long id;
 
-	@Id
-	@Column(name = "SHIP_ORIGIN_ID", unique=true, nullable=false)
-	@TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT",
-		pkColumnValue = "SHP_ORIG_SEQ_NEXT_VAL")
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
-	private Long id;
-	
-	@Column(name = "ACTIVE")
-	private boolean active;
-	
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="MERCHANT_ID", nullable=false)
-	private MerchantStore merchantStore;
-	
-	@NotEmpty
-	@Column (name ="STREET_ADDRESS", length=256)
-	private String address;
+    @Column(name = "ACTIVE")
+    private boolean active;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MERCHANT_ID", nullable = false)
+    private MerchantStore merchantStore;
 
-	@NotEmpty
-	@Column (name ="CITY", length=100)
-	private String city;
-	
-	@NotEmpty
-	@Column (name ="POSTCODE", length=20)
-	private String postalCode;
-	
-	@Column (name ="STATE", length=100)
-	private String state;
+    @NotEmpty
+    @Column(name = "STREET_ADDRESS", length = 256)
+    private String address;
 
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Country.class)
-	@JoinColumn(name="COUNTRY_ID", nullable=true)
-	private Country country;
-	
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Zone.class)
-	@JoinColumn(name="ZONE_ID", nullable=true)
-	private Zone zone;
+    @NotEmpty
+    @Column(name = "CITY", length = 100)
+    private String city;
 
-	@Override
-	public Long getId() {
-		return this.id;
-	}
+    @NotEmpty
+    @Column(name = "POSTCODE", length = 20)
+    private String postalCode;
 
-	@Override
-	public void setId(Long id) {
-		this.id = id;
-		
-	}
+    @Column(name = "STATE", length = 100)
+    private String state;
 
-	public MerchantStore getMerchantStore() {
-		return merchantStore;
-	}
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Country.class)
+    @JoinColumn(name = "COUNTRY_ID", nullable = true)
+    private Country country;
 
-	public void setMerchantStore(MerchantStore merchantStore) {
-		this.merchantStore = merchantStore;
-	}
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Zone.class)
+    @JoinColumn(name = "ZONE_ID", nullable = true)
+    private Zone zone;
 
-	public boolean isActive() {
-		return active;
-	}
+    @Override
+    public Long getId() {
+        return this.id;
+    }
 
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-	
-	public String getAddress() {
-		return address;
-	}
+    @Override
+    public void setId(Long id) {
+        this.id = id;
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    }
 
-	public String getCity() {
-		return city;
-	}
+    public MerchantStore getMerchantStore() {
+        return merchantStore;
+    }
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+    public void setMerchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+    }
 
-	public String getPostalCode() {
-		return postalCode;
-	}
+    public boolean isActive() {
+        return active;
+    }
 
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
-	}
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
-	public String getState() {
-		return state;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public void setState(String state) {
-		this.state = state;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public Country getCountry() {
-		return country;
-	}
+    public String getCity() {
+        return city;
+    }
 
-	public void setCountry(Country country) {
-		this.country = country;
-	}
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-	public Zone getZone() {
-		return zone;
-	}
+    public String getPostalCode() {
+        return postalCode;
+    }
 
-	public void setZone(Zone zone) {
-		this.zone = zone;
-	}
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
 
+    public String getState() {
+        return state;
+    }
 
-	
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    public Zone getZone() {
+        return zone;
+    }
+
+    public void setZone(Zone zone) {
+        this.zone = zone;
+    }
+
 }

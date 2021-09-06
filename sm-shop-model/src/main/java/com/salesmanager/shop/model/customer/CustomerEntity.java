@@ -14,143 +14,133 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class CustomerEntity extends Customer implements Serializable {
 
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(notes = "Customer email address. Required for registration")
-	@Email (message="{messages.invalid.email}")
-    @NotEmpty(message="{NotEmpty.customer.emailAddress}")
-	private String emailAddress;
-	@Valid
-	@ApiModelProperty(notes = "Customer billing address")
-	private Address billing;
-	private Address delivery;
-	@ApiModelProperty(notes = "Customer gender M | F")
-	private String gender;
+    @ApiModelProperty(notes = "Customer email address. Required for registration")
+    @Email(message = "{messages.invalid.email}")
+    @NotEmpty(message = "{NotEmpty.customer.emailAddress}")
+    private String emailAddress;
+    @Valid
+    @ApiModelProperty(notes = "Customer billing address")
+    private Address billing;
+    private Address delivery;
+    @ApiModelProperty(notes = "Customer gender M | F")
+    private String gender;
 
-	@ApiModelProperty(notes = "2 letters language code en | fr | ...")
-	private String language;
-	private String firstName;
-	private String lastName;
-	
-	private String provider;//online, facebook ...
+    @ApiModelProperty(notes = "2 letters language code en | fr | ...")
+    private String language;
+    private String firstName;
+    private String lastName;
 
-	
-	private String storeCode;
-	
-	//@ApiModelProperty(notes = "Username (use email address)")
-	//@NotEmpty(message="{NotEmpty.customer.userName}")
-	//can be email or anything else
-	private String userName;
-	
-	private Double rating = 0D;
-	private int ratingCount;
-	
-	public void setUserName(final String userName) {
-		this.userName = userName;
-	}
+    private String provider;//online, facebook ...
 
-	public String getUserName() {
-		return userName;
-	}
+    private String storeCode;
 
+    //@ApiModelProperty(notes = "Username (use email address)")
+    //@NotEmpty(message="{NotEmpty.customer.userName}")
+    //can be email or anything else
+    private String userName;
 
-	public void setStoreCode(final String storeCode) {
-		this.storeCode = storeCode;
-	}
+    private Double rating = 0D;
+    private int ratingCount;
 
+    public String getUserName() {
+        return userName;
+    }
 
-	public String getStoreCode() {
-		return storeCode;
-	}
+    public void setUserName(final String userName) {
+        this.userName = userName;
+    }
 
+    public String getStoreCode() {
+        return storeCode;
+    }
 
-	public void setEmailAddress(final String emailAddress) {
-		this.emailAddress = emailAddress;
-	}
-	
+    public void setStoreCode(final String storeCode) {
+        this.storeCode = storeCode;
+    }
 
-	public String getEmailAddress() {
-		return emailAddress;
-	}
+    public String getEmailAddress() {
+        return emailAddress;
+    }
 
+    public void setEmailAddress(final String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
 
-	public void setLanguage(final String language) {
-		this.language = language;
-	}
-	public String getLanguage() {
-		return language;
-	}
-	
+    public String getLanguage() {
+        return language;
+    }
 
-	public Address getBilling() {
-		return billing;
-	}
-	public void setBilling(final Address billing) {
-		this.billing = billing;
-	}
-	public Address getDelivery() {
-		return delivery;
-	}
-	public void setDelivery(final Address delivery) {
-		this.delivery = delivery;
-	}
-	public void setGender(final String gender) {
-		this.gender = gender;
-	}
-	public String getGender() {
-		return gender;
-	}
+    public void setLanguage(final String language) {
+        this.language = language;
+    }
 
+    public Address getBilling() {
+        return billing;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public void setBilling(final Address billing) {
+        this.billing = billing;
+    }
 
+    public Address getDelivery() {
+        return delivery;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setDelivery(final Address delivery) {
+        this.delivery = delivery;
+    }
 
+    public String getGender() {
+        return gender;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public void setGender(final String gender) {
+        this.gender = gender;
+    }
 
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
+    public String getLastName() {
+        return lastName;
+    }
 
-	public int getRatingCount() {
-		return ratingCount;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public void setRatingCount(int ratingCount) {
-		this.ratingCount = ratingCount;
-	}
+    public int getRatingCount() {
+        return ratingCount;
+    }
 
-	public Double getRating() {
-		return rating;
-	}
+    public void setRatingCount(int ratingCount) {
+        this.ratingCount = ratingCount;
+    }
 
-	public void setRating(Double rating) {
-		this.rating = rating;
-	}
+    public Double getRating() {
+        return rating;
+    }
 
-	public String getProvider() {
-		return provider;
-	}
+    public void setRating(Double rating) {
+        this.rating = rating;
+    }
 
-	public void setProvider(String provider) {
-		this.provider = provider;
-	}
+    public String getProvider() {
+        return provider;
+    }
 
-
-
-    
+    public void setProvider(String provider) {
+        this.provider = provider;
+    }
 
 }

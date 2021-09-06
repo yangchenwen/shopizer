@@ -32,128 +32,124 @@ import com.salesmanager.core.model.generic.SalesManagerEntity;
 
 @Entity
 @EntityListeners(value = AuditListener.class)
-@Table(name = "CUSTOMER_REVIEW", uniqueConstraints={
-		@UniqueConstraint(columnNames={
-				"CUSTOMERS_ID",
-				"REVIEWED_CUSTOMER_ID"
-			})
-		}
+@Table(name = "CUSTOMER_REVIEW", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {
+                "CUSTOMERS_ID",
+                "REVIEWED_CUSTOMER_ID"
+        })
+}
 )
 public class CustomerReview extends SalesManagerEntity<Long, CustomerReview> implements Auditable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name = "CUSTOMER_REVIEW_ID", unique=true, nullable=false)
-	@TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT",
-	pkColumnValue = "CUSTOMER_REVIEW_SEQ_NEXT_VAL")
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
-	private Long id;
-	
-	@Embedded
-	private AuditSection audit = new AuditSection();
-	
-	@Column(name = "REVIEWS_RATING")
-	private Double reviewRating;
-	
-	@Column(name = "REVIEWS_READ")
-	private Long reviewRead;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "REVIEW_DATE")
-	private Date reviewDate;
-	
-	@Column(name = "STATUS")
-	private Integer status;
+    @Id
+    @Column(name = "CUSTOMER_REVIEW_ID", unique = true, nullable = false)
+    @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT",
+            pkColumnValue = "CUSTOMER_REVIEW_SEQ_NEXT_VAL")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
+    private Long id;
 
-	@ManyToOne
-	@JoinColumn(name="CUSTOMERS_ID")
-	private Customer customer;
-	
+    @Embedded
+    private AuditSection audit = new AuditSection();
 
-	
-	@OneToOne
-	@JoinColumn(name="REVIEWED_CUSTOMER_ID")
-	private Customer reviewedCustomer;
+    @Column(name = "REVIEWS_RATING")
+    private Double reviewRating;
 
-	public Customer getReviewedCustomer() {
-		return reviewedCustomer;
-	}
+    @Column(name = "REVIEWS_READ")
+    private Long reviewRead;
 
-	public void setReviewedCustomer(Customer reviewedCustomer) {
-		this.reviewedCustomer = reviewedCustomer;
-	}
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "REVIEW_DATE")
+    private Date reviewDate;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "customerReview")
-	private Set<CustomerReviewDescription> descriptions = new HashSet<CustomerReviewDescription>();
-	
-	public CustomerReview() {
-	}
+    @Column(name = "STATUS")
+    private Integer status;
 
-	public Long getId() {
-		return id;
-	}
+    @ManyToOne
+    @JoinColumn(name = "CUSTOMERS_ID")
+    private Customer customer;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @OneToOne
+    @JoinColumn(name = "REVIEWED_CUSTOMER_ID")
+    private Customer reviewedCustomer;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "customerReview")
+    private Set<CustomerReviewDescription> descriptions = new HashSet<CustomerReviewDescription>();
 
-	public Double getReviewRating() {
-		return reviewRating;
-	}
+    public CustomerReview() {
+    }
 
-	public void setReviewRating(Double reviewRating) {
-		this.reviewRating = reviewRating;
-	}
+    public Customer getReviewedCustomer() {
+        return reviewedCustomer;
+    }
 
-	public Long getReviewRead() {
-		return reviewRead;
-	}
+    public void setReviewedCustomer(Customer reviewedCustomer) {
+        this.reviewedCustomer = reviewedCustomer;
+    }
 
-	public void setReviewRead(Long reviewRead) {
-		this.reviewRead = reviewRead;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Integer getStatus() {
-		return status;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
+    public Double getReviewRating() {
+        return reviewRating;
+    }
 
-	public Customer getCustomer() {
-		return customer;
-	}
+    public void setReviewRating(Double reviewRating) {
+        this.reviewRating = reviewRating;
+    }
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+    public Long getReviewRead() {
+        return reviewRead;
+    }
 
+    public void setReviewRead(Long reviewRead) {
+        this.reviewRead = reviewRead;
+    }
 
-	public Set<CustomerReviewDescription> getDescriptions() {
-		return descriptions;
-	}
+    public Integer getStatus() {
+        return status;
+    }
 
-	public void setDescriptions(Set<CustomerReviewDescription> descriptions) {
-		this.descriptions = descriptions;
-	}
-	
-	@Override
-	public AuditSection getAuditSection() {
-		return audit;
-	}
-	
-	@Override
-	public void setAuditSection(AuditSection audit) {
-		this.audit = audit;
-	}
-	
-	public Date getReviewDate() {
-		return reviewDate;
-	}
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
-	public void setReviewDate(Date reviewDate) {
-		this.reviewDate = reviewDate;
-	}
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Set<CustomerReviewDescription> getDescriptions() {
+        return descriptions;
+    }
+
+    public void setDescriptions(Set<CustomerReviewDescription> descriptions) {
+        this.descriptions = descriptions;
+    }
+
+    @Override
+    public AuditSection getAuditSection() {
+        return audit;
+    }
+
+    @Override
+    public void setAuditSection(AuditSection audit) {
+        this.audit = audit;
+    }
+
+    public Date getReviewDate() {
+        return reviewDate;
+    }
+
+    public void setReviewDate(Date reviewDate) {
+        this.reviewDate = reviewDate;
+    }
 
 }

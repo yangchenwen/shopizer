@@ -38,140 +38,132 @@ import java.util.*;
 
 @Controller
 public class ManufacturerController {
-	
-	@Inject
-	private LanguageService languageService;
-	
-	@Inject
-	private ManufacturerService manufacturerService;
-	
-	@Inject
-	LabelUtils messages;
-	
-	@Inject
-	private CoreConfiguration configuration;
-	
-	private static final Logger LOGGER = LoggerFactory.getLogger(CustomerController.class);
-	
-	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/catalogue/manufacturer/list.html", method=RequestMethod.GET)
-	public String getManufacturers(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-	
-		this.setMenu(model, request);
-		
-		return ControllerConstants.Tiles.Product.manufacturerList;
-	}
-	
-	
-	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/catalogue/manufacturer/create.html", method=RequestMethod.GET)
-	public String createManufacturer(  Model model,  HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		return displayManufacturer(null,model,request,response);		
-	}
-	
-	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/catalogue/manufacturer/edit.html", method=RequestMethod.GET)
-	public String editManufacturer(@RequestParam("id") long manufacturerId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		return displayManufacturer(manufacturerId,model,request,response);
-	}
-	
-	private String displayManufacturer(Long manufacturerId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomerController.class);
+    @Inject
+    LabelUtils messages;
+    @Inject
+    private LanguageService languageService;
+    @Inject
+    private ManufacturerService manufacturerService;
+    @Inject
+    private CoreConfiguration configuration;
 
-		//display menu
-		setMenu(model,request);
-		
-		//List<Language> languages = languageService.getLanguages();
-		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-		List<Language> languages = store.getLanguages();
-		
-		
-		com.salesmanager.shop.admin.model.catalog.Manufacturer manufacturer = new com.salesmanager.shop.admin.model.catalog.Manufacturer();
-		List<ManufacturerDescription> descriptions = new ArrayList<ManufacturerDescription>();
+    @PreAuthorize("hasRole('PRODUCTS')")
+    @RequestMapping(value = "/admin/catalogue/manufacturer/list.html", method = RequestMethod.GET)
+    public String getManufacturers(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		
-		if( manufacturerId!=null && manufacturerId.longValue()!=0) {	//edit mode
+        this.setMenu(model, request);
 
-			Manufacturer dbManufacturer = new Manufacturer();
-			dbManufacturer = manufacturerService.getById( manufacturerId );
-			
-			if(dbManufacturer==null) {
-				return ControllerConstants.Tiles.Product.manufacturerList;
-			}
-			
-			if(dbManufacturer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				return ControllerConstants.Tiles.Product.manufacturerList;
-			}
-			
-			Set<ManufacturerDescription> manufacturerDescriptions = dbManufacturer.getDescriptions();
+        return ControllerConstants.Tiles.Product.manufacturerList;
+    }
 
-			
-			for(Language l : languages) {
-				
-				ManufacturerDescription manufDescription = null;
-				if(manufacturerDescriptions!=null) {
-					
-					for(ManufacturerDescription desc : manufacturerDescriptions) {				
-						String code = desc.getLanguage().getCode();
-						if(code.equals(l.getCode())) {
-							manufDescription = desc;
-						}
+    @PreAuthorize("hasRole('PRODUCTS')")
+    @RequestMapping(value = "/admin/catalogue/manufacturer/create.html", method = RequestMethod.GET)
+    public String createManufacturer(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-					}
-					
-				}
-				
-				if(manufDescription==null) {
-					manufDescription = new ManufacturerDescription();
-					manufDescription.setLanguage(l);
-				}
-				
-				manufacturer.getDescriptions().add(manufDescription);
-				
-			}
-			
-			manufacturer.setManufacturer( dbManufacturer );
-		
-			manufacturer.setCode(dbManufacturer.getCode());
-			manufacturer.setOrder( dbManufacturer.getOrder() );
-			
-		} else {	// Create mode
+        return displayManufacturer(null, model, request, response);
+    }
 
-			Manufacturer manufacturerTmp = new Manufacturer();
-			manufacturer.setManufacturer( manufacturerTmp );
-			
-			for(Language l : languages) {// for each store language
-				
-				ManufacturerDescription manufacturerDesc = new ManufacturerDescription();
-				manufacturerDesc.setLanguage(l);
-				descriptions.add(  manufacturerDesc );
-				manufacturer.setDescriptions(descriptions);
-				
-			}
-		}
+    @PreAuthorize("hasRole('PRODUCTS')")
+    @RequestMapping(value = "/admin/catalogue/manufacturer/edit.html", method = RequestMethod.GET)
+    public String editManufacturer(@RequestParam("id") long manufacturerId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		model.addAttribute("languages",languages);
-		model.addAttribute("manufacturer", manufacturer);
-		
-		return ControllerConstants.Tiles.Product.manufacturerDetails;
-	}
-		
-	@PreAuthorize("hasRole('PRODUCTS')")  
-	@RequestMapping(value="/admin/catalogue/manufacturer/save.html", method=RequestMethod.POST)
-	public String saveManufacturer( @Valid @ModelAttribute("manufacturer") com.salesmanager.shop.admin.model.catalog.Manufacturer manufacturer, BindingResult result, Model model,  HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
+        return displayManufacturer(manufacturerId, model, request, response);
+    }
 
-		this.setMenu(model, request);
-		//save or edit a manufacturer
+    private String displayManufacturer(Long manufacturerId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-		List<Language> languages = languageService.getLanguages();
+        //display menu
+        setMenu(model, request);
 
-		if(manufacturer.getDescriptions()!=null && manufacturer.getDescriptions().size()>0) {
+        //List<Language> languages = languageService.getLanguages();
+        MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
+        List<Language> languages = store.getLanguages();
 
-			for(ManufacturerDescription description : manufacturer.getDescriptions()) {
+        com.salesmanager.shop.admin.model.catalog.Manufacturer manufacturer = new com.salesmanager.shop.admin.model.catalog.Manufacturer();
+        List<ManufacturerDescription> descriptions = new ArrayList<ManufacturerDescription>();
 
-				//validate Url Clicked
+        if (manufacturerId != null && manufacturerId.longValue() != 0) {    //edit mode
+
+            Manufacturer dbManufacturer = new Manufacturer();
+            dbManufacturer = manufacturerService.getById(manufacturerId);
+
+            if (dbManufacturer == null) {
+                return ControllerConstants.Tiles.Product.manufacturerList;
+            }
+
+            if (dbManufacturer.getMerchantStore().getId().intValue() != store.getId().intValue()) {
+                return ControllerConstants.Tiles.Product.manufacturerList;
+            }
+
+            Set<ManufacturerDescription> manufacturerDescriptions = dbManufacturer.getDescriptions();
+
+            for (Language l : languages) {
+
+                ManufacturerDescription manufDescription = null;
+                if (manufacturerDescriptions != null) {
+
+                    for (ManufacturerDescription desc : manufacturerDescriptions) {
+                        String code = desc.getLanguage().getCode();
+                        if (code.equals(l.getCode())) {
+                            manufDescription = desc;
+                        }
+
+                    }
+
+                }
+
+                if (manufDescription == null) {
+                    manufDescription = new ManufacturerDescription();
+                    manufDescription.setLanguage(l);
+                }
+
+                manufacturer.getDescriptions().add(manufDescription);
+
+            }
+
+            manufacturer.setManufacturer(dbManufacturer);
+
+            manufacturer.setCode(dbManufacturer.getCode());
+            manufacturer.setOrder(dbManufacturer.getOrder());
+
+        } else {    // Create mode
+
+            Manufacturer manufacturerTmp = new Manufacturer();
+            manufacturer.setManufacturer(manufacturerTmp);
+
+            for (Language l : languages) {// for each store language
+
+                ManufacturerDescription manufacturerDesc = new ManufacturerDescription();
+                manufacturerDesc.setLanguage(l);
+                descriptions.add(manufacturerDesc);
+                manufacturer.setDescriptions(descriptions);
+
+            }
+        }
+
+        model.addAttribute("languages", languages);
+        model.addAttribute("manufacturer", manufacturer);
+
+        return ControllerConstants.Tiles.Product.manufacturerDetails;
+    }
+
+    @PreAuthorize("hasRole('PRODUCTS')")
+    @RequestMapping(value = "/admin/catalogue/manufacturer/save.html", method = RequestMethod.POST)
+    public String saveManufacturer(@Valid @ModelAttribute("manufacturer") com.salesmanager.shop.admin.model.catalog.Manufacturer manufacturer, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response, Locale locale) throws Exception {
+
+        this.setMenu(model, request);
+        //save or edit a manufacturer
+
+        MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
+        List<Language> languages = languageService.getLanguages();
+
+        if (manufacturer.getDescriptions() != null && manufacturer.getDescriptions().size() > 0) {
+
+            for (ManufacturerDescription description : manufacturer.getDescriptions()) {
+
+                //validate Url Clicked
 /*				if ( description.getUrlClicked() != null && !description.getUrlClicked().toString().isEmpty()) {
 					try{
 						Integer.parseInt( description.getUrlClicked().toString() );
@@ -182,70 +174,69 @@ public class ManufacturerController {
 						result.addError(error);
 					}
 				}*/
-			}
-		}
+            }
+        }
 
+        //validate image
+        if (manufacturer.getImage() != null && !manufacturer.getImage().isEmpty()) {
 
-	//validate image
-		if(manufacturer.getImage()!=null && !manufacturer.getImage().isEmpty()) {
+            try {
 
-			try {
+                String maxHeight = configuration.getProperty("PRODUCT_IMAGE_MAX_HEIGHT_SIZE");
+                String maxWidth = configuration.getProperty("PRODUCT_IMAGE_MAX_WIDTH_SIZE");
+                String maxSize = configuration.getProperty("PRODUCT_IMAGE_MAX_SIZE");
 
-				String maxHeight = configuration.getProperty("PRODUCT_IMAGE_MAX_HEIGHT_SIZE");
-				String maxWidth = configuration.getProperty("PRODUCT_IMAGE_MAX_WIDTH_SIZE");
-				String maxSize = configuration.getProperty("PRODUCT_IMAGE_MAX_SIZE");
+                BufferedImage image = ImageIO.read(manufacturer.getImage().getInputStream());
 
-				BufferedImage image = ImageIO.read(manufacturer.getImage().getInputStream());
+                if (!StringUtils.isBlank(maxHeight)) {
 
-				if(!StringUtils.isBlank(maxHeight)) {
+                    int maxImageHeight = Integer.parseInt(maxHeight);
+                    if (image.getHeight() > maxImageHeight) {
+                        ObjectError error = new ObjectError("image", messages.getMessage("message.image.height", locale) + " {" + maxHeight + "}");
+                        result.addError(error);
+                    }
+                }
 
-					int maxImageHeight = Integer.parseInt(maxHeight);
-					if(image.getHeight()>maxImageHeight) {
-						ObjectError error = new ObjectError("image",messages.getMessage("message.image.height", locale) + " {"+maxHeight+"}");
-						result.addError(error);
-					}
-				}
+                if (!StringUtils.isBlank(maxWidth)) {
 
-				if(!StringUtils.isBlank(maxWidth)) {
+                    int maxImageWidth = Integer.parseInt(maxWidth);
+                    if (image.getWidth() > maxImageWidth) {
+                        ObjectError error = new ObjectError("image", messages.getMessage("message.image.width", locale) + " {" + maxWidth + "}");
+                        result.addError(error);
+                    }
+                }
 
-					int maxImageWidth = Integer.parseInt(maxWidth);
-					if(image.getWidth()>maxImageWidth) {
-						ObjectError error = new ObjectError("image",messages.getMessage("message.image.width", locale) + " {"+maxWidth+"}");
-						result.addError(error);
-					}
-				}
+                if (!StringUtils.isBlank(maxSize)) {
 
-				if(!StringUtils.isBlank(maxSize)) {
+                    int maxImageSize = Integer.parseInt(maxSize);
+                    if (manufacturer.getImage().getSize() > maxImageSize) {
+                        ObjectError error = new ObjectError("image", messages.getMessage("message.image.size", locale) + " {" + maxSize + "}");
+                        result.addError(error);
+                    }
+                }
 
-					int maxImageSize = Integer.parseInt(maxSize);
-					if(manufacturer.getImage().getSize()>maxImageSize) {
-						ObjectError error = new ObjectError("image",messages.getMessage("message.image.size", locale) + " {"+maxSize+"}");
-						result.addError(error);
-					}
-				}
+            } catch (Exception e) {
+                LOGGER.error("Cannot validate manufacturer image", e);
+            }
 
-			} catch (Exception e) {
-				LOGGER.error("Cannot validate manufacturer image", e);
-			}
+        }
 
-		}
+        if (result.hasErrors()) {
+            model.addAttribute("languages", languages);
+            return ControllerConstants.Tiles.Product.manufacturerDetails;
+        }
 
-		if (result.hasErrors()) {
-			model.addAttribute("languages",languages);
-			return ControllerConstants.Tiles.Product.manufacturerDetails;
-		}
+        Manufacturer newManufacturer = manufacturer.getManufacturer();
 
-		Manufacturer newManufacturer = manufacturer.getManufacturer();
+        if (manufacturer.getManufacturer().getId() != null && manufacturer.getManufacturer().getId() > 0) {
 
-		if ( manufacturer.getManufacturer().getId() !=null && manufacturer.getManufacturer().getId()  > 0 ){
+            newManufacturer = manufacturerService.getById(manufacturer.getManufacturer().getId());
 
-			newManufacturer = manufacturerService.getById( manufacturer.getManufacturer().getId() );
+            if (newManufacturer.getMerchantStore().getId().intValue() != store.getId().intValue()) {
+                return ControllerConstants.Tiles.Product.manufacturerList;
+            }
 
-			if(newManufacturer.getMerchantStore().getId().intValue()!=store.getId().intValue()) {
-				return ControllerConstants.Tiles.Product.manufacturerList;
-			}
-
-		}
+        }
 
 //		for(ManufacturerImage image : manufacturer.getImages()) {
 //			if(image.isDefaultImage()) {
@@ -253,28 +244,25 @@ public class ManufacturerController {
 //			}
 //		}
 
-		Set<ManufacturerDescription> descriptions = new HashSet<ManufacturerDescription>();
-		if(manufacturer.getDescriptions()!=null && manufacturer.getDescriptions().size()>0) {
-			
-			for(ManufacturerDescription desc : manufacturer.getDescriptions()) {
-				
-				desc.setManufacturer(newManufacturer);
-				descriptions.add(desc);
-			}
-		}
-		newManufacturer.setDescriptions(descriptions );
-		newManufacturer.setOrder( manufacturer.getOrder() );
-		newManufacturer.setMerchantStore(store);
-		newManufacturer.setCode(manufacturer.getCode());
+        Set<ManufacturerDescription> descriptions = new HashSet<ManufacturerDescription>();
+        if (manufacturer.getDescriptions() != null && manufacturer.getDescriptions().size() > 0) {
 
+            for (ManufacturerDescription desc : manufacturer.getDescriptions()) {
+
+                desc.setManufacturer(newManufacturer);
+                descriptions.add(desc);
+            }
+        }
+        newManufacturer.setDescriptions(descriptions);
+        newManufacturer.setOrder(manufacturer.getOrder());
+        newManufacturer.setMerchantStore(store);
+        newManufacturer.setCode(manufacturer.getCode());
 
 //		if(manufacturer.getManufacturerImage()!=null && manufacturer.getManufacturerImage().getId() == null) {
 //			newManufacturer.setProductImage(null);
 //		}
 
-
-
-		if(manufacturer.getImage()!=null && !manufacturer.getImage().isEmpty()) {
+        if (manufacturer.getImage() != null && !manufacturer.getImage().isEmpty()) {
 //
 //			String imageName = manufacturer.getImage().getOriginalFilename();
 //
@@ -305,197 +293,180 @@ public class ManufacturerController {
 //			//manufacturer displayed
 //			manufacturer.setProductImage(manufacturerImage);
 
+        } else {
 
-		} else {
+            manufacturerService.saveOrUpdate(newManufacturer);
+        }
 
-			manufacturerService.saveOrUpdate(newManufacturer);
-		}
+        model.addAttribute("manufacturer", manufacturer);
+        model.addAttribute("languages", languages);
+        model.addAttribute("success", "success");
 
-		model.addAttribute("manufacturer", manufacturer);
-		model.addAttribute("languages",languages);
-		model.addAttribute("success","success");
+        return ControllerConstants.Tiles.Product.manufacturerDetails;
 
-		return ControllerConstants.Tiles.Product.manufacturerDetails;
+    }
 
-	}
-	
-	
-	@SuppressWarnings("unchecked")
-	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/catalogue/manufacturer/paging.html", method=RequestMethod.POST)
-	public @ResponseBody ResponseEntity<String> pageManufacturers(HttpServletRequest request, HttpServletResponse response) {
-		
-		AjaxResponse resp = new AjaxResponse();
-		try {
-			
-			Language language = (Language)request.getAttribute("LANGUAGE");	
-			MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-			
-			List<Manufacturer> manufacturers = null;				
-			manufacturers = manufacturerService.listByStore(store, language);
-			
-				
-			for(Manufacturer manufacturer : manufacturers) {
-				
-				@SuppressWarnings("rawtypes")
-				Map entry = new HashMap();
-				entry.put("id", manufacturer.getId());
-				
-				ManufacturerDescription description = manufacturer.getDescriptions().iterator().next();
-				
-				entry.put("name", description.getName());
-				entry.put("code", manufacturer.getCode());
-				entry.put("order", manufacturer.getOrder());
-				resp.addDataEntry(entry);
-				
-			}
-			
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);	
-		
-		} catch (Exception e) {
-			LOGGER.error("Error while paging Manufacturers", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-		}
-		
-		resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
-		
-		String returnString = resp.toJSONString();
-		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
-		
-	}
-	
-	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/catalogue/manufacturer/remove.html", method=RequestMethod.POST)
-	public @ResponseBody ResponseEntity<String> deleteManufacturer(HttpServletRequest request, HttpServletResponse response, Locale locale) {
-		Long sid =  Long.valueOf(request.getParameter("id") );
-	
-	
-		AjaxResponse resp = new AjaxResponse();
-		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		
-		try{
-			Manufacturer delManufacturer = manufacturerService.getById( sid  );				
-			if(delManufacturer==null || delManufacturer.getMerchantStore().getId().intValue() != store.getId().intValue()) {
-				resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
-				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
-			} 
-			
-			int count = manufacturerService.getCountManufAttachedProducts( delManufacturer ).intValue();
-			//IF already attached to products it can't be deleted
-			if ( count > 0 ){
-				resp.setStatusMessage(messages.getMessage("message.product.association", locale));
-				resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);			
-				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
-			}	
+    @SuppressWarnings("unchecked")
+    @PreAuthorize("hasRole('PRODUCTS')")
+    @RequestMapping(value = "/admin/catalogue/manufacturer/paging.html", method = RequestMethod.POST)
+    public @ResponseBody
+    ResponseEntity<String> pageManufacturers(HttpServletRequest request, HttpServletResponse response) {
 
-			manufacturerService.delete( delManufacturer );
-			
-			resp.setStatusMessage(messages.getMessage("message.success", locale));
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
-			
-		} catch (Exception e) {
-			
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);	
-			LOGGER.error("Cannot delete manufacturer.", e);
-		}
-		
-		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
-		
-	}
-	
-	
-	@PreAuthorize("hasRole('PRODUCTS')")
-	@RequestMapping(value="/admin/manufacturer/checkCode.html", method=RequestMethod.POST)
-	public @ResponseBody ResponseEntity<String> checkCode(HttpServletRequest request, HttpServletResponse response, Locale locale) {
-		String code = request.getParameter("code");
-		String id = request.getParameter("id");
+        AjaxResponse resp = new AjaxResponse();
+        try {
 
+            Language language = (Language) request.getAttribute("LANGUAGE");
+            MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
 
-		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-		
-		
-		AjaxResponse resp = new AjaxResponse();
-		
-		if(StringUtils.isBlank(code)) {
-			resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
-			String returnString = resp.toJSONString();
-			return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
-		}
+            List<Manufacturer> manufacturers = null;
+            manufacturers = manufacturerService.listByStore(store, language);
 
-		
-		try {
-			
-		Manufacturer manufacturer = manufacturerService.getByCode(store, code);
-		
-		if(manufacturer!=null && StringUtils.isBlank(id)) {
-			resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
-			String returnString = resp.toJSONString();
-			return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
-		}
-		
-		
-		if(manufacturer!=null && !StringUtils.isBlank(id)) {
-			try {
-				Long lid = Long.parseLong(id);
-				
-				if(manufacturer.getCode().equals(code) && manufacturer.getId().longValue()==lid) {
-					resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
-					String returnString = resp.toJSONString();
-					return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
-				}
-			} catch (Exception e) {
-				resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
-				String returnString = resp.toJSONString();
-				return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
-			}
+            for (Manufacturer manufacturer : manufacturers) {
 
-		}
-		
-		
-		
-		
+                @SuppressWarnings("rawtypes")
+                Map entry = new HashMap();
+                entry.put("id", manufacturer.getId());
 
-	
-		
-			
+                ManufacturerDescription description = manufacturer.getDescriptions().iterator().next();
 
+                entry.put("name", description.getName());
+                entry.put("code", manufacturer.getCode());
+                entry.put("order", manufacturer.getOrder());
+                resp.addDataEntry(entry);
 
-			resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+            }
 
-		} catch (Exception e) {
-			LOGGER.error("Error while getting manufacturer", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-			resp.setErrorMessage(e);
-		}
-		
-		String returnString = resp.toJSONString();
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
-	}
-	
-	
-	
-	private void setMenu(Model model, HttpServletRequest request) throws Exception {		
-		//display menu
-		Map<String,String> activeMenus = new HashMap<String,String>();
-		activeMenus.put("catalogue", "catalogue");
-		activeMenus.put("manufacturer-list", "manufacturer-list");
-		
-		@SuppressWarnings("unchecked")
-		Map<String, Menu> menus = (Map<String, Menu>)request.getAttribute("MENUMAP");
-		
-		Menu currentMenu = (Menu)menus.get("catalogue");
-		model.addAttribute("currentMenu",currentMenu);
-		model.addAttribute("activeMenus",activeMenus);
-	}
+            resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+
+        } catch (Exception e) {
+            LOGGER.error("Error while paging Manufacturers", e);
+            resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+        }
+
+        resp.setStatus(AjaxPageableResponse.RESPONSE_STATUS_SUCCESS);
+
+        String returnString = resp.toJSONString();
+        final HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        return new ResponseEntity<String>(returnString, httpHeaders, HttpStatus.OK);
+
+    }
+
+    @PreAuthorize("hasRole('PRODUCTS')")
+    @RequestMapping(value = "/admin/catalogue/manufacturer/remove.html", method = RequestMethod.POST)
+    public @ResponseBody
+    ResponseEntity<String> deleteManufacturer(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+        Long sid = Long.valueOf(request.getParameter("id"));
+
+        AjaxResponse resp = new AjaxResponse();
+        MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
+        final HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+
+        try {
+            Manufacturer delManufacturer = manufacturerService.getById(sid);
+            if (delManufacturer == null || delManufacturer.getMerchantStore().getId().intValue() != store.getId().intValue()) {
+                resp.setStatusMessage(messages.getMessage("message.unauthorized", locale));
+                resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+                String returnString = resp.toJSONString();
+                return new ResponseEntity<String>(returnString, httpHeaders, HttpStatus.OK);
+            }
+
+            int count = manufacturerService.getCountManufAttachedProducts(delManufacturer).intValue();
+            //IF already attached to products it can't be deleted
+            if (count > 0) {
+                resp.setStatusMessage(messages.getMessage("message.product.association", locale));
+                resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+                String returnString = resp.toJSONString();
+                return new ResponseEntity<String>(returnString, httpHeaders, HttpStatus.OK);
+            }
+
+            manufacturerService.delete(delManufacturer);
+
+            resp.setStatusMessage(messages.getMessage("message.success", locale));
+            resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+
+        } catch (Exception e) {
+
+            resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+            LOGGER.error("Cannot delete manufacturer.", e);
+        }
+
+        String returnString = resp.toJSONString();
+        return new ResponseEntity<String>(returnString, httpHeaders, HttpStatus.OK);
+
+    }
+
+    @PreAuthorize("hasRole('PRODUCTS')")
+    @RequestMapping(value = "/admin/manufacturer/checkCode.html", method = RequestMethod.POST)
+    public @ResponseBody
+    ResponseEntity<String> checkCode(HttpServletRequest request, HttpServletResponse response, Locale locale) {
+        String code = request.getParameter("code");
+        String id = request.getParameter("id");
+
+        final HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
+
+        AjaxResponse resp = new AjaxResponse();
+
+        if (StringUtils.isBlank(code)) {
+            resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
+            String returnString = resp.toJSONString();
+            return new ResponseEntity<String>(returnString, httpHeaders, HttpStatus.OK);
+        }
+
+        try {
+
+            Manufacturer manufacturer = manufacturerService.getByCode(store, code);
+
+            if (manufacturer != null && StringUtils.isBlank(id)) {
+                resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
+                String returnString = resp.toJSONString();
+                return new ResponseEntity<String>(returnString, httpHeaders, HttpStatus.OK);
+            }
+
+            if (manufacturer != null && !StringUtils.isBlank(id)) {
+                try {
+                    Long lid = Long.parseLong(id);
+
+                    if (manufacturer.getCode().equals(code) && manufacturer.getId().longValue() == lid) {
+                        resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
+                        String returnString = resp.toJSONString();
+                        return new ResponseEntity<String>(returnString, httpHeaders, HttpStatus.OK);
+                    }
+                } catch (Exception e) {
+                    resp.setStatus(AjaxResponse.CODE_ALREADY_EXIST);
+                    String returnString = resp.toJSONString();
+                    return new ResponseEntity<String>(returnString, httpHeaders, HttpStatus.OK);
+                }
+
+            }
+
+            resp.setStatus(AjaxResponse.RESPONSE_OPERATION_COMPLETED);
+
+        } catch (Exception e) {
+            LOGGER.error("Error while getting manufacturer", e);
+            resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+            resp.setErrorMessage(e);
+        }
+
+        String returnString = resp.toJSONString();
+        return new ResponseEntity<String>(returnString, httpHeaders, HttpStatus.OK);
+    }
+
+    private void setMenu(Model model, HttpServletRequest request) throws Exception {
+        //display menu
+        Map<String, String> activeMenus = new HashMap<String, String>();
+        activeMenus.put("catalogue", "catalogue");
+        activeMenus.put("manufacturer-list", "manufacturer-list");
+
+        @SuppressWarnings("unchecked")
+        Map<String, Menu> menus = (Map<String, Menu>) request.getAttribute("MENUMAP");
+
+        Menu currentMenu = (Menu) menus.get("catalogue");
+        model.addAttribute("currentMenu", currentMenu);
+        model.addAttribute("activeMenus", activeMenus);
+    }
 
 }

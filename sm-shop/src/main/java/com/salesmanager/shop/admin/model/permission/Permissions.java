@@ -1,12 +1,6 @@
-
 package com.salesmanager.shop.admin.model.permission;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.*;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -15,16 +9,15 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "permission"
+        "permission"
 })
-public class Permissions implements Serializable
-{
+public class Permissions implements Serializable {
 
+    private final static long serialVersionUID = 1L;
     @JsonProperty("permission")
     private List<ShopPermission> shopPermission = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 1L;
 
     @JsonProperty("permission")
     public List<ShopPermission> getShopPermission() {

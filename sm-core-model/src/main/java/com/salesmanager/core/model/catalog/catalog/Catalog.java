@@ -1,6 +1,5 @@
 package com.salesmanager.core.model.catalog.catalog;
 
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,63 +30,68 @@ import com.salesmanager.core.model.merchant.MerchantStore;
 /**
  * Allows grouping products and category
  * Catalog
- *      - category 1
- *      - category 2
- *      
- *      - product 1
- *      - product 2
- *      - product 3
- *      - product 4
- *      
- * @author carlsamson
+ * - category 1
+ * - category 2
+ * <p>
+ * - product 1
+ * - product 2
+ * - product 3
+ * - product 4
  *
+ * @author carlsamson
  */
-
 
 @Entity
 @EntityListeners(value = com.salesmanager.core.model.common.audit.AuditListener.class)
 @Table(name = "CATALOG",
-uniqueConstraints=@UniqueConstraint(columnNames = {"MERCHANT_ID", "CODE"}))
+        uniqueConstraints = @UniqueConstraint(columnNames = {"MERCHANT_ID", "CODE"}))
 public class Catalog extends SalesManagerEntity<Long, Catalog> implements Auditable {
     private static final long serialVersionUID = 1L;
-    
+
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, 
-    	generator = "TABLE_GEN")
-  	@TableGenerator(name = "TABLE_GEN", 
-    	table = "SM_SEQUENCER", 
-    	pkColumnName = "SEQ_NAME",
-    	valueColumnName = "SEQ_COUNT",
-    	pkColumnValue = "CATALOG_SEQ_NEXT_VAL",
-    	allocationSize = SchemaConstant.DESCRIPTION_ID_ALLOCATION_SIZE, 
-    	initialValue = SchemaConstant.DESCRIPTION_ID_START_VALUE
-  		)
+    @GeneratedValue(strategy = GenerationType.TABLE,
+            generator = "TABLE_GEN")
+    @TableGenerator(name = "TABLE_GEN",
+            table = "SM_SEQUENCER",
+            pkColumnName = "SEQ_NAME",
+            valueColumnName = "SEQ_COUNT",
+            pkColumnValue = "CATALOG_SEQ_NEXT_VAL",
+            allocationSize = SchemaConstant.DESCRIPTION_ID_ALLOCATION_SIZE,
+            initialValue = SchemaConstant.DESCRIPTION_ID_START_VALUE
+    )
     private Long id;
 
     @Embedded
     private AuditSection auditSection = new AuditSection();
-    
+
     @Valid
-    @OneToMany(mappedBy="catalog", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "catalog", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<CatalogCategoryEntry> entry = new HashSet<CatalogCategoryEntry>();
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="MERCHANT_ID", nullable=false)
+    @JoinColumn(name = "MERCHANT_ID", nullable = false)
     private MerchantStore merchantStore;
-
 
     @Column(name = "VISIBLE")
     private boolean visible;
-    
-    @Column(name="DEFAULT_CATALOG")
+
+    @Column(name = "DEFAULT_CATALOG")
     private boolean defaultCatalog;
-    
+
     @NotEmpty
-    @Column(name="CODE", length=100, nullable=false)
+    @Column(name = "CODE", length = 100, nullable = false)
     private String code;
 
     @Column(name = "SORT_ORDER")
     private Integer sortOrder = 0;
+
+    public Catalog() {
+    }
+
+    public Catalog(MerchantStore store) {
+        this.merchantStore = store;
+        this.id = 0L;
+    }
 
     public String getCode() {
         return code;
@@ -97,14 +101,6 @@ public class Catalog extends SalesManagerEntity<Long, Catalog> implements Audita
         this.code = code;
     }
 
-    public Catalog() {
-    }
-    
-    public Catalog(MerchantStore store) {
-        this.merchantStore = store;
-        this.id = 0L;
-    }
-    
     @Override
     public Long getId() {
         return this.id;
@@ -114,17 +110,16 @@ public class Catalog extends SalesManagerEntity<Long, Catalog> implements Audita
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     @Override
     public AuditSection getAuditSection() {
         return auditSection;
     }
-    
+
     @Override
     public void setAuditSection(AuditSection auditSection) {
         this.auditSection = auditSection;
     }
-
 
     public Integer getSortOrder() {
         return sortOrder;
@@ -150,22 +145,20 @@ public class Catalog extends SalesManagerEntity<Long, Catalog> implements Audita
         this.merchantStore = merchantStore;
     }
 
-	public Set<CatalogCategoryEntry> getEntry() {
-		return entry;
-	}
+    public Set<CatalogCategoryEntry> getEntry() {
+        return entry;
+    }
 
-	public void setEntry(Set<CatalogCategoryEntry> entry) {
-		this.entry = entry;
-	}
+    public void setEntry(Set<CatalogCategoryEntry> entry) {
+        this.entry = entry;
+    }
 
-	public boolean isDefaultCatalog() {
-		return defaultCatalog;
-	}
+    public boolean isDefaultCatalog() {
+        return defaultCatalog;
+    }
 
-	public void setDefaultCatalog(boolean defaultCatalog) {
-		this.defaultCatalog = defaultCatalog;
-	}
-
-
+    public void setDefaultCatalog(boolean defaultCatalog) {
+        this.defaultCatalog = defaultCatalog;
+    }
 
 }

@@ -29,154 +29,129 @@ import com.salesmanager.core.constants.SchemaConstant;
 import com.salesmanager.core.model.generic.SalesManagerEntity;
 import com.salesmanager.core.model.merchant.MerchantStore;
 
-
 @Entity
-@Table(name="CUSTOMER_OPTION", indexes = { @Index(name="CUST_OPT_CODE_IDX", columnList = "CUSTOMER_OPT_CODE")}, uniqueConstraints=
-	@UniqueConstraint(columnNames = {"MERCHANT_ID", "CUSTOMER_OPT_CODE"}))
+@Table(name = "CUSTOMER_OPTION", indexes = {@Index(name = "CUST_OPT_CODE_IDX", columnList = "CUSTOMER_OPT_CODE")}, uniqueConstraints =
+@UniqueConstraint(columnNames = {"MERCHANT_ID", "CUSTOMER_OPT_CODE"}))
 public class CustomerOption extends SalesManagerEntity<Long, CustomerOption> {
-	private static final long serialVersionUID = -2019269055342226086L;
-	
-	@Id
-	@Column(name="CUSTOMER_OPTION_ID")
-	@TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "CUSTOMER_OPTION_SEQ_NEXT_VAL")
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
-	private Long id;
-	
-	@Column(name="SORT_ORDER")
-	private Integer sortOrder = 0;
-	
-	@Column(name="CUSTOMER_OPTION_TYPE", length=10)
-	private String customerOptionType;
-	
-	@NotEmpty
-	@Pattern(regexp="^[a-zA-Z0-9_]*$")
-	@Column(name="CUSTOMER_OPT_CODE")
-	//@Index(name="CUST_OPT_CODE_IDX")
-	private String code;
-	
-	@Column(name="CUSTOMER_OPT_ACTIVE")
-	private boolean active;
-	
-	@Column(name="CUSTOMER_OPT_PUBLIC")
-	private boolean publicOption;
-	
-	@Valid
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "customerOption")
-	private Set<CustomerOptionDescription> descriptions = new HashSet<CustomerOptionDescription>();
-	
-	@Transient
-	private List<CustomerOptionDescription> descriptionsList = new ArrayList<CustomerOptionDescription>();
+    private static final long serialVersionUID = -2019269055342226086L;
 
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="MERCHANT_ID", nullable=false)
-	private MerchantStore merchantStore;
-	
-	public CustomerOption() {
-	}
-	
+    @Id
+    @Column(name = "CUSTOMER_OPTION_ID")
+    @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "CUSTOMER_OPTION_SEQ_NEXT_VAL")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
+    private Long id;
 
-	
-	public Set<CustomerOptionDescription> getDescriptions() {
-		return descriptions;
-	}
+    @Column(name = "SORT_ORDER")
+    private Integer sortOrder = 0;
 
-	public void setDescriptions(Set<CustomerOptionDescription> descriptions) {
-		this.descriptions = descriptions;
-	}
+    @Column(name = "CUSTOMER_OPTION_TYPE", length = 10)
+    private String customerOptionType;
 
-	@Override
-	public Long getId() {
-		return id;
-	}
-	
-	@Override
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @NotEmpty
+    @Pattern(regexp = "^[a-zA-Z0-9_]*$")
+    @Column(name = "CUSTOMER_OPT_CODE")
+    //@Index(name="CUST_OPT_CODE_IDX")
+    private String code;
 
+    @Column(name = "CUSTOMER_OPT_ACTIVE")
+    private boolean active;
 
+    @Column(name = "CUSTOMER_OPT_PUBLIC")
+    private boolean publicOption;
 
-	public MerchantStore getMerchantStore() {
-		return merchantStore;
-	}
+    @Valid
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "customerOption")
+    private Set<CustomerOptionDescription> descriptions = new HashSet<CustomerOptionDescription>();
 
-	public void setMerchantStore(MerchantStore merchantStore) {
-		this.merchantStore = merchantStore;
-	}
+    @Transient
+    private List<CustomerOptionDescription> descriptionsList = new ArrayList<CustomerOptionDescription>();
 
-	public void setDescriptionsList(List<CustomerOptionDescription> descriptionsList) {
-		this.descriptionsList = descriptionsList;
-	}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MERCHANT_ID", nullable = false)
+    private MerchantStore merchantStore;
 
-	public List<CustomerOptionDescription> getDescriptionsList() {
-		return descriptionsList;
-	}
-	
+    public CustomerOption() {
+    }
 
-	public List<CustomerOptionDescription> getDescriptionsSettoList() {
-		if(descriptionsList==null || descriptionsList.size()==0) {
-			descriptionsList = new ArrayList<CustomerOptionDescription>(this.getDescriptions());
-		} 
-		return descriptionsList;
+    public Set<CustomerOptionDescription> getDescriptions() {
+        return descriptions;
+    }
 
-	}
+    public void setDescriptions(Set<CustomerOptionDescription> descriptions) {
+        this.descriptions = descriptions;
+    }
 
-	public String getCustomerOptionType() {
-		return customerOptionType;
-	}
+    @Override
+    public Long getId() {
+        return id;
+    }
 
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public MerchantStore getMerchantStore() {
+        return merchantStore;
+    }
 
-	public void setCustomerOptionType(String customerOptionType) {
-		this.customerOptionType = customerOptionType;
-	}
+    public void setMerchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+    }
 
+    public List<CustomerOptionDescription> getDescriptionsList() {
+        return descriptionsList;
+    }
 
+    public void setDescriptionsList(List<CustomerOptionDescription> descriptionsList) {
+        this.descriptionsList = descriptionsList;
+    }
 
-	public String getCode() {
-		return code;
-	}
+    public List<CustomerOptionDescription> getDescriptionsSettoList() {
+        if (descriptionsList == null || descriptionsList.size() == 0) {
+            descriptionsList = new ArrayList<CustomerOptionDescription>(this.getDescriptions());
+        }
+        return descriptionsList;
 
+    }
 
+    public String getCustomerOptionType() {
+        return customerOptionType;
+    }
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+    public void setCustomerOptionType(String customerOptionType) {
+        this.customerOptionType = customerOptionType;
+    }
 
+    public String getCode() {
+        return code;
+    }
 
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-	public boolean isActive() {
-		return active;
-	}
+    public boolean isActive() {
+        return active;
+    }
 
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
+    public boolean isPublicOption() {
+        return publicOption;
+    }
 
-	public void setActive(boolean active) {
-		this.active = active;
-	}
+    public void setPublicOption(boolean publicOption) {
+        this.publicOption = publicOption;
+    }
 
+    public Integer getSortOrder() {
+        return sortOrder;
+    }
 
-
-	public boolean isPublicOption() {
-		return publicOption;
-	}
-
-
-
-	public void setPublicOption(boolean publicOption) {
-		this.publicOption = publicOption;
-	}
-
-
-
-	public void setSortOrder(Integer sortOrder) {
-		this.sortOrder = sortOrder;
-	}
-
-
-
-	public Integer getSortOrder() {
-		return sortOrder;
-	}
+    public void setSortOrder(Integer sortOrder) {
+        this.sortOrder = sortOrder;
+    }
 }

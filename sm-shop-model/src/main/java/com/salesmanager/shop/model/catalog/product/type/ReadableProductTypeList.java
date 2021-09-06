@@ -7,19 +7,19 @@ import com.salesmanager.shop.model.entity.ReadableList;
 
 public class ReadableProductTypeList extends ReadableList {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	List<ReadableProductType> list = new ArrayList<ReadableProductType>();
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	public List<ReadableProductType> getList() {
-		return list;
-	}
+    List<ReadableProductType> list = new ArrayList<ReadableProductType>();
 
-	public void setList(List<ReadableProductType> list) {
-		this.list = list;
-	}
+    public List<ReadableProductType> getList() {
+        return list;
+    }
+
+    public void setList(List<ReadableProductType> list) {
+        this.list = list;
+    }
 
 }

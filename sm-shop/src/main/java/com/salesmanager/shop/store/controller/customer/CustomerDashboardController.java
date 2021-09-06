@@ -32,102 +32,90 @@ import java.util.Set;
 
 /**
  * Entry point for logged in customers
- * @author Carl Samson
  *
+ * @author Carl Samson
  */
 @Controller
 @RequestMapping("/shop/customer")
 public class CustomerDashboardController extends AbstractController {
-	
-	@Inject
+
+    @Inject
     private AuthenticationManager customerAuthenticationManager;
-	
-	@Inject
-	private CustomerOptionSetService customerOptionSetService;
-	
-	
-	@PreAuthorize("hasRole('AUTH_CUSTOMER')")
-	@RequestMapping(value="/dashboard.html", method=RequestMethod.GET)
-	public String displayCustomerDashboard(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
 
-	    MerchantStore store = getSessionAttribute(Constants.MERCHANT_STORE, request);
-	    Language language = (Language)request.getAttribute(Constants.LANGUAGE);
-	    
-		Customer customer = (Customer)request.getAttribute(Constants.CUSTOMER);
-		getCustomerOptions(model, customer, store, language);
-        
+    @Inject
+    private CustomerOptionSetService customerOptionSetService;
 
-		model.addAttribute("section","dashboard");
-		
-		
-		/** template **/
-		StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Customer.customer).append(".").append(store.getStoreTemplate());
+    @PreAuthorize("hasRole('AUTH_CUSTOMER')")
+    @RequestMapping(value = "/dashboard.html", method = RequestMethod.GET)
+    public String displayCustomerDashboard(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		return template.toString();
-		
-	}
-	
-	
-	private void getCustomerOptions(Model model, Customer customer, MerchantStore store, Language language) throws Exception {
+        MerchantStore store = getSessionAttribute(Constants.MERCHANT_STORE, request);
+        Language language = (Language) request.getAttribute(Constants.LANGUAGE);
 
-		Map<Long,CustomerOption> options = new HashMap<Long,CustomerOption>();
-		//get options
-		List<CustomerOptionSet> optionSet = customerOptionSetService.listByStore(store, language);
-		if(!CollectionUtils.isEmpty(optionSet)) {
-			
-			
-			ReadableCustomerOptionPopulator optionPopulator = new ReadableCustomerOptionPopulator();
-			
-			Set<CustomerAttribute> customerAttributes = customer.getAttributes();
-			
-			for(CustomerOptionSet optSet : optionSet) {
-				
-				com.salesmanager.core.model.customer.attribute.CustomerOption custOption = optSet.getCustomerOption();
-				if(!custOption.isActive() || !custOption.isPublicOption()) {
-					continue;
-				}
-				CustomerOption customerOption = options.get(custOption.getId());
-				
-				optionPopulator.setOptionSet(optSet);
-				
-				
-				
-				if(customerOption==null) {
-					customerOption = new CustomerOption();
-					customerOption.setId(custOption.getId());
-					customerOption.setType(custOption.getCustomerOptionType());
-					customerOption.setName(custOption.getDescriptionsSettoList().get(0).getName());
-					
-				} 
-				
-				optionPopulator.populate(custOption, customerOption, store, language);
-				options.put(customerOption.getId(), customerOption);
+        Customer customer = (Customer) request.getAttribute(Constants.CUSTOMER);
+        getCustomerOptions(model, customer, store, language);
 
-				if(!CollectionUtils.isEmpty(customerAttributes)) {
-					for(CustomerAttribute customerAttribute : customerAttributes) {
-						if(customerAttribute.getCustomerOption().getId().longValue()==customerOption.getId()){
-							CustomerOptionValue selectedValue = new CustomerOptionValue();
-							com.salesmanager.core.model.customer.attribute.CustomerOptionValue attributeValue = customerAttribute.getCustomerOptionValue();
-							selectedValue.setId(attributeValue.getId());
-							CustomerOptionValueDescription optValue = attributeValue.getDescriptionsSettoList().get(0);
-							selectedValue.setName(optValue.getName());
-							customerOption.setDefaultValue(selectedValue);
-							if(customerOption.getType().equalsIgnoreCase(CustomerOptionType.Text.name())) {
-								selectedValue.setName(customerAttribute.getTextValue());
-							} 
-						}
-					}
-				}
-			}
-		}
-		
-		
-		model.addAttribute("options", options.values());
+        model.addAttribute("section", "dashboard");
 
-		
-	}
-	
-	
+        /** template **/
+        StringBuilder template = new StringBuilder().append(ControllerConstants.Tiles.Customer.customer).append(".").append(store.getStoreTemplate());
+
+        return template.toString();
+
+    }
+
+    private void getCustomerOptions(Model model, Customer customer, MerchantStore store, Language language) throws Exception {
+
+        Map<Long, CustomerOption> options = new HashMap<Long, CustomerOption>();
+        //get options
+        List<CustomerOptionSet> optionSet = customerOptionSetService.listByStore(store, language);
+        if (!CollectionUtils.isEmpty(optionSet)) {
+
+            ReadableCustomerOptionPopulator optionPopulator = new ReadableCustomerOptionPopulator();
+
+            Set<CustomerAttribute> customerAttributes = customer.getAttributes();
+
+            for (CustomerOptionSet optSet : optionSet) {
+
+                com.salesmanager.core.model.customer.attribute.CustomerOption custOption = optSet.getCustomerOption();
+                if (!custOption.isActive() || !custOption.isPublicOption()) {
+                    continue;
+                }
+                CustomerOption customerOption = options.get(custOption.getId());
+
+                optionPopulator.setOptionSet(optSet);
+
+                if (customerOption == null) {
+                    customerOption = new CustomerOption();
+                    customerOption.setId(custOption.getId());
+                    customerOption.setType(custOption.getCustomerOptionType());
+                    customerOption.setName(custOption.getDescriptionsSettoList().get(0).getName());
+
+                }
+
+                optionPopulator.populate(custOption, customerOption, store, language);
+                options.put(customerOption.getId(), customerOption);
+
+                if (!CollectionUtils.isEmpty(customerAttributes)) {
+                    for (CustomerAttribute customerAttribute : customerAttributes) {
+                        if (customerAttribute.getCustomerOption().getId().longValue() == customerOption.getId()) {
+                            CustomerOptionValue selectedValue = new CustomerOptionValue();
+                            com.salesmanager.core.model.customer.attribute.CustomerOptionValue attributeValue = customerAttribute.getCustomerOptionValue();
+                            selectedValue.setId(attributeValue.getId());
+                            CustomerOptionValueDescription optValue = attributeValue.getDescriptionsSettoList().get(0);
+                            selectedValue.setName(optValue.getName());
+                            customerOption.setDefaultValue(selectedValue);
+                            if (customerOption.getType().equalsIgnoreCase(CustomerOptionType.Text.name())) {
+                                selectedValue.setName(customerAttribute.getTextValue());
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        model.addAttribute("options", options.values());
+
+    }
 
 }

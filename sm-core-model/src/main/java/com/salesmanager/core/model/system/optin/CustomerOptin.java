@@ -25,121 +25,117 @@ import com.salesmanager.core.model.common.audit.AuditListener;
 import com.salesmanager.core.model.generic.SalesManagerEntity;
 import com.salesmanager.core.model.merchant.MerchantStore;
 
-
 /**
  * Optin defines optin campaigns for the system.
- * @author carlsamson
  *
+ * @author carlsamson
  */
 @Entity
 @EntityListeners(value = AuditListener.class)
-@Table(name = "CUSTOMER_OPTIN",uniqueConstraints=
+@Table(name = "CUSTOMER_OPTIN", uniqueConstraints =
 @UniqueConstraint(columnNames = {"EMAIL", "OPTIN_ID"}))
 public class CustomerOptin extends SalesManagerEntity<Long, CustomerOptin> implements Serializable {
 
-	
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    @Id
+    @Column(name = "CUSTOMER_OPTIN_ID")
+    @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "CUST_OPT_SEQ_NEXT_VAL")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
+    private Long id;
 
-	@Id
-	@Column(name = "CUSTOMER_OPTIN_ID")
-	@TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "CUST_OPT_SEQ_NEXT_VAL")
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
-	private Long id;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column (name ="OPTIN_DATE")
-	private Date optinDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "OPTIN_DATE")
+    private Date optinDate;
 
-	
-	@ManyToOne(targetEntity = Optin.class)
-	@JoinColumn(name="OPTIN_ID")
-	private Optin optin;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="MERCHANT_ID", nullable=false)
-	private MerchantStore merchantStore;
-	
-	@Column(name="FIRST")
-	private String firstName;
-	
-	@Column(name="LAST")
-	private String lastName;
-	
-	@Column(name="EMAIL", nullable=false)
-	private String email;
-	
-	@Column(name="VALUE")
-	@Type(type = "org.hibernate.type.TextType")
-	private String value;
+    @ManyToOne(targetEntity = Optin.class)
+    @JoinColumn(name = "OPTIN_ID")
+    private Optin optin;
 
-	@Override
-	public Long getId() {
-		return id;
-	}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MERCHANT_ID", nullable = false)
+    private MerchantStore merchantStore;
 
-	@Override
-	public void setId(Long id) {
-		this.id = id;	
-	}
+    @Column(name = "FIRST")
+    private String firstName;
 
-	public Date getOptinDate() {
-		return optinDate;
-	}
+    @Column(name = "LAST")
+    private String lastName;
 
-	public void setOptinDate(Date optinDate) {
-		this.optinDate = optinDate;
-	}
+    @Column(name = "EMAIL", nullable = false)
+    private String email;
 
-	public Optin getOptin() {
-		return optin;
-	}
+    @Column(name = "VALUE")
+    @Type(type = "org.hibernate.type.TextType")
+    private String value;
 
-	public void setOptin(Optin optin) {
-		this.optin = optin;
-	}
+    @Override
+    public Long getId() {
+        return id;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public Date getOptinDate() {
+        return optinDate;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public void setOptinDate(Date optinDate) {
+        this.optinDate = optinDate;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public Optin getOptin() {
+        return optin;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setOptin(Optin optin) {
+        this.optin = optin;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public String getValue() {
-		return value;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public void setValue(String value) {
-		this.value = value;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public MerchantStore getMerchantStore() {
-		return merchantStore;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public void setMerchantStore(MerchantStore merchantStore) {
-		this.merchantStore = merchantStore;
-	}
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public MerchantStore getMerchantStore() {
+        return merchantStore;
+    }
+
+    public void setMerchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+    }
 
 }

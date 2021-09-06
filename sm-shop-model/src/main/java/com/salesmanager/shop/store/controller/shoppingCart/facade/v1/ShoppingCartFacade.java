@@ -7,7 +7,7 @@ import com.salesmanager.core.model.reference.language.Language;
 import com.salesmanager.shop.model.shoppingcart.ReadableShoppingCart;
 
 public interface ShoppingCartFacade {
-	
-	ReadableShoppingCart get(Optional<String> cart, Long customerId, MerchantStore store, Language language);
+
+    ReadableShoppingCart get(Optional<String> cart, Long customerId, MerchantStore store, Language language);
 
 }

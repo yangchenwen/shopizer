@@ -53,35 +53,36 @@
 */
 
 
-
 /*============================================================
 	1) General
 ============================================================*/
 
 .pageBackground {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    color:black;
-    background:#FAFAFA;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: black;
+    background: #FAFAFA;
 }
 
 /* default text */
 .normal {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    color:black;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: black;
 }
 
 .defaultBorder {
-    border:1px solid #A7ABB4;
+    border: 1px solid #A7ABB4;
 }
 
 /* drag outline */
 .dragOutline {
-    border:1px dashed #0B70F9;
+    border: 1px dashed #0B70F9;
 }
 
 /* drop indicator */
 .dropBorder {
-    background-color:#808080;
+    background-color: #808080;
 }
 
 
@@ -89,16 +90,23 @@
 .canvasHover,
 .gridHover,
 .formHover {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; color:black;
-    background-color:#fceeaf; border:1px solid #808080; padding:5px;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: black;
+    background-color: #fceeaf;
+    border: 1px solid #808080;
+    padding: 5px;
 }
 
 /* group label */
 .groupLabel {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    color:black;
-    padding-left:5px; padding-right:5px;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: black;
+    padding-left: 5px;
+    padding-right: 5px;
 }
+
 /*============================================================
     2) Button
 		button.baseStyle
@@ -121,23 +129,26 @@
 .buttonSelectedFocusedOver,
 .buttonDisabled,
 .buttonSelectedDisabled {
-    padding:2px;
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
-    background:#DDDDDD url(./images/cssButton/button_stretch.png) repeat-x;
-	color:#000000;
-    border:1px solid #A6ABB4;
+    padding: 2px;
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    background: #DDDDDD url(./images/cssButton/button_stretch.png) repeat-x;
+    color: #000000;
+    border: 1px solid #A6ABB4;
 }
+
 .buttonDisabled {
-    background:#E9E9E9 url(./images/cssButton/button_Disabled_stretch.png) repeat-x;
-	border-left:1px solid #A7ABB4;
-	border-right:1px solid #A6AAB3;
-	border-top:1px solid #BABDC4;
-	border-bottom:1px solid #B4B8C1;
+    background: #E9E9E9 url(./images/cssButton/button_Disabled_stretch.png) repeat-x;
+    border-left: 1px solid #A7ABB4;
+    border-right: 1px solid #A6AAB3;
+    border-top: 1px solid #BABDC4;
+    border-bottom: 1px solid #B4B8C1;
 }
+
 .buttonDisabled,
 .buttonSelectedDisabled {
-	font-weight:normal;
-	color:#AAAAAA;
+    font-weight: normal;
+    color: #AAAAAA;
 }
 
 .buttonFocused,
@@ -145,22 +156,22 @@
 .buttonSelectedFocused,
 .buttonSelectedFocusedOver,
 .buttonSelectedFocusedDown {
-	border:1px solid #898d96;
+    border: 1px solid #898d96;
 }
 
 .buttonOver,
 .buttonFocusedOver,
 .buttonSelectedFocused,
 .buttonSelectedFocusedOver {
-    background:#898d96 url(./images/cssButton/button_Over_stretch.png) repeat-x;
+    background: #898d96 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 }
 
 .buttonDown,
 .buttonFocusedDown,
 .buttonSelectedDown,
 .buttonSelectedFocusedDown {
-    background:#898d96 url(./images/cssButton/button_Down_stretch.png) repeat-x;
-	border:1px solid #898d96;
+    background: #898d96 url(./images/cssButton/button_Down_stretch.png) repeat-x;
+    border: 1px solid #898d96;
 }
 
 .buttonSelected,
@@ -168,7 +179,7 @@
 .buttonSelectedOver,
 .buttonSelectedFocusedOver,
 .buttonSelectedDisabled {
-    background:#A6AAB3 url(./images/cssButton/button_Over_stretch.png) repeat-x;
+    background: #A6AAB3 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 }
 
 /* ImgButton */
@@ -180,10 +191,12 @@
 .imgButtonDown,
 .imgButtonSelectedDown,
 .imgButtonDisabled {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
 }
+
 .imgButtonDisabled {
-    color:#666666;
+    color: #666666;
 }
 
 /* StretchImgButton */
@@ -195,14 +208,17 @@
 .stretchImgButtonSelectedDown,
 .stretchImgButtonSelectedDisabled,
 .stretchImgButtonDisabled {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
 }
+
 .stretchImgButtonOver {
 }
+
 .stretchImgButtonSelectedDisabled,
 .stretchImgButtonDisabled {
-	font-weight:normal;
-	color:#AAAAAA;
+    font-weight: normal;
+    color: #AAAAAA;
 }
 
 /* Button Title */
@@ -220,13 +236,15 @@
 .buttonTitleSelectedFocusedDown,
 .buttonTitleDisabled,
 .buttonTitleSelectedDisabled {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
-	color:#000000;
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #000000;
 }
+
 .buttonTitleDisabled,
 .buttonTitleSelectedDisabled {
-	font-weight:normal;
-	color:#AAAAAA;
+    font-weight: normal;
+    color: #AAAAAA;
 }
 
 
@@ -237,12 +255,14 @@
 
 .menuMain {
     border: 1px solid #93A9C0;
-    background:#FFFFFF url(./images/Menu/menu_background.png) repeat-y scroll;
+    background: #FFFFFF url(./images/Menu/menu_background.png) repeat-y scroll;
 }
+
 .treeMenuBody {
     border: 1px solid #93A9C0;
-	background: #FFFFFF;
+    background: #FFFFFF;
 }
+
 .menu,
 .menuSelected,
 .menuOver,
@@ -266,13 +286,17 @@
 .treeMenuSelectedOver,
 .treeMenuSelectedSelected,
 .treeMenuSelectedSelectedOver {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
-    color:black;
-    padding-top:2px; padding-bottom:2px;
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
+
 .menu,
 .menuSelected {
 }
+
 .menuOver,
 .menuOverDark,
 .menuSelectedOver,
@@ -291,7 +315,7 @@
 .treeMenuSelectedOverDark,
 .treeMenuSelectedSelected,
 .treeMenuSelectedSelectedOver {
-    background:#FFFFFF url(./images/ListGrid/row_Over.png) repeat-x scroll 0px 1px;
+    background: #FFFFFF url(./images/ListGrid/row_Over.png) repeat-x scroll 0px 1px;
 }
 
 .menuTitleField,
@@ -303,7 +327,7 @@
 .menuTitleFieldSelectedOver,
 .menuTitleFieldSelectedOverDark,
 .menuTitleFieldDisabled {
-	padding-left:4px;
+    padding-left: 4px;
 }
 
 .menuIconField,
@@ -315,12 +339,14 @@
 .menuIconFieldSelectedOver,
 .menuIconFieldSelectedOverDark,
 .menuIconFieldDisabled {
-	padding-left:4px; padding-right:4px;
+    padding-left: 4px;
+    padding-right: 4px;
 }
-.menuDisabled ,
+
+.menuDisabled,
 .menuTitleFieldDisabled,
 .menuIconFieldDisabled {
-    color:#AAAAAA;
+    color: #AAAAAA;
 }
 
 
@@ -336,15 +362,17 @@
 .menuButtonSelectedDown,
 .menuButtonSelectedOver,
 .menuButtonSelectedDisabled {
-    font-family:Arial,sans-serif; font-size:11px;
-    background:#DDDDDD url(./images/cssButton/button_stretch.png) repeat-x scroll;
-    padding-left:4px; padding-right:4px;
-	color:#000000;
-    border:1px solid #A6ABB4;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    background: #DDDDDD url(./images/cssButton/button_stretch.png) repeat-x scroll;
+    padding-left: 4px;
+    padding-right: 4px;
+    color: #000000;
+    border: 1px solid #A6ABB4;
 }
 
 .menuButtonOver {
-background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
+    background: #A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 }
 
 .menuButtonDown,
@@ -353,13 +381,14 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .menuButtonSelected,
 .menuButtonSelectedDown,
 .menuButtonSelectedOver {
-    background:#A6ABB4 url(./images/cssButton/button_Down_stretch.png) repeat-x;
-    border:1px solid #A6ABB4;
+    background: #A6ABB4 url(./images/cssButton/button_Down_stretch.png) repeat-x;
+    border: 1px solid #A6ABB4;
 }
+
 .menuButtonDisabled,
 .menuButtonSelectedDisabled {
-    color:#AAAAAA;
-    border:1px solid #A6ABB4;
+    color: #AAAAAA;
+    border: 1px solid #A6ABB4;
 }
 
 
@@ -381,12 +410,14 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 ============================================================*/
 
 .windowBackground,
-.dialogBackground {}
+.dialogBackground {
+}
 
 .windowBody,
 .dialogBody {
-    background:#FFFFFF;
+    background: #FFFFFF;
 }
+
 .promptBody {
 }
 
@@ -400,18 +431,27 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 
 .windowHeaderText,
 .dialogHeaderText {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    font-weight:bold;
-	color:#FFFFFF;
-    padding-left:2px; padding-right:2px; padding-bottom:2px;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #FFFFFF;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
 }
+
 .windowStatusBar {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; color:black;
-    border-top: 1px solid #999999; border-left: 1px solid #999999;
-    border-right: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-top: 1px solid #999999;
+    border-left: 1px solid #999999;
+    border-right: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
 }
+
 .modalMask {
-    background-color:black;
+    background-color: black;
 }
 
 /*============================================================
@@ -419,22 +459,26 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 ============================================================*/
 
 .layoutDropLine {
-    background-color:#3366FF;
+    background-color: #3366FF;
 
 }
+
 .layoutPlaceHolder {
-    border:1px solid black;
+    border: 1px solid black;
 }
+
 .splitbar {
-	
+
 }
+
 .splitbarDown {
-    border:1px solid rgb(50,135,185);
+    border: 1px solid rgb(50, 135, 185);
 }
 
 .vSnapBar,
 .vSnapBarOver {
 }
+
 .hSnapBar,
 .hSnapBarOver {
 }
@@ -444,32 +488,33 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 ============================================================*/
 
 .tabSetContainer {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    color:#D9D9D9;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: #D9D9D9;
     border: 1px solid #8f9ca0;
-    background-color:#fff;
+    background-color: #fff;
 }
 
 .tabBarTop {
-    padding-top:2px;
+    padding-top: 2px;
 }
 
 .tabBarLeft {
-    padding-left:2px;
+    padding-left: 2px;
 }
 
 .tabBarRight {
-    padding-right:2px;
+    padding-right: 2px;
 }
 
 .tabBarBottom {
-    padding-bottom:2px;
+    padding-bottom: 2px;
 }
 
 .tabBaseline {
-    z-index:1;
-    height:24px;
-    background-color:#000;
+    z-index: 1;
+    height: 24px;
+    background-color: #000;
 }
 
 .tab,
@@ -480,7 +525,8 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .tabSelectedDown,
 .tabSelectedDisabled,
 .tabDisabled {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
 }
 
 .tabTitle,
@@ -500,24 +546,26 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .vtabTitleDisabled,
 .vtabTitleSelectedDisabled {
     color: #29333c;
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    padding-bottom:4px;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    padding-bottom: 4px;
 }
+
 .tabTitleOver,
 .vtabTitleOver {
-    color:#29333c;
+    color: #29333c;
 }
 
 .tabTitleSelected,
 .vtabTitleSelected {
-	color:#FFF;
-    padding-bottom:4px;
+    color: #FFF;
+    padding-bottom: 4px;
 }
 
 .tabTitleSelectedOver,
 .vtabTitleSelectedOver {
-	color:#353f46;
-    padding-bottom:4px;
+    color: #353f46;
+    padding-bottom: 4px;
 }
 
 
@@ -526,9 +574,8 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .vtabTitleDisabled,
 .vtabTitleSelectedDisabled {
     color: #AAAAAA;
-    padding-bottom:2px;
+    padding-bottom: 2px;
 }
-
 
 
 /*============================================================
@@ -536,9 +583,9 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 ============================================================*/
 
 .sectionStack {
-    border-left:1px solid #A6ABB4;
-    border-right:1px solid #A6ABB4;
-    border-bottom:1px solid #A6ABB4;
+    border-left: 1px solid #A6ABB4;
+    border-right: 1px solid #A6ABB4;
+    border-bottom: 1px solid #A6ABB4;
 }
 
 /* SectionStack headers - image based */
@@ -547,51 +594,64 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .imgSectionHeaderDisabledclosed,
 .imgSectionHeaderDisabledopened {
 }
+
 .imgSectionHeaderTitleclosed,
 .imgSectionHeaderTitleopened,
 .imgSectionHeaderTitleOverclosed,
 .imgSectionHeaderTitleOveropened {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-	color:#fffaf8;
-    border-left:5px;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: #fffaf8;
+    border-left: 5px;
 }
 
 .imgSectionHeaderTitleDisabledopened,
 .imgSectionHeaderTitleDisabledclosed {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    color:gray;
-    border-left:5px;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: gray;
+    border-left: 5px;
 }
 
 .sectionHeaderTitleopened,
 .sectionHeaderTitleclosed {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; color:white;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: white;
 }
+
 .sectionHeaderTitleDisabledopened,
 .sectionHeaderTitleDisabledclosed {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; color:#808080;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: #808080;
 }
+
 /* SectionStack headers - css based */
 .sectionHeaderopened,
 .sectionHeaderclosed {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; color:black;
-    padding:3px;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: black;
+    padding: 3px;
     border: 1px solid #A6ABB4;
 }
 
 .sectionHeaderopened {
     background: url(./images/SectionHeader/header_closed_stretch.png) repeat-x scroll;
 }
+
 .sectionHeaderclosed {
     background: url(./images/SectionHeader/header_closed_stretch.png) repeat-x scroll;
 }
 
 
 .cellopened {
-    background-color:red;
+    background-color: red;
 }
+
 .cellclosed {
-    background-color:pink;
+    background-color: pink;
 }
 
 /*============================================================
@@ -599,15 +659,19 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 ============================================================*/
 
 /* general form styles */
-.formRow {}
+.formRow {
+}
+
 .formCell,
 .formCellFocused,
 .formCellDisabled,
 .nestedFormContainer,
 .nestedFormContainerFocused,
 .nestedFormContainerDisabled {
-    font-family:Arial,sans-serif; font-size:11px;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
 }
+
 .formTitle,
 .formTitleFocused,
 .formTitleDisabled,
@@ -647,24 +711,29 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .labelAnchorDisabled,
 .labelAnchorError,
 .labelAnchorFocused {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    color:black;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: black;
 }
 
 .formTitle,
-.formTitleFocused  {
-    color:#003168;
+.formTitleFocused {
+    color: #003168;
 }
 
 .formTitleDisabled {
-	color:#AAAAAA;
+    color: #AAAAAA;
 }
+
 .formCellError,
-.formTitleError { 
-    font-weight:bold; color:#204268; 
+.formTitleError {
+    font-weight: bold;
+    color: #204268;
 }
+
 .formHint {
-    color:#455668; padding:3px;
+    color: #455668;
+    padding: 3px;
 }
 
 /* Allow for nested forms to lie flush against the left-hand edge of the containing form */
@@ -679,9 +748,11 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .headerItem,
 .headerItemDisabled,
 .headerItemError {
-    font-family:Arial,sans-serif; font-size:14px; font-weight:bold;
-	color:#4C4C4C;
-}	
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #4C4C4C;
+}
 
 /* text-based items common props */
 .textItem,
@@ -695,123 +766,136 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .selectItemTextDisabled,
 .comboBoxItemPendingText,
 .selectItemTextHint {
-    padding:2px;
-    border:1px solid #898d96;
-    background:#FFFFFF;
-    color:black;
+    padding: 2px;
+    border: 1px solid #898d96;
+    background: #FFFFFF;
+    color: black;
 }
 
 .textItem {
-    border-top:1px solid #abadb3;
-    border-left:1px solid #dbdfe5;
-    border-right:1px solid #dbdfe5;
-    border-bottom:1px solid #dbdfe5;
+    border-top: 1px solid #abadb3;
+    border-left: 1px solid #dbdfe5;
+    border-right: 1px solid #dbdfe5;
+    border-bottom: 1px solid #dbdfe5;
 }
 
 .textItemDisabled,
 .selectItemTextDisabled {
-    color:#666666;
-    background-color:#FFFFFF;
-    border:1px solid #A6ABB4;
+    color: #666666;
+    background-color: #FFFFFF;
+    border: 1px solid #A6ABB4;
 }
 
 .textItemHint,
 .selectItemTextHint {
-    color:#204268;
+    color: #204268;
 }
 
 .comboBoxItemPendingText {
-    color:#0066CC;
+    color: #0066CC;
 }
 
 /* selectItem */
 
 .selectItemTextFocused {
-    color:black;
-    -moz-outline-offset:-1;
-    border:1px solid #5678ac;
+    color: black;
+    -moz-outline-offset: -1;
+    border: 1px solid #5678ac;
 }
 
 .textItemFocused,
 .selectItemTextFocused {
-    color:black;
-    -moz-outline-offset:-1;
-	border-top:1px solid #5678ac;    
-    border-left:1px solid #bccde6;
-	border-right:1px solid #afc6e2;
-	border-bottom:1px solid #c0d7ec;
+    color: black;
+    -moz-outline-offset: -1;
+    border-top: 1px solid #5678ac;
+    border-left: 1px solid #bccde6;
+    border-right: 1px solid #afc6e2;
+    border-bottom: 1px solid #c0d7ec;
 }
 
 .selectItemText,
 .selectItemTextError,
 .selectItemTextFocused,
 .selectItemTextDisabled {
-    border-right:0px none;
+    border-right: 0px none;
 }
 
 .selectItemPickerIcon,
 .selectItemPickerIconFocused,
 .selectItemPickerIconDisabled,
 .selectItemPickerIconError {
-    padding:0px;
+    padding: 0px;
 }
 
 .pickListMenuBody {
-    border:1px solid #90A6BD; 
-    background-color:#FFFFFF;
+    border: 1px solid #90A6BD;
+    background-color: #FFFFFF;
 }
 
 .pickListCell,
 .pickListCellDark,
 .tallPickListCell,
 .tallPickListCellDark {
-	color:black;
+    color: black;
 }
+
 .pickListCellSelected,
 .pickListCellSelectedDark {
-    color:black;
-    background:#faebb5;
+    color: black;
+    background: #faebb5;
 }
+
 .tallPickListCellSelected,
 .tallPickListCellSelectedDark {
-    color:black;
-    background:#B2DFEE;
+    color: black;
+    background: #B2DFEE;
 }
+
 .pickListCellDisabled,
 .tallPickListCellDisabled {
-	color:#595959;
-	background-color:#C0C0C0;
+    color: #595959;
+    background-color: #C0C0C0;
 }
 
 /* checkbox and radioButton */
 .labelAnchor,
 .labelAnchorDisabled,
 .labelAnchorError,
-.labelAnchorFocused  { 
-    font-family:Arial; color:black; text-decoration:none;
+.labelAnchorFocused {
+    font-family: Arial;
+    color: black;
+    text-decoration: none;
 }
+
 .labelAnchorDisabled {
-	font-family:Arial; color:#AAAAAA;
+    font-family: Arial;
+    color: #AAAAAA;
 }
 
 /* ColorChooser */
 .colorChooserCell,
 .colorChooserCellOver {
-    background-color:#EFEFEF;
-    border-left:1px solid #EFEFEF; border-top:1px solid #EFEFEF;
-    border-right:1px solid #EFEFEF; border-bottom:1px solid #EFEFEF;
+    background-color: #EFEFEF;
+    border-left: 1px solid #EFEFEF;
+    border-top: 1px solid #EFEFEF;
+    border-right: 1px solid #EFEFEF;
+    border-bottom: 1px solid #EFEFEF;
 }
+
 .colorChooserCellOver {
-    border-left:1px solid black; border-top:1px solid black;
-    border-right:1px solid black; border-bottom:1px solid black;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 /* FilterBuilder */
 .bracketBorders {
-    border-left: 1px solid rgb(50,135,185);
-    border-top: 1px solid rgb(50,135,185);
-    border-bottom: 1px solid rgb(50,135,185);    
+    border-left: 1px solid rgb(50, 135, 185);
+    border-top: 1px solid rgb(50, 135, 185);
+    border-bottom: 1px solid rgb(50, 135, 185);
 }
+
 /*============================================================
      DateChooser
 ============================================================*/
@@ -859,9 +943,10 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .dateChooserWeekendSelectedOver,
 .dateChooserWeekendSelectedDown,
 .dateChooserWeekendDisabled {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    background-color:transparent;
-    color:black;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    background-color: transparent;
+    color: black;
 }
 
 /* year/month buttons */
@@ -871,9 +956,9 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .dateChooserNavButtonSelected,
 .dateChooserNavButtonSelectedOver,
 .dateChooserNavButtonSelectedDown {
-    padding:0px;
-    border-top:0px none;
-    border-bottom:0px none;
+    padding: 0px;
+    border-top: 0px none;
+    border-bottom: 0px none;
 }
 
 /* for all buttons, plus weekday headers (dateChooserButton) */
@@ -895,14 +980,14 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .dateChooserNavButtonSelected,
 .dateChooserNavButtonSelectedOver,
 .dateChooserNavButtonSelectedDown {
-    font-weight:bold;
-	color:#a3afbe;
+    font-weight: bold;
+    color: #a3afbe;
 }
 
 .dateChooserButtonOver,
 .dateChooserButtonDown {
-	cursor:pointer;
-	color:#467DCD;
+    cursor: pointer;
+    color: #467DCD;
 }
 
 .dateChooserWeekendButton,
@@ -911,7 +996,7 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .dateChooserWeekendButtonSelected,
 .dateChooserWeekendButtonSelectedOver,
 .dateChooserWeekendButtonSelectedDown {
-    background-color:#FFE49C;
+    background-color: #FFE49C;
 }
 
 
@@ -921,27 +1006,28 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .dateChooserNavButtonSelected,
 .dateChooserNavButtonSelectedOver,
 .dateChooserNavButtonSelectedDown {
-    cursor:pointer;
-    padding:2px;
+    cursor: pointer;
+    padding: 2px;
 }
 
 .dateChooserNavButtonOver,
 .dateChooserNavButtonDown {
-    color:#467DCD;
+    color: #467DCD;
 }
 
 /* Today, Cancel buttons */
 .dateChooserBottomButton,
 .dateChooserBottomButtonOver,
 .dateChooserBottomButtonDown {
-    cursor:pointer;
-    font-weight:bold;
-	color:#242E27;
-    border-left:1px solid #ACB1B9;
-    border-top:1px solid #ACB1B9;
+    cursor: pointer;
+    font-weight: bold;
+    color: #242E27;
+    border-left: 1px solid #ACB1B9;
+    border-top: 1px solid #ACB1B9;
 }
+
 .dateChooserBottomButtonOver {
-    color:#616B82;
+    color: #616B82;
 }
 
 
@@ -961,28 +1047,28 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .dateChooserWeekendSelectedOver,
 .dateChooserWeekendSelectedDown,
 .dateChooserWeekendDisabled {
-    cursor:pointer;
-    color:black;
-    border:2px solid white;
-    background-color:white;
+    cursor: pointer;
+    color: black;
+    border: 2px solid white;
+    background-color: white;
 }
 
 .dateChooserWeekdayDisabled,
 .dateChooserWeekendDisabled {
-	color:#A5A7AD;
+    color: #A5A7AD;
 }
 
 .dateChooserWeekend,
 .dateChooserWeekendOver,
 .dateChooserWeekendSelected,
 .dateChooserWeekendDisabled {
-    border:2px solid #FFE49C;
-    background-color:#FFE49C;
+    border: 2px solid #FFE49C;
+    background-color: #FFE49C;
 }
 
 .dateChooserWeekdayOver,
 .dateChooserWeekendOver {
-	border:2px solid #536782;
+    border: 2px solid #536782;
 }
 
 .dateChooserWeekdaySelected,
@@ -993,24 +1079,24 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .dateChooserWeekendSelectedOver,
 .dateChooserWeekendDown,
 .dateChooserWeekendSelectedDown {
-	font-weight:bold;
-	color:#4C4C4C;
-    border:2px solid #536782;
-    background-color:#C2CCDE;
+    font-weight: bold;
+    color: #4C4C4C;
+    border: 2px solid #536782;
+    background-color: #C2CCDE;
 }
 
 .dateChooserWeekdayDown,
 .dateChooserWeekendDown {
-	font-weight:normal;
+    font-weight: normal;
 }
 
 /* year and month pop-up menus */
 .dateChooserYearMenu,
 .dateChooserMonthMenu {
     border: 2px solid #4C4C4C;
-    background-color:#FFFFFF;
+    background-color: #FFFFFF;
 }
-						
+
 /*============================================================
 	9) Slider & Rangebar
 ============================================================*/
@@ -1022,19 +1108,21 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .rangebarTitle,
 .rangebarRange,
 .rangebarValue {
-    color:black;
-    font-family:Arial,Verdana,sans-serif; font-size:10px;
-}
-.sliderTitle,
-.rangebarTitle {
-	color:#4C4C4C;
-    font-weight:bold;
-}
-.sliderRange,
-.rangebarRange {
-    color:black;
+    color: black;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 10px;
 }
 
+.sliderTitle,
+.rangebarTitle {
+    color: #4C4C4C;
+    font-weight: bold;
+}
+
+.sliderRange,
+.rangebarRange {
+    color: black;
+}
 
 
 /*============================================================
@@ -1042,32 +1130,35 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 ============================================================*/
 
 .detailBlock {
-    border-left:1px solid #A7ABB4;
-    border-top:1px solid #A7ABB4;
+    border-left: 1px solid #A7ABB4;
+    border-top: 1px solid #A7ABB4;
 }
 
 .detail,
 .detailLabel,
 .detailHeader {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; background-color:white;
-    color:black;
-    border-right:1px solid #A7ABB4;
-    border-bottom:1px solid #A7ABB4;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    background-color: white;
+    color: black;
+    border-right: 1px solid #A7ABB4;
+    border-bottom: 1px solid #A7ABB4;
 }
 
 .detailLabel {
-    font-weight:bold;
-	color:#4C4C4C;
-	background-color:#F6F7F9;
-    text-align:right;
+    font-weight: bold;
+    color: #4C4C4C;
+    background-color: #F6F7F9;
+    text-align: right;
 }
 
 .detailHeader {
-    font-family:Arial,sans-serif; font-size:14px; font-weight:bold;
-	color:#4C4C4C;
-    background-color:#BBDAFA;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #4C4C4C;
+    background-color: #BBDAFA;
 }
-
 
 
 /*============================================================
@@ -1084,40 +1175,50 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .listGrid {
     border: 1px solid #aebdd4;
 }
+
 .headerBar {
-    background:#FFFFFF url(./images/ListGrid/header.png) repeat-x bottom left scroll;
+    background: #FFFFFF url(./images/ListGrid/header.png) repeat-x bottom left scroll;
 }
 
 .gridBody {
-    background-color:#FFFFFF;        
+    background-color: #FFFFFF;
 }
+
 .alternateGridBody {
-    background-color:#FFFFFF;
+    background-color: #FFFFFF;
 }
 
 .loadingDataMessage,
 .offlineMessage,
 .emptyMessage {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; padding:10px;
-    color:black;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    padding: 10px;
+    color: black;
 }
+
 .gridDragTracker {
-	font-family:Arial,Verdana,sans-serif; font-size:11px;
-	color:black;
-    padding:1px;
-    border:1px dotted gray;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: black;
+    padding: 1px;
+    border: 1px dotted gray;
 }
+
 .dragLine {
-    border-bottom:2px dotted #445566;
+    border-bottom: 2px dotted #445566;
 }
 
 .listTable {
 }
+
 /* for filterEditor */
 .recordEditorCell {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; color:black; background-color:#f4f4f4;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: black;
+    background-color: #f4f4f4;
 }
-
 
 
 /*============================================================
@@ -1137,27 +1238,30 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .headerButtonDown,
 .headerButtonSelectedOver,
 .headerButtonSelectedDown {
-    background-color:#FFFFFF;
-    
-    border-left:1px solid rgb(246,247,249);
-    border-right:1px solid rgb(200,204,207);
-    font-family:Arial, Verdana, sans-serif; font-size:11px;
-    padding-left:4px; padding-right:4px;
-    background:url('images/ListGrid/headerSprite.png') repeat-x top left;
+    background-color: #FFFFFF;
+
+    border-left: 1px solid rgb(246, 247, 249);
+    border-right: 1px solid rgb(200, 204, 207);
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    padding-left: 4px;
+    padding-right: 4px;
+    background: url('images/ListGrid/headerSprite.png') repeat-x top left;
 }
+
 .headerButtonOver,
 .headerButtonDown,
 .headerButtonSelectedOver,
 .headerButtonSelectedDown {
-    border-left:1px solid rgb(228,242,255);
-    border-right:1px solid rgb(200,204,208);
+    border-left: 1px solid rgb(228, 242, 255);
+    border-right: 1px solid rgb(200, 204, 208);
 }
 
 .headerButton {
     background-position: 0px -210px;
-    border-bottom:1px solid #AEBDD4;
- }
- 
+    border-bottom: 1px solid #AEBDD4;
+}
+
 .headerButtonOver {
     background-position: 0px -420px;
     border-bottom: 1px solid #AEBDD4;
@@ -1175,7 +1279,7 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 }
 
 .headerButtonSelected,
-.headerButtonSelectedDown{
+.headerButtonSelectedDown {
     background-position: 0px 0px;
     border-bottom: 1px solid #AEBDD4;
 }
@@ -1199,19 +1303,21 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .sorterButtonDown,
 .sorterButtonSelectedOver,
 .sorterButtonSelectedDown {
-    background-color:#FFFFFF;
-    border-left:1px solid rgb(246,247,249);
-    background-image:url("images/ListGrid/headerSprite.png");
-    background-position:0px -210px;
+    background-color: #FFFFFF;
+    border-left: 1px solid rgb(246, 247, 249);
+    background-image: url("images/ListGrid/headerSprite.png");
+    background-position: 0px -210px;
 }
+
 .sorterButtonOver,
 .sorterButtonDown,
 .sorterButtonSelectedOver,
 .sorterButtonSelectedDown {
-    border-left:1px solid rgb(228,242,255);
-    background-image:url("images/ListGrid/headerSprite.png");
-    background-position:0px -420px;
+    border-left: 1px solid rgb(228, 242, 255);
+    background-image: url("images/ListGrid/headerSprite.png");
+    background-position: 0px -420px;
 }
+
 /*============================================================
 	ListGrid cells
 		listGrid.baseStyle
@@ -1270,14 +1376,16 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .specialColSelectedOver,
 .specialColDisabled,
 .groupNode {
-	font-family:Arial,Verdana,sans-serif; font-size:11px; text-overflow:ellipsis;
-	color:black;
-	border-bottom:1px solid;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    text-overflow: ellipsis;
+    color: black;
+    border-bottom: 1px solid;
     border-bottom-color: #EDEDED;
 }
 
 .specialCol {
-	background-color:#e5e5e5;
+    background-color: #e5e5e5;
 }
 
 .tallCell,
@@ -1290,43 +1398,49 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .tallCellSelectedOverDark,
 .tallCellDisabled,
 .tallCellDisabledDark {
- 
- }
+
+}
+
 .cellDark,
 .recordSummaryCell,
 .recordSummaryCellDark {
-    background-color:#fafafa;
+    background-color: #fafafa;
 }
+
 .groupSummaryCell,
 .groupSummaryCellDisabled {
-    border-top:1px solid gray;
-    border-bottom:1px solid gray;
-    background-color:#eff0f3;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    background-color: #eff0f3;
 }
+
 .gridSummaryCell,
 .gridSummaryCellDisabled {
-    border-top-width:0px;
-    border-bottom-width:0px;
-    background-color:#eff0f3;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    background-color: #eff0f3;
 }
+
 .summaryRowBody {
-    background-color:#eff0f3;
+    background-color: #eff0f3;
 }
 
 .tallCellDark {
-	background-color:#fafafa;
+    background-color: #fafafa;
 }
+
 .cellOver,
 .cellOverDark,
 .specialColOver,
 .recordSummaryCellOver,
 .recordSummaryCellOverDark {
-    background:#FFFFFF url(./images/ListGrid/row_Over.png) repeat-x bottom left scroll;
+    background: #FFFFFF url(./images/ListGrid/row_Over.png) repeat-x bottom left scroll;
 }
+
 .tallCellOver,
 .tallCellOverDark {
     border-bottom: 1px solid #e5e5e5;
-	background-color:#e5e5e5;
+    background-color: #e5e5e5;
 }
 
 .cellSelected,
@@ -1334,28 +1448,32 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .specialColSelected,
 .recordSummaryCellSelected,
 .recordSummaryCellSelectedDark {
-    background:#fceeaf;
+    background: #fceeaf;
 }
+
 .tallCellSelected,
 .tallCellSelectedDark {
-    background:#fceeaf;
+    background: #fceeaf;
 }
+
 .cellSelectedOver,
 .cellSelectedOverDark,
 .specialColSelectedOver,
 .recordSummaryCellSelectedOver,
 .recordSummaryCellSelectedOverDark {
-    background:#fceeaf url(images/ListGrid/row_Over.png) repeat-x bottom left scroll;
+    background: #fceeaf url(images/ListGrid/row_Over.png) repeat-x bottom left scroll;
 }
+
 .tallCellSelectedOver,
 .tallCellSelectedOverDark {
-	background-color:#fceeaf;
+    background-color: #fceeaf;
 }
+
 .groupSummaryCell,
 .groupSummaryCellDisabled,
 .gridSummaryCell,
 .gridSummaryCellDisabled {
-    font-weight:bold;
+    font-weight: bold;
 }
 
 .cellDisabled,
@@ -1367,15 +1485,15 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .gridSummaryCellDisabled,
 .recordSummaryCellDisabled,
 .recordSummaryCellDisabledDark {
-	color:#AAAAAA;
-	background-color:#FFFFFF;
+    color: #AAAAAA;
+    background-color: #FFFFFF;
 }
 
 /* for grouping */
 .groupNode {
-    font-weight:bold;
-    font-family:Arial,Verdana,sans-serif;
-	color:#465769;
+    font-weight: bold;
+    font-family: Arial, Verdana, sans-serif;
+    color: #465769;
     border-bottom: 1px solid #aebebe;
 }
 
@@ -1403,8 +1521,10 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .treeTallCellSelectedOverDark,
 .treeTallCellDisabled,
 .treeTallCellDisabledDark {
-	font-family:Arial,Verdana,sans-serif; font-size:11px; text-overflow:ellipsis;
-	color:black;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    text-overflow: ellipsis;
+    color: black;
 }
 
 
@@ -1418,36 +1538,42 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .treeTallCellSelectedOverDark,
 .treeTallCellDisabled,
 .treeTallCellDisabledDark {
- }
+}
 
 .treeCellDark,
 .treeTallCellDark {
-	background-color:#fafafa;
+    background-color: #fafafa;
 }
+
 .treeCellOver,
 .treeCellOverDark {
-    background:#FFFFFF url(./images/ListGrid/row_Over.png) repeat-x bottom left scroll;
+    background: #FFFFFF url(./images/ListGrid/row_Over.png) repeat-x bottom left scroll;
 }
+
 .treeTallCellOver,
 .treeTallCellOverDark {
-	background-color:#e5e5e5;
+    background-color: #e5e5e5;
 }
+
 .treeCellSelected,
 .treeCellSelectedDark {
-    background:#fceeaf;
+    background: #fceeaf;
 
 }
+
 .treeTallCellSelected,
 .treeTallCellSelectedDark {
-	background:#fceeaf;
+    background: #fceeaf;
 }
+
 .treeCellSelectedOver,
 .treeCellSelectedOverDark {
-    background:#fceeaf url(images/ListGrid/row_Over.png) repeat-x bottom left scroll;
+    background: #fceeaf url(images/ListGrid/row_Over.png) repeat-x bottom left scroll;
 }
+
 .treeTallCellSelectedOver,
 .treeTallCellSelectedOverDark {
-	background-color:#fceeaf;
+    background-color: #fceeaf;
 }
 
 
@@ -1455,20 +1581,20 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .treeCellDisabledDark,
 .treeTallCellDisabled,
 .treeTallCellDisabledDark {
-	color:#AAAAAA;
-	background-color:#FFFFFF;
+    color: #AAAAAA;
+    background-color: #FFFFFF;
 }
 
 
 /* Field builders (Formula/Summary) */
 .sampleOutput {
     border: 2px solid #D9D9D9;
-    padding: 3px; 
+    padding: 3px;
 }
 
 /* Multi-sort - sort-index appearing next to sort-arrows in field headers */
 .sortNumeral {
-    font-size:7px;
+    font-size: 7px;
 }
 
 /*============================================================
@@ -1476,14 +1602,14 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 ============================================================*/
 .toolStrip {
     border: 1px solid #A7ABB4;
-	background-color:#FFFFFF;
-    background-image:url("images/ToolStrip/background.png");
+    background-color: #FFFFFF;
+    background-image: url("images/ToolStrip/background.png");
 }
 
 .toolStripVertical {
     border: 1px solid #A7ABB4;
-	background-color:#FFFFFF;
-    background-image:url("images/ToolStrip/background_vertical.png");
+    background-color: #FFFFFF;
+    background-image: url("images/ToolStrip/background_vertical.png");
 }
 
 /*============================================================
@@ -1499,12 +1625,12 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .toolStripGroupDisabled {
     background: #eaeff9;
     background: -moz-linear-gradient(top, #eaeff9 0%, #d7dfed 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eaeff9), color-stop(100%,#d7dfed));
-    background: -webkit-linear-gradient(top, #eaeff9 0%,#d7dfed 100%);
-    background: -o-linear-gradient(top, #eaeff9 0%,#d7dfed 100%);
-    background: -ms-linear-gradient(top, #eaeff9 0%,#d7dfed 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eaeff9', endColorstr='#d7dfed',GradientType=0 );
-    background: linear-gradient(top, #eaeff9 0%,#d7dfed 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eaeff9), color-stop(100%, #d7dfed));
+    background: -webkit-linear-gradient(top, #eaeff9 0%, #d7dfed 100%);
+    background: -o-linear-gradient(top, #eaeff9 0%, #d7dfed 100%);
+    background: -ms-linear-gradient(top, #eaeff9 0%, #d7dfed 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eaeff9', endColorstr='#d7dfed', GradientType=0);
+    background: linear-gradient(top, #eaeff9 0%, #d7dfed 100%);
     border: 1px solid #A6ABB4;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -1601,7 +1727,7 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 	13) Tools
 ============================================================*/
 .resizeThumb {
-    background-color:#009999;
+    background-color: #009999;
 }
 
 /*============================================================
@@ -1609,8 +1735,8 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 ==============================================================*/
 
 .tileGrid {
-    border:1px solid #808080;
-    
+    border: 1px solid #808080;
+
 }
 
 .tileValue,
@@ -1619,12 +1745,12 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
 .tileValueOver,
 .tileValueSelectedOver,
 .tileValueSelectedDown {
-    font-size: 8pt; 
-    text-overflow:ellipsis;   
+    font-size: 8pt;
+    text-overflow: ellipsis;
 }
 
 .tileValueOver {
-    color:black;
+    color: black;
 }
 
 .tileValueSelected {
@@ -1635,37 +1761,36 @@ background:#A6ABB4 url(./images/cssButton/button_Over_stretch.png) repeat-x;
     color: black;
 }
 
-.simpleTile, 
+.simpleTile,
 .simpleTileOver,
 .simpleTileSelected,
 .simpleTileSelectedOver {
     font-size: 8pt;
-    padding:3px    
+    padding: 3px
 }
 
 .simpleTile {
-    border:1px solid transparent;
-    
+    border: 1px solid transparent;
+
 }
+
 .simpleTileOver {
-    background-image:url("images/TileGrid/tileOver.png");
-    border:1px solid #CFCFCF;
+    background-image: url("images/TileGrid/tileOver.png");
+    border: 1px solid #CFCFCF;
 }
 
 .simpleTileSelected {
-      border:1px solid #CFCFCF;
-      background-image:url("images/TileGrid/tileOver.png");
+    border: 1px solid #CFCFCF;
+    background-image: url("images/TileGrid/tileOver.png");
 }
 
 /*#cfcec9*/
 .simpleTileSelectedOver {
-      background-color:#CFCFCF;
-      background-image:url("images/TileGrid/tileOver.png");
-      border:1px solid #CFCFCF;
+    background-color: #CFCFCF;
+    background-image: url("images/TileGrid/tileOver.png");
+    border: 1px solid #CFCFCF;
 
 }
-
-
 
 
 /*IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
@@ -1686,99 +1811,171 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 /* styles for simple css-styled tabs*/
 /* left */
 .tabButtonLeft {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; background-color:#CCCCCC;
-    border-left:1px solid white; border-top:1px solid white; border-bottom:1px solid #808080;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    background-color: #CCCCCC;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    border-bottom: 1px solid #808080;
 }
+
 .tabButtonLeftOver,
 .tabButtonLeftSelected,
 .tabButtonLeftSelectedOver {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; background-color:#D6D6D6;
-    border-left:1px solid white; border-top:1px solid white; border-bottom:1px solid #808080;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    background-color: #D6D6D6;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    border-bottom: 1px solid #808080;
 }
+
 .tabButtonLeftDown,
 .tabButtonLeftSelectedDown {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; background-color: #D6D6D6;
-    border-left:1px solid #808080; border-top:1px solid #808080; border-bottom:1px solid white;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    background-color: #D6D6D6;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-bottom: 1px solid white;
 }
+
 .tabButtonLeftSelectedDisabled,
 .tabButtonLeftDisabled {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; color:#666666;
-    background-color:#CCCCCC; 
-    border-left:1px solid #CCCCCC; border-top:1px solid #CCCCCC; border-bottom:1px solid #CCCCCC;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: #666666;
+    background-color: #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
 }
-/* right */                        
+
+/* right */
 .tabButtonRight {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; background-color:#CCCCCC;
-    border-top:1px solid white; border-bottom:1px solid #808080; border-right:1px solid #808080;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    background-color: #CCCCCC;
+    border-top: 1px solid white;
+    border-bottom: 1px solid #808080;
+    border-right: 1px solid #808080;
 }
+
 .tabButtonRightOver,
 .tabButtonRightSelected,
 .tabButtonRightSelectedOver {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; background-color:#D6D6D6; 
-    border-top:1px solid white; border-bottom:1px solid #808080; border-right:1px solid #808080;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    background-color: #D6D6D6;
+    border-top: 1px solid white;
+    border-bottom: 1px solid #808080;
+    border-right: 1px solid #808080;
 }
+
 .tabButtonRightDown,
 .tabButtonRightSelectedDown {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; background-color: #D6D6D6; 
-    border-top:1px solid #808080; border-bottom:1px solid white; border-right:1px solid white;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    background-color: #D6D6D6;
+    border-top: 1px solid #808080;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
 }
 
 .tabButtonRightSelectedDisabled,
 .tabButtonRightDisabled {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; color:#666666;
-    background-color:#CCCCCC; 
-    border-top:1px solid #CCCCCC; border-bottom:1px solid #CCCCCC; border-right:1px solid #CCCCCC;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: #666666;
+    background-color: #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
 }
 
-/* top */                        
+/* top */
 .tabButtonTop {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; background-color:#CCCCCC;
-    border-left:1px solid white; border-top:1px solid white; border-right:1px solid #808080;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    background-color: #CCCCCC;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    border-right: 1px solid #808080;
 }
+
 .tabButtonTopOver,
 .tabButtonTopSelected,
 .tabButtonTopSelectedOver {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; background-color:#D6D6D6; 
-    border-left:1px solid white; border-top:1px solid white; border-right:1px solid #808080;
-}
-.tabButtonTopDown,
-.tabButtonTopSelectedDown {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; background-color: #D6D6D6; 
-    border-left:1px solid #808080; border-top:1px solid #808080; border-right:1px solid white;
-}
-.tabButtonTopSelectedDisabled,
-.tabButtonTopDisabled {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; color:#666666; 
-    background-color:#CCCCCC; 
-    border-left:1px solid #CCCCCC; border-top:1px solid #CCCCCC; border-right:1px solid #CCCCCC;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    background-color: #D6D6D6;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    border-right: 1px solid #808080;
 }
 
-/* bottom */                        
-.tabButtonBottom {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; background-color:#CCCCCC;
-    border-left:1px solid white; border-bottom:1px solid #808080; border-right:1px solid #808080;
+.tabButtonTopDown,
+.tabButtonTopSelectedDown {
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    background-color: #D6D6D6;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid white;
 }
+
+.tabButtonTopSelectedDisabled,
+.tabButtonTopDisabled {
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: #666666;
+    background-color: #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+}
+
+/* bottom */
+.tabButtonBottom {
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    background-color: #CCCCCC;
+    border-left: 1px solid white;
+    border-bottom: 1px solid #808080;
+    border-right: 1px solid #808080;
+}
+
 .tabButtonBottomOver,
 .tabButtonBottomSelected,
 .tabButtonBottomSelectedOver {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; background-color:#D6D6D6; 
-    border-left:1px solid white; border-bottom:1px solid #808080; border-right:1px solid #808080;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    background-color: #D6D6D6;
+    border-left: 1px solid white;
+    border-bottom: 1px solid #808080;
+    border-right: 1px solid #808080;
 }
+
 .tabButtonBottomDown,
 .tabButtonBottomSelectedDown {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; background-color: #D6D6D6; 
-    border-left:1px solid #808080; border-bottom:1px solid white; border-right:1px solid white;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    background-color: #D6D6D6;
+    border-left: 1px solid #808080;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
 }
+
 .tabButtonBottomSelectedDisabled,
 .tabButtonBottomDisabled {
-    font-family:Arial,Verdana,sans-serif; font-size:11px; color:#666666;
-    background-color:#CCCCCC; 
-    border-left:1px solid #CCCCCC; border-bottom:1px solid #CCCCCC; border-right:1px solid #CCCCCC;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: #666666;
+    background-color: #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
 }
-						
-
-
-
 
 
 /*IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
@@ -1792,7 +1989,6 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII*/
 
 
-
 /*============================================================
 	CubeGrid - Analytics Module only
 		cubeGrid.baseStyle - cubeCell
@@ -1802,292 +1998,497 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 		reportHeaderBar.button.baseStyle - rowHeaderLabel
 		reportHeaderBar.button.baseStyle - colHeaderLabel
 ============================================================*/
-.cubeGridBody {}
+.cubeGridBody {
+}
+
 .cubeCell {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:black; text-overflow:ellipsis;
-    background-color:#FFFFFF;
-    border-top:1px solid white; border-bottom:1px solid #AAAAAA; 
-    border-left:1px solid white; border-right:1px solid #AAAAAA;
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    text-overflow: ellipsis;
+    background-color: #FFFFFF;
+    border-top: 1px solid white;
+    border-bottom: 1px solid #AAAAAA;
+    border-left: 1px solid white;
+    border-right: 1px solid #AAAAAA;
 }
 
 .cubeCellDark {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:black; text-overflow:ellipsis;
-    background-color:#EEEEEE;
-    border-top:1px solid #EEEEEE; border-bottom:1px solid #AAAAAA; 
-    border-left:1px solid #EEEEEE; border-right:1px solid #AAAAAA;
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    text-overflow: ellipsis;
+    background-color: #EEEEEE;
+    border-top: 1px solid #EEEEEE;
+    border-bottom: 1px solid #AAAAAA;
+    border-left: 1px solid #EEEEEE;
+    border-right: 1px solid #AAAAAA;
 }
 
 .cubeCellDisabled {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:#666666; text-overflow:ellipsis;
-    background-color:#FFFFFF; 
-    border-top:1px solid #FFFFFF; border-bottom:1px solid #FFFFFF; 
-    border-left:1px solid #FFFFFF; border-right:1px solid #FFFFFF;
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #666666;
+    text-overflow: ellipsis;
+    background-color: #FFFFFF;
+    border-top: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    border-left: 1px solid #FFFFFF;
+    border-right: 1px solid #FFFFFF;
 }
 
-/* partial styles */ 
+/* partial styles */
 .cubeCellOver {
-    background-color:#B8D1EE;
-    border-top:1px solid #B8D1EE; border-bottom:1px solid #AAAAAA; 
-    border-left:1px solid #B8D1EE; border-right:1px solid #AAAAAA;
+    background-color: #B8D1EE;
+    border-top: 1px solid #B8D1EE;
+    border-bottom: 1px solid #AAAAAA;
+    border-left: 1px solid #B8D1EE;
+    border-right: 1px solid #AAAAAA;
 }
 
 .cubeCellSelected {
-    background-color:#FFE781;
-    border-top:1px solid #FFE781; border-bottom:1px solid #AAAAAA; 
-    border-left:1px solid #FFE781; border-right:1px solid #AAAAAA;
+    background-color: #FFE781;
+    border-top: 1px solid #FFE781;
+    border-bottom: 1px solid #AAAAAA;
+    border-left: 1px solid #FFE781;
+    border-right: 1px solid #AAAAAA;
 }
 
 .cubeCellSelectedOver {
-    background-color:#B8D1EE;
-    border-top:1px solid #B8D1EE; border-bottom:1px solid #AAAAAA; 
-    border-left:1px solid #B8D1EE; border-right:1px solid #AAAAAA;
+    background-color: #B8D1EE;
+    border-top: 1px solid #B8D1EE;
+    border-bottom: 1px solid #AAAAAA;
+    border-left: 1px solid #B8D1EE;
+    border-right: 1px solid #AAAAAA;
 }
 
 /* row headers */
 .rowHeader {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:white;
-    background-color:#6682A0;
-    border-left:1px solid #FFFFFF; border-top:1px solid #FFFFFF;
-    border-right:1px solid #264260; border-bottom:1px solid #264260;
-    background-image:url("images/CubeGrid/rowHeader.gif");
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: white;
+    background-color: #6682A0;
+    border-left: 1px solid #FFFFFF;
+    border-top: 1px solid #FFFFFF;
+    border-right: 1px solid #264260;
+    border-bottom: 1px solid #264260;
+    background-image: url("images/CubeGrid/rowHeader.gif");
 }
+
 .rowHeaderOver {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:white;
-    background-color:#6682A0;
-    border-left:1px solid #264260; border-top:1px solid #264260;
-    border-right:1px solid #FFFFFF; border-bottom:1px solid #FFFFFF;
-    background-image:url("images/CubeGrid/rowHeaderOver.gif");
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: white;
+    background-color: #6682A0;
+    border-left: 1px solid #264260;
+    border-top: 1px solid #264260;
+    border-right: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    background-image: url("images/CubeGrid/rowHeaderOver.gif");
 }
+
 .rowHeaderDown {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:white;
-    background-color:#6682A0;
-    border-left:1px solid #264260; border-top:1px solid #264260;
-    border-right:1px solid #FFFFFF; border-bottom:1px solid #FFFFFF;
-    background-image:url("images/CubeGrid/rowHeaderOver.gif");
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: white;
+    background-color: #6682A0;
+    border-left: 1px solid #264260;
+    border-top: 1px solid #264260;
+    border-right: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    background-image: url("images/CubeGrid/rowHeaderOver.gif");
 }
+
 .rowHeaderDisabled {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:#808080;
-    background-color:#6682A0;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #808080;
+    background-color: #6682A0;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
 }
+
 .rowHeaderSelected,
 .rowHeaderSelectedDown {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:white;
-    background-color:#3E74B3;
-    border-left:1px solid #00008B; border-top:1px solid #00008B;
-    border-right:1px solid #F0F8FF; border-bottom:1px solid #F0F8FF;
-    background-image:url("images/CubeGrid/rowHeaderSelected.gif");
-    
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: white;
+    background-color: #3E74B3;
+    border-left: 1px solid #00008B;
+    border-top: 1px solid #00008B;
+    border-right: 1px solid #F0F8FF;
+    border-bottom: 1px solid #F0F8FF;
+    background-image: url("images/CubeGrid/rowHeaderSelected.gif");
+
 }
+
 .rowHeaderSelectedOver {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:white;
-    background-color:#3E74B3;
-    border-top:1px solid white; border-bottom:1px solid white; 
-    border-left:1px solid white; border-right:1px solid white;
-    background-image:url("images/CubeGrid/rowHeaderSelectedOver.gif");
-}						
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: white;
+    background-color: #3E74B3;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    background-image: url("images/CubeGrid/rowHeaderSelectedOver.gif");
+}
+
 .rowHeaderSelectedDisabled {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:#808080;
-    background-color:#3E74B3;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #808080;
+    background-color: #3E74B3;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
 }
 
 /* row label */
 .rowHeaderLabel {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#204B7A;
-    border-left:1px solid #FFFFFF; border-top:1px solid #FFFFFF;
-    border-right:1px solid #000B3A; border-bottom:1px solid #000B3A;
-    background-image:url("images/CubeGrid/rowHeaderLabel.gif");
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #204B7A;
+    border-left: 1px solid #FFFFFF;
+    border-top: 1px solid #FFFFFF;
+    border-right: 1px solid #000B3A;
+    border-bottom: 1px solid #000B3A;
+    background-image: url("images/CubeGrid/rowHeaderLabel.gif");
 }
+
 .rowHeaderLabelOver {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#204B7A;
-    border-left:1px solid #000B3A; border-top:1px solid #000B3A;
-    border-right:1px solid #FFFFFF; border-bottom:1px solid #FFFFFF;
-    background-image:url("images/CubeGrid/rowHeaderLabel.gif");
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #204B7A;
+    border-left: 1px solid #000B3A;
+    border-top: 1px solid #000B3A;
+    border-right: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    background-image: url("images/CubeGrid/rowHeaderLabel.gif");
 }
+
 .rowHeaderLabelDown {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#204B7A;
-    border-left:1px solid #000B3A; border-top:1px solid #000B3A;
-    border-right:1px solid #FFFFFF; border-bottom:1px solid #FFFFFF;
-    background-image:url("images/CubeGrid/rowHeaderLabelDown.gif");
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #204B7A;
+    border-left: 1px solid #000B3A;
+    border-top: 1px solid #000B3A;
+    border-right: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    background-image: url("images/CubeGrid/rowHeaderLabelDown.gif");
 }
+
 .rowHeaderLabelDisabled {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:#808080;
-    background-color:#7D7D7D;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #808080;
+    background-color: #7D7D7D;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
 }
+
 .rowHeaderLabelSelected,
 .rowHeaderLabelSelectedDown {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#3E74B3;
-    border-left:1px solid black; border-top:1px solid black;
-    border-right:1px solid #555555; border-bottom:1px solid #555555;
-    background-image:url("images/CubeGrid/rowHeaderDown.gif");
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #3E74B3;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid #555555;
+    border-bottom: 1px solid #555555;
+    background-image: url("images/CubeGrid/rowHeaderDown.gif");
 }
+
 .rowHeaderLabelSelectedOver {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#3E74B3;
-    border-top:1px solid white; border-bottom:1px solid white; 
-    border-left:1px solid white; border-right:1px solid white;
-    background-image:url("images/CubeGrid/rowHeaderDown.gif");
-}						
-.rowHeaderLabelSelectedDisabled	{
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:#808080;
-    background-color:#7D7D7D;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #3E74B3;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    background-image: url("images/CubeGrid/rowHeaderDown.gif");
 }
-						
+
+.rowHeaderLabelSelectedDisabled {
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #808080;
+    background-color: #7D7D7D;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+}
+
 /* column headers */
 .colHeader {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:white;
-    background-color:#6682A0;
-    border-left:1px solid #FFFFFF; border-top:1px solid #FFFFFF;
-    border-right:1px solid #264260; border-bottom:1px solid #264260;
-    background-image:url("images/CubeGrid/colHeader.gif");
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: white;
+    background-color: #6682A0;
+    border-left: 1px solid #FFFFFF;
+    border-top: 1px solid #FFFFFF;
+    border-right: 1px solid #264260;
+    border-bottom: 1px solid #264260;
+    background-image: url("images/CubeGrid/colHeader.gif");
 }
+
 .colHeaderOver {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:white;
-    background-color:#6682A0;
-    border-left:1px solid #264260; border-top:1px solid #264260;
-    border-right:1px solid #FFFFFF; border-bottom:1px solid #FFFFFF;
-    background-image:url("images/CubeGrid/colHeaderOver.gif");
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: white;
+    background-color: #6682A0;
+    border-left: 1px solid #264260;
+    border-top: 1px solid #264260;
+    border-right: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    background-image: url("images/CubeGrid/colHeaderOver.gif");
 }
+
 .colHeaderDown {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:white;
-    background-color:#6682A0;
-    border-left:1px solid #264260; border-top:1px solid #264260;
-    border-right:1px solid #FFFFFF; border-bottom:1px solid #FFFFFF;
-    background-image:url("images/CubeGrid/colHeader.gif");
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: white;
+    background-color: #6682A0;
+    border-left: 1px solid #264260;
+    border-top: 1px solid #264260;
+    border-right: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    background-image: url("images/CubeGrid/colHeader.gif");
 }
+
 .colHeaderDisabled {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:#808080;
-    background-color:#6682A0;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #808080;
+    background-color: #6682A0;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
 }
+
 .colHeaderSelected,
 .colHeaderSelectedDown {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#3E74B3;
-    border-left:1px solid #00008B; border-top:1px solid #00008B;
-    border-right:1px solid #F0F8FF; border-bottom:1px solid #F0F8FF;
-    background-image:url("images/CubeGrid/colHeaderSelected.gif");
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #3E74B3;
+    border-left: 1px solid #00008B;
+    border-top: 1px solid #00008B;
+    border-right: 1px solid #F0F8FF;
+    border-bottom: 1px solid #F0F8FF;
+    background-image: url("images/CubeGrid/colHeaderSelected.gif");
 }
+
 .colHeaderSelectedOver {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#3E74B3;
-    border-top:1px solid white; border-bottom:1px solid white; 
-    border-left:1px solid white; border-right:1px solid white;
-    background-image:url("images/CubeGrid/colHeaderSelectedOver.gif");
-}						
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #3E74B3;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    background-image: url("images/CubeGrid/colHeaderSelectedOver.gif");
+}
+
 .colHeaderSelectedDisabled {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:#808080;
-    background-color:#3E74B3;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #808080;
+    background-color: #3E74B3;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
 }
 
 /* column label */
 .colHeaderLabel {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#204B7A;
-    border-left:1px solid #FFFFFF; border-top:1px solid #FFFFFF;
-    border-right:1px solid #555555; border-bottom:1px solid #555555;
-    background-image:url("images/CubeGrid/colHeaderLabel.gif");
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #204B7A;
+    border-left: 1px solid #FFFFFF;
+    border-top: 1px solid #FFFFFF;
+    border-right: 1px solid #555555;
+    border-bottom: 1px solid #555555;
+    background-image: url("images/CubeGrid/colHeaderLabel.gif");
 }
+
 .colHeaderLabelOver,
 .colHeaderLabelDown {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#204B7A;
-    border-left:1px solid #000B3A; border-top:1px solid #000B3A;
-    border-right:1px solid #555555; border-bottom:1px solid #555555;
-    background-image:url("images/CubeGrid/colHeaderLabelDown.gif");
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #204B7A;
+    border-left: 1px solid #000B3A;
+    border-top: 1px solid #000B3A;
+    border-right: 1px solid #555555;
+    border-bottom: 1px solid #555555;
+    background-image: url("images/CubeGrid/colHeaderLabelDown.gif");
 }
+
 .colHeaderLabelDisabled {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:#808080;
-    background-color:#7D7D7D;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #808080;
+    background-color: #7D7D7D;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
 }
+
 .colHeaderLabelSelected,
 .colHeaderLabelSelectedDown {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#3E74B3;
-    border-left:1px solid black; border-top:1px solid black;
-    border-right:1px solid #555555; border-bottom:1px solid #555555;
-    background-image:url("images/CubeGrid/colHeaderLabelDown.gif");
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #3E74B3;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid #555555;
+    border-bottom: 1px solid #555555;
+    background-image: url("images/CubeGrid/colHeaderLabelDown.gif");
 }
+
 .colHeaderLabelSelectedOver {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#3E74B3;
-    border-top:1px solid white; border-bottom:1px solid white; 
-    border-right:1px solid #555555; border-bottom:1px solid #555555;
-    background-image:url("images/CubeGrid/colHeaderDown.gif");
-}						
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #3E74B3;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-right: 1px solid #555555;
+    border-bottom: 1px solid #555555;
+    background-image: url("images/CubeGrid/colHeaderDown.gif");
+}
+
 .colHeaderLabelSelectedDisabled {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:#808080;
-    background-color:#7D7D7D;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #808080;
+    background-color: #7D7D7D;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
 }
 
 /* inner header */
 .innerHeader {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:black;
-    background-color:#CCCCCC;
-    border-left:1px solid white; border-top:1px solid white;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
-    background-image:url("images/CubeGrid/innerHeader.gif");
-}
-.innerHeaderOver {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:black;
-    background-color:#CCCCCC;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid white; border-bottom:1px solid white;
-    background-image:url("images/CubeGrid/innerHeader.gif");
-}
-.innerHeaderDown {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:black;
-    background-color:#CCCCCC;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid white; border-bottom:1px solid white;
-    background-image:url("images/CubeGrid/innerHeader.gif");
-}
-.innerHeaderDisabled {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:#808080;
-    background-color:#CCCCCC;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
-}
-.innerHeaderSelected,
-.innerHeaderSelectedDown {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#3E74B3;
-    border-left:1px solid #00008B; border-top:1px solid #00008B;
-    border-right:1px solid #F0F8FF; border-bottom:1px solid #F0F8FF;
-    background-image:url("images/CubeGrid/innerHeaderSelected.gif");
-}
-.innerHeaderSelectedOver {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#3E74B3;
-    border-top:1px solid white; border-bottom:1px solid white; 
-    border-left:1px solid white; border-right:1px solid white;
-    background-image:url("images/CubeGrid/innerHeaderSelectedOver.gif");
-}						
-.innerHeaderSelectedDisabled {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:#808080;
-    background-color:#CCCCCC;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    background-color: #CCCCCC;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+    background-image: url("images/CubeGrid/innerHeader.gif");
 }
 
+.innerHeaderOver {
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    background-color: #CCCCCC;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    background-image: url("images/CubeGrid/innerHeader.gif");
+}
+
+.innerHeaderDown {
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    background-color: #CCCCCC;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    background-image: url("images/CubeGrid/innerHeader.gif");
+}
+
+.innerHeaderDisabled {
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #808080;
+    background-color: #CCCCCC;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+}
+
+.innerHeaderSelected,
+.innerHeaderSelectedDown {
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #3E74B3;
+    border-left: 1px solid #00008B;
+    border-top: 1px solid #00008B;
+    border-right: 1px solid #F0F8FF;
+    border-bottom: 1px solid #F0F8FF;
+    background-image: url("images/CubeGrid/innerHeaderSelected.gif");
+}
+
+.innerHeaderSelectedOver {
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #3E74B3;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    background-image: url("images/CubeGrid/innerHeaderSelectedOver.gif");
+}
+
+.innerHeaderSelectedDisabled {
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #808080;
+    background-color: #CCCCCC;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+}
 
 
 /*============================================================
@@ -2098,50 +2499,58 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 		others are currently fixed
 ============================================================*/
 
-.chart { 
-    background-color:#CCCCCC;
+.chart {
+    background-color: #CCCCCC;
 }
+
 .chartTitle {
-    color:black;
-    font-family: Verdana,sans-serif;
-    font-size:14px;
+    color: black;
+    font-family: Verdana, sans-serif;
+    font-size: 14px;
     font-weight: bold;
-    text-align:center
+    text-align: center
 }
+
 .chartAxisTitle {
-    color:green;
-    font-family: Verdana,sans-serif;
+    color: green;
+    font-family: Verdana, sans-serif;
     font-weight: bold;
-    font-size:12px;
+    font-size: 12px;
 }
+
 .chartValueTitle {
-    color:black;
-    font-family: Verdana,sans-serif;
-    font-size:10px;
+    color: black;
+    font-family: Verdana, sans-serif;
+    font-size: 10px;
 }
+
 .chartTotal {
-    color:black;
-    font-family:Arial,Verdana,sans-serif;
-    font-size:12px;
-    background-color:linen;
+    color: black;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 12px;
+    background-color: linen;
 }
+
 .chartBody {
-    border-left:1px solid black;
-    border-top:1px dashed blue;
-    border-right:1px solid black;
-    background-color:#DDDDDD
-}   
+    border-left: 1px solid black;
+    border-top: 1px dashed blue;
+    border-right: 1px solid black;
+    background-color: #DDDDDD
+}
+
 .chartBar1 {
-    background-color:red;
-    filter:"progid:dximagetransform.microsoft.gradient(gradientType=1, startColorStr=#990000, endColorStr=#FF0000)";
+    background-color: red;
+    filter: "progid:dximagetransform.microsoft.gradient(gradientType=1, startColorStr=#990000, endColorStr=#FF0000)";
 }
+
 .chartBar2 {
-    background-color:blue;
-    filter:"progid:dximagetransform.microsoft.gradient(gradientType=1, startColorStr=#000099, endColorStr=#0000FF)";
+    background-color: blue;
+    filter: "progid:dximagetransform.microsoft.gradient(gradientType=1, startColorStr=#000099, endColorStr=#0000FF)";
 }
+
 .chartBar3 {
-    background-color:green;
-    filter:"progid:dximagetransform.microsoft.gradient(gradientType=1, startColorStr=#009900, endColorStr=#00FF00)";
+    background-color: green;
+    filter: "progid:dximagetransform.microsoft.gradient(gradientType=1, startColorStr=#009900, endColorStr=#00FF00)";
 }
 
 
@@ -2152,9 +2561,10 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
         - SectionStack headers
 ============================================================*/
 .printHeader {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;    
-    border:1px solid black;
-    font-weight:bold;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    border: 1px solid black;
+    font-weight: bold;
 }
 
 /*============================================================
@@ -2165,153 +2575,209 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 .calendarDisabled,
 .calendarWorkday,
 .calendarDark {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
-    background-color:#ffffff;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
+    background-color: #ffffff;
 }
 
 .calendarDisabled {
-    background-color:#F6F7F9;    
+    background-color: #F6F7F9;
 }
 
 .calendarWorkday {
-    background-color:#ffffcc; 
+    background-color: #ffffcc;
 }
 
 .calendarOver,
 .calendarOverDark {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
-    background-color:#c0ffc0;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
+    background-color: #c0ffc0;
 }
+
 .calendarCellSelected {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
-    background-color:#CCCCCC; 
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
+    background-color: #CCCCCC;
 }
+
 .labelColumn {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
-    background-color:#F6F7F9;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
+    background-color: #F6F7F9;
 }
+
 /* ----month---- */
 /* calMonthDayHeader and Body */
 
 .calMonthDayHeader,
 .calMonthDayHeaderDark {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
-    background-color:#F6F7F9;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
+    background-color: #F6F7F9;
 }
 
 .calMonthDayHeaderOver,
 .calMonthDayHeaderOverDark {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
     background-color: #c0ffc0;
 }
+
 .calMonthDayBody,
 .calMonthDayBodyDark {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
-    background-color:#ffffff;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
+    background-color: #ffffff;
 }
+
 .calMonthDayBodyOver,
 .calMonthDayBodyOverDark {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
-    background-color:#c0ffc0;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
+    background-color: #c0ffc0;
 }
 
 .calMonthDayBodyDisabled,
 .calMonthDayBodyDisabledOver {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
-    background-color:#F6F7F9;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
+    background-color: #F6F7F9;
 }
+
 /* calMonthOtherDayHeader and Body */
 
 .calMonthOtherDayHeader,
 .calMonthOtherDayHeaderDark {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    color:#444444;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: #444444;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
     background-color: #aaaaaa;
 }
+
 .calMonthOtherDayHeaderOver,
 .calMonthOtherDayHeaderOverDark {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    color:#444444;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: #444444;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
     background-color: #c0ffc0;
 }
+
 .calMonthOtherDayBody,
-.calMonthOtherDayBodyDark, 
-.calMonthOtherDayBodyDisabled, 
-.calMonthOtherDayBodyDisabledOver{
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
-    background-color:#F6F7F9;
+.calMonthOtherDayBodyDark,
+.calMonthOtherDayBodyDisabled,
+.calMonthOtherDayBodyDisabledOver {
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
+    background-color: #F6F7F9;
 }
+
 .calMonthOtherDayBodyOver,
 .calMonthOtherDayBodyOverDark {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
-    background-color:#c0ffc0;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
+    background-color: #c0ffc0;
 }
+
 /* calMonthOtherDayBlank */
 
 .calMonthOtherDayBlank,
-.calMonthOtherDayBlankDark, 
+.calMonthOtherDayBlankDark,
 .calMonthOtherDayBlankOver,
 .calMonthOtherDayBlankOverDark {
-    font-family:Arial,Verdana,sans-serif; font-size:11px;
-    color:#444444;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: #444444;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
     background-color: #F6F7F9;
 }
 
 /* calMonthEventLink */
 
-a.calMonthEventLink:link {color:blue; text-decoration:none}
-a.calMonthEventLink:visited {color:blue; text-decoration:none}
-a.calMonthEventLink:hover {color:blue; text-decoration:underline}
-a.calMonthEventLink:active {color:blue; text-decoration:none}
+a.calMonthEventLink:link {
+    color: blue;
+    text-decoration: none
+}
+
+a.calMonthEventLink:visited {
+    color: blue;
+    text-decoration: none
+}
+
+a.calMonthEventLink:hover {
+    color: blue;
+    text-decoration: underline
+}
+
+a.calMonthEventLink:active {
+    color: blue;
+    text-decoration: none
+}
 
 /* ----event window---- */
 
 .eventWindow {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size: 9px;
-    background-color:#EBF4FF;
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 9px;
+    background-color: #EBF4FF;
     border: 1px solid #A2CBFF;
 }
 
 .eventWindowHeader {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size: 9px;
-    color:#4C4C4C;
-    background-color:#63a2e1;
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 9px;
+    color: #4C4C4C;
+    background-color: #63a2e1;
 }
 
 .eventWindowBody {
-    font-family:Arial,Verdana,Bitstream Vera Sans,sans-serif; font-size: 9px;
-    color:black;
-    background-color:#EBF4FF;
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 9px;
+    color: black;
+    background-color: #EBF4FF;
     padding: 3px;
 }
 
 .eventWindowResizer {
-    border-top:1px solid white;
+    border-top: 1px solid white;
     border-bottom: 1px solid white;
 }
 
@@ -2330,56 +2796,62 @@ a.calMonthEventLink:active {color:blue; text-decoration:none}
 .propSheetValue,
 .propSheetValueFocused,
 .propSheetDisabled {
-    font-family:Arial,Verdana,sans-serif;
-    font-size:11px;
-    border-bottom:1px solid #AAAAAA;
-    border-right:1px solid #AAAAAA;
-    padding:0px;
-    margin:0px;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    border-bottom: 1px solid #AAAAAA;
+    border-right: 1px solid #AAAAAA;
+    padding: 0px;
+    margin: 0px;
 }
+
 .propSheetTitle,
 .propSheetTitleFocused,
 .propSheetTitleDisabled {
-    font-family:Arial,Verdana,sans-serif;
-    font-size:11px;
-    border-bottom:1px solid #AAAAAA;
-    border-right:1px solid #AAAAAA;
-    background-color:#DDDDDD;
-    padding-left:4px;
-    padding-right:4px;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    border-bottom: 1px solid #AAAAAA;
+    border-right: 1px solid #AAAAAA;
+    background-color: #DDDDDD;
+    padding-left: 4px;
+    padding-right: 4px;
 }
+
 .propSheetTitleError,
 .propSheetValueError {
-    font-family:Arial,Verdana,sans-serif; 
-    font-size:11px; color:#204268; 
-    background-color:#CFD9F2
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    color: #204268;
+    background-color: #CFD9F2
 }
+
 .propSheetField,
 .propSheetFieldDisabled {
-    font-family:Arial,Verdana,sans-serif;
-    font-size:11px;
-    background-color:#FFFFFF;
-    border:0px;
-    padding:0px;
-    padding-left:4px;
-    padding-right:4px;
-    margin-top:3px;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    background-color: #FFFFFF;
+    border: 0px;
+    padding: 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-top: 3px;
 }
+
 .propSheetHeading,
 .propSheetHeadingDisabled {
-    font-family:Arial,Verdana,sans-serif;
-    font-size:11px;
-    font-weight:bold;
-    color:black;
-    background-color:#CCCCCC;
-    padding:4px;
-    border-bottom:1px solid #AAAAAA;
+    font-family: Arial, Verdana, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: black;
+    background-color: #CCCCCC;
+    padding: 4px;
+    border-bottom: 1px solid #AAAAAA;
 }
+
 .propSheetSelectControl,
 .propSheetSelectControlFocused,
 .propSheetSelectControlDisabled {
-    padding-left:3px;
-    padding-right:3px;
+    padding-left: 3px;
+    padding-right: 3px;
 }
 
 .propSheetSectionItemCell,

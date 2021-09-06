@@ -1,12 +1,6 @@
-
 package com.salesmanager.shop.admin.model.permission;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.*;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -15,16 +9,15 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "name"
+        "name"
 })
-public class ShopGroup implements Serializable
-{
+public class ShopGroup implements Serializable {
 
+    private final static long serialVersionUID = 8390421982207090115L;
     @JsonProperty("name")
     private List<String> name = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-    private final static long serialVersionUID = 8390421982207090115L;
 
     @JsonProperty("name")
     public List<String> getName() {

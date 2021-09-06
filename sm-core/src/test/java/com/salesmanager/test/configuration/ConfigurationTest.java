@@ -14,5 +14,5 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = "com.salesmanager.core.business.repositories")
 @EntityScan(basePackages = "com.salesmanager.core.model")
 public class ConfigurationTest {
-	
+
 }

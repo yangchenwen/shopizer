@@ -12,141 +12,138 @@ import com.salesmanager.core.model.reference.zone.Zone;
 
 @Embeddable
 public class Delivery {
-	
-	@Column (name ="DELIVERY_LAST_NAME", length=64)
-	private String lastName;
 
-	@Column (name ="DELIVERY_FIRST_NAME", length=64)
-	private String firstName;
+    @Column(name = "DELIVERY_LAST_NAME", length = 64)
+    private String lastName;
 
-	@Column (name ="DELIVERY_COMPANY", length=100)
-	private String company;
-	
-	@Column (name ="DELIVERY_STREET_ADDRESS", length=256)
-	private String address;
+    @Column(name = "DELIVERY_FIRST_NAME", length = 64)
+    private String firstName;
 
-	@Column (name ="DELIVERY_CITY", length=100)
-	private String city;
-	
-	@Column (name ="DELIVERY_POSTCODE", length=20)
-	private String postalCode;
-	
-	@Column (name ="DELIVERY_STATE", length=100)
-	private String state;
-	
-	@Column(name="DELIVERY_TELEPHONE", length=32)
-	private String telephone;
-	
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Country.class)
-	@JoinColumn(name="DELIVERY_COUNTRY_ID", nullable=true)
-	private Country country;
-	
+    @Column(name = "DELIVERY_COMPANY", length = 100)
+    private String company;
 
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Zone.class)
-	@JoinColumn(name="DELIVERY_ZONE_ID", nullable=true)
-	private Zone zone;
-	
-	@Transient
-	private String latitude = null;
+    @Column(name = "DELIVERY_STREET_ADDRESS", length = 256)
+    private String address;
 
-	@Transient
-	private String longitude = null;
+    @Column(name = "DELIVERY_CITY", length = 100)
+    private String city;
 
+    @Column(name = "DELIVERY_POSTCODE", length = 20)
+    private String postalCode;
 
-	public String getCompany() {
-		return company;
-	}
+    @Column(name = "DELIVERY_STATE", length = 100)
+    private String state;
 
-	public void setCompany(String company) {
-		this.company = company;
-	}
+    @Column(name = "DELIVERY_TELEPHONE", length = 32)
+    private String telephone;
 
-	public String getAddress() {
-		return address;
-	}
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Country.class)
+    @JoinColumn(name = "DELIVERY_COUNTRY_ID", nullable = true)
+    private Country country;
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Zone.class)
+    @JoinColumn(name = "DELIVERY_ZONE_ID", nullable = true)
+    private Zone zone;
 
-	public String getCity() {
-		return city;
-	}
+    @Transient
+    private String latitude = null;
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+    @Transient
+    private String longitude = null;
 
-	public String getPostalCode() {
-		return postalCode;
-	}
+    public String getCompany() {
+        return company;
+    }
 
-	public void setPostalCode(String postalCode) {
-		this.postalCode = postalCode;
-	}
+    public void setCompany(String company) {
+        this.company = company;
+    }
 
-	public Country getCountry() {
-		return country;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public void setCountry(Country country) {
-		this.country = country;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public Zone getZone() {
-		return zone;
-	}
+    public String getCity() {
+        return city;
+    }
 
-	public void setZone(Zone zone) {
-		this.zone = zone;
-	}
-	
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-	public String getState() {
-		return state;
-	}
+    public String getPostalCode() {
+        return postalCode;
+    }
 
-	public void setState(String state) {
-		this.state = state;
-	}
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
 
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
+    public Country getCountry() {
+        return country;
+    }
 
-	public String getTelephone() {
-		return telephone;
-	}	
-	
-	public String getLastName() {
-		return lastName;
-	}
+    public void setCountry(Country country) {
+        this.country = country;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	
-	public String getFirstName() {
-		return firstName;
-	}
+    public Zone getZone() {
+        return zone;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	
-	public String getLatitude() {
-		return latitude;
-	}
+    public void setZone(Zone zone) {
+        this.zone = zone;
+    }
 
-	public void setLatitude(String latitude) {
-		this.latitude = latitude;
-	}
+    public String getState() {
+        return state;
+    }
 
-	public String getLongitude() {
-		return longitude;
-	}
+    public void setState(String state) {
+        this.state = state;
+    }
 
-	public void setLongitude(String longitude) {
-		this.longitude = longitude;
-	}
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
 }

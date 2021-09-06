@@ -13,70 +13,69 @@ import com.salesmanager.core.model.merchant.MerchantStore;
 /**
  * A catalog is used to classify products of a given merchant
  * to be displayed in a specific marketplace
- * @author c.samson
  *
+ * @author c.samson
  */
 public class Catalog extends SalesManagerEntity<Long, Catalog> implements Auditable {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
-	private Long id;
-	
-	private MerchantStore store;
-	
-	private String code;
-	
-	private List<CatalogDescription> descriptions = new ArrayList<CatalogDescription>();
-	
-	@Embedded
-	private AuditSection auditSection = new AuditSection();
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	@Override
-	public AuditSection getAuditSection() {
-		return auditSection;
-	}
+    private Long id;
 
-	@Override
-	public void setAuditSection(AuditSection audit) {
-		this.auditSection = auditSection;	
-	}
+    private MerchantStore store;
 
+    private String code;
 
-	@Override
-	public Long getId() {
-		return id;
-	}
+    private List<CatalogDescription> descriptions = new ArrayList<CatalogDescription>();
 
-	@Override
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
-	public MerchantStore getStore() {
-		return store;
-	}
+    @Embedded
+    private AuditSection auditSection = new AuditSection();
 
-	public void setStore(MerchantStore store) {
-		this.store = store;
-	}
+    @Override
+    public AuditSection getAuditSection() {
+        return auditSection;
+    }
 
-	public String getCode() {
-		return code;
-	}
+    @Override
+    public void setAuditSection(AuditSection audit) {
+        this.auditSection = auditSection;
+    }
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+    @Override
+    public Long getId() {
+        return id;
+    }
 
-	public List<CatalogDescription> getDescriptions() {
-		return descriptions;
-	}
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setDescriptions(List<CatalogDescription> descriptions) {
-		this.descriptions = descriptions;
-	}
+    public MerchantStore getStore() {
+        return store;
+    }
+
+    public void setStore(MerchantStore store) {
+        this.store = store;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public List<CatalogDescription> getDescriptions() {
+        return descriptions;
+    }
+
+    public void setDescriptions(List<CatalogDescription> descriptions) {
+        this.descriptions = descriptions;
+    }
 
 }

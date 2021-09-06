@@ -1,6 +1,5 @@
 package com.salesmanager.shop.admin.controller.merchant;
 
-
 import com.salesmanager.core.business.services.content.ContentService;
 import com.salesmanager.core.business.services.merchant.MerchantStoreService;
 import com.salesmanager.core.business.services.reference.language.LanguageService;
@@ -32,97 +31,90 @@ import java.util.Map;
 
 @Controller
 public class StoreLandingController {
-	
-	@Inject
-	MerchantStoreService merchantStoreService;
 
-	@Inject
-	LanguageService languageService;
-	
-	@Inject
-	ContentService contentService;
-	
-	@PreAuthorize("hasRole('STORE')")
-	@RequestMapping(value="/admin/store/storeLanding.html", method=RequestMethod.GET)
-	public String displayStoreLanding(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		setMenu(model,request);
+    @Inject
+    MerchantStoreService merchantStoreService;
 
-		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-		
-		List<Language> languages = store.getLanguages();
-		
-		Content content = contentService.getByCode("LANDING_PAGE", store);
-		StoreLanding landing = new StoreLanding();
-		
-		List<StoreLandingDescription> descriptions = new ArrayList<StoreLandingDescription>();
-		
-		
-		for(Language l : languages) {
-			
-			StoreLandingDescription landingDescription = null;
-			if(content!=null) {
-				for(ContentDescription desc : content.getDescriptions()) {
-					if(desc.getLanguage().getCode().equals(l.getCode())) {
-						landingDescription = new StoreLandingDescription();
-						landingDescription.setDescription(desc.getMetatagDescription());
-						landingDescription.setHomePageContent(desc.getDescription());
-						landingDescription.setKeywords(desc.getMetatagKeywords());
-						landingDescription.setTitle(desc.getName());//name is a not empty
-						landingDescription.setLanguage(desc.getLanguage());
-						break;
-					}
-				}
-			}
-			
-			if(landingDescription==null) {
-				landingDescription = new StoreLandingDescription();
-				landingDescription.setLanguage(l);
-			}
-			
+    @Inject
+    LanguageService languageService;
 
-			
-			descriptions.add(landingDescription);
-		}
-		
-		landing.setDescriptions(descriptions);
+    @Inject
+    ContentService contentService;
 
-		
-		model.addAttribute("store", store);
-		model.addAttribute("storeLanding", landing);
+    @PreAuthorize("hasRole('STORE')")
+    @RequestMapping(value = "/admin/store/storeLanding.html", method = RequestMethod.GET)
+    public String displayStoreLanding(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		
-		return "admin-store-landing";
-	}
-	
-	@PreAuthorize("hasRole('STORE')")
-	@RequestMapping(value="/admin/store/saveLanding.html", method=RequestMethod.POST)
-	public String saveStoreLanding(@Valid @ModelAttribute("storeLanding") StoreLanding storeLanding, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		setMenu(model,request);
-		
-		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+        setMenu(model, request);
 
-		
-		if (result.hasErrors()) {
-			return "admin-store-landing";
-		}
-		
-		//get original store
-		Content content = contentService.getByCode("LANDING_PAGE", store);
-		
-		if(content==null) {
-			content = new Content();
-			content.setVisible(true);
-			content.setContentType(ContentType.SECTION);
-			content.setCode("LANDING_PAGE");
-			content.setMerchantStore(store);
-		}
-		
+        MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
 
-		//List<Language> languages = store.getLanguages();
-			
-		Map<String,Language> langs = languageService.getLanguagesMap();
+        List<Language> languages = store.getLanguages();
+
+        Content content = contentService.getByCode("LANDING_PAGE", store);
+        StoreLanding landing = new StoreLanding();
+
+        List<StoreLandingDescription> descriptions = new ArrayList<StoreLandingDescription>();
+
+        for (Language l : languages) {
+
+            StoreLandingDescription landingDescription = null;
+            if (content != null) {
+                for (ContentDescription desc : content.getDescriptions()) {
+                    if (desc.getLanguage().getCode().equals(l.getCode())) {
+                        landingDescription = new StoreLandingDescription();
+                        landingDescription.setDescription(desc.getMetatagDescription());
+                        landingDescription.setHomePageContent(desc.getDescription());
+                        landingDescription.setKeywords(desc.getMetatagKeywords());
+                        landingDescription.setTitle(desc.getName());//name is a not empty
+                        landingDescription.setLanguage(desc.getLanguage());
+                        break;
+                    }
+                }
+            }
+
+            if (landingDescription == null) {
+                landingDescription = new StoreLandingDescription();
+                landingDescription.setLanguage(l);
+            }
+
+            descriptions.add(landingDescription);
+        }
+
+        landing.setDescriptions(descriptions);
+
+        model.addAttribute("store", store);
+        model.addAttribute("storeLanding", landing);
+
+        return "admin-store-landing";
+    }
+
+    @PreAuthorize("hasRole('STORE')")
+    @RequestMapping(value = "/admin/store/saveLanding.html", method = RequestMethod.POST)
+    public String saveStoreLanding(@Valid @ModelAttribute("storeLanding") StoreLanding storeLanding, BindingResult result, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        setMenu(model, request);
+
+        MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
+
+        if (result.hasErrors()) {
+            return "admin-store-landing";
+        }
+
+        //get original store
+        Content content = contentService.getByCode("LANDING_PAGE", store);
+
+        if (content == null) {
+            content = new Content();
+            content.setVisible(true);
+            content.setContentType(ContentType.SECTION);
+            content.setCode("LANDING_PAGE");
+            content.setMerchantStore(store);
+        }
+
+        //List<Language> languages = store.getLanguages();
+
+        Map<String, Language> langs = languageService.getLanguagesMap();
 		
 		
 		
@@ -152,87 +144,76 @@ public class StoreLandingController {
 		}
 		
 		landing.setDescriptions(descriptions);*/
-		
-		
-		
-			
 
-		List<StoreLandingDescription> descriptions = storeLanding.getDescriptions();
-		List<ContentDescription> contentDescriptions = new ArrayList<ContentDescription>();
-		if(descriptions!=null) {
-				
-				for(StoreLandingDescription description : descriptions) {
-					
-					String code = description.getLanguage().getCode();
-					Language l = langs.get(code);
-					
-					ContentDescription contentDescription = null;
-					if(content.getDescriptions()!=null && content.getDescriptions().size()>0) {
-						
-						for(ContentDescription desc : content.getDescriptions()) {
-							
-							if(desc.getLanguage().getCode().equals(l.getCode())) {
-								contentDescription = desc;
-								desc.setMetatagDescription(description.getDescription());
-								desc.setName(description.getTitle());
-								desc.setTitle(description.getTitle());
-								desc.setDescription(description.getHomePageContent());
-								desc.setMetatagKeywords(description.getKeywords());
-								
-								
-							}
+        List<StoreLandingDescription> descriptions = storeLanding.getDescriptions();
+        List<ContentDescription> contentDescriptions = new ArrayList<ContentDescription>();
+        if (descriptions != null) {
 
-						}
-					}
-					
-					if(contentDescription==null) {
-						
-						
-						contentDescription = new ContentDescription();
-						contentDescription.setContent(content);
-						contentDescription.setLanguage(l);
-						contentDescription.setMetatagDescription(description.getDescription());
-						contentDescription.setName(description.getTitle());
-						contentDescription.setDescription(description.getHomePageContent());
-						contentDescription.setMetatagKeywords(description.getKeywords());
+            for (StoreLandingDescription description : descriptions) {
 
-					}
-					
-					contentDescriptions.add(contentDescription);
+                String code = description.getLanguage().getCode();
+                Language l = langs.get(code);
 
+                ContentDescription contentDescription = null;
+                if (content.getDescriptions() != null && content.getDescriptions().size() > 0) {
 
+                    for (ContentDescription desc : content.getDescriptions()) {
 
-				}
-				
-				content.setDescriptions(contentDescriptions);
-				
-			}
+                        if (desc.getLanguage().getCode().equals(l.getCode())) {
+                            contentDescription = desc;
+                            desc.setMetatagDescription(description.getDescription());
+                            desc.setName(description.getTitle());
+                            desc.setTitle(description.getTitle());
+                            desc.setDescription(description.getHomePageContent());
+                            desc.setMetatagKeywords(description.getKeywords());
 
+                        }
 
-		
-		contentService.saveOrUpdate(content);
+                    }
+                }
 
-		model.addAttribute("success","success");
+                if (contentDescription == null) {
 
-		return "admin-store-landing";
-	}
-	
-	private void setMenu(Model model, HttpServletRequest request) throws Exception {
+                    contentDescription = new ContentDescription();
+                    contentDescription.setContent(content);
+                    contentDescription.setLanguage(l);
+                    contentDescription.setMetatagDescription(description.getDescription());
+                    contentDescription.setName(description.getTitle());
+                    contentDescription.setDescription(description.getHomePageContent());
+                    contentDescription.setMetatagKeywords(description.getKeywords());
 
-		//display menu
-		Map<String,String> activeMenus = new HashMap<String,String>();
-		activeMenus.put("store", "store");
-		activeMenus.put("storeLanding", "storeLanding");
+                }
 
-		
-		@SuppressWarnings("unchecked")
-		Map<String, Menu> menus = (Map<String, Menu>)request.getAttribute("MENUMAP");
-		
-		Menu currentMenu = (Menu)menus.get("store");
-		model.addAttribute("currentMenu",currentMenu);
-		model.addAttribute("activeMenus",activeMenus);
-		//
-		
-	}
+                contentDescriptions.add(contentDescription);
+
+            }
+
+            content.setDescriptions(contentDescriptions);
+
+        }
+
+        contentService.saveOrUpdate(content);
+
+        model.addAttribute("success", "success");
+
+        return "admin-store-landing";
+    }
+
+    private void setMenu(Model model, HttpServletRequest request) throws Exception {
+
+        //display menu
+        Map<String, String> activeMenus = new HashMap<String, String>();
+        activeMenus.put("store", "store");
+        activeMenus.put("storeLanding", "storeLanding");
+
+        @SuppressWarnings("unchecked")
+        Map<String, Menu> menus = (Map<String, Menu>) request.getAttribute("MENUMAP");
+
+        Menu currentMenu = (Menu) menus.get("store");
+        model.addAttribute("currentMenu", currentMenu);
+        model.addAttribute("activeMenus", activeMenus);
+        //
+
+    }
 
 }

@@ -37,151 +37,148 @@ import com.salesmanager.core.model.common.audit.Auditable;
 import com.salesmanager.core.model.generic.SalesManagerEntity;
 import com.salesmanager.core.model.order.Order;
 
-
 @Entity
 @EntityListeners(value = AuditListener.class)
 @Table(name = "SM_TRANSACTION")
 public class Transaction extends SalesManagerEntity<Long, Transaction> implements Serializable, Auditable, JSONAware {
-	
-	
-	private static final Logger LOGGER = LoggerFactory.getLogger(Transaction.class);
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name = "TRANSACTION_ID")
-	@TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "TRANSACT_SEQ_NEXT_VAL")
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
-	private Long id;
-	
-	@Embedded
-	private AuditSection auditSection = new AuditSection();
+    private static final Logger LOGGER = LoggerFactory.getLogger(Transaction.class);
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="ORDER_ID", nullable=true)
-	private Order order;
-	
-	@Column(name="AMOUNT")
-	private BigDecimal amount;
-	
-	@Column(name="TRANSACTION_DATE")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date transactionDate;
-	
-	@Column(name="TRANSACTION_TYPE")
-	@Enumerated(value = EnumType.STRING)
-	private TransactionType transactionType;
-	
-	@Column(name="PAYMENT_TYPE")
-	@Enumerated(value = EnumType.STRING)
-	private PaymentType paymentType;
-	
-	@Column(name="DETAILS")
-	@Type(type = "org.hibernate.type.TextType")
-	private String details;
-	
-	@Transient
-	private Map<String,String> transactionDetails= new HashMap<String,String>();
+    @Id
+    @Column(name = "TRANSACTION_ID")
+    @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "TRANSACT_SEQ_NEXT_VAL")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
+    private Long id;
 
-	@Override
-	public AuditSection getAuditSection() {
-		return this.auditSection;
-	}
+    @Embedded
+    private AuditSection auditSection = new AuditSection();
 
-	@Override
-	public void setAuditSection(AuditSection audit) {
-		this.auditSection = audit;
-		
-	}
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ORDER_ID", nullable = true)
+    private Order order;
 
-	@Override
-	public Long getId() {
-		return this.id;
-	}
+    @Column(name = "AMOUNT")
+    private BigDecimal amount;
 
-	@Override
-	public void setId(Long id) {
-		this.id = id;
-		
-	}
+    @Column(name = "TRANSACTION_DATE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date transactionDate;
 
-	public Order getOrder() {
-		return order;
-	}
+    @Column(name = "TRANSACTION_TYPE")
+    @Enumerated(value = EnumType.STRING)
+    private TransactionType transactionType;
 
-	public void setOrder(Order order) {
-		this.order = order;
-	}
+    @Column(name = "PAYMENT_TYPE")
+    @Enumerated(value = EnumType.STRING)
+    private PaymentType paymentType;
 
-	public BigDecimal getAmount() {
-		return amount;
-	}
+    @Column(name = "DETAILS")
+    @Type(type = "org.hibernate.type.TextType")
+    private String details;
 
-	public void setAmount(BigDecimal amount) {
-		this.amount = amount;
-	}
+    @Transient
+    private Map<String, String> transactionDetails = new HashMap<String, String>();
 
-	public Date getTransactionDate() {
-		return transactionDate;
-	}
+    @Override
+    public AuditSection getAuditSection() {
+        return this.auditSection;
+    }
 
-	public void setTransactionDate(Date transactionDate) {
-		this.transactionDate = transactionDate;
-	}
+    @Override
+    public void setAuditSection(AuditSection audit) {
+        this.auditSection = audit;
 
-	public TransactionType getTransactionType() {
-		return transactionType;
-	}
-	
-	public String getTransactionTypeName() {
-		return this.getTransactionType()!=null?this.getTransactionType().name():"";
-	}
+    }
 
-	public void setTransactionType(TransactionType transactionType) {
-		this.transactionType = transactionType;
-	}
+    @Override
+    public Long getId() {
+        return this.id;
+    }
 
-	public PaymentType getPaymentType() {
-		return paymentType;
-	}
+    @Override
+    public void setId(Long id) {
+        this.id = id;
 
-	public void setPaymentType(PaymentType paymentType) {
-		this.paymentType = paymentType;
-	}
+    }
 
-	public String getDetails() {
-		return details;
-	}
+    public Order getOrder() {
+        return order;
+    }
 
-	public void setDetails(String details) {
-		this.details = details;
-	}
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 
-	public Map<String, String> getTransactionDetails() {
-		return transactionDetails;
-	}
+    public BigDecimal getAmount() {
+        return amount;
+    }
 
-	public void setTransactionDetails(Map<String, String> transactionDetails) {
-		this.transactionDetails = transactionDetails;
-	}
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
 
-	@Override
-	public String toJSONString() {
-		
-		if(this.getTransactionDetails()!=null && this.getTransactionDetails().size()>0) {
-			ObjectMapper mapper = new ObjectMapper();
-			try {
-				return mapper.writeValueAsString(this.getTransactionDetails());
-			} catch (Exception e) {
-				LOGGER.error("Cannot parse transactions map",e);
-			}
-			
-		}
-		
-		return null;
-	}
+    public Date getTransactionDate() {
+        return transactionDate;
+    }
+
+    public void setTransactionDate(Date transactionDate) {
+        this.transactionDate = transactionDate;
+    }
+
+    public TransactionType getTransactionType() {
+        return transactionType;
+    }
+
+    public void setTransactionType(TransactionType transactionType) {
+        this.transactionType = transactionType;
+    }
+
+    public String getTransactionTypeName() {
+        return this.getTransactionType() != null ? this.getTransactionType().name() : "";
+    }
+
+    public PaymentType getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(PaymentType paymentType) {
+        this.paymentType = paymentType;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public Map<String, String> getTransactionDetails() {
+        return transactionDetails;
+    }
+
+    public void setTransactionDetails(Map<String, String> transactionDetails) {
+        this.transactionDetails = transactionDetails;
+    }
+
+    @Override
+    public String toJSONString() {
+
+        if (this.getTransactionDetails() != null && this.getTransactionDetails().size() > 0) {
+            ObjectMapper mapper = new ObjectMapper();
+            try {
+                return mapper.writeValueAsString(this.getTransactionDetails());
+            } catch (Exception e) {
+                LOGGER.error("Cannot parse transactions map", e);
+            }
+
+        }
+
+        return null;
+    }
 
 }

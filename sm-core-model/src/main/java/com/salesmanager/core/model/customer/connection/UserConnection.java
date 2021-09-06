@@ -6,10 +6,9 @@ import javax.persistence.Entity;
 @Entity
 public class UserConnection extends AbstractUserConnectionWithCompositeKey {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
 }

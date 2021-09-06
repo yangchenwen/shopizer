@@ -1,56 +1,61 @@
 <%
-response.setCharacterEncoding("UTF-8");
-response.setHeader("Cache-Control","no-cache");
-response.setHeader("Pragma","no-cache");
-response.setDateHeader ("Expires", -1);
+    response.setCharacterEncoding("UTF-8");
+    response.setHeader("Cache-Control", "no-cache");
+    response.setHeader("Pragma", "no-cache");
+    response.setDateHeader("Expires", -1);
 %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib uri="/WEB-INF/shopizer-tags.tld" prefix="sm" %> 
+<%@ taglib uri="/WEB-INF/shopizer-tags.tld" prefix="sm" %>
 
 <link href="<c:url value="/resources/css/assets/bootstrap-social.css" />" rel="stylesheet">
- 
-<%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
+
+<%@page contentType="text/html" %>
+<%@page pageEncoding="UTF-8" %>
 
 
-			<div class="login-area ptb-80">
-				<div class="container">
-					<div class="row">
-						<div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<div class="login-title">
-								<h3><s:message code="label.customer.registered" text="Registered customer"/></h3>
-								<span><s:message code="label.customer.registered.signinemail" text="If you have an account, sign in with your email address"/>.</span>
-							</div>
-							<div id="login-form" class="login-form">
-								<form>									
-									<div class="form-group login-page">
-										<label for="inputEmail"><s:message code="label.customer.email" text="Customer email address"/> <span>*</span></label>
-										<input type="text" class="form-control" id="signin_userName" name="signin_userName">
-									</div>								
-									<div class="form-group login-page">
-										<label for="password"><s:message code="label.generic.password" text="Password"/> <span>*</span></label>
-										<input type="Password" class="form-control" id="signin_password" name="signin_password">
-									</div>
-									<input type="hidden" id="signin_storeCode" name="signin_storeCode" value="<c:out value="${requestScope.MERCHANT_STORE.code}"/>"/>	
-									<button type="submit" id="genericLogin-button" class="btn btn-default login-btn"><s:message code="button.label.signin" text="button.label.signin"/></button>
-								</form>
-					
-							</div>
+<div class="login-area ptb-80">
+    <div class="container">
+        <div class="row">
+            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="login-title">
+                    <h3><s:message code="label.customer.registered" text="Registered customer"/></h3>
+                    <span><s:message code="label.customer.registered.signinemail"
+                                     text="If you have an account, sign in with your email address"/>.</span>
+                </div>
+                <div id="login-form" class="login-form">
+                    <form>
+                        <div class="form-group login-page">
+                            <label for="inputEmail"><s:message code="label.customer.email"
+                                                               text="Customer email address"/> <span>*</span></label>
+                            <input type="text" class="form-control" id="signin_userName" name="signin_userName">
+                        </div>
+                        <div class="form-group login-page">
+                            <label for="password"><s:message code="label.generic.password" text="Password"/>
+                                <span>*</span></label>
+                            <input type="Password" class="form-control" id="signin_password" name="signin_password">
+                        </div>
+                        <input type="hidden" id="signin_storeCode" name="signin_storeCode"
+                               value="<c:out value="${requestScope.MERCHANT_STORE.code}"/>"/>
+                        <button type="submit" id="genericLogin-button" class="btn btn-default login-btn"><s:message
+                                code="button.label.signin" text="button.label.signin"/></button>
+                    </form>
 
-<%-- 							<a href="#" class="back"><s:message code="button.label.forgotpassword" text="Forgot Password ?" /></a>
-							<div id="cbox_info" class="checkout-form-list create-account" style="display: none;">
-								<p>Create an account by entering the information below. If you are a returning customer please login using the link at the top of the page.</p>
-											
-								<label>Account password  <span class="required">*</span></label>
-								<input id="email" name="cemail" class="required" title="An email is required" type="text" value="" style="background-color: rgb(255, 255, 204);">	
-							</div> --%>
-							
-							
-							 <!-- 
+                </div>
+
+                <%-- 							<a href="#" class="back"><s:message code="button.label.forgotpassword" text="Forgot Password ?" /></a>
+                                            <div id="cbox_info" class="checkout-form-list create-account" style="display: none;">
+                                                <p>Create an account by entering the information below. If you are a returning customer please login using the link at the top of the page.</p>
+
+                                                <label>Account password  <span class="required">*</span></label>
+                                                <input id="email" name="cemail" class="required" title="An email is required" type="text" value="" style="background-color: rgb(255, 255, 204);">
+                                            </div> --%>
+
+
+                <!--
 							<br/>
 							<div class="login-title">
 								
@@ -61,17 +66,19 @@ response.setDateHeader ("Expires", -1);
     								<span class="fa fa-facebook"></span> <s:message code="label.customer.signin.social.system" arguments="Facebook" text="Sign in with Facebook" />
   								  </a>
   								  -->
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-							<div class="login-title">
-								<h3><s:message code="label.customer.new" text="New customer"/></h3>
-								<span><s:message code="label.customer.faster" text="Creating an account has many benefits: check out faster, keep more than one address, track orders and more."/></span>
-							</div>
-							<a class="btn btn-default login-btn" href="<s:url value="/shop/customer/registration.html"/>"><s:message code="button.label.register" text="Register" /></a>
-						</div>
-					</div>
-				</div>
-			</div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="login-title">
+                    <h3><s:message code="label.customer.new" text="New customer"/></h3>
+                    <span><s:message code="label.customer.faster"
+                                     text="Creating an account has many benefits: check out faster, keep more than one address, track orders and more."/></span>
+                </div>
+                <a class="btn btn-default login-btn" href="<s:url value="/shop/customer/registration.html"/>"><s:message
+                        code="button.label.register" text="Register"/></a>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 		

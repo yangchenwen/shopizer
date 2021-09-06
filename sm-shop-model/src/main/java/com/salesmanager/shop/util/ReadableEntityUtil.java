@@ -7,9 +7,10 @@ import java.util.List;
 
 public final class ReadableEntityUtil {
 
-    private ReadableEntityUtil() {}
+    private ReadableEntityUtil() {
+    }
 
-    public static  <T,R> ReadableEntityList<R> createReadableList(Page<T> availabilities, List<R> items) {
+    public static <T, R> ReadableEntityList<R> createReadableList(Page<T> availabilities, List<R> items) {
         ReadableEntityList<R> readableList = new ReadableEntityList<>();
         readableList.setItems(items);
         readableList.setTotalPages(availabilities.getTotalPages());

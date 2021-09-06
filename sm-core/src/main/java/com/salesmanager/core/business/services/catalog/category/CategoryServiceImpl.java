@@ -1,20 +1,5 @@
 package com.salesmanager.core.business.services.catalog.category;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-
-import javax.inject.Inject;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
-
 import com.salesmanager.core.business.constants.Constants;
 import com.salesmanager.core.business.exception.ServiceException;
 import com.salesmanager.core.business.repositories.catalog.category.CategoryDescriptionRepository;
@@ -27,406 +12,409 @@ import com.salesmanager.core.model.catalog.category.CategoryDescription;
 import com.salesmanager.core.model.catalog.product.Product;
 import com.salesmanager.core.model.merchant.MerchantStore;
 import com.salesmanager.core.model.reference.language.Language;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
+
+import javax.inject.Inject;
+import java.util.*;
 
 @Service("categoryService")
 public class CategoryServiceImpl extends SalesManagerEntityServiceImpl<Long, Category> implements CategoryService {
 
+    private CategoryRepository categoryRepository;
 
-  private CategoryRepository categoryRepository;
+    @Inject
+    private ProductService productService;
 
-  @Inject
-  private ProductService productService;
-  
-  @Inject
-  private PageableCategoryRepository pageableCategoryRepository;
-  
-  @Inject
-  private CategoryDescriptionRepository categoryDescriptionRepository;
+    @Inject
+    private PageableCategoryRepository pageableCategoryRepository;
 
+    @Inject
+    private CategoryDescriptionRepository categoryDescriptionRepository;
 
-
-  @Inject
-  public CategoryServiceImpl(CategoryRepository categoryRepository) {
-    super(categoryRepository);
-    this.categoryRepository = categoryRepository;
-  }
-
-  public void create(Category category) throws ServiceException {
-
-    super.create(category);
-    StringBuilder lineage = new StringBuilder();
-    Category parent = category.getParent();
-    if (parent != null && parent.getId() != null && parent.getId() != 0) {
-      //get parent category
-      Category p = this.getById(parent.getId());
-
-      lineage.append(p.getLineage()).append(category.getId()).append("/");
-      category.setDepth(p.getDepth() + 1);
-    } else {
-      lineage.append("/").append(category.getId()).append("/");
-      category.setDepth(0);
+    @Inject
+    public CategoryServiceImpl(CategoryRepository categoryRepository) {
+        super(categoryRepository);
+        this.categoryRepository = categoryRepository;
     }
-    category.setLineage(lineage.toString());
-    super.update(category);
 
+    public void create(Category category) throws ServiceException {
 
-  }
+        super.create(category);
+        StringBuilder lineage = new StringBuilder();
+        Category parent = category.getParent();
+        if (parent != null && parent.getId() != null && parent.getId() != 0) {
+            //get parent category
+            Category p = this.getById(parent.getId());
 
-  @Override
-  public List<Object[]> countProductsByCategories(MerchantStore store, List<Long> categoryIds)
-      throws ServiceException {
+            lineage.append(p.getLineage()).append(category.getId()).append("/");
+            category.setDepth(p.getDepth() + 1);
+        } else {
+            lineage.append("/").append(category.getId()).append("/");
+            category.setDepth(0);
+        }
+        category.setLineage(lineage.toString());
+        super.update(category);
 
-    return categoryRepository.countProductsByCategories(store, categoryIds);
+    }
 
-	}
+    @Override
+    public List<Object[]> countProductsByCategories(MerchantStore store, List<Long> categoryIds)
+            throws ServiceException {
 
+        return categoryRepository.countProductsByCategories(store, categoryIds);
 
-	@Override
-	public List<Category> listByCodes(MerchantStore store, List<String> codes, Language language) {
-		return categoryRepository.findByCodes(store.getId(), codes, language.getId());
-	}
+    }
 
-	@Override
-	public List<Category> listByIds(MerchantStore store, List<Long> ids, Language language) {
-		return categoryRepository.findByIds(store.getId(), ids, language.getId());
-	}
+    @Override
+    public List<Category> listByCodes(MerchantStore store, List<String> codes, Language language) {
+        return categoryRepository.findByCodes(store.getId(), codes, language.getId());
+    }
 
-	@Override
-	public Category getOneByLanguage(long categoryId, Language language) {
-		return categoryRepository.findByIdAndLanguage(categoryId, language.getId());
-	}
+    @Override
+    public List<Category> listByIds(MerchantStore store, List<Long> ids, Language language) {
+        return categoryRepository.findByIds(store.getId(), ids, language.getId());
+    }
 
-	@Override
-	public void saveOrUpdate(Category category) throws ServiceException {
+    @Override
+    public Category getOneByLanguage(long categoryId, Language language) {
+        return categoryRepository.findByIdAndLanguage(categoryId, language.getId());
+    }
 
-		// save or update (persist and attach entities
-		if (category.getId() != null && category.getId() > 0) {
+    @Override
+    public void saveOrUpdate(Category category) throws ServiceException {
 
-			super.update(category);
+        // save or update (persist and attach entities
+        if (category.getId() != null && category.getId() > 0) {
 
-		} else {
+            super.update(category);
 
-			this.create(category);
+        } else {
 
-		}
+            this.create(category);
 
-	}
+        }
 
-	@Override
-	public List<Category> getListByLineage(MerchantStore store, String lineage) throws ServiceException {
-		try {
-			return categoryRepository.findByLineage(store.getId(), lineage);
-		} catch (Exception e) {
-			throw new ServiceException(e);
-		}
+    }
 
-	}
+    @Override
+    public List<Category> getListByLineage(MerchantStore store, String lineage) throws ServiceException {
+        try {
+            return categoryRepository.findByLineage(store.getId(), lineage);
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
 
-	@Override
-	public List<Category> getListByLineage(String storeCode, String lineage) throws ServiceException {
-		try {
-			return categoryRepository.findByLineage(storeCode, lineage);
-		} catch (Exception e) {
-			throw new ServiceException(e);
-		}
+    }
 
-	}
+    @Override
+    public List<Category> getListByLineage(String storeCode, String lineage) throws ServiceException {
+        try {
+            return categoryRepository.findByLineage(storeCode, lineage);
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
 
-	@Override
-	public List<Category> listBySeUrl(MerchantStore store, String seUrl) throws ServiceException {
+    }
 
-		try {
-			return categoryRepository.listByFriendlyUrl(store.getId(), seUrl);
-		} catch (Exception e) {
-			throw new ServiceException(e);
-		}
+    @Override
+    public List<Category> listBySeUrl(MerchantStore store, String seUrl) throws ServiceException {
 
-	}
+        try {
+            return categoryRepository.listByFriendlyUrl(store.getId(), seUrl);
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
 
-	@Override
-	public Category getBySeUrl(MerchantStore store, String seUrl) {
-		return categoryRepository.findByFriendlyUrl(store.getId(), seUrl);
-	}
+    }
 
-	@Override
-	public Category getByCode(MerchantStore store, String code) throws ServiceException {
+    @Override
+    public Category getBySeUrl(MerchantStore store, String seUrl) {
+        return categoryRepository.findByFriendlyUrl(store.getId(), seUrl);
+    }
 
-		try {
-			return categoryRepository.findByCode(store.getId(), code);
-		} catch (Exception e) {
-			throw new ServiceException(e);
-		}
+    @Override
+    public Category getByCode(MerchantStore store, String code) throws ServiceException {
 
-	}
+        try {
+            return categoryRepository.findByCode(store.getId(), code);
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
 
-	@Override
-	public Category getByCode(String storeCode, String code) throws ServiceException {
+    }
 
-		try {
-			return categoryRepository.findByCode(storeCode, code);
-		} catch (Exception e) {
-			throw new ServiceException(e);
-		}
+    @Override
+    public Category getByCode(String storeCode, String code) throws ServiceException {
 
-	}
+        try {
+            return categoryRepository.findByCode(storeCode, code);
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
 
-	@Override
-	public Category getById(Long id, int merchantId) {
+    }
 
-		Category category = categoryRepository.findByIdAndStore(id, merchantId);
-		
-		if(category == null) {
-			return null;
-		}
+    @Override
+    public Category getById(Long id, int merchantId) {
 
-		List<CategoryDescription> descriptions = categoryDescriptionRepository.listByCategoryId(id);
+        Category category = categoryRepository.findByIdAndStore(id, merchantId);
 
-		Set<CategoryDescription> desc = new HashSet<CategoryDescription>(descriptions);
+        if (category == null) {
+            return null;
+        }
 
-		category.setDescriptions(desc);
+        List<CategoryDescription> descriptions = categoryDescriptionRepository.listByCategoryId(id);
 
-		return category;
+        Set<CategoryDescription> desc = new HashSet<CategoryDescription>(descriptions);
 
-	}
+        category.setDescriptions(desc);
 
-	@Override
-	public List<Category> listByParent(Category category) throws ServiceException {
+        return category;
 
-		try {
-			return categoryRepository.listByStoreAndParent(null, category);
-		} catch (Exception e) {
-			throw new ServiceException(e);
-		}
+    }
 
-	}
+    @Override
+    public List<Category> listByParent(Category category) throws ServiceException {
 
-	@Override
-	public List<Category> listByStoreAndParent(MerchantStore store, Category category) throws ServiceException {
+        try {
+            return categoryRepository.listByStoreAndParent(null, category);
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
 
-		try {
-			return categoryRepository.listByStoreAndParent(store, category);
-		} catch (Exception e) {
-			throw new ServiceException(e);
-		}
+    }
 
-	}
+    @Override
+    public List<Category> listByStoreAndParent(MerchantStore store, Category category) throws ServiceException {
 
-	@Override
-	public List<Category> listByParent(Category category, Language language) {
-		Assert.notNull(category, "Category cannot be null");
-		Assert.notNull(language, "Language cannot be null");
-		Assert.notNull(category.getMerchantStore(), "category.merchantStore cannot be null");
+        try {
+            return categoryRepository.listByStoreAndParent(store, category);
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
 
-		return categoryRepository.findByParent(category.getId(), language.getId());
-	}
+    }
 
-	@Override
-	public void addCategoryDescription(Category category, CategoryDescription description) throws ServiceException {
+    @Override
+    public List<Category> listByParent(Category category, Language language) {
+        Assert.notNull(category, "Category cannot be null");
+        Assert.notNull(language, "Language cannot be null");
+        Assert.notNull(category.getMerchantStore(), "category.merchantStore cannot be null");
 
-		try {
-			category.getDescriptions().add(description);
-			description.setCategory(category);
-			update(category);
-		} catch (Exception e) {
-			throw new ServiceException(e);
-		}
+        return categoryRepository.findByParent(category.getId(), language.getId());
+    }
 
-	}
+    @Override
+    public void addCategoryDescription(Category category, CategoryDescription description) throws ServiceException {
 
-	// @Override
-	public void delete(Category category) throws ServiceException {
+        try {
+            category.getDescriptions().add(description);
+            description.setCategory(category);
+            update(category);
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
 
-		// get category with lineage (subcategories)
-		StringBuilder lineage = new StringBuilder();
-		lineage.append(category.getLineage()).append(category.getId()).append(Constants.SLASH);
-		List<Category> categories = this.getListByLineage(category.getMerchantStore(), lineage.toString());
+    }
 
-		Category dbCategory = getById(category.getId(), category.getMerchantStore().getId());
+    // @Override
+    public void delete(Category category) throws ServiceException {
 
-		if (dbCategory != null && dbCategory.getId().longValue() == category.getId().longValue()) {
+        // get category with lineage (subcategories)
+        StringBuilder lineage = new StringBuilder();
+        lineage.append(category.getLineage()).append(category.getId()).append(Constants.SLASH);
+        List<Category> categories = this.getListByLineage(category.getMerchantStore(), lineage.toString());
 
-			categories.add(dbCategory);
+        Category dbCategory = getById(category.getId(), category.getMerchantStore().getId());
 
-			Collections.reverse(categories);
+        if (dbCategory != null && dbCategory.getId().longValue() == category.getId().longValue()) {
 
-			List<Long> categoryIds = new ArrayList<Long>();
+            categories.add(dbCategory);
 
-			for (Category c : categories) {
-				categoryIds.add(c.getId());
-			}
+            Collections.reverse(categories);
 
-			List<Product> products = productService.getProducts(categoryIds);
-			// org.hibernate.Session session =
-			// em.unwrap(org.hibernate.Session.class);// need to refresh the
-			// session to update
-			// all product
-			// categories
+            List<Long> categoryIds = new ArrayList<Long>();
 
-			for (Product product : products) {
-				// session.evict(product);// refresh product so we get all
-				// product categories
-				Product dbProduct = productService.getById(product.getId());
-				Set<Category> productCategories = dbProduct.getCategories();
-				if (productCategories.size() > 1) {
-					for (Category c : categories) {
-						productCategories.remove(c);
-						productService.update(dbProduct);
-					}
+            for (Category c : categories) {
+                categoryIds.add(c.getId());
+            }
 
-					if (product.getCategories() == null || product.getCategories().size() == 0) {
-						productService.delete(dbProduct);
-					}
+            List<Product> products = productService.getProducts(categoryIds);
+            // org.hibernate.Session session =
+            // em.unwrap(org.hibernate.Session.class);// need to refresh the
+            // session to update
+            // all product
+            // categories
 
-				} else {
-					productService.delete(dbProduct);
-				}
+            for (Product product : products) {
+                // session.evict(product);// refresh product so we get all
+                // product categories
+                Product dbProduct = productService.getById(product.getId());
+                Set<Category> productCategories = dbProduct.getCategories();
+                if (productCategories.size() > 1) {
+                    for (Category c : categories) {
+                        productCategories.remove(c);
+                        productService.update(dbProduct);
+                    }
 
-			}
+                    if (product.getCategories() == null || product.getCategories().size() == 0) {
+                        productService.delete(dbProduct);
+                    }
 
-			Category categ = getById(category.getId(), category.getMerchantStore().getId());
-			categoryRepository.delete(categ);
+                } else {
+                    productService.delete(dbProduct);
+                }
 
-		}
+            }
 
-	}
+            Category categ = getById(category.getId(), category.getMerchantStore().getId());
+            categoryRepository.delete(categ);
 
-	@Override
-	public CategoryDescription getDescription(Category category, Language language) {
+        }
 
-		for (CategoryDescription description : category.getDescriptions()) {
-			if (description.getLanguage().equals(language)) {
-				return description;
-			}
-		}
-		return null;
-	}
+    }
 
-	@Override
-	public void addChild(Category parent, Category child) throws ServiceException {
+    @Override
+    public CategoryDescription getDescription(Category category, Language language) {
 
-		if (child == null || child.getMerchantStore() == null) {
-			throw new ServiceException("Child category and merchant store should not be null");
-		}
+        for (CategoryDescription description : category.getDescriptions()) {
+            if (description.getLanguage().equals(language)) {
+                return description;
+            }
+        }
+        return null;
+    }
 
-		try {
+    @Override
+    public void addChild(Category parent, Category child) throws ServiceException {
 
-			if (parent == null) {
+        if (child == null || child.getMerchantStore() == null) {
+            throw new ServiceException("Child category and merchant store should not be null");
+        }
 
-				// assign to root
-				child.setParent(null);
-				child.setDepth(0);
-				// child.setLineage(new
-				// StringBuilder().append("/").append(child.getId()).append("/").toString());
-				child.setLineage(new StringBuilder().append("/").append(child.getId()).append("/").toString());
+        try {
 
-			} else {
+            if (parent == null) {
 
-				Category p = getById(parent.getId(), parent.getMerchantStore().getId());// parent
+                // assign to root
+                child.setParent(null);
+                child.setDepth(0);
+                // child.setLineage(new
+                // StringBuilder().append("/").append(child.getId()).append("/").toString());
+                child.setLineage(new StringBuilder().append("/").append(child.getId()).append("/").toString());
 
-				String lineage = p.getLineage();
-				int depth = p.getDepth();
+            } else {
 
-				child.setParent(p);
-				child.setDepth(depth + 1);
-				child.setLineage(new StringBuilder().append(lineage).append(Constants.SLASH).append(child.getId())
-						.append(Constants.SLASH).toString());
+                Category p = getById(parent.getId(), parent.getMerchantStore().getId());// parent
 
-			}
+                String lineage = p.getLineage();
+                int depth = p.getDepth();
 
-			update(child);
-			StringBuilder childLineage = new StringBuilder();
-			childLineage.append(child.getLineage()).append(child.getId()).append("/");
-			List<Category> subCategories = getListByLineage(child.getMerchantStore(), childLineage.toString());
+                child.setParent(p);
+                child.setDepth(depth + 1);
+                child.setLineage(new StringBuilder().append(lineage).append(Constants.SLASH).append(child.getId())
+                        .append(Constants.SLASH).toString());
 
-			// ajust all sub categories lineages
-			if (subCategories != null && subCategories.size() > 0) {
-				for (Category subCategory : subCategories) {
-					if (!child.getId().equals(subCategory.getId())) {
-						addChild(child, subCategory);
-					}
-				}
+            }
 
-			}
-		} catch (Exception e) {
-			throw new ServiceException(e);
-		}
+            update(child);
+            StringBuilder childLineage = new StringBuilder();
+            childLineage.append(child.getLineage()).append(child.getId()).append("/");
+            List<Category> subCategories = getListByLineage(child.getMerchantStore(), childLineage.toString());
 
-	}
+            // ajust all sub categories lineages
+            if (subCategories != null && subCategories.size() > 0) {
+                for (Category subCategory : subCategories) {
+                    if (!child.getId().equals(subCategory.getId())) {
+                        addChild(child, subCategory);
+                    }
+                }
 
-	@Override
-	public List<Category> getListByDepth(MerchantStore store, int depth) {
-		return categoryRepository.findByDepth(store.getId(), depth);
-	}
+            }
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
 
-	@Override
-	public List<Category> getListByDepthFilterByFeatured(MerchantStore store, int depth, Language language) {
-		return categoryRepository.findByDepthFilterByFeatured(store.getId(), depth, language.getId());
-	}
+    }
 
-	@Override
-	public List<Category> getByName(MerchantStore store, String name, Language language) throws ServiceException {
+    @Override
+    public List<Category> getListByDepth(MerchantStore store, int depth) {
+        return categoryRepository.findByDepth(store.getId(), depth);
+    }
 
-		try {
-			return categoryRepository.findByName(store.getId(), name, language.getId());
-		} catch (Exception e) {
-			throw new ServiceException(e);
-		}
+    @Override
+    public List<Category> getListByDepthFilterByFeatured(MerchantStore store, int depth, Language language) {
+        return categoryRepository.findByDepthFilterByFeatured(store.getId(), depth, language.getId());
+    }
 
-	}
+    @Override
+    public List<Category> getByName(MerchantStore store, String name, Language language) throws ServiceException {
 
-	@Override
-	public List<Category> listByStore(MerchantStore store) throws ServiceException {
+        try {
+            return categoryRepository.findByName(store.getId(), name, language.getId());
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
 
-		try {
-			return categoryRepository.findByStore(store.getId());
-		} catch (Exception e) {
-			throw new ServiceException(e);
-		}
-	}
+    }
 
-	@Override
-	public List<Category> listByStore(MerchantStore store, Language language) throws ServiceException {
+    @Override
+    public List<Category> listByStore(MerchantStore store) throws ServiceException {
 
-		try {
-			return categoryRepository.findByStore(store.getId(), language.getId());
-		} catch (Exception e) {
-			throw new ServiceException(e);
-		}
-	}
+        try {
+            return categoryRepository.findByStore(store.getId());
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
+    }
 
-	@Override
-	public Category getById(MerchantStore store, Long id) throws ServiceException {
-		return categoryRepository.findById(id, store.getCode());
-	}
+    @Override
+    public List<Category> listByStore(MerchantStore store, Language language) throws ServiceException {
 
-	@Override
-	public Category findById(Long category) {
-		Optional<Category> cat = categoryRepository.findById(category);
-		return cat.orElse(null);
-	}
+        try {
+            return categoryRepository.findByStore(store.getId(), language.getId());
+        } catch (Exception e) {
+            throw new ServiceException(e);
+        }
+    }
 
-	@Override
-	public Page<Category> getListByDepth(MerchantStore store, Language language, String name, int depth, int page,
-			int count) {
+    @Override
+    public Category getById(MerchantStore store, Long id) throws ServiceException {
+        return categoryRepository.findById(id, store.getCode());
+    }
 
-		Pageable pageRequest = PageRequest.of(page, count);
+    @Override
+    public Category findById(Long category) {
+        Optional<Category> cat = categoryRepository.findById(category);
+        return cat.orElse(null);
+    }
 
-		return pageableCategoryRepository.listByStore(store.getId(), language.getId(), name, pageRequest);
-	}
+    @Override
+    public Page<Category> getListByDepth(MerchantStore store, Language language, String name, int depth, int page,
+                                         int count) {
 
-	@Override
-	public List<Category> getListByDepth(MerchantStore store, int depth, Language language) {
-		return categoryRepository.find(store.getId(), depth, language.getId(), null);
-	}
+        Pageable pageRequest = PageRequest.of(page, count);
 
-	@Override
-	public int count(MerchantStore store) {
-		return categoryRepository.count(store.getId());
-	}
+        return pageableCategoryRepository.listByStore(store.getId(), language.getId(), name, pageRequest);
+    }
 
-	@Override
-	public Category getById(Long categoryid, int merchantId, int language) {
-		return categoryRepository.findById(merchantId, categoryid, language);
-	}
+    @Override
+    public List<Category> getListByDepth(MerchantStore store, int depth, Language language) {
+        return categoryRepository.find(store.getId(), depth, language.getId(), null);
+    }
+
+    @Override
+    public int count(MerchantStore store) {
+        return categoryRepository.count(store.getId());
+    }
+
+    @Override
+    public Category getById(Long categoryid, int merchantId, int language) {
+        return categoryRepository.findById(merchantId, categoryid, language);
+    }
 
 }

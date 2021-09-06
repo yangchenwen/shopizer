@@ -13,52 +13,49 @@ import com.salesmanager.core.constants.SchemaConstant;
 import com.salesmanager.core.model.common.description.Description;
 
 @Entity
-@Table(name="PRODUCT_PRICE_DESCRIPTION",
-uniqueConstraints={
-		@UniqueConstraint(columnNames={
-			"PRODUCT_PRICE_ID",
-			"LANGUAGE_ID"
-		})
-	}
+@Table(name = "PRODUCT_PRICE_DESCRIPTION",
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = {
+                        "PRODUCT_PRICE_ID",
+                        "LANGUAGE_ID"
+                })
+        }
 )
 
 @TableGenerator(name = "description_gen", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "product_price_description_seq", allocationSize = SchemaConstant.DESCRIPTION_ID_ALLOCATION_SIZE, initialValue = SchemaConstant.DESCRIPTION_ID_START_VALUE)
-public class ProductPriceDescription extends Description {;
-	
-	/**
-   * 
-   */
-  private static final long serialVersionUID = 1L;
+public class ProductPriceDescription extends Description {
+    ;
 
-  public final static String DEFAULT_PRICE_DESCRIPTION = "DEFAULT";
-	
+    public final static String DEFAULT_PRICE_DESCRIPTION = "DEFAULT";
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     @JsonIgnore
-	@ManyToOne(targetEntity = ProductPrice.class)
-	@JoinColumn(name = "PRODUCT_PRICE_ID", nullable = false)
-	private ProductPrice productPrice;
-	
-	
-	@Column(name = "PRICE_APPENDER")
-	private String priceAppender;
+    @ManyToOne(targetEntity = ProductPrice.class)
+    @JoinColumn(name = "PRODUCT_PRICE_ID", nullable = false)
+    private ProductPrice productPrice;
 
-	public String getPriceAppender() {
-		return priceAppender;
-	}
+    @Column(name = "PRICE_APPENDER")
+    private String priceAppender;
 
-	public void setPriceAppender(String priceAppender) {
-		this.priceAppender = priceAppender;
-	}
-	
-	public ProductPriceDescription() {
-	}
+    public ProductPriceDescription() {
+    }
 
-	public ProductPrice getProductPrice() {
-		return productPrice;
-	}
+    public String getPriceAppender() {
+        return priceAppender;
+    }
 
-	public void setProductPrice(ProductPrice productPrice) {
-		this.productPrice = productPrice;
-	}
+    public void setPriceAppender(String priceAppender) {
+        this.priceAppender = priceAppender;
+    }
 
+    public ProductPrice getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(ProductPrice productPrice) {
+        this.productPrice = productPrice;
+    }
 
 }

@@ -2,67 +2,61 @@ package com.salesmanager.shop.admin.model.merchant;
 
 import com.salesmanager.core.model.reference.language.Language;
 
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-import javax.validation.constraints.NotEmpty;
-
 public class StoreLandingDescription implements Serializable {
-	
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@NotEmpty
-	private String title;
-	private String description;
-	private String keywords;
-	private String homePageContent;
-	
-	
-	private Language language;
 
-	
-	
-	
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    @NotEmpty
+    private String title;
+    private String description;
+    private String keywords;
+    private String homePageContent;
 
-	public String getDescription() {
-		return description;
-	}
+    private Language language;
 
-	public void setHomePageContent(String homePageContent) {
-		this.homePageContent = homePageContent;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public String getHomePageContent() {
-		return homePageContent;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public void setKeywords(String keywords) {
-		this.keywords = keywords;
-	}
+    public String getHomePageContent() {
+        return homePageContent;
+    }
 
-	public String getKeywords() {
-		return keywords;
-	}
+    public void setHomePageContent(String homePageContent) {
+        this.homePageContent = homePageContent;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public String getKeywords() {
+        return keywords;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public void setKeywords(String keywords) {
+        this.keywords = keywords;
+    }
 
-	public void setLanguage(Language language) {
-		this.language = language;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public Language getLanguage() {
-		return language;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Language getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
 
 }

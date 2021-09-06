@@ -9,39 +9,37 @@ import com.salesmanager.shop.model.entity.Entity;
 
 public class ReadableProductVariant extends Entity implements Serializable {
 
-  /**
-   * 
-   */
-  private static final long serialVersionUID = 1L;
-  //option name
-  private String name;
-  private String code;
-  private List<ReadableProductVariantValue> options = new ArrayList<ReadableProductVariantValue>();
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    //option name
+    private String name;
+    private String code;
+    private List<ReadableProductVariantValue> options = new ArrayList<ReadableProductVariantValue>();
 
-  public List<ReadableProductVariantValue> getOptions() {
-    return options;
-  }
+    public List<ReadableProductVariantValue> getOptions() {
+        return options;
+    }
 
-  public void setOptions(List<ReadableProductVariantValue> options) {
-    this.options = options;
-  }
+    public void setOptions(List<ReadableProductVariantValue> options) {
+        this.options = options;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-public String getCode() {
-	return code;
-}
+    public String getCode() {
+        return code;
+    }
 
-public void setCode(String code) {
-	this.code = code;
-}
-
-
+    public void setCode(String code) {
+        this.code = code;
+    }
 
 }

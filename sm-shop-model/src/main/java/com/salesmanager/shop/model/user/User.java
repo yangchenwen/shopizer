@@ -6,14 +6,14 @@ import com.salesmanager.shop.model.entity.Entity;
 
 /**
  * Admin users
- * @author carlsamson
  *
+ * @author carlsamson
  */
 public class User extends Entity implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
 }

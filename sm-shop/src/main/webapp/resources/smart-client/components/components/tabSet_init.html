@@ -1,23 +1,34 @@
-<HTML><HEAD>
-	<SCRIPT>var isomorphicDir="../../isomorphic/";</SCRIPT>
+<HTML>
+<HEAD>
+    <SCRIPT>var isomorphicDir = "../../isomorphic/";</SCRIPT>
     <SCRIPT SRC=../../isomorphic/system/modules/ISC_Core.js></SCRIPT>
     <SCRIPT SRC=../../isomorphic/system/modules/ISC_Foundation.js></SCRIPT>
     <SCRIPT SRC=../../isomorphic/system/modules/ISC_Containers.js></SCRIPT>
     <SCRIPT SRC=../../isomorphic/system/modules/ISC_Grids.js></SCRIPT>
     <SCRIPT SRC=../../isomorphic/system/modules/ISC_Forms.js></SCRIPT>
     <SCRIPT SRC=../../isomorphic/system/modules/ISC_DataBinding.js></SCRIPT>
-	<SCRIPT SRC=../../isomorphic/skins/SmartClient/load_skin.js></SCRIPT>
-</HEAD><BODY BGCOLOR='papayawhip' MARGINHEIGHT=0 MARGINWIDTH=0 LEFTMARGIN=0 TOPMARGIN=0>
-<TABLE WIDTH=100% CELLSPACING=0 CELLPADDING=5 BORDER=0><TR><TD CLASS=pageHeader BGCOLOR=WHITE>
+    <SCRIPT SRC=../../isomorphic/skins/SmartClient/load_skin.js></SCRIPT>
+</HEAD>
+<BODY BGCOLOR='papayawhip' LEFTMARGIN=0 MARGINHEIGHT=0 MARGINWIDTH=0 TOPMARGIN=0>
+<TABLE BORDER=0 CELLPADDING=5 CELLSPACING=0 WIDTH=100%>
+    <TR>
+        <TD BGCOLOR=WHITE CLASS=pageHeader>
 
-	TabSet initialization example
+            TabSet initialization example
 
-</TD><TD CLASS=pageHeader ALIGN=RIGHT BGCOLOR=WHITE>
+        </TD>
+        <TD ALIGN=RIGHT BGCOLOR=WHITE CLASS=pageHeader>
 
-	Isomorphic SmartClient SDK
+            Isomorphic SmartClient SDK
 
-</TD></TR></TABLE><TABLE WIDTH=100% CELLSPACING=0 CELLPADDING=0 BORDER=0><TR>
-<TD BGCOLOR=336666><IMG SRC=images/blank.gif WIDTH=1 HEIGHT=4></TD></TR></TABLE>
+        </TD>
+    </TR>
+</TABLE>
+<TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0 WIDTH=100%>
+    <TR>
+        <TD BGCOLOR=336666><IMG HEIGHT=4 SRC=images/blank.gif WIDTH=1></TD>
+    </TR>
+</TABLE>
 
 
 <!--------------------------
@@ -26,49 +37,49 @@
 
 <SCRIPT>
 
-Canvas.create({
-    ID:"pane1",
-    backgroundColor:"red",
-    left:10,
-    top:10,
-    width:200,
-    height:200,
-    autoDraw:false
-});
+    Canvas.create({
+        ID: "pane1",
+        backgroundColor: "red",
+        left: 10,
+        top: 10,
+        width: 200,
+        height: 200,
+        autoDraw: false
+    });
 
-Canvas.create({
-    ID:"pane2",
-    backgroundColor:"green",
-    left:10,
-    top:10,
-    width:200,
-    height:200,
-    autoDraw:false
-});
+    Canvas.create({
+        ID: "pane2",
+        backgroundColor: "green",
+        left: 10,
+        top: 10,
+        width: 200,
+        height: 200,
+        autoDraw: false
+    });
 
-Canvas.create({
-    ID:"pane3",
-    backgroundColor:"blue",
-    left:10,
-    top:10,
-    width:200,
-    height:200,
-    autoDraw:false
-});
+    Canvas.create({
+        ID: "pane3",
+        backgroundColor: "blue",
+        left: 10,
+        top: 10,
+        width: 200,
+        height: 200,
+        autoDraw: false
+    });
 
 
-TabSet.create({
-	ID:"tabSet",
-	top:50,
-	left:50,
-	width:600,
-	height:400,
-	selectedTab:0,
-	tabBarPosition:"top",
-	tabs:[{title:"red", pane:pane1, width:70},
-		  {title:"green", pane:pane2, width:70},
-		  {title:"blue", pane:pane3, width:70}]
-});
+    TabSet.create({
+        ID: "tabSet",
+        top: 50,
+        left: 50,
+        width: 600,
+        height: 400,
+        selectedTab: 0,
+        tabBarPosition: "top",
+        tabs: [{title: "red", pane: pane1, width: 70},
+            {title: "green", pane: pane2, width: 70},
+            {title: "blue", pane: pane3, width: 70}]
+    });
 
 </SCRIPT>
 </BODY>

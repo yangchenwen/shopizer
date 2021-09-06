@@ -1,9 +1,10 @@
 package com.salesmanager.shop.tags;
 
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.jsp.JspException;
-
+import com.salesmanager.core.model.catalog.product.Product;
+import com.salesmanager.core.model.merchant.MerchantStore;
+import com.salesmanager.shop.constants.Constants;
+import com.salesmanager.shop.utils.FilePathUtils;
+import com.salesmanager.shop.utils.ImageFilePath;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,102 +12,89 @@ import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.tags.RequestContextAwareTag;
 
-import com.salesmanager.core.model.catalog.product.Product;
-import com.salesmanager.core.model.merchant.MerchantStore;
-import com.salesmanager.shop.constants.Constants;
-import com.salesmanager.shop.utils.FilePathUtils;
-import com.salesmanager.shop.utils.ImageFilePath;
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.jsp.JspException;
 
 public class ProductImageUrlTag extends RequestContextAwareTag {
-	
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 6319855234657139862L;
-	
-	private static final Logger LOGGER = LoggerFactory.getLogger(ProductImageUrlTag.class);
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 6319855234657139862L;
 
-	private String imageName;
-	private String imageType;
-	private Product product;
-	
-	@Inject
-	private FilePathUtils filePathUtils;
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductImageUrlTag.class);
 
-	@Inject
-	@Qualifier("img")
-	private ImageFilePath imageUtils;
+    private String imageName;
+    private String imageType;
+    private Product product;
 
-	public int doStartTagInternal() throws JspException {
-		try {
+    @Inject
+    private FilePathUtils filePathUtils;
 
+    @Inject
+    @Qualifier("img")
+    private ImageFilePath imageUtils;
 
-			if (filePathUtils==null || imageUtils==null) {
-	            WebApplicationContext wac = getRequestContext().getWebApplicationContext();
-	            AutowireCapableBeanFactory factory = wac.getAutowireCapableBeanFactory();
-	            factory.autowireBean(this);
-	        }
+    public int doStartTagInternal() throws JspException {
+        try {
 
-			HttpServletRequest request = (HttpServletRequest) pageContext
-					.getRequest();
-			
-			MerchantStore merchantStore = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
+            if (filePathUtils == null || imageUtils == null) {
+                WebApplicationContext wac = getRequestContext().getWebApplicationContext();
+                AutowireCapableBeanFactory factory = wac.getAutowireCapableBeanFactory();
+                factory.autowireBean(this);
+            }
 
-			StringBuilder imagePath = new StringBuilder();
-			
-			String baseUrl = filePathUtils.buildRelativeStoreUri(request, merchantStore);
-			imagePath.append(baseUrl);
-			
-			imagePath
+            HttpServletRequest request = (HttpServletRequest) pageContext
+                    .getRequest();
 
-				.append(imageUtils.buildProductImageUtils(merchantStore, product, this.getImageName())).toString();
+            MerchantStore merchantStore = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
 
-			System.out.println("Printing image " + imagePath.toString());
+            StringBuilder imagePath = new StringBuilder();
 
-			pageContext.getOut().print(imagePath.toString());
+            String baseUrl = filePathUtils.buildRelativeStoreUri(request, merchantStore);
+            imagePath.append(baseUrl);
 
+            imagePath
 
-			
-		} catch (Exception ex) {
-			LOGGER.error("Error while getting content url", ex);
-		}
-		return SKIP_BODY;
-	}
+                    .append(imageUtils.buildProductImageUtils(merchantStore, product, this.getImageName())).toString();
 
-	public int doEndTag() {
-		return EVAL_PAGE;
-	}
+            System.out.println("Printing image " + imagePath.toString());
 
+            pageContext.getOut().print(imagePath.toString());
 
-	public void setImageName(String imageName) {
-		this.imageName = imageName;
-	}
+        } catch (Exception ex) {
+            LOGGER.error("Error while getting content url", ex);
+        }
+        return SKIP_BODY;
+    }
 
-	public String getImageName() {
-		return imageName;
-	}
+    public int doEndTag() {
+        return EVAL_PAGE;
+    }
 
-	public void setImageType(String imageType) {
-		this.imageType = imageType;
-	}
+    public String getImageName() {
+        return imageName;
+    }
 
-	public String getImageType() {
-		return imageType;
-	}
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
 
-	public void setProduct(Product product) {
-		this.product = product;
-	}
+    public String getImageType() {
+        return imageType;
+    }
 
-	public Product getProduct() {
-		return product;
-	}
+    public void setImageType(String imageType) {
+        this.imageType = imageType;
+    }
 
+    public Product getProduct() {
+        return product;
+    }
 
-
-
-	
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 
 }

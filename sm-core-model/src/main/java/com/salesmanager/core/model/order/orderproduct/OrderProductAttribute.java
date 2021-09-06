@@ -17,118 +17,116 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.salesmanager.core.constants.SchemaConstant;
 
 @Entity
-@Table (name="ORDER_PRODUCT_ATTRIBUTE" )
+@Table(name = "ORDER_PRODUCT_ATTRIBUTE")
 public class OrderProductAttribute implements Serializable {
-	private static final long serialVersionUID = 6037571119918073015L;
+    private static final long serialVersionUID = 6037571119918073015L;
 
-	@Id
-	@Column (name="ORDER_PRODUCT_ATTRIBUTE_ID", nullable=false , unique=true )
-	@TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "ORDER_PRODUCT_ATTR_ID_NEXT_VAL")
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
-	private Long id;
+    @Id
+    @Column(name = "ORDER_PRODUCT_ATTRIBUTE_ID", nullable = false, unique = true)
+    @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "ORDER_PRODUCT_ATTR_ID_NEXT_VAL")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
+    private Long id;
 
-	@Column ( name= "PRODUCT_ATTRIBUTE_PRICE" , nullable=false , precision=15 , scale=4 )
-	private BigDecimal productAttributePrice;
+    @Column(name = "PRODUCT_ATTRIBUTE_PRICE", nullable = false, precision = 15, scale = 4)
+    private BigDecimal productAttributePrice;
 
-	@Column ( name= "PRODUCT_ATTRIBUTE_IS_FREE" , nullable=false )
-	private boolean productAttributeIsFree;
+    @Column(name = "PRODUCT_ATTRIBUTE_IS_FREE", nullable = false)
+    private boolean productAttributeIsFree;
 
-	@Column ( name= "PRODUCT_ATTRIBUTE_WEIGHT" , precision=15 , scale=4 )
-	private java.math.BigDecimal productAttributeWeight;
-	
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "ORDER_PRODUCT_ID", nullable = false)
-	private OrderProduct orderProduct;
-	
-	@Column(name = "PRODUCT_OPTION_ID", nullable = false)
-	private Long productOptionId;
+    @Column(name = "PRODUCT_ATTRIBUTE_WEIGHT", precision = 15, scale = 4)
+    private java.math.BigDecimal productAttributeWeight;
 
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "ORDER_PRODUCT_ID", nullable = false)
+    private OrderProduct orderProduct;
 
-	@Column(name = "PRODUCT_OPTION_VALUE_ID", nullable = false)
-	private Long productOptionValueId;
-	
-	@Column ( name= "PRODUCT_ATTRIBUTE_NAME")
-	private String productAttributeName;
-	
-	@Column ( name= "PRODUCT_ATTRIBUTE_VAL_NAME")
-	private String productAttributeValueName;
+    @Column(name = "PRODUCT_OPTION_ID", nullable = false)
+    private Long productOptionId;
 
-	public OrderProductAttribute() {
-	}
-	
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "PRODUCT_OPTION_VALUE_ID", nullable = false)
+    private Long productOptionValueId;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column(name = "PRODUCT_ATTRIBUTE_NAME")
+    private String productAttributeName;
 
+    @Column(name = "PRODUCT_ATTRIBUTE_VAL_NAME")
+    private String productAttributeValueName;
 
-	public boolean isProductAttributeIsFree() {
-		return productAttributeIsFree;
-	}
+    public OrderProductAttribute() {
+    }
 
-	public void setProductAttributeIsFree(boolean productAttributeIsFree) {
-		this.productAttributeIsFree = productAttributeIsFree;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public java.math.BigDecimal getProductAttributeWeight() {
-		return productAttributeWeight;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setProductAttributeWeight(
-			java.math.BigDecimal productAttributeWeight) {
-		this.productAttributeWeight = productAttributeWeight;
-	}
+    public boolean isProductAttributeIsFree() {
+        return productAttributeIsFree;
+    }
 
-	public OrderProduct getOrderProduct() {
-		return orderProduct;
-	}
+    public void setProductAttributeIsFree(boolean productAttributeIsFree) {
+        this.productAttributeIsFree = productAttributeIsFree;
+    }
 
-	public void setOrderProduct(OrderProduct orderProduct) {
-		this.orderProduct = orderProduct;
-	}
+    public java.math.BigDecimal getProductAttributeWeight() {
+        return productAttributeWeight;
+    }
 
-	public String getProductAttributeName() {
-		return productAttributeName;
-	}
+    public void setProductAttributeWeight(
+            java.math.BigDecimal productAttributeWeight) {
+        this.productAttributeWeight = productAttributeWeight;
+    }
 
-	public void setProductAttributeName(String productAttributeName) {
-		this.productAttributeName = productAttributeName;
-	}
+    public OrderProduct getOrderProduct() {
+        return orderProduct;
+    }
 
-	public String getProductAttributeValueName() {
-		return productAttributeValueName;
-	}
+    public void setOrderProduct(OrderProduct orderProduct) {
+        this.orderProduct = orderProduct;
+    }
 
-	public void setProductAttributeValueName(String productAttributeValueName) {
-		this.productAttributeValueName = productAttributeValueName;
-	}
+    public String getProductAttributeName() {
+        return productAttributeName;
+    }
 
-	public BigDecimal getProductAttributePrice() {
-		return productAttributePrice;
-	}
+    public void setProductAttributeName(String productAttributeName) {
+        this.productAttributeName = productAttributeName;
+    }
 
-	public void setProductAttributePrice(BigDecimal productAttributePrice) {
-		this.productAttributePrice = productAttributePrice;
-	}
+    public String getProductAttributeValueName() {
+        return productAttributeValueName;
+    }
 
-	public Long getProductOptionId() {
-		return productOptionId;
-	}
+    public void setProductAttributeValueName(String productAttributeValueName) {
+        this.productAttributeValueName = productAttributeValueName;
+    }
 
-	public void setProductOptionId(Long productOptionId) {
-		this.productOptionId = productOptionId;
-	}
+    public BigDecimal getProductAttributePrice() {
+        return productAttributePrice;
+    }
 
-	public Long getProductOptionValueId() {
-		return productOptionValueId;
-	}
+    public void setProductAttributePrice(BigDecimal productAttributePrice) {
+        this.productAttributePrice = productAttributePrice;
+    }
 
-	public void setProductOptionValueId(Long productOptionValueId) {
-		this.productOptionValueId = productOptionValueId;
-	}
+    public Long getProductOptionId() {
+        return productOptionId;
+    }
+
+    public void setProductOptionId(Long productOptionId) {
+        this.productOptionId = productOptionId;
+    }
+
+    public Long getProductOptionValueId() {
+        return productOptionValueId;
+    }
+
+    public void setProductOptionValueId(Long productOptionValueId) {
+        this.productOptionValueId = productOptionValueId;
+    }
 
 }

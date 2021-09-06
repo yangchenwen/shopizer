@@ -52,28 +52,28 @@
 */
 
 
-
 /*============================================================
 	1) General
 ============================================================*/
 
 /* default text */
 .normal {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
 }
 
 .defaultBorder {
-    border:1px solid #606060;
+    border: 1px solid #606060;
 }
 
 /* drag outline */
 .dragOutline {
-    border:1px dashed #6600FF;
+    border: 1px dashed #6600FF;
 }
 
 /* drop indicator */
 .dropBorder {
-    background-color:#808080;
+    background-color: #808080;
 }
 
 
@@ -81,15 +81,22 @@
 .canvasHover,
 .gridHover,
 .formHover {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:black;
-    background-color:#FFFFD0; border:1px solid #808080; padding:5px;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    background-color: #FFFFD0;
+    border: 1px solid #808080;
+    padding: 5px;
 }
 
 /* group label */
 .groupLabel {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
-    padding-left:5px; padding-right:5px;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
+
 /*============================================================
     2) Button
 		button.baseStyle
@@ -106,50 +113,67 @@
 .buttonSelectedDown,
 .buttonSelectedOver,
 .buttonSelectedDisabled {
-    padding:2px;
-    font-family:Tahoma,Verdana, Bitstream Vera Sans, sans-serif; font-size:10px; font-weight:bold;
-    background-color:#CCCCCC;
-    border-left:1px solid white; border-top:1px solid white;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
-    filter:"progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#AAAAAA, endColorStr=#EEEEEE)";
+    padding: 2px;
+    font-family: Tahoma, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    background-color: #CCCCCC;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+    filter: "progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#AAAAAA, endColorStr=#EEEEEE)";
 }
 
 .buttonOver,
 .buttonSelectedOver {
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid white; border-bottom:1px solid white;
-    filter:"progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#EEEEEE, endColorStr=#AAAAAA)";
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    filter: "progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#EEEEEE, endColorStr=#AAAAAA)";
 }
+
 .buttonDown {
-    background-color:#AAAAAA;  
-    border-left:1px solid #666666; border-top:1px solid #666666;
-    border-right:1px solid white; border-bottom:1px solid white;
-    filter:"progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#CCCCCC, endColorStr=#888888)";
+    background-color: #AAAAAA;
+    border-left: 1px solid #666666;
+    border-top: 1px solid #666666;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    filter: "progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#CCCCCC, endColorStr=#888888)";
 }
+
 .buttonDisabled {
-    color:#666666;
-    background-color:#CCCCCC; 
-    border-left:1px solid #CCCCCC; border-top:1px solid #CCCCCC;	
-    border-right:1px solid #CCCCCC; border-bottom:1px solid #CCCCCC;
-    filter:"progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#888888, endColorStr=#CCCCCC)";
+    color: #666666;
+    background-color: #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    filter: "progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#888888, endColorStr=#CCCCCC)";
 }
+
 .buttonSelected,
 .buttonSelectedDown,
 .buttonSelectedDisabled {
-    color:white; 
-    background-color:#3E74B3; 
-    border-left:1px solid #00008B; border-top:1px solid #00008B;
-    border-right:1px solid #F0F8FF; border-bottom:1px solid #F0F8FF;
-    filter:"progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#1C4190, endColorStr=#5F97D5)";
+    color: white;
+    background-color: #3E74B3;
+    border-left: 1px solid #00008B;
+    border-top: 1px solid #00008B;
+    border-right: 1px solid #F0F8FF;
+    border-bottom: 1px solid #F0F8FF;
+    filter: "progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#1C4190, endColorStr=#5F97D5)";
 }
+
 .buttonSelectedOver {
-    color:orange;
-    background-color:#3E74B3; 
-    filter:"progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#5F97D5, endColorStr=#1C4190)";
+    color: orange;
+    background-color: #3E74B3;
+    filter: "progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#5F97D5, endColorStr=#1C4190)";
 }
+
 .buttonSelectedDisabled {
-    color:#666666;
-    filter:"progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#CCCCCC, endColorStr=#888888)";
+    color: #666666;
+    filter: "progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#CCCCCC, endColorStr=#888888)";
 }
 
 
@@ -162,10 +186,12 @@
 .imgButtonDown,
 .imgButtonSelectedDown,
 .imgButtonDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:10px;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 10px;
 }
+
 .imgButtonDisabled {
-    color:#666666;
+    color: #666666;
 }
 
 /* StretchImgButton */
@@ -177,16 +203,18 @@
 .stretchImgButtonSelectedDown,
 .stretchImgButtonSelectedDisabled,
 .stretchImgButtonDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:10px;
-}
-.stretchImgButtonOver {
-    font-weight:bold;
-}
-.stretchImgButtonSelectedDisabled,
-.stretchImgButtonDisabled {
-    color:#666666;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 10px;
 }
 
+.stretchImgButtonOver {
+    font-weight: bold;
+}
+
+.stretchImgButtonSelectedDisabled,
+.stretchImgButtonDisabled {
+    color: #666666;
+}
 
 
 /*============================================================
@@ -195,9 +223,12 @@
   */
 
 .menuTable {
-    border-top:2px outset white; border-bottom:2px outset white; 
-    border-left:2px outset white; border-right:2px outset white;
+    border-top: 2px outset white;
+    border-bottom: 2px outset white;
+    border-left: 2px outset white;
+    border-right: 2px outset white;
 }
+
 .menu,
 .menuSelected,
 .menuOver,
@@ -205,30 +236,45 @@
 .menuDisabled,
 .treeMenuSelected,
 .treeMenuSelectedOver {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; 
-    background-color:transparent;
-    padding-top:2px; padding-bottom:2px;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    background-color: transparent;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
+
 .menu,
 .menuSelected {
-    padding-top:3px; padding-bottom:3px;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
+
 .menuOver,
 .menuSelectedOver {
-    color:white; background-color:#3E74B3; 
-    border-top:1px solid #5E94D3; border-bottom:1px solid #1E5493;
+    color: white;
+    background-color: #3E74B3;
+    border-top: 1px solid #5E94D3;
+    border-bottom: 1px solid #1E5493;
 }
+
 .treeMenuSelected {
-    color:black; background-color:#A9B2CA; 
-	border-top:1px solid #A9B2CA; border-bottom:1px solid #A9B2CA;
+    color: black;
+    background-color: #A9B2CA;
+    border-top: 1px solid #A9B2CA;
+    border-bottom: 1px solid #A9B2CA;
 }
+
 .treeMenuSelectedOver {
-    color:white; background-color:#0A246A;
-    border-top:1px solid #0A246A; border-bottom:1px solid #0A246A;
+    color: white;
+    background-color: #0A246A;
+    border-top: 1px solid #0A246A;
+    border-bottom: 1px solid #0A246A;
 }
+
 .menuDisabled {
-    color:#999999;
-    border-top:1px transparent; border-bottom:1px transparent;    
+    color: #999999;
+    border-top: 1px transparent;
+    border-bottom: 1px transparent;
 }
 
 /* menu header buttons */
@@ -240,48 +286,72 @@
 .menuButtonSelectedDown,
 .menuButtonSelectedOver,
 .menuButtonSelectedDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; background-color:#CCCCCC;
-    border-left:1px solid white; border-top:1px solid white;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
-    padding-left:4px; padding-right:4px;            
-    filter:"progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#CCCCCC, endColorStr=#888888)";
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    background-color: #CCCCCC;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+    padding-left: 4px;
+    padding-right: 4px;
+    filter: "progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#CCCCCC, endColorStr=#888888)";
 }
+
 .menuButton {
-    filter:"progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#AAAAAA, endColorStr=#EEEEEE)";						
+    filter: "progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#AAAAAA, endColorStr=#EEEEEE)";
 }
+
 .menuButtonOver {
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid white; border-bottom:1px solid white;
-    filter:"progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#EEEEEE, endColorStr=#AAAAAA)";
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    filter: "progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#EEEEEE, endColorStr=#AAAAAA)";
 }
+
 .menuButtonDown {
-    background-color:#AAAAAA;  
-    border-left:1px solid #666666; border-top:1px solid #666666;
-    border-right:1px solid white; border-bottom:1px solid white;
+    background-color: #AAAAAA;
+    border-left: 1px solid #666666;
+    border-top: 1px solid #666666;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
 }
-.menuButtonDisabled	{
-    color:#666666; 
-    border-left:1px solid #CCCCCC; border-top:1px solid #CCCCCC;	
-    border-right:1px solid #CCCCCC; border-bottom:1px solid #CCCCCC;
+
+.menuButtonDisabled {
+    color: #666666;
+    border-left: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
 }
+
 .menuButtonSelected,
 .menuButtonSelectedDown,
 .menuButtonSelectedOver,
 .menuButtonSelectedDisabled {
-    font-size:11px; color:white; font-weight:bold; 
-    background-color:#3E74B3; 
-    border-left:1px solid #00008B; border-top:1px solid #00008B;
-    border-right:1px solid #F0F8FF; border-bottom:1px solid #F0F8FF;
-}
-.menuButtonSelectedOver	{
-    color:orange;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid white; border-bottom:1px solid white;
-}
-.menuButtonSelectedDisabled {
-    font-size:11px; color:#666666;
+    font-size: 11px;
+    color: white;
+    font-weight: bold;
+    background-color: #3E74B3;
+    border-left: 1px solid #00008B;
+    border-top: 1px solid #00008B;
+    border-right: 1px solid #F0F8FF;
+    border-bottom: 1px solid #F0F8FF;
 }
 
+.menuButtonSelectedOver {
+    color: orange;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+.menuButtonSelectedDisabled {
+    font-size: 11px;
+    color: #666666;
+}
 
 
 /*============================================================
@@ -302,41 +372,53 @@
 ============================================================*/
 
 .windowBackground,
-.dialogBackground {}
+.dialogBackground {
+}
 
 .windowBody,
 .dialogBody {
-	border-top:2px solid #444967;
+    border-top: 2px solid #444967;
 }
+
 .promptBody {
 }
 
 .windowHeader,
 .dialogHeader {
-    filter:"progid:dximagetransform.microsoft.gradient(gradientType=1, startColorStr=#444967, endColorStr=#B0B8CA)";
+    filter: "progid:dximagetransform.microsoft.gradient(gradientType=1, startColorStr=#444967, endColorStr=#B0B8CA)";
 }
 
 .windowHeaderHilite,
 .dialogHeaderHilite {
-    filter:"progid:dximagetransform.microsoft.gradient(gradientType=1, startColorStr=#8289A6, endColorStr=#D0D8EA)";
+    filter: "progid:dximagetransform.microsoft.gradient(gradientType=1, startColorStr=#8289A6, endColorStr=#D0D8EA)";
 }
 
 .windowHeaderText,
 .dialogHeaderText {
-    font-family:Tahoma,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:#FFFFFF;
-    font-weight:bold;
-    padding-left:2px; padding-right:2px;
+    font-family: Tahoma, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #FFFFFF;
+    font-weight: bold;
+    padding-left: 2px;
+    padding-right: 2px;
 }
+
 .windowStatusBar {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:black;
-    border-top: 1px solid #999999; border-left: 1px solid #999999;
-    border-right: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-top: 1px solid #999999;
+    border-left: 1px solid #999999;
+    border-right: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
 }
+
 .dialogHeaderText {
-    color:#EEEEEE;
+    color: #EEEEEE;
 }
+
 .modalMask {
-    background-color:black;
+    background-color: black;
 }
 
 /*============================================================
@@ -344,17 +426,20 @@
 ============================================================*/
 
 .layoutDropLine {
-    background-color:#3366FF;
+    background-color: #3366FF;
 
 }
+
 .layoutPlaceHolder {
-    border:1px solid black;
+    border: 1px solid black;
 }
+
 .splitbar {
-	
+
 }
+
 .splitbarDown {
-	border:1px solid black;
+    border: 1px solid black;
 }
 
 /*============================================================
@@ -363,9 +448,12 @@
 
 .tabSetContainer {
     background-color: #D6D6D6;
-    border-left:1px solid white; border-top:1px solid white;
-    border-right:1px solid #636363; border-bottom:1px solid #636363;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    border-right: 1px solid #636363;
+    border-bottom: 1px solid #636363;
 }
+
 .tab,
 .tabOver,
 .tabSelected,
@@ -374,7 +462,8 @@
 .tabSelectedDown,
 .tabSelectedDisabled,
 .tabDisabled {
-    font-family:Bitstream Vera Sans,Helvetica,Verdana,sans-serif; font-size:11px;
+    font-family: Bitstream Vera Sans, Helvetica, Verdana, sans-serif;
+    font-size: 11px;
 }
 
 .tabTitle,
@@ -393,44 +482,51 @@
 .vtabTitleSelectedDown,
 .vtabTitleSelectedOver,
 .vtabTitleSelectedDisabled {
-    font-family:Tahoma,Verdana, Bitstream Vera Sans, sans-serif; font-size:10px; 
-    font-weight:bold;
+    font-family: Tahoma, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
 }
+
 .tabTitle,
 .tabTitleDown,
 .tabTitleOver,
 .tabTitleDisabled {
-    padding-top:2px;
+    padding-top: 2px;
 }
+
 .tabTitleSelected,
 .tabTitleSelectedDown,
 .tabTitleSelectedOver,
 .tabTitleSelectedDisabled {
-    padding-bottom:2px;
+    padding-bottom: 2px;
 }
+
 .vtabTitle,
 .vtabTitleDown,
 .vtabTitleOver,
 .vtabTitleDisabled {
-    padding-left:2px;
+    padding-left: 2px;
 }
+
 .vtabTitleSelected,
 .vtabTitleSelectedDown,
 .vtabTitleSelectedOver,
 .vtabTitleSelectedDisabled {
-    padding-right:2px;
+    padding-right: 2px;
 }
+
 .tabTitleOver,
 .tabTitleSelectedOver,
 .vtabTitleOver,
 .vtabTitleSelectedOver {
-    color:#006000;
+    color: #006000;
 }
+
 .tabTitleDisabled,
 .tabTitleSelectedDisabled,
 .vtabTitleDisabled,
 .vtabTitleSelectedDisabled {
-    color:#666666;
+    color: #666666;
 }
 
 
@@ -444,38 +540,53 @@
 .imgSectionHeaderDisabledclosed,
 .imgSectionHeaderDisabledopened {
 }
+
 .imgSectionHeaderTitleclosed,
 .imgSectionHeaderTitleopened,
 .imgSectionHeaderTitleDisabledclosed,
 .imgSectionHeaderTitleDisabledopened {
-    font-family:Tahoma,Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold;
-    color:white;
+    font-family: Tahoma, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
 }
+
 .imgSectionHeaderTitleDisabledclosed,
 .imgSectionHeaderTitleDisabledopened {
-	color:#c8c8c8;
+    color: #c8c8c8;
 }
-/* 
+
+/*
 
 */
-.sectionHeaderTitleopened, 
+.sectionHeaderTitleopened,
 .sectionHeaderTitleclosed {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:white;
-}
-.sectionHeaderTitleDisabledopened, 
-.sectionHeaderTitleDisabledclosed {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:#808080;
-}
-/* SectionStack headers - css based */
-.sectionHeaderopened, 
-.sectionHeaderclosed {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:white; background-color:#6682A0;
-    border-left:1px solid #FFFFFF; border-top:1px solid #FFFFFF;
-    border-right:1px solid #264260; border-bottom:1px solid #264260;
-    padding:3px;
-    filter:"progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#557189, endColorStr=#7793B1)";
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: white;
 }
 
+.sectionHeaderTitleDisabledopened,
+.sectionHeaderTitleDisabledclosed {
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #808080;
+}
+
+/* SectionStack headers - css based */
+.sectionHeaderopened,
+.sectionHeaderclosed {
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: white;
+    background-color: #6682A0;
+    border-left: 1px solid #FFFFFF;
+    border-top: 1px solid #FFFFFF;
+    border-right: 1px solid #264260;
+    border-bottom: 1px solid #264260;
+    padding: 3px;
+    filter: "progid:dximagetransform.microsoft.gradient(gradientType=0, startColorStr=#557189, endColorStr=#7793B1)";
+}
 
 
 /*============================================================
@@ -483,12 +594,16 @@
 ============================================================*/
 
 /* general form styles */
-.formRow {}
+.formRow {
+}
+
 .formCell,
 .formCellFocused,
 .formCellDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
 }
+
 .formTitle,
 .formTitleFocused,
 .formTitleDisabled,
@@ -522,116 +637,142 @@
 .labelAnchorDisabled,
 .labelAnchorError,
 .labelAnchorFocused {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
 }
+
 .formCellError,
-.formTitleError { 
-    font-weight:bold; color:#204268; 
-    background-color:#CFD9F2
+.formTitleError {
+    font-weight: bold;
+    color: #204268;
+    background-color: #CFD9F2
 }
+
 .formHint {
-    color:#666666; padding:3px;
+    color: #666666;
+    padding: 3px;
 }
 
 /* headerItem */
 .headerItem,
 .headerItemDisabled,
 .headerItemError {
-    font-size:14px; font-weight:bold; color:#3E74B3;
-}	
+    font-size: 14px;
+    font-weight: bold;
+    color: #3E74B3;
+}
 
 /* text items */
 .textItem,
 .textItemFocused,
 .textItemDisabled,
 .textItemError,
-.textItemHint { 
-    background-color:#FFFFFF;
-    padding:2px; border:1px solid #808080;
-}
 .textItemHint {
-    color:#666666;
+    background-color: #FFFFFF;
+    padding: 2px;
+    border: 1px solid #808080;
+}
+
+.textItemHint {
+    color: #666666;
 }
 
 .comboBoxItemPendingText {
-    color:#0066CC;
+    color: #0066CC;
 }
+
 /* selectItem */
 
 .selectItemControl,
 .selectItemControlError,
 .selectItemControlFocused {
-    background-color:white; border:1px solid #808080;
+    background-color: white;
+    border: 1px solid #808080;
 }
 
 .selectItemControlDisabled {
-    background-color:white; border:1px solid #A0A0A0;
+    background-color: white;
+    border: 1px solid #A0A0A0;
 }
 
 .selectItemText,
 .selectItemTextError,
 .selectItemTextHint {
-    margin:2px;
+    margin: 2px;
 }
 
 .selectItemTextDisabled {
-    color:#ACA899; margin:2px;
+    color: #ACA899;
+    margin: 2px;
 }
 
 .selectItemTextFocused {
-    background-color:#316AC5; color:white; margin:2px;
+    background-color: #316AC5;
+    color: white;
+    margin: 2px;
 }
 
 .selectItemTextHint {
-    color:#666666;
+    color: #666666;
 }
 
 .selectItemPickerIcon,
 .selectItemPickerIconFocused,
 .selectItemPickerIconDisabled,
 .selectItemPickerIconError {
-    padding:0px;
+    padding: 0px;
 }
 
 .pickListMenuBody {
-    border:1px solid #808080;
+    border: 1px solid #808080;
 }
 
 .pickListCell {
-    color:black; background-color:#FFFFFF;
+    color: black;
+    background-color: #FFFFFF;
 }
+
 .pickListCellSelected {
-    color:white; background-color:#316AC5;
+    color: white;
+    background-color: #316AC5;
 }
+
 .pickListCellDisabled {
-    color:#666666; background-color:#FFFFFF;
+    color: #666666;
+    background-color: #FFFFFF;
 }
 
 /* checkbox and radioButton */
 .labelAnchor,
 .labelAnchorDisabled,
 .labelAnchorError,
-.labelAnchorFocused  { 
-    color:black; text-decoration:none;
+.labelAnchorFocused {
+    color: black;
+    text-decoration: none;
 }
 
 /* ColorChooser */
 .colorChooserCell,
 .colorChooserCellOver {
-    background-color:#EFEFEF;
-    border-left:1px solid #EFEFEF; border-top:1px solid #EFEFEF;
-    border-right:1px solid #EFEFEF; border-bottom:1px solid #EFEFEF;
+    background-color: #EFEFEF;
+    border-left: 1px solid #EFEFEF;
+    border-top: 1px solid #EFEFEF;
+    border-right: 1px solid #EFEFEF;
+    border-bottom: 1px solid #EFEFEF;
 }
+
 .colorChooserCellOver {
-    border-left:1px solid black; border-top:1px solid black;
-    border-right:1px solid black; border-bottom:1px solid black;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 /* FilterBuilder */
 .bracketBorders {
     border-left: 1px solid #808080;
     border-top: 1px solid #808080;
-    border-bottom: 1px solid #808080;    
+    border-bottom: 1px solid #808080;
 }
 
 /* DateChooser */
@@ -643,42 +784,61 @@
 .dateChooserButtonSelectedDown,
 .dateChooserButtonSelectedOver,
 .dateChooserButtonSelectedDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:10px; background-color:#3E74B3;
-    border-left:1px solid #00008B; border-top:1px solid #00008B;
-    border-right:1px solid #F0F8FF; border-bottom:1px solid #F0F8FF;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 10px;
+    background-color: #3E74B3;
+    border-left: 1px solid #00008B;
+    border-top: 1px solid #00008B;
+    border-right: 1px solid #F0F8FF;
+    border-bottom: 1px solid #F0F8FF;
 }
+
 .dateChooserButton {
-    background-color:#CCCCCC;
-    border-left:1px solid #DDDDDD; border-top:1px solid #DDDDDD;
-    border-right:1px solid #BBBBBB; border-bottom:1px solid #BBBBBB;
+    background-color: #CCCCCC;
+    border-left: 1px solid #DDDDDD;
+    border-top: 1px solid #DDDDDD;
+    border-right: 1px solid #BBBBBB;
+    border-bottom: 1px solid #BBBBBB;
 }
+
 .dateChooserButtonOver {
-    background-color:#DDDDDD; color:#006400; 
-    border-left:1px solid white; border-top:1px solid white;
-    border-right:1px solid #666666; border-bottom:1px solid #666666;
+    background-color: #DDDDDD;
+    color: #006400;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    border-right: 1px solid #666666;
+    border-bottom: 1px solid #666666;
 }
+
 .dateChooserButtonDown {
-    background-color:#AAAAAA;  
-    border-left:1px solid #666666; border-top:1px solid #666666;
-    border-right:1px solid white; border-bottom:1px solid white;
+    background-color: #AAAAAA;
+    border-left: 1px solid #666666;
+    border-top: 1px solid #666666;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
 }
+
 .dateChooserButtonDisabled {
-    color:#666666;
-    background-color:#CCCCCC; 
-    border-left:1px solid #CCCCCC; border-top:1px solid #CCCCCC;	
-    border-right:1px solid #CCCCCC; border-bottom:1px solid #CCCCCC;
+    color: #666666;
+    background-color: #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
 }
+
 .dateChooserButtonSelected,
 .dateChooserButtonSelectedDown,
 .dateChooserButtonSelectedOver {
-    color:white; font-weight:bold; 
+    color: white;
+    font-weight: bold;
 }
+
 .dateChooserButtonSelectedDisabled {
-    color:#666666;
+    color: #666666;
 }
 
 
-						
 /*============================================================
 	9) Slider & Rangebar
 ============================================================*/
@@ -690,15 +850,18 @@
 .rangebarTitle,
 .rangebarRange,
 .rangebarValue {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:10px;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 10px;
 }
+
 .sliderTitle,
 .rangebarTitle {
-    font-weight:bold;
+    font-weight: bold;
 }
+
 .sliderRange,
 .rangebarRange {
-    color:gray;
+    color: gray;
 }
 
 
@@ -706,34 +869,36 @@
 	10) DetailViewer
 ============================================================*/
 .detailBlock {
-    border-left:1px solid gray;
-    border-top:1px solid gray;
+    border-left: 1px solid gray;
+    border-top: 1px solid gray;
 }
 
 .detail,
 .detailLabel,
 .detailHeader {
-    border-right:1px solid gray;
-    border-bottom:1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
 }
 
 .detail,
 .detailLabel,
 .detailHeader {
-    font-family:Bitstream Vera Sans, sans-serif; font-size:11px; background-color:white;
+    font-family: Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    background-color: white;
 }
 
 .detailLabel {
-    font-weight:bold;
-    background-color:#EEEEEE;
-    text-align:right;
+    font-weight: bold;
+    background-color: #EEEEEE;
+    text-align: right;
 }
 
 .detailHeader {
-    font-size:14px; font-weight:bold;
-    background-color:#BBDAFA;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #BBDAFA;
 }
-
 
 
 /*============================================================
@@ -748,32 +913,46 @@
 ============================================================*/
 
 .listGrid {
-    border:1px solid #808080;
+    border: 1px solid #808080;
 }
-.headerBar {}
+
+.headerBar {
+}
+
 .gridBody {
-    border-top:1px solid #808080;
+    border-top: 1px solid #808080;
 }
+
 .loadingDataMessage,
 .offlineMessage,
 .emptyMessage {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; padding:10px;
-}
-.gridDragTracker {
-	font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
-    background-color:white;
-    padding:1px;
-    border:1px dotted blue;
-}
-.dragLine {
-    background-color:#404040;
-}
-.listTable {}
-/* for filterEditor */
-.recordEditorCell {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:black; background-color:#d0d0d0;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    padding: 10px;
 }
 
+.gridDragTracker {
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    background-color: white;
+    padding: 1px;
+    border: 1px dotted blue;
+}
+
+.dragLine {
+    background-color: #404040;
+}
+
+.listTable {
+}
+
+/* for filterEditor */
+.recordEditorCell {
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    background-color: #d0d0d0;
+}
 
 
 /*============================================================
@@ -789,15 +968,16 @@
 .headerButtonSelected,
 .headerButtonDisabled,
 .headerButtonSelectedDisabled {
-    background-color:#FFFFFF;
-    border-right:1px solid #606060;
+    background-color: #FFFFFF;
+    border-right: 1px solid #606060;
 }
+
 .headerButtonOver,
 .headerButtonDown,
 .headerButtonSelectedOver,
 .headerButtonSelectedDown {
-    background-color:#E0FFE0;
-    border-right:1px solid #606060;
+    background-color: #E0FFE0;
+    border-right: 1px solid #606060;
 }
 
 /* ListGrid column header titles */
@@ -809,18 +989,23 @@
 .headerTitleSelectedDown,
 .headerTitleDisabled,
 .headerTitleSelectedDisabled {
-    font-family:Tahoma,Verdana, Bitstream Vera Sans, sans-serif; font-size:10px; font-weight:bold;
+    font-family: Tahoma, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
 }
+
 .headerTitleDown,
 .headerTitleSelected,
 .headerTitleSelectedOver,
 .headerTitleSelectedDown,
 .headerTitleSelectedDisabled {
-    padding-left:1px; padding-top:2px;
+    padding-left: 1px;
+    padding-top: 2px;
 }
+
 .headerTitleDisabled,
 .headerTitleSelectedDisabled {
-    color:#666666;
+    color: #666666;
 }
 
 
@@ -862,52 +1047,66 @@
 .specialColSelectedOver,
 .specialColDisabled,
 .groupNode {
-	font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; text-overflow:ellipsis;
-	color:black;
-	border-bottom:1px solid #ffffff; border-top:1px solid #ffffff;
-	background-color:#ffffff;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    text-overflow: ellipsis;
+    color: black;
+    border-bottom: 1px solid #ffffff;
+    border-top: 1px solid #ffffff;
+    background-color: #ffffff;
 }
 
 .specialCol {
-	border-bottom:1px solid #f0f0e8; border-top:1px solid #f0f0e8;
-	background-color:#f0f0f0;
+    border-bottom: 1px solid #f0f0e8;
+    border-top: 1px solid #f0f0e8;
+    background-color: #f0f0f0;
 }
 
 .cellDark,
 .groupSummaryCell,
 .gridSummaryCell {
-	border-bottom:1px solid #f0f0e8; border-top:1px solid #f0f0e8;
-	background-color:#f0f0f0;
+    border-bottom: 1px solid #f0f0e8;
+    border-top: 1px solid #f0f0e8;
+    background-color: #f0f0f0;
 }
+
 .recordSummaryCell,
 .recordSummaryCellDark {
-    border-bottom:1px solid #c9c9e8; border-top:1px solid #c9c9e8;
-	background-color:#c9c9c9;
+    border-bottom: 1px solid #c9c9e8;
+    border-top: 1px solid #c9c9e8;
+    background-color: #c9c9c9;
 }
+
 .cellOver,
 .cellOverDark,
 .specialColOver,
 .recordSummaryCellOver,
 .recordSummaryCellOverDark {
-	border-bottom:1px solid #c0c0c0; border-top:1px solid #c0c0c0;
-	background-color:#ffffc0;
+    border-bottom: 1px solid #c0c0c0;
+    border-top: 1px solid #c0c0c0;
+    background-color: #ffffc0;
 }
+
 .cellSelected,
 .cellSelectedDark,
 .specialColSelected,
 .recordSummaryCellSelected,
 .recordSummaryCellSelectedDark {
-	border-bottom:1px solid #b8d0ff; border-top:1px solid #b8d0ff;
-	background-color:#b8d0ff;
+    border-bottom: 1px solid #b8d0ff;
+    border-top: 1px solid #b8d0ff;
+    background-color: #b8d0ff;
 }
+
 .cellSelectedOver,
 .cellSelectedOverDark,
 .specialColSelectedOver,
 .recordSummaryCellSelectedOver,
 .recordSummaryCellSelectedOverDark {
-	border-bottom:1px solid #a0a0a0; border-top:1px solid #a0a0a0;
-	background-color:#e0ebff;
+    border-bottom: 1px solid #a0a0a0;
+    border-top: 1px solid #a0a0a0;
+    background-color: #e0ebff;
 }
+
 .cellDisabled,
 .cellDisabledDark,
 .specialDisabled,
@@ -915,16 +1114,19 @@
 .gridSummaryCellDisabled,
 .recordSummaryCellDisabled,
 .recordSummaryCellDisabledDark {
-	color:#808080;
+    color: #808080;
 }
+
 .cellDisabledDark,
 .groupSummaryCellDisabled,
 .gridSummaryCellDisabled,
 .recordSummaryCellDisabled,
 .recordSummaryCellDisabledDark {
-	border-bottom:1px solid #f0f0e8; border-top:1px solid #f0f0e8;
-	background-color:#f0f0e8;
+    border-bottom: 1px solid #f0f0e8;
+    border-top: 1px solid #f0f0e8;
+    background-color: #f0f0e8;
 }
+
 .recordSummaryCell,
 .recordSummaryCellDark,
 .recordSummaryCellOver,
@@ -935,47 +1137,48 @@
 .recordSummaryCellSelectedOverDark,
 .recordSummaryCellDisabled,
 .recordSummaryCellDisabledDark {
-    font-style:italic;
+    font-style: italic;
 }
+
 .groupSummaryCell,
 .groupSummaryCellDisabled,
 .gridSummaryCell,
 .gridSummaryCellDisabled {
-    font-weight:bold;
+    font-weight: bold;
     border-top: 1px solid #548EE0;
 }
 
 .gridSummaryCell {
-    border-top-width:0px;
-    border-bottom-width:0px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
 }
 
 .summaryRowBody {
-    background-color:#f0f0f0;
+    background-color: #f0f0f0;
 }
 
 /* for grouping */
 .groupNode {
-    font-weight:bold;
-    border-bottom: 2px solid #548EE0; 
+    font-weight: bold;
+    border-bottom: 2px solid #548EE0;
 }
 
 /* Field builders (Formula/Summary) */
 .sampleOutput {
     border: 2px solid #D9D9D9;
-    padding: 3px; 
+    padding: 3px;
 }
 
 /* Multi-sort - sort-index appearing next to sort-arrows in field headers */
 .sortNumeral {
-    font-size:7px
+    font-size: 7px
 }
 
 /*============================================================
 	12) ToolStrip
 ============================================================*/
 .toolStrip {
-    background-color:#CCCCCC;
+    background-color: #CCCCCC;
 }
 
 /*============================================================
@@ -1008,8 +1211,8 @@
     background-color: #B0B0B0;
     border: 0;
     color: #333333;
-    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif; 
-    font-size: 11px; 
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
     font-weight: bold;
     padding: 3px;
 }
@@ -1033,9 +1236,9 @@
     border-left: 1px solid #FFFFFF;
     border-right: 1px solid #808080;
     border-top: 1px solid #FFFFFF;
-	color: #333333;
-    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif; 
-    font-size:11px;
+    color: #333333;
+    font-family: Arial, Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
     padding: 4px;
 }
 
@@ -1069,17 +1272,18 @@
 ==============================================================*/
 
 .tileGrid {
-    border:1px solid #808080;
-   
+    border: 1px solid #808080;
+
 }
+
 .tileValue,
 .tileValueDown,
 .tileValueSelected,
 .tileValueOver,
 .tileValueSelectedOver,
 .tileValueSelectedDown {
-    font-size: 8pt; 
-    text-overflow:ellipsis;   
+    font-size: 8pt;
+    text-overflow: ellipsis;
 }
 
 .tileValueSelected {
@@ -1090,69 +1294,91 @@
     color: #4D8CFF
 }
 
-.simpleTile, 
+.simpleTile,
 .simpleTileOver,
 .simpleTileSelected,
 .simpleTileSelectedOver {
-    padding:3px    
+    padding: 3px
 }
+
 .simpleTile {
-    border:1px solid transparent;
+    border: 1px solid transparent;
 }
+
 .simpleTileOver {
-      background-color:#ffffc0;
-      border:1px solid #EFF200;
+    background-color: #ffffc0;
+    border: 1px solid #EFF200;
 }
 
 .simpleTileSelected {
-      background-color:#b8d0ff;
-      border:1px solid #6598FF;
+    background-color: #b8d0ff;
+    border: 1px solid #6598FF;
 }
 
 .simpleTileSelectedOver {
-      background-color:#e0ebff;
-      border:1px solid #A9C7FF;
+    background-color: #e0ebff;
+    border: 1px solid #A9C7FF;
 }
 
 /*============================================================
     Unused? Review & Remove
 ============================================================*/
 .selectedText {
-    background-color:darkblue; color:white;
+    background-color: darkblue;
+    color: white;
 }
+
 .disabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:#CCCCCC;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #CCCCCC;
 }
+
 .pageHeader {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:12px; font-weight:bold; color:darkblue
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: darkblue
 }
+
 .printPageHeader {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:14px; font-weight:bold; color:darkblue
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: darkblue
 }
+
 .printCell {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:10px;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 10px;
 }
 
 .cssdialogHeader,
 .cssdialogHeaderHilite {
-    border-left: 1px solid #FFFF52; border-top: 1px solid #FFFF52;
-    border-right: 1px solid #AD7B00; border-bottom: 1px solid #AD7B00;
-    filter:"progid:dximagetransform.microsoft.gradient(gradientType=1, startColorStr=#FFCE00, endColorStr=#FFF790)";
+    border-left: 1px solid #FFFF52;
+    border-top: 1px solid #FFFF52;
+    border-right: 1px solid #AD7B00;
+    border-bottom: 1px solid #AD7B00;
+    filter: "progid:dximagetransform.microsoft.gradient(gradientType=1, startColorStr=#FFCE00, endColorStr=#FFF790)";
 }
+
 .cssdialogHeaderHilite {
-    filter:"progid:dximagetransform.microsoft.gradient(gradientType=1, startColorStr=#FFE67F, endColorStr=#FFFBC6)";
+    filter: "progid:dximagetransform.microsoft.gradient(gradientType=1, startColorStr=#FFE67F, endColorStr=#FFFBC6)";
 }
+
 .dialogStatusBar {
-    border-top: 1px solid #999999; border-left: 1px solid #999999;
-    border-right: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF;
+    border-top: 1px solid #999999;
+    border-left: 1px solid #999999;
+    border-right: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
 }
+
 .dialogStatusBarText {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:black; font-weight:bold;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    font-weight: bold;
 }
-
-
-
-
 
 
 /*IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
@@ -1166,7 +1392,6 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII*/
 
 
-
 /*============================================================
     TabSet CSS tabs
 		tabSet.simpleTabBaseStyle
@@ -1174,98 +1399,171 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 /* styles for simple css-styled tabs*/
 /* left */
 .tabButtonLeft {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; background-color:#CCCCCC;
-    border-left:1px solid white; border-top:1px solid white; border-bottom:1px solid #808080;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    background-color: #CCCCCC;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    border-bottom: 1px solid #808080;
 }
+
 .tabButtonLeftOver,
 .tabButtonLeftSelected,
 .tabButtonLeftSelectedOver {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; background-color:#D6D6D6; 
-    border-left:1px solid white; border-top:1px solid white; border-bottom:1px solid #808080;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    background-color: #D6D6D6;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    border-bottom: 1px solid #808080;
 }
+
 .tabButtonLeftDown,
 .tabButtonLeftSelectedDown {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; background-color: #D6D6D6; 
-    border-left:1px solid #808080; border-top:1px solid #808080; border-bottom:1px solid white;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    background-color: #D6D6D6;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-bottom: 1px solid white;
 }
+
 .tabButtonLeftSelectedDisabled,
 .tabButtonLeftDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:#666666;
-    background-color:#CCCCCC; 
-    border-left:1px solid #CCCCCC; border-top:1px solid #CCCCCC; border-bottom:1px solid #CCCCCC;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #666666;
+    background-color: #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
 }
-/* right */                        
+
+/* right */
 .tabButtonRight {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; background-color:#CCCCCC;
-    border-top:1px solid white; border-bottom:1px solid #808080; border-right:1px solid #808080;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    background-color: #CCCCCC;
+    border-top: 1px solid white;
+    border-bottom: 1px solid #808080;
+    border-right: 1px solid #808080;
 }
+
 .tabButtonRightOver,
 .tabButtonRightSelected,
 .tabButtonRightSelectedOver {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; background-color:#D6D6D6; 
-    border-top:1px solid white; border-bottom:1px solid #808080; border-right:1px solid #808080;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    background-color: #D6D6D6;
+    border-top: 1px solid white;
+    border-bottom: 1px solid #808080;
+    border-right: 1px solid #808080;
 }
+
 .tabButtonRightDown,
 .tabButtonRightSelectedDown {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; background-color: #D6D6D6; 
-    border-top:1px solid #808080; border-bottom:1px solid white; border-right:1px solid white;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    background-color: #D6D6D6;
+    border-top: 1px solid #808080;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
 }
 
 .tabButtonRightSelectedDisabled,
 .tabButtonRightDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:#666666;
-    background-color:#CCCCCC; 
-    border-top:1px solid #CCCCCC; border-bottom:1px solid #CCCCCC; border-right:1px solid #CCCCCC;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #666666;
+    background-color: #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
 }
 
-/* top */                        
+/* top */
 .tabButtonTop {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; background-color:#CCCCCC;
-    border-left:1px solid white; border-top:1px solid white; border-right:1px solid #808080;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    background-color: #CCCCCC;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    border-right: 1px solid #808080;
 }
+
 .tabButtonTopOver,
 .tabButtonTopSelected,
 .tabButtonTopSelectedOver {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; background-color:#D6D6D6; 
-    border-left:1px solid white; border-top:1px solid white; border-right:1px solid #808080;
-}
-.tabButtonTopDown,
-.tabButtonTopSelectedDown {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; background-color: #D6D6D6; 
-    border-left:1px solid #808080; border-top:1px solid #808080; border-right:1px solid white;
-}
-.tabButtonTopSelectedDisabled,
-.tabButtonTopDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:#666666; 
-    background-color:#CCCCCC; 
-    border-left:1px solid #CCCCCC; border-top:1px solid #CCCCCC; border-right:1px solid #CCCCCC;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    background-color: #D6D6D6;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    border-right: 1px solid #808080;
 }
 
-/* bottom */                        
-.tabButtonBottom {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; background-color:#CCCCCC;
-    border-left:1px solid white; border-bottom:1px solid #808080; border-right:1px solid #808080;
+.tabButtonTopDown,
+.tabButtonTopSelectedDown {
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    background-color: #D6D6D6;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid white;
 }
+
+.tabButtonTopSelectedDisabled,
+.tabButtonTopDisabled {
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #666666;
+    background-color: #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+}
+
+/* bottom */
+.tabButtonBottom {
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    background-color: #CCCCCC;
+    border-left: 1px solid white;
+    border-bottom: 1px solid #808080;
+    border-right: 1px solid #808080;
+}
+
 .tabButtonBottomOver,
 .tabButtonBottomSelected,
 .tabButtonBottomSelectedOver {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; background-color:#D6D6D6; 
-    border-left:1px solid white; border-bottom:1px solid #808080; border-right:1px solid #808080;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    background-color: #D6D6D6;
+    border-left: 1px solid white;
+    border-bottom: 1px solid #808080;
+    border-right: 1px solid #808080;
 }
+
 .tabButtonBottomDown,
 .tabButtonBottomSelectedDown {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; background-color: #D6D6D6; 
-    border-left:1px solid #808080; border-bottom:1px solid white; border-right:1px solid white;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    background-color: #D6D6D6;
+    border-left: 1px solid #808080;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
 }
+
 .tabButtonBottomSelectedDisabled,
 .tabButtonBottomDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:#666666;
-    background-color:#CCCCCC; 
-    border-left:1px solid #CCCCCC; border-bottom:1px solid #CCCCCC; border-right:1px solid #CCCCCC;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #666666;
+    background-color: #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
 }
-						
-
-
 
 
 /*IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
@@ -1279,7 +1577,6 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII*/
 
 
-
 /*============================================================
 	CubeGrid - Analytics Module only
 		cubeGrid.baseStyle - cubeCell
@@ -1289,289 +1586,480 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 		reportHeaderBar.button.baseStyle - rowHeaderLabel
 		reportHeaderBar.button.baseStyle - colHeaderLabel
 ============================================================*/
-.cubeGridBody {}
+.cubeGridBody {
+}
+
 .cubeCell,
 .cubeCellDark,
 .cubeCellDisabled,
 .cubeCellOver,
 .cubeCellSelected,
 .cubeCellSelectedOver {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:black; text-overflow:ellipsis;
-    background-color:#FFFFFF;
-    border-top:1px solid white; border-bottom:1px solid #AAAAAA; 
-    border-left:1px solid white; border-right:1px solid #AAAAAA;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    text-overflow: ellipsis;
+    background-color: #FFFFFF;
+    border-top: 1px solid white;
+    border-bottom: 1px solid #AAAAAA;
+    border-left: 1px solid white;
+    border-right: 1px solid #AAAAAA;
 }
 
 .cubeCellDark {
-    background-color:#EEEEEE;
-    border-top:1px solid #EEEEEE; 
-    border-left:1px solid #EEEEEE;
+    background-color: #EEEEEE;
+    border-top: 1px solid #EEEEEE;
+    border-left: 1px solid #EEEEEE;
 }
 
 .cubeCellDisabled {
-    border-top:1px solid #FFFFFF; border-bottom:1px solid #FFFFFF; 
-    border-left:1px solid #FFFFFF; border-right:1px solid #FFFFFF;
+    border-top: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    border-left: 1px solid #FFFFFF;
+    border-right: 1px solid #FFFFFF;
 }
 
-/* partial styles */ 
+/* partial styles */
 .cubeCellOver,
 .cubeCellSelectedOver {
-    background-color:#B8D1EE;
-    border-top:1px solid #B8D1EE; 
-    border-left:1px solid #B8D1EE;
+    background-color: #B8D1EE;
+    border-top: 1px solid #B8D1EE;
+    border-left: 1px solid #B8D1EE;
 }
 
 .cubeCellSelected {
-    background-color:#FFE781;
-    border-top:1px solid #FFE781; 
-    border-left:1px solid #FFE781;
+    background-color: #FFE781;
+    border-top: 1px solid #FFE781;
+    border-left: 1px solid #FFE781;
 }
 
 /* row headers */
 .rowHeader {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:white;
-    background-color:#6682A0;
-    border-left:1px solid #FFFFFF; border-top:1px solid #FFFFFF;
-    border-right:1px solid #264260; border-bottom:1px solid #264260;
-    background-image:url("images/CubeGrid/rowHeader.gif");
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: white;
+    background-color: #6682A0;
+    border-left: 1px solid #FFFFFF;
+    border-top: 1px solid #FFFFFF;
+    border-right: 1px solid #264260;
+    border-bottom: 1px solid #264260;
+    background-image: url("images/CubeGrid/rowHeader.gif");
 }
+
 .rowHeaderOver {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:white;
-    background-color:#6682A0;
-    border-left:1px solid #264260; border-top:1px solid #264260;
-    border-right:1px solid #FFFFFF; border-bottom:1px solid #FFFFFF;
-    background-image:url("images/CubeGrid/rowHeaderOver.gif");
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: white;
+    background-color: #6682A0;
+    border-left: 1px solid #264260;
+    border-top: 1px solid #264260;
+    border-right: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    background-image: url("images/CubeGrid/rowHeaderOver.gif");
 }
+
 .rowHeaderDown {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:white;
-    background-color:#6682A0;
-    border-left:1px solid #264260; border-top:1px solid #264260;
-    border-right:1px solid #FFFFFF; border-bottom:1px solid #FFFFFF;
-    background-image:url("images/CubeGrid/rowHeaderOver.gif");
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: white;
+    background-color: #6682A0;
+    border-left: 1px solid #264260;
+    border-top: 1px solid #264260;
+    border-right: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    background-image: url("images/CubeGrid/rowHeaderOver.gif");
 }
+
 .rowHeaderDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:#808080;
-    background-color:#6682A0;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #808080;
+    background-color: #6682A0;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
 }
+
 .rowHeaderSelected,
 .rowHeaderSelectedDown {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:white;
-    background-color:#3E74B3;
-    border-left:1px solid #00008B; border-top:1px solid #00008B;
-    border-right:1px solid #F0F8FF; border-bottom:1px solid #F0F8FF;
-    background-image:url("images/CubeGrid/rowHeaderSelected.gif");
-    
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: white;
+    background-color: #3E74B3;
+    border-left: 1px solid #00008B;
+    border-top: 1px solid #00008B;
+    border-right: 1px solid #F0F8FF;
+    border-bottom: 1px solid #F0F8FF;
+    background-image: url("images/CubeGrid/rowHeaderSelected.gif");
+
 }
+
 .rowHeaderSelectedOver {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:white;
-    background-color:#3E74B3;
-    border-top:1px solid white; border-bottom:1px solid white; 
-    border-left:1px solid white; border-right:1px solid white;
-    background-image:url("images/CubeGrid/rowHeaderSelectedOver.gif");
-}						
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: white;
+    background-color: #3E74B3;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    background-image: url("images/CubeGrid/rowHeaderSelectedOver.gif");
+}
+
 .rowHeaderSelectedDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:#808080;
-    background-color:#3E74B3;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #808080;
+    background-color: #3E74B3;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
 }
 
 /* row label */
 .rowHeaderLabel {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#204B7A;
-    border-left:1px solid #FFFFFF; border-top:1px solid #FFFFFF;
-    border-right:1px solid #000B3A; border-bottom:1px solid #000B3A;
-    background-image:url("images/CubeGrid/rowHeaderLabel.gif");
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #204B7A;
+    border-left: 1px solid #FFFFFF;
+    border-top: 1px solid #FFFFFF;
+    border-right: 1px solid #000B3A;
+    border-bottom: 1px solid #000B3A;
+    background-image: url("images/CubeGrid/rowHeaderLabel.gif");
 }
+
 .rowHeaderLabelOver {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#204B7A;
-    border-left:1px solid #000B3A; border-top:1px solid #000B3A;
-    border-right:1px solid #FFFFFF; border-bottom:1px solid #FFFFFF;
-    background-image:url("images/CubeGrid/rowHeaderLabel.gif");
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #204B7A;
+    border-left: 1px solid #000B3A;
+    border-top: 1px solid #000B3A;
+    border-right: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    background-image: url("images/CubeGrid/rowHeaderLabel.gif");
 }
+
 .rowHeaderLabelDown {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#204B7A;
-    border-left:1px solid #000B3A; border-top:1px solid #000B3A;
-    border-right:1px solid #FFFFFF; border-bottom:1px solid #FFFFFF;
-    background-image:url("images/CubeGrid/rowHeaderLabelDown.gif");
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #204B7A;
+    border-left: 1px solid #000B3A;
+    border-top: 1px solid #000B3A;
+    border-right: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    background-image: url("images/CubeGrid/rowHeaderLabelDown.gif");
 }
+
 .rowHeaderLabelDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:#808080;
-    background-color:#7D7D7D;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #808080;
+    background-color: #7D7D7D;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
 }
+
 .rowHeaderLabelSelected,
 .rowHeaderLabelSelectedDown {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#3E74B3;
-    border-left:1px solid black; border-top:1px solid black;
-    border-right:1px solid #555555; border-bottom:1px solid #555555;
-    background-image:url("images/CubeGrid/rowHeaderDown.gif");
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #3E74B3;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid #555555;
+    border-bottom: 1px solid #555555;
+    background-image: url("images/CubeGrid/rowHeaderDown.gif");
 }
+
 .rowHeaderLabelSelectedOver {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#3E74B3;
-    border-top:1px solid white; border-bottom:1px solid white; 
-    border-left:1px solid white; border-right:1px solid white;
-    background-image:url("images/CubeGrid/rowHeaderDown.gif");
-}						
-.rowHeaderLabelSelectedDisabled	{
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:#808080;
-    background-color:#7D7D7D;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #3E74B3;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    background-image: url("images/CubeGrid/rowHeaderDown.gif");
 }
-		
+
+.rowHeaderLabelSelectedDisabled {
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #808080;
+    background-color: #7D7D7D;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+}
+
 /* column headers */
 .colHeader {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:white;
-    background-color:#6682A0;
-    border-left:1px solid #FFFFFF; border-top:1px solid #FFFFFF;
-    border-right:1px solid #264260; border-bottom:1px solid #264260;
-    background-image:url("images/CubeGrid/colHeader.gif");
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: white;
+    background-color: #6682A0;
+    border-left: 1px solid #FFFFFF;
+    border-top: 1px solid #FFFFFF;
+    border-right: 1px solid #264260;
+    border-bottom: 1px solid #264260;
+    background-image: url("images/CubeGrid/colHeader.gif");
 }
+
 .colHeaderOver {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:white;
-    background-color:#6682A0;
-    border-left:1px solid #264260; border-top:1px solid #264260;
-    border-right:1px solid #FFFFFF; border-bottom:1px solid #FFFFFF;
-    background-image:url("images/CubeGrid/colHeaderOver.gif");
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: white;
+    background-color: #6682A0;
+    border-left: 1px solid #264260;
+    border-top: 1px solid #264260;
+    border-right: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    background-image: url("images/CubeGrid/colHeaderOver.gif");
 }
+
 .colHeaderDown {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:white;
-    background-color:#6682A0;
-    border-left:1px solid #264260; border-top:1px solid #264260;
-    border-right:1px solid #FFFFFF; border-bottom:1px solid #FFFFFF;
-    background-image:url("images/CubeGrid/colHeader.gif");
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: white;
+    background-color: #6682A0;
+    border-left: 1px solid #264260;
+    border-top: 1px solid #264260;
+    border-right: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    background-image: url("images/CubeGrid/colHeader.gif");
 }
+
 .colHeaderDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:#808080;
-    background-color:#6682A0;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #808080;
+    background-color: #6682A0;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
 }
+
 .colHeaderSelected,
 .colHeaderSelectedDown {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#3E74B3;
-    border-left:1px solid #00008B; border-top:1px solid #00008B;
-    border-right:1px solid #F0F8FF; border-bottom:1px solid #F0F8FF;
-    background-image:url("images/CubeGrid/colHeaderSelected.gif");
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #3E74B3;
+    border-left: 1px solid #00008B;
+    border-top: 1px solid #00008B;
+    border-right: 1px solid #F0F8FF;
+    border-bottom: 1px solid #F0F8FF;
+    background-image: url("images/CubeGrid/colHeaderSelected.gif");
 }
+
 .colHeaderSelectedOver {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#3E74B3;
-    border-top:1px solid white; border-bottom:1px solid white; 
-    border-left:1px solid white; border-right:1px solid white;
-    background-image:url("images/CubeGrid/colHeaderSelectedOver.gif");
-}						
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #3E74B3;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    background-image: url("images/CubeGrid/colHeaderSelectedOver.gif");
+}
+
 .colHeaderSelectedDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:#808080;
-    background-color:#3E74B3;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #808080;
+    background-color: #3E74B3;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
 }
 
 /* column label */
 .colHeaderLabel {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#204B7A;
-    border-left:1px solid #FFFFFF; border-top:1px solid #FFFFFF;
-    border-right:1px solid #555555; border-bottom:1px solid #555555;
-    background-image:url("images/CubeGrid/colHeaderLabel.gif");
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #204B7A;
+    border-left: 1px solid #FFFFFF;
+    border-top: 1px solid #FFFFFF;
+    border-right: 1px solid #555555;
+    border-bottom: 1px solid #555555;
+    background-image: url("images/CubeGrid/colHeaderLabel.gif");
 }
+
 .colHeaderLabelOver,
 .colHeaderLabelDown {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#204B7A;
-    border-left:1px solid #000B3A; border-top:1px solid #000B3A;
-    border-right:1px solid #555555; border-bottom:1px solid #555555;
-    background-image:url("images/CubeGrid/colHeaderLabelDown.gif");
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #204B7A;
+    border-left: 1px solid #000B3A;
+    border-top: 1px solid #000B3A;
+    border-right: 1px solid #555555;
+    border-bottom: 1px solid #555555;
+    background-image: url("images/CubeGrid/colHeaderLabelDown.gif");
 }
+
 .colHeaderLabelDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:#808080;
-    background-color:#7D7D7D;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #808080;
+    background-color: #7D7D7D;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
 }
+
 .colHeaderLabelSelected,
 .colHeaderLabelSelectedDown {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#3E74B3;
-    border-left:1px solid black; border-top:1px solid black;
-    border-right:1px solid #555555; border-bottom:1px solid #555555;
-    background-image:url("images/CubeGrid/colHeaderLabelDown.gif");
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #3E74B3;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid #555555;
+    border-bottom: 1px solid #555555;
+    background-image: url("images/CubeGrid/colHeaderLabelDown.gif");
 }
+
 .colHeaderLabelSelectedOver {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#3E74B3;
-    border-top:1px solid white; border-bottom:1px solid white; 
-    border-right:1px solid #555555; border-bottom:1px solid #555555;
-    background-image:url("images/CubeGrid/colHeaderDown.gif");
-}						
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #3E74B3;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-right: 1px solid #555555;
+    border-bottom: 1px solid #555555;
+    background-image: url("images/CubeGrid/colHeaderDown.gif");
+}
+
 .colHeaderLabelSelectedDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:#808080;
-    background-color:#7D7D7D;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #808080;
+    background-color: #7D7D7D;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
 }
 
 /* inner header */
 .innerHeader {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:black;
-    background-color:#CCCCCC;
-    border-left:1px solid white; border-top:1px solid white;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
-    background-image:url("images/CubeGrid/innerHeader.gif");
-}
-.innerHeaderOver {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:black;
-    background-color:#CCCCCC;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid white; border-bottom:1px solid white;
-    background-image:url("images/CubeGrid/innerHeader.gif");
-}
-.innerHeaderDown {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:black;
-    background-color:#CCCCCC;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid white; border-bottom:1px solid white;
-    background-image:url("images/CubeGrid/innerHeader.gif");
-}
-.innerHeaderDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:#808080;
-    background-color:#CCCCCC;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
-}
-.innerHeaderSelected,
-.innerHeaderSelectedDown {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#3E74B3;
-    border-left:1px solid #00008B; border-top:1px solid #00008B;
-    border-right:1px solid #F0F8FF; border-bottom:1px solid #F0F8FF;
-    background-image:url("images/CubeGrid/innerHeaderSelected.gif");
-}
-.innerHeaderSelectedOver {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; font-weight:bold; color:white;
-    background-color:#3E74B3;
-    border-top:1px solid white; border-bottom:1px solid white; 
-    border-left:1px solid white; border-right:1px solid white;
-    background-image:url("images/CubeGrid/innerHeaderSelectedOver.gif");
-}						
-.innerHeaderSelectedDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px; color:#808080;
-    background-color:#CCCCCC;
-    border-left:1px solid #808080; border-top:1px solid #808080;
-    border-right:1px solid #808080; border-bottom:1px solid #808080;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    background-color: #CCCCCC;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+    background-image: url("images/CubeGrid/innerHeader.gif");
 }
 
+.innerHeaderOver {
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    background-color: #CCCCCC;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    background-image: url("images/CubeGrid/innerHeader.gif");
+}
+
+.innerHeaderDown {
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    background-color: #CCCCCC;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+    background-image: url("images/CubeGrid/innerHeader.gif");
+}
+
+.innerHeaderDisabled {
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #808080;
+    background-color: #CCCCCC;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+}
+
+.innerHeaderSelected,
+.innerHeaderSelectedDown {
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #3E74B3;
+    border-left: 1px solid #00008B;
+    border-top: 1px solid #00008B;
+    border-right: 1px solid #F0F8FF;
+    border-bottom: 1px solid #F0F8FF;
+    background-image: url("images/CubeGrid/innerHeaderSelected.gif");
+}
+
+.innerHeaderSelectedOver {
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: #3E74B3;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    background-image: url("images/CubeGrid/innerHeaderSelectedOver.gif");
+}
+
+.innerHeaderSelectedDisabled {
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #808080;
+    background-color: #CCCCCC;
+    border-left: 1px solid #808080;
+    border-top: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+}
 
 
 /*============================================================
@@ -1582,50 +2070,58 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 		others are currently fixed
 ============================================================*/
 
-.chart { 
-    background-color:#CCCCCC;
+.chart {
+    background-color: #CCCCCC;
 }
+
 .chartTitle {
-    color:black;
-    font-family: Tahoma,sans-serif;
-    font-size:14px;
+    color: black;
+    font-family: Tahoma, sans-serif;
+    font-size: 14px;
     font-weight: bold;
-    text-align:center
+    text-align: center
 }
+
 .chartAxisTitle {
-    color:green;
-    font-family: Tahoma,sans-serif;
+    color: green;
+    font-family: Tahoma, sans-serif;
     font-weight: bold;
-    font-size:12px;
+    font-size: 12px;
 }
+
 .chartValueTitle {
-    color:black;
-    font-family: Tahoma,sans-serif;
-    font-size:10px;
+    color: black;
+    font-family: Tahoma, sans-serif;
+    font-size: 10px;
 }
+
 .chartTotal {
-    color:black;
-    font-family:Bitstream Vera Sans, sans-serif; 
-    font-size:12px;
-    background-color:linen;
+    color: black;
+    font-family: Bitstream Vera Sans, sans-serif;
+    font-size: 12px;
+    background-color: linen;
 }
+
 .chartBody {
-    border-left:1px solid black;
-    border-top:1px dashed blue;
-    border-right:1px solid black;
-    background-color:#DDDDDD
-}   
+    border-left: 1px solid black;
+    border-top: 1px dashed blue;
+    border-right: 1px solid black;
+    background-color: #DDDDDD
+}
+
 .chartBar1 {
-    background-color:red;
-    filter:"progid:dximagetransform.microsoft.gradient(gradientType=1, startColorStr=#990000, endColorStr=#FF0000)";
+    background-color: red;
+    filter: "progid:dximagetransform.microsoft.gradient(gradientType=1, startColorStr=#990000, endColorStr=#FF0000)";
 }
+
 .chartBar2 {
-    background-color:blue;
-    filter:"progid:dximagetransform.microsoft.gradient(gradientType=1, startColorStr=#000099, endColorStr=#0000FF)";
+    background-color: blue;
+    filter: "progid:dximagetransform.microsoft.gradient(gradientType=1, startColorStr=#000099, endColorStr=#0000FF)";
 }
+
 .chartBar3 {
-    background-color:green;
-    filter:"progid:dximagetransform.microsoft.gradient(gradientType=1, startColorStr=#009900, endColorStr=#00FF00)";
+    background-color: green;
+    filter: "progid:dximagetransform.microsoft.gradient(gradientType=1, startColorStr=#009900, endColorStr=#00FF00)";
 }
 
 /*============================================================
@@ -1635,9 +2131,10 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
         - SectionStack headers
 ============================================================*/
 .printHeader {
-    font-family:Bitstream Vera Sans,Helvetica,Verdana,sans-serif; font-size:11px;   
-    border:1px solid black;
-    font-weight:bold;
+    font-family: Bitstream Vera Sans, Helvetica, Verdana, sans-serif;
+    font-size: 11px;
+    border: 1px solid black;
+    font-weight: bold;
 }
 
 /*============================================================
@@ -1648,154 +2145,208 @@ IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
 .calendarDisabled,
 .calendarWorkday,
 .calendarDark {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
-    background-color:#ffffff;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
+    background-color: #ffffff;
 }
 
 .calendarDisabled {
-    background-color:gainsboro;    
+    background-color: gainsboro;
 }
 
 .calendarWorkday {
-    background-color:#ffffcc; 
+    background-color: #ffffcc;
 }
 
 .calendarOver,
 .calendarOverDark {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
-    background-color:#c0ffc0;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
+    background-color: #c0ffc0;
 }
+
 .calendarCellSelected {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
-    background-color:#CCCCCC; 
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
+    background-color: #CCCCCC;
 }
+
 .labelColumn {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
-    background-color:gainsboro;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
+    background-color: gainsboro;
 }
+
 /* ----month---- */
 /* calMonthDayHeader and Body */
 
 .calMonthDayHeader,
 .calMonthDayHeaderDark {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
     background-color: gainsboro;
 }
 
 .calMonthDayHeaderOver,
 .calMonthDayHeaderOverDark {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
     background-color: #c0ffc0;
 }
+
 .calMonthDayBody,
 .calMonthDayBodyDark {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
-    background-color:#ffffff;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
+    background-color: #ffffff;
 }
+
 .calMonthDayBodyOver,
 .calMonthDayBodyOverDark {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
-    background-color:#c0ffc0;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
+    background-color: #c0ffc0;
 }
 
 .calMonthDayBodyDisabled,
 .calMonthDayBodyDisabledOver {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
-    background-color:#E6E6E6;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
+    background-color: #E6E6E6;
 }
+
 /* calMonthOtherDayHeader and Body */
 
 .calMonthOtherDayHeader,
 .calMonthOtherDayHeaderDark {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
-    color:#444444;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #444444;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
     background-color: #aaaaaa;
 }
+
 .calMonthOtherDayHeaderOver,
 .calMonthOtherDayHeaderOverDark {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
-    color:#444444;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #444444;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
     background-color: #c0ffc0;
 }
+
 .calMonthOtherDayBody,
-.calMonthOtherDayBodyDark, 
-.calMonthOtherDayBodyDisabled, 
-.calMonthOtherDayBodyDisabledOver{
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
-    background-color:#E6E6E6;
+.calMonthOtherDayBodyDark,
+.calMonthOtherDayBodyDisabled,
+.calMonthOtherDayBodyDisabledOver {
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
+    background-color: #E6E6E6;
 }
+
 .calMonthOtherDayBodyOver,
 .calMonthOtherDayBodyOverDark {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
-    color:black;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
-    background-color:#c0ffc0;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: black;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
+    background-color: #c0ffc0;
 }
+
 /* calMonthOtherDayBlank */
 
 .calMonthOtherDayBlank,
-.calMonthOtherDayBlankDark, 
+.calMonthOtherDayBlankDark,
 .calMonthOtherDayBlankOver,
 .calMonthOtherDayBlankOverDark {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; font-size:11px;
-    color:#444444;
-    border-bottom:1px solid #a0a0a0; border-right:1px solid #a0a0a0;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #444444;
+    border-bottom: 1px solid #a0a0a0;
+    border-right: 1px solid #a0a0a0;
     background-color: #E6E6E6;
 }
 
 /* calMonthEventLink */
 
-a.calMonthEventLink:link {color:blue; text-decoration:none}
-a.calMonthEventLink:visited {color:blue; text-decoration:none}
-a.calMonthEventLink:hover {color:blue; text-decoration:underline}
-a.calMonthEventLink:active {color:blue; text-decoration:none}
+a.calMonthEventLink:link {
+    color: blue;
+    text-decoration: none
+}
+
+a.calMonthEventLink:visited {
+    color: blue;
+    text-decoration: none
+}
+
+a.calMonthEventLink:hover {
+    color: blue;
+    text-decoration: underline
+}
+
+a.calMonthEventLink:active {
+    color: blue;
+    text-decoration: none
+}
 
 /* ----event window---- */
 
 .eventWindow {
-    font-size:9px;
-    background-color:#649ED8;
-   border: 1px solid #004D99;
-   
+    font-size: 9px;
+    background-color: #649ED8;
+    border: 1px solid #004D99;
+
 }
 
 .eventWindowHeader {
-    font-size:9px; color: white;
-    background-color:#004D99;
-  
+    font-size: 9px;
+    color: white;
+    background-color: #004D99;
+
 }
 
 .eventWindowBody {
     font-size: 9px;
     background-color: #649ED8;
     padding: 3px;
-    
+
 }
 
-.eventWindowResizer{
-    border-top:1px solid white;
+.eventWindowResizer {
+    border-top: 1px solid white;
     border-bottom: 1px solid white;
 }
 
@@ -1814,56 +2365,62 @@ a.calMonthEventLink:active {color:blue; text-decoration:none}
 .propSheetValue,
 .propSheetValueFocused,
 .propSheetDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif;
-    font-size:11px;
-    border-bottom:1px solid #AAAAAA;
-    border-right:1px solid #AAAAAA;
-    padding:0px;
-    margin:0px;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    border-bottom: 1px solid #AAAAAA;
+    border-right: 1px solid #AAAAAA;
+    padding: 0px;
+    margin: 0px;
 }
+
 .propSheetTitle,
 .propSheetTitleFocused,
 .propSheetTitleDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif;
-    font-size:11px;
-    border-bottom:1px solid #AAAAAA;
-    border-right:1px solid #AAAAAA;
-    background-color:#DDDDDD;
-    padding-left:4px;
-    padding-right:4px;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    border-bottom: 1px solid #AAAAAA;
+    border-right: 1px solid #AAAAAA;
+    background-color: #DDDDDD;
+    padding-left: 4px;
+    padding-right: 4px;
 }
+
 .propSheetTitleError,
 .propSheetValueError {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif; 
-    font-size:11px; color:#204268; 
-    background-color:#CFD9F2
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    color: #204268;
+    background-color: #CFD9F2
 }
+
 .propSheetField,
 .propSheetFieldDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif;
-    font-size:11px;
-    background-color:#FFFFFF;
-    border:0px;
-    padding:0px;
-    padding-left:4px;
-    padding-right:4px;
-    margin-top:3px;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    background-color: #FFFFFF;
+    border: 0px;
+    padding: 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-top: 3px;
 }
+
 .propSheetHeading,
 .propSheetHeadingDisabled {
-    font-family:Verdana,Bitstream Vera Sans,sans-serif;
-    font-size:11px;
-    font-weight:bold;
-    color:black;
-    background-color:#CCCCCC;
-    padding:4px;
-    border-bottom:1px solid #AAAAAA;
+    font-family: Verdana, Bitstream Vera Sans, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: black;
+    background-color: #CCCCCC;
+    padding: 4px;
+    border-bottom: 1px solid #AAAAAA;
 }
+
 .propSheetSelectControl,
 .propSheetSelectControlFocused,
 .propSheetSelectControlDisabled {
-    padding-left:3px;
-    padding-right:3px;
+    padding-left: 3px;
+    padding-right: 3px;
 }
 
 .propSheetSectionItemCell,

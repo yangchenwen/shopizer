@@ -16,62 +16,61 @@ import com.salesmanager.core.model.generic.SalesManagerEntity;
 @Entity
 @Table(name = "PRODUCT_VAR_IMAGE")
 public class ProductVariationImage extends SalesManagerEntity<Long, ProductVariationImage> {
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@Column(name = "PRODUCT_VAR_IMAGE_ID")
-	@TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "PRD_VAR_IMG_SEQ_NEXT_VAL")
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
-	private Long id;
+    private static final long serialVersionUID = 1L;
 
-	@Column(name = "PRODUCT_IMAGE")
-	private String productImage;
-	
-	@Column(name = "DEFAULT_IMAGE")
-	private boolean defaultImage = true;
-	
-	@ManyToOne(targetEntity = ProductAvailability.class)
-	@JoinColumn(name = "PRODUCT_AVAIL_ID", nullable = false)
-	private ProductAvailability productAvailability;
+    @Id
+    @Column(name = "PRODUCT_VAR_IMAGE_ID")
+    @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "PRD_VAR_IMG_SEQ_NEXT_VAL")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
+    private Long id;
 
-	
-	//private MultiPartFile image
+    @Column(name = "PRODUCT_IMAGE")
+    private String productImage;
 
-	public ProductVariationImage(){
-	}
+    @Column(name = "DEFAULT_IMAGE")
+    private boolean defaultImage = true;
 
-	public String getProductImage() {
-		return productImage;
-	}
+    @ManyToOne(targetEntity = ProductAvailability.class)
+    @JoinColumn(name = "PRODUCT_AVAIL_ID", nullable = false)
+    private ProductAvailability productAvailability;
 
-	public void setProductImage(String productImage) {
-		this.productImage = productImage;
-	}
+    //private MultiPartFile image
 
-	public boolean isDefaultImage() {
-		return defaultImage;
-	}
+    public ProductVariationImage() {
+    }
 
-	public void setDefaultImage(boolean defaultImage) {
-		this.defaultImage = defaultImage;
-	}
+    public String getProductImage() {
+        return productImage;
+    }
 
-	@Override
-	public Long getId() {
-		return id;
-	}
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
+    }
 
-	@Override
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public boolean isDefaultImage() {
+        return defaultImage;
+    }
 
-	public ProductAvailability getProductAvailability() {
-		return productAvailability;
-	}
+    public void setDefaultImage(boolean defaultImage) {
+        this.defaultImage = defaultImage;
+    }
 
-	public void setProductAvailability(ProductAvailability productAvailability) {
-		this.productAvailability = productAvailability;
-	}
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public ProductAvailability getProductAvailability() {
+        return productAvailability;
+    }
+
+    public void setProductAvailability(ProductAvailability productAvailability) {
+        this.productAvailability = productAvailability;
+    }
 
 }

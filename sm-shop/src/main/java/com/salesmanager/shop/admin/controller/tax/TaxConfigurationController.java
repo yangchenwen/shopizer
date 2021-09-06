@@ -23,65 +23,61 @@ import java.util.Map;
 
 @Controller
 public class TaxConfigurationController {
-	
-	@Inject
-	private TaxService taxService = null;
-	
-	
-	@PreAuthorize("hasRole('TAX')")
-	@RequestMapping(value={"/admin/tax/taxconfiguration/edit.html"}, method=RequestMethod.GET)
-	public String displayTaxConfiguration(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		setMenu(model, request);
-		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-		
-		
-		TaxConfiguration taxConfiguration = taxService.getTaxConfiguration(store);
-		if(taxConfiguration == null) {
-			
-			taxConfiguration = new TaxConfiguration();
-			
-		}
-		
-		model.addAttribute("taxConfiguration", taxConfiguration);
-		
-		return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxConfiguration;
-	}
-	
-	@PreAuthorize("hasRole('TAX')")
-	@RequestMapping(value="/admin/tax/taxconfiguration/save.html", method=RequestMethod.POST)
-	public String saveTaxConfiguration(@Valid @ModelAttribute("taxConfiguration") TaxConfiguration taxConfiguration, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
-		
-		
-		setMenu(model, request);
-		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-		
-		taxService.saveTaxConfiguration(taxConfiguration, store);
-		
-		model.addAttribute("success","success");
-		
-		return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxConfiguration;
-		
-	}
-	
-	
-	private void setMenu(Model model, HttpServletRequest request)
-	throws Exception {
 
-		// display menu
-		Map<String, String> activeMenus = new HashMap<String, String>();
-		activeMenus.put("tax", "tax");
-		activeMenus.put("taxconfiguration", "taxconfiguration");
-		
-		@SuppressWarnings("unchecked")
-		Map<String, Menu> menus = (Map<String, Menu>) request
-				.getAttribute("MENUMAP");
-		
-		Menu currentMenu = (Menu) menus.get("tax");
-		model.addAttribute("currentMenu", currentMenu);
-		model.addAttribute("activeMenus", activeMenus);
-		//
+    @Inject
+    private TaxService taxService = null;
 
-	}
+    @PreAuthorize("hasRole('TAX')")
+    @RequestMapping(value = {"/admin/tax/taxconfiguration/edit.html"}, method = RequestMethod.GET)
+    public String displayTaxConfiguration(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        setMenu(model, request);
+        MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
+
+        TaxConfiguration taxConfiguration = taxService.getTaxConfiguration(store);
+        if (taxConfiguration == null) {
+
+            taxConfiguration = new TaxConfiguration();
+
+        }
+
+        model.addAttribute("taxConfiguration", taxConfiguration);
+
+        return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxConfiguration;
+    }
+
+    @PreAuthorize("hasRole('TAX')")
+    @RequestMapping(value = "/admin/tax/taxconfiguration/save.html", method = RequestMethod.POST)
+    public String saveTaxConfiguration(@Valid @ModelAttribute("taxConfiguration") TaxConfiguration taxConfiguration, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
+
+        setMenu(model, request);
+        MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
+
+        taxService.saveTaxConfiguration(taxConfiguration, store);
+
+        model.addAttribute("success", "success");
+
+        return com.salesmanager.shop.admin.controller.ControllerConstants.Tiles.Tax.taxConfiguration;
+
+    }
+
+    private void setMenu(Model model, HttpServletRequest request)
+            throws Exception {
+
+        // display menu
+        Map<String, String> activeMenus = new HashMap<String, String>();
+        activeMenus.put("tax", "tax");
+        activeMenus.put("taxconfiguration", "taxconfiguration");
+
+        @SuppressWarnings("unchecked")
+        Map<String, Menu> menus = (Map<String, Menu>) request
+                .getAttribute("MENUMAP");
+
+        Menu currentMenu = (Menu) menus.get("tax");
+        model.addAttribute("currentMenu", currentMenu);
+        model.addAttribute("activeMenus", activeMenus);
+        //
+
+    }
 
 }

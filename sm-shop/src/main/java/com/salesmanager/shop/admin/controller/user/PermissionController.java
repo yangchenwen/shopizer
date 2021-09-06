@@ -30,93 +30,88 @@ import java.util.Map;
 @Controller
 public class PermissionController {
 
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(PermissionController.class);
+    private static final Logger LOGGER = LoggerFactory
+            .getLogger(PermissionController.class);
 
-	@Inject
-	protected PermissionService permissionService;
+    @Inject
+    protected PermissionService permissionService;
 
-	@Inject
-	protected GroupService groupService;
+    @Inject
+    protected GroupService groupService;
 
-	@Inject
-	CountryService countryService;
+    @Inject
+    CountryService countryService;
 
-	@Inject
-	LabelUtils messages;
+    @Inject
+    LabelUtils messages;
 
+    @PreAuthorize("hasRole('ADMIN')")
+    @RequestMapping(value = "/admin/permissions/permissions.html", method = RequestMethod.GET)
+    public String displayPermissions(Model model, HttpServletRequest request,
+                                     HttpServletResponse response) throws Exception {
 
+        //setMenu(model, request);
+        //return "admin-user-permissions";
 
+        throw new Exception("Not implemented");
+    }
 
+    @SuppressWarnings("unchecked")
+    @PreAuthorize("hasRole('ADMIN')")
+    @RequestMapping(value = "/admin/permissions/paging.html", method = RequestMethod.POST)
+    public @ResponseBody
+    ResponseEntity<String> pagePermissions(HttpServletRequest request,
+                                           HttpServletResponse response) {
+        //String permissionName = request.getParameter("name");
 
+        AjaxResponse resp = new AjaxResponse();
 
-	@PreAuthorize("hasRole('ADMIN')")
-	@RequestMapping(value = "/admin/permissions/permissions.html", method = RequestMethod.GET)
-	public String displayPermissions(Model model, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+        try {
 
-		//setMenu(model, request);
-		//return "admin-user-permissions";
-		
-		throw new Exception("Not implemented");
-	}
+            List<Permission> permissions = null;
+            permissions = permissionService.listPermission();
 
-	@SuppressWarnings("unchecked")
-	@PreAuthorize("hasRole('ADMIN')")
-	@RequestMapping(value = "/admin/permissions/paging.html", method = RequestMethod.POST)
-	public @ResponseBody
-	ResponseEntity<String> pagePermissions(HttpServletRequest request,
-			HttpServletResponse response) {
-		//String permissionName = request.getParameter("name");
+            for (Permission permission : permissions) {
 
-		AjaxResponse resp = new AjaxResponse();
+                @SuppressWarnings("rawtypes")
+                Map entry = new HashMap();
+                entry.put("permissionId", permission.getId());
+                entry.put("name", permission.getPermissionName());
+                resp.addDataEntry(entry);
 
-		try {
+            }
 
-			List<Permission> permissions = null;
-			permissions = permissionService.listPermission();
+            resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
 
-			for (Permission permission : permissions) {
+        } catch (Exception e) {
+            LOGGER.error("Error while paging permissions", e);
+            resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
+        }
 
-				@SuppressWarnings("rawtypes")
-				Map entry = new HashMap();
-				entry.put("permissionId", permission.getId());
-				entry.put("name", permission.getPermissionName());
-				resp.addDataEntry(entry);
+        String returnString = resp.toJSONString();
+        final HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+        return new ResponseEntity<String>(returnString, httpHeaders, HttpStatus.OK);
+    }
 
-			}
+    @SuppressWarnings("unused")
+    private void setMenu(Model model, HttpServletRequest request)
+            throws Exception {
 
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_SUCCESS);
+        // display menu
+        Map<String, String> activeMenus = new HashMap<String, String>();
+        activeMenus.put("profile", "profile");
+        activeMenus.put("security", "security");
 
-		} catch (Exception e) {
-			LOGGER.error("Error while paging permissions", e);
-			resp.setStatus(AjaxResponse.RESPONSE_STATUS_FAIURE);
-		}
+        @SuppressWarnings("unchecked")
+        Map<String, Menu> menus = (Map<String, Menu>) request
+                .getAttribute("MENUMAP");
 
-		String returnString = resp.toJSONString();
-		final HttpHeaders httpHeaders= new HttpHeaders();
-	    httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
-		return new ResponseEntity<String>(returnString,httpHeaders,HttpStatus.OK);
-	}
+        Menu currentMenu = (Menu) menus.get("profile");
+        model.addAttribute("currentMenu", currentMenu);
+        model.addAttribute("activeMenus", activeMenus);
+        //
 
-	@SuppressWarnings("unused")
-	private void setMenu(Model model, HttpServletRequest request)
-			throws Exception {
-
-		// display menu
-		Map<String, String> activeMenus = new HashMap<String, String>();
-		activeMenus.put("profile", "profile");
-		activeMenus.put("security", "security");
-
-		@SuppressWarnings("unchecked")
-		Map<String, Menu> menus = (Map<String, Menu>) request
-				.getAttribute("MENUMAP");
-
-		Menu currentMenu = (Menu) menus.get("profile");
-		model.addAttribute("currentMenu", currentMenu);
-		model.addAttribute("activeMenus", activeMenus);
-		//
-
-	}
+    }
 
 }

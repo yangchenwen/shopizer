@@ -1,26 +1,22 @@
 package com.salesmanager.shop.store.security;
 
-import java.io.Serializable;
-
 import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
 
 public class ResetPasswordRequest implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * Username and password must be used when requesting password request
-	 */
-	@NotEmpty(message="{NotEmpty.customer.userName}")
-    private String username;
-	
-	
-	private String returnUrl;
-    
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
+    /**
+     * Username and password must be used when requesting password request
+     */
+    @NotEmpty(message = "{NotEmpty.customer.userName}")
+    private String username;
+
+    private String returnUrl;
 
     public ResetPasswordRequest() {
         super();
@@ -38,12 +34,12 @@ public class ResetPasswordRequest implements Serializable {
         this.username = username;
     }
 
-	public String getReturnUrl() {
-		return returnUrl;
-	}
+    public String getReturnUrl() {
+        return returnUrl;
+    }
 
-	public void setReturnUrl(String returnUrl) {
-		this.returnUrl = returnUrl;
-	}
+    public void setReturnUrl(String returnUrl) {
+        this.returnUrl = returnUrl;
+    }
 
 }

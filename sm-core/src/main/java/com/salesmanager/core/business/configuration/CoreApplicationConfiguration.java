@@ -17,6 +17,4 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ImportResource("classpath:/spring/shopizer-core-context.xml")
 public class CoreApplicationConfiguration {
 
-
-
 }

@@ -56,477 +56,436 @@ import java.util.regex.Pattern;
 
 /**
  * Manage order details
- * @author Carl Samson
  *
+ * @author Carl Samson
  */
 @Controller
 public class OrderControler {
-	
-private static final Logger LOGGER = LoggerFactory.getLogger(OrderControler.class);
-	
-	@Inject
-	private LabelUtils messages;
-	
-	@Inject
-	private OrderService orderService;
-	
-	@Inject
-	CountryService countryService;
-	
-	@Inject
-	ZoneService zoneService;
-	
-	@Inject
-	PaymentService paymentService;
-	
-	@Inject
-	CustomerService customerService;
-	
-	@Inject
-	PricingService pricingService;
-	
-	@Inject
-	TransactionService transactionService;
-	
-	@Inject
-	EmailService emailService;
-	
-	@Inject
-	private EmailUtils emailUtils;
-	
-	@Inject
-	OrderProductDownloadService orderProdctDownloadService;
 
-	@Inject
-	private OrderStatusHistoryService orderStatusHistoryService;
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrderControler.class);
+    private final static String ORDER_STATUS_TMPL = "email_template_order_status.ftl";
+    @Inject
+    CountryService countryService;
+    @Inject
+    ZoneService zoneService;
+    @Inject
+    PaymentService paymentService;
+    @Inject
+    CustomerService customerService;
+    @Inject
+    PricingService pricingService;
+    @Inject
+    TransactionService transactionService;
+    @Inject
+    EmailService emailService;
+    @Inject
+    OrderProductDownloadService orderProdctDownloadService;
+    @Inject
+    private LabelUtils messages;
+    @Inject
+    private OrderService orderService;
+    @Inject
+    private EmailUtils emailUtils;
+    @Inject
+    private OrderStatusHistoryService orderStatusHistoryService;
+    @Inject
+    private CoreConfiguration coreConfiguration;
 
-	@Inject
-	private CoreConfiguration coreConfiguration;
-	
-	private final static String ORDER_STATUS_TMPL = "email_template_order_status.ftl";
+    @PreAuthorize("hasRole('ORDER')")
+    @RequestMapping(value = "/admin/orders/editOrder.html", method = RequestMethod.GET)
+    public String displayOrderEdit(@RequestParam("id") long orderId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
+        return displayOrder(orderId, model, request, response);
 
-	@PreAuthorize("hasRole('ORDER')")
-	@RequestMapping(value="/admin/orders/editOrder.html", method=RequestMethod.GET)
-	public String displayOrderEdit(@RequestParam("id") long orderId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    }
 
-		return displayOrder(orderId,model,request,response);
+    @PreAuthorize("hasRole('ORDER')")
+    private String displayOrder(Long orderId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-	}
+        //display menu
+        setMenu(model, request);
 
-	@PreAuthorize("hasRole('ORDER')")
-	private String displayOrder(Long orderId, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        com.salesmanager.shop.admin.model.orders.Order order = new com.salesmanager.shop.admin.model.orders.Order();
+        Language language = (Language) request.getAttribute("LANGUAGE");
+        List<Country> countries = countryService.getCountries(language);
+        if (orderId != null && orderId != 0) {        //edit mode
 
-		//display menu
-		setMenu(model,request);
-		   
-		com.salesmanager.shop.admin.model.orders.Order order = new com.salesmanager.shop.admin.model.orders.Order();
-		Language language = (Language)request.getAttribute("LANGUAGE");
-		List<Country> countries = countryService.getCountries(language);
-		if(orderId!=null && orderId!=0) {		//edit mode		
-			
-			
-			MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-			
-			
-			
-			Set<OrderProduct> orderProducts = null;
-			Set<OrderTotal> orderTotal = null;
-			Set<OrderStatusHistory> orderHistory = null;
-		
-			Order dbOrder = orderService.getById(orderId);
+            MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
 
-			if(dbOrder==null) {
-				return "redirect:/admin/orders/list.html";
-			}
-			
-			
-			if(dbOrder.getMerchant().getId().intValue()!=store.getId().intValue()) {
-				return "redirect:/admin/orders/list.html";
-			}
-			
-			
-			order.setId( orderId );
-		
-			if( dbOrder.getDatePurchased() !=null ){
-				order.setDatePurchased(DateUtil.formatDate(dbOrder.getDatePurchased()));
-			}
-			
-			Long customerId = dbOrder.getCustomerId();
-			
-			if(customerId!=null && customerId>0) {
-			
-				try {
-					
-					Customer customer = customerService.getById(customerId);
-					if(customer!=null) {
-						model.addAttribute("customer",customer);
-					}
-					
-					
-				} catch(Exception e) {
-					LOGGER.error("Error while getting customer for customerId " + customerId, e);
-				}
-			
-			}
-			
-			order.setOrder( dbOrder );
-			order.setBilling( dbOrder.getBilling() );
-			order.setDelivery(dbOrder.getDelivery() );
-			
+            Set<OrderProduct> orderProducts = null;
+            Set<OrderTotal> orderTotal = null;
+            Set<OrderStatusHistory> orderHistory = null;
 
-			orderProducts = dbOrder.getOrderProducts();
-			orderTotal = dbOrder.getOrderTotal();
-			orderHistory = dbOrder.getOrderHistory();
-			
-			//get capturable
-			if(dbOrder.getPaymentType().name() != PaymentType.MONEYORDER.name()) {
-				Transaction capturableTransaction = transactionService.getCapturableTransaction(dbOrder);
-				if(capturableTransaction!=null) {
-					model.addAttribute("capturableTransaction",capturableTransaction);
-				}
-			}
-			
-			
-			//get refundable
-			if(dbOrder.getPaymentType().name() != PaymentType.MONEYORDER.name()) {
-				Transaction refundableTransaction = transactionService.getRefundableTransaction(dbOrder);
-				if(refundableTransaction!=null) {
-						model.addAttribute("capturableTransaction",null);//remove capturable
-						model.addAttribute("refundableTransaction",refundableTransaction);
-				}
-			}
+            Order dbOrder = orderService.getById(orderId);
 
-			
-			List<OrderProductDownload> orderProductDownloads = orderProdctDownloadService.getByOrderId(order.getId());
-			if(CollectionUtils.isNotEmpty(orderProductDownloads)) {
-				model.addAttribute("downloads",orderProductDownloads);
-			}
-			
-		}	
-		
-		model.addAttribute("countries", countries);
-		model.addAttribute("order",order);
-		return  ControllerConstants.Tiles.Order.ordersEdit;
-	}
-	
+            if (dbOrder == null) {
+                return "redirect:/admin/orders/list.html";
+            }
 
-	@PreAuthorize("hasRole('ORDER')")
-	@RequestMapping(value="/admin/orders/save.html", method=RequestMethod.POST)
-	public String saveOrder(@Valid @ModelAttribute("order") com.salesmanager.shop.admin.model.orders.Order entityOrder, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
-		boolean statusOrCommentsChanged = false;
-		OrderStatusHistory orderStatusHistory = new OrderStatusHistory();
-		String email_regEx = "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}\\b";
-		Pattern pattern = Pattern.compile(email_regEx);
-		
-		Language language = (Language)request.getAttribute("LANGUAGE");
-		List<Country> countries = countryService.getCountries(language);
-		model.addAttribute("countries", countries);
-		
-		MerchantStore store = (MerchantStore)request.getAttribute(Constants.ADMIN_STORE);
-		
-		//set the id if fails
-		entityOrder.setId(entityOrder.getOrder().getId());
-		
-		model.addAttribute("order", entityOrder);
-		
-		Set<OrderProduct> orderProducts = new HashSet<OrderProduct>();
-		Set<OrderTotal> orderTotal = new HashSet<OrderTotal>();
-		Set<OrderStatusHistory> orderHistory = new HashSet<OrderStatusHistory>();
-		
-		Date date = new Date();
-		if(!StringUtils.isBlank(entityOrder.getDatePurchased() ) ){
-			try {
-				date = DateUtil.getDate(entityOrder.getDatePurchased());
-			} catch (Exception e) {
-				ObjectError error = new ObjectError("datePurchased",messages.getMessage("message.invalid.date", locale));
-				result.addError(error);
-			}
-			
-		} else{
-			date = null;
-		}
-		 
+            if (dbOrder.getMerchant().getId().intValue() != store.getId().intValue()) {
+                return "redirect:/admin/orders/list.html";
+            }
 
-		if(!StringUtils.isBlank(entityOrder.getOrder().getCustomerEmailAddress() ) ){
-			 java.util.regex.Matcher matcher = pattern.matcher(entityOrder.getOrder().getCustomerEmailAddress());
-			 
-			 if(!matcher.find()) {
-				ObjectError error = new ObjectError("customerEmailAddress",messages.getMessage("Email.order.customerEmailAddress", locale));
-				result.addError(error);
-			 }
-		}else{
-			ObjectError error = new ObjectError("customerEmailAddress",messages.getMessage("NotEmpty.order.customerEmailAddress", locale));
-			result.addError(error);
-		}
+            order.setId(orderId);
 
-		 
-		if( StringUtils.isBlank(entityOrder.getOrder().getBilling().getFirstName() ) ){
-			 ObjectError error = new ObjectError("billingFirstName", messages.getMessage("NotEmpty.order.billingFirstName", locale));
-			 result.addError(error);
-		}
-		
-		if( StringUtils.isBlank(entityOrder.getOrder().getBilling().getFirstName() ) ){
-			 ObjectError error = new ObjectError("billingLastName", messages.getMessage("NotEmpty.order.billingLastName", locale));
-			 result.addError(error);
-		}
-		 
-		if( StringUtils.isBlank(entityOrder.getOrder().getBilling().getAddress() ) ){
-			 ObjectError error = new ObjectError("billingAddress", messages.getMessage("NotEmpty.order.billingStreetAddress", locale));
-			 result.addError(error);
-		}
-		 
-		if( StringUtils.isBlank(entityOrder.getOrder().getBilling().getCity() ) ){
-			 ObjectError error = new ObjectError("billingCity",messages.getMessage("NotEmpty.order.billingCity", locale));
-			 result.addError(error);
-		}
-		 
-		if( entityOrder.getOrder().getBilling().getZone()==null){
-			if( StringUtils.isBlank(entityOrder.getOrder().getBilling().getState())){
-				 ObjectError error = new ObjectError("billingState",messages.getMessage("NotEmpty.order.billingState", locale));
-				 result.addError(error);
-			}
-		}
-		 
-		if( StringUtils.isBlank(entityOrder.getOrder().getBilling().getPostalCode() ) ){
-			 ObjectError error = new ObjectError("billingPostalCode", messages.getMessage("NotEmpty.order.billingPostCode", locale));
-			 result.addError(error);
-		}
-		
-		com.salesmanager.core.model.order.Order newOrder = orderService.getById(entityOrder.getOrder().getId() );
-		
-		//If there was a status changed by Admin, we notify the customer
-		if(BooleanUtils.toBoolean(coreConfiguration.getProperty("MAIL_SEND_ORDER_UPDATES"))
-				&&  (newOrder.getStatus() != null && !newOrder.getStatus().equals(entityOrder.getOrder().getStatus()))) {
-			statusOrCommentsChanged = true;
-			addStatusChangedHistory(entityOrder, locale, orderStatusHistory, newOrder);
-		}
-		//get capturable
-		if(newOrder.getPaymentType().name() != PaymentType.MONEYORDER.name()) {
-			Transaction capturableTransaction = transactionService.getCapturableTransaction(newOrder);
-			if(capturableTransaction!=null) {
-				model.addAttribute("capturableTransaction",capturableTransaction);
-			}
-		}
-		
-		
-		//get refundable
-		if(newOrder.getPaymentType().name() != PaymentType.MONEYORDER.name()) {
-			Transaction refundableTransaction = transactionService.getRefundableTransaction(newOrder);
-			if(refundableTransaction!=null) {
-					model.addAttribute("capturableTransaction",null);//remove capturable
-					model.addAttribute("refundableTransaction",refundableTransaction);
-			}
-		}
-	
-	
-		if (result.hasErrors()) {
-			//  somehow we lose data, so reset Order detail info.
-			entityOrder.getOrder().setOrderProducts( orderProducts);
-			entityOrder.getOrder().setOrderTotal(orderTotal);
-			entityOrder.getOrder().setOrderHistory(orderHistory);
-			
-			return ControllerConstants.Tiles.Order.ordersEdit;
-		/*	"admin-orders-edit";  */
-		}
-		
+            if (dbOrder.getDatePurchased() != null) {
+                order.setDatePurchased(DateUtil.formatDate(dbOrder.getDatePurchased()));
+            }
 
+            Long customerId = dbOrder.getCustomerId();
 
+            if (customerId != null && customerId > 0) {
 
-		
-		Country deliveryCountry = countryService.getByCode( entityOrder.getOrder().getDelivery().getCountry().getIsoCode()); 
-		Country billingCountry  = countryService.getByCode( entityOrder.getOrder().getBilling().getCountry().getIsoCode()) ;
-		Zone billingZone = null;
-		Zone deliveryZone = null;
-		if(entityOrder.getOrder().getBilling().getZone()!=null) {
-			billingZone = zoneService.getByCode(entityOrder.getOrder().getBilling().getZone().getCode());
-		}
-		
-		if(entityOrder.getOrder().getDelivery().getZone()!=null) {
-			deliveryZone = zoneService.getByCode(entityOrder.getOrder().getDelivery().getZone().getCode());
-		}
+                try {
 
-		newOrder.setCustomerEmailAddress(entityOrder.getOrder().getCustomerEmailAddress() );
-		newOrder.setStatus(entityOrder.getOrder().getStatus() );		
-		
-		newOrder.setDatePurchased(date);
-		newOrder.setLastModified( new Date() );
-		
-		if(!StringUtils.isBlank(entityOrder.getOrderHistoryComment() ) ) {
-			orderStatusHistory.setComments( entityOrder.getOrderHistoryComment() );
-			orderStatusHistory.setCustomerNotified(1);
-			orderStatusHistory.setStatus(entityOrder.getOrder().getStatus());
-			orderStatusHistory.setDateAdded(new Date() );
-			orderStatusHistory.setOrder(newOrder);
-			newOrder.getOrderHistory().add( orderStatusHistory );
-			entityOrder.setOrderHistoryComment( "" );
-			statusOrCommentsChanged = true;
-		}		
-		
-		newOrder.setDelivery( entityOrder.getOrder().getDelivery() );
-		newOrder.setBilling( entityOrder.getOrder().getBilling() );
-		newOrder.setCustomerAgreement(entityOrder.getOrder().getCustomerAgreement());
-		
-		newOrder.getDelivery().setCountry(deliveryCountry );
-		newOrder.getBilling().setCountry(billingCountry );	
-		
-		if(billingZone!=null) {
-			newOrder.getBilling().setZone(billingZone);
-		}
-		
-		if(deliveryZone!=null) {
-			newOrder.getDelivery().setZone(deliveryZone);
-		}
-		
-		orderService.saveOrUpdate(newOrder);
-		entityOrder.setOrder(newOrder);
-		entityOrder.setBilling(newOrder.getBilling());
-		entityOrder.setDelivery(newOrder.getDelivery());
-		model.addAttribute("order", entityOrder);
-		
-		Long customerId = newOrder.getCustomerId();
-		
-		if(customerId!=null && customerId>0) {
-		
-			try {
-				
-				Customer customer = customerService.getById(customerId);
-				if(customer!=null) {
-					model.addAttribute("customer",customer);
-				}
-				
-				
-			} catch(Exception e) {
-				LOGGER.error("Error while getting customer for customerId " + customerId, e);
-			}
-		
-		}
+                    Customer customer = customerService.getById(customerId);
+                    if (customer != null) {
+                        model.addAttribute("customer", customer);
+                    }
 
-		List<OrderProductDownload> orderProductDownloads = orderProdctDownloadService.getByOrderId(newOrder.getId());
-		if(CollectionUtils.isNotEmpty(orderProductDownloads)) {
-			model.addAttribute("downloads",orderProductDownloads);
-		}
-		
-		
-		/** 
-		 * send email if admin posted orderHistoryComment
-		 * 
-		 * **/
-		
-		if(statusOrCommentsChanged) {
-		
-			try {
-				
-				Customer customer = customerService.getById(newOrder.getCustomerId());
-				Language lang = store.getDefaultLanguage();
-				if(customer!=null) {
-					lang = customer.getDefaultLanguage();
-				}
-				
-				Locale customerLocale = LocaleUtils.getLocale(lang);
+                } catch (Exception e) {
+                    LOGGER.error("Error while getting customer for customerId " + customerId, e);
+                }
 
-				StringBuilder customerName = new StringBuilder();
-				customerName.append(newOrder.getBilling().getFirstName()).append(" ").append(newOrder.getBilling().getLastName());
-				
+            }
 
-				Map<String, String> templateTokens = emailUtils.createEmailObjectsMap(request.getContextPath(), store, messages, customerLocale);
-				templateTokens.put(EmailConstants.EMAIL_CUSTOMER_NAME, customerName.toString());
-				templateTokens.put(EmailConstants.EMAIL_TEXT_ORDER_NUMBER, messages.getMessage("email.order.confirmation", new String[]{String.valueOf(newOrder.getId())}, customerLocale));
-				templateTokens.put(EmailConstants.EMAIL_TEXT_DATE_ORDERED, messages.getMessage("email.order.ordered", new String[]{entityOrder.getDatePurchased()}, customerLocale));
-				templateTokens.put(EmailConstants.EMAIL_TEXT_STATUS_COMMENTS, messages.getMessage("email.order.comments", new String[]{entityOrder.getOrderHistoryComment()}, customerLocale));
-				templateTokens.put(EmailConstants.EMAIL_TEXT_DATE_UPDATED, messages.getMessage("email.order.updated", new String[]{DateUtil.formatDate(new Date())}, customerLocale));
+            order.setOrder(dbOrder);
+            order.setBilling(dbOrder.getBilling());
+            order.setDelivery(dbOrder.getDelivery());
 
+            orderProducts = dbOrder.getOrderProducts();
+            orderTotal = dbOrder.getOrderTotal();
+            orderHistory = dbOrder.getOrderHistory();
 
-				if(BooleanUtils.toBoolean(coreConfiguration.getProperty("MAIL_SEND_ORDER_UPDATES"))) {
-					//This allows to send every order status update or comments from admin to the customer
-					addStatusUpdatedInfo(entityOrder, customer, customerLocale, templateTokens);
-				}
+            //get capturable
+            if (dbOrder.getPaymentType().name() != PaymentType.MONEYORDER.name()) {
+                Transaction capturableTransaction = transactionService.getCapturableTransaction(dbOrder);
+                if (capturableTransaction != null) {
+                    model.addAttribute("capturableTransaction", capturableTransaction);
+                }
+            }
 
+            //get refundable
+            if (dbOrder.getPaymentType().name() != PaymentType.MONEYORDER.name()) {
+                Transaction refundableTransaction = transactionService.getRefundableTransaction(dbOrder);
+                if (refundableTransaction != null) {
+                    model.addAttribute("capturableTransaction", null);//remove capturable
+                    model.addAttribute("refundableTransaction", refundableTransaction);
+                }
+            }
 
-				Email email = new Email();
-				email.setFrom(store.getStorename());
-				email.setFromEmail(store.getStoreEmailAddress());
-				email.setSubject(messages.getMessage("email.order.status.title",new String[]{String.valueOf(newOrder.getId())},customerLocale));
-				email.setTo(entityOrder.getOrder().getCustomerEmailAddress());
-				email.setTemplateName(ORDER_STATUS_TMPL);
-				email.setTemplateTokens(templateTokens);
+            List<OrderProductDownload> orderProductDownloads = orderProdctDownloadService.getByOrderId(order.getId());
+            if (CollectionUtils.isNotEmpty(orderProductDownloads)) {
+                model.addAttribute("downloads", orderProductDownloads);
+            }
 
+        }
 
+        model.addAttribute("countries", countries);
+        model.addAttribute("order", order);
+        return ControllerConstants.Tiles.Order.ordersEdit;
+    }
 
-				emailService.sendHtmlEmail(store, email);
+    @PreAuthorize("hasRole('ORDER')")
+    @RequestMapping(value = "/admin/orders/save.html", method = RequestMethod.POST)
+    public String saveOrder(@Valid @ModelAttribute("order") com.salesmanager.shop.admin.model.orders.Order entityOrder, BindingResult result, Model model, HttpServletRequest request, Locale locale) throws Exception {
+        boolean statusOrCommentsChanged = false;
+        OrderStatusHistory orderStatusHistory = new OrderStatusHistory();
+        String email_regEx = "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}\\b";
+        Pattern pattern = Pattern.compile(email_regEx);
 
-			} catch (Exception e) {
-				LOGGER.error("Cannot send email to customer",e);
-			}
-			
-		}
-		
-		model.addAttribute("success","success");
+        Language language = (Language) request.getAttribute("LANGUAGE");
+        List<Country> countries = countryService.getCountries(language);
+        model.addAttribute("countries", countries);
 
-		
-		return  ControllerConstants.Tiles.Order.ordersEdit;
-	    /*	"admin-orders-edit";  */
-	}
+        MerchantStore store = (MerchantStore) request.getAttribute(Constants.ADMIN_STORE);
 
-	private void addStatusUpdatedInfo(com.salesmanager.shop.admin.model.orders.Order entityOrder, Customer customer, Locale customerLocale, Map<String, String> templateTokens) {
-		OrderStatusHistory lastHistory = getOrderStatusHistory(entityOrder, customerLocale);
-		String hi = messages.getMessage("label.generic.hi", customerLocale);
-		if (StringUtils.isNotEmpty(lastHistory.getComments())) {
-			templateTokens.put(EmailConstants.EMAIL_TEXT_STATUS_COMMENTS, messages.getMessage("email.order.comments", new String[]{lastHistory.getComments()}, customerLocale));
-		}
-		String[] statusMessageText = {String.valueOf(entityOrder.getOrder().getId()), DateUtil.formatDate(entityOrder.getOrder().getDatePurchased())};
-		String status = messages.getMessage("label.order." + entityOrder.getOrder().getStatus().name(), customerLocale, entityOrder.getOrder().getStatus().name());
-		String[] statusMessage = {DateUtil.formatDate(lastHistory.getDateAdded()), status};
-		if (customer != null) {
-			templateTokens.put(EmailConstants.EMAIL_CUSTOMER_FIRSTNAME, customer.getBilling().getFirstName());
-			templateTokens.put(EmailConstants.EMAIL_CUSTOMER_LASTNAME, customer.getBilling().getLastName());
-		}
-		templateTokens.put(EmailConstants.LABEL_HI, hi);
-		templateTokens.put(EmailConstants.EMAIL_ORDER_STATUS_TEXT, messages.getMessage("email.order.statustext", statusMessageText, customerLocale));
-		templateTokens.put(EmailConstants.EMAIL_ORDER_STATUS, messages.getMessage("email.order.status", statusMessage, customerLocale));
-	}
+        //set the id if fails
+        entityOrder.setId(entityOrder.getOrder().getId());
 
-	private OrderStatusHistory getOrderStatusHistory(com.salesmanager.shop.admin.model.orders.Order entityOrder, Locale customerLocale) {
-		OrderStatusHistory lastHistory = null;
-		List<OrderStatusHistory> lastHistories = orderStatusHistoryService.findByOrder(entityOrder.getOrder());
-		if(CollectionUtils.isEmpty(lastHistories)) {
-			lastHistory = new OrderStatusHistory();
-			lastHistory.setComments(messages.getMessage("label.order.PROCESSING", customerLocale));
-			lastHistory.setDateAdded(new Date());
-		} else {
-			lastHistory = lastHistories.get(0);
-		}
-		return lastHistory;
-	}
+        model.addAttribute("order", entityOrder);
 
-	private void addStatusChangedHistory(com.salesmanager.shop.admin.model.orders.Order entityOrder, Locale locale,
-										 OrderStatusHistory orderStatusHistory, Order newOrder) {
-		orderStatusHistory.setComments( messages.getMessage("email.order.status.changed",
-				new String[] {newOrder.getStatus().name(), entityOrder.getOrder().getStatus().name()}, locale));
-		orderStatusHistory.setCustomerNotified(1);
-		orderStatusHistory.setStatus(entityOrder.getOrder().getStatus());
-		orderStatusHistory.setDateAdded(new Date() );
-		orderStatusHistory.setOrder(newOrder);
-		newOrder.getOrderHistory().add(orderStatusHistory);
-	}
+        Set<OrderProduct> orderProducts = new HashSet<OrderProduct>();
+        Set<OrderTotal> orderTotal = new HashSet<OrderTotal>();
+        Set<OrderStatusHistory> orderHistory = new HashSet<OrderStatusHistory>();
 
-	private void setMenu(Model model, HttpServletRequest request) throws Exception {
-	
-		//display menu
-		Map<String,String> activeMenus = new HashMap<String,String>();
-		activeMenus.put("order", "order");
-		activeMenus.put("order-list", "order-list");
-		
-		@SuppressWarnings("unchecked")
-		Map<String, Menu> menus = (Map<String, Menu>)request.getAttribute("MENUMAP");
+        Date date = new Date();
+        if (!StringUtils.isBlank(entityOrder.getDatePurchased())) {
+            try {
+                date = DateUtil.getDate(entityOrder.getDatePurchased());
+            } catch (Exception e) {
+                ObjectError error = new ObjectError("datePurchased", messages.getMessage("message.invalid.date", locale));
+                result.addError(error);
+            }
 
-		model.addAttribute("activeMenus",activeMenus);
-		
-		Menu currentMenu = (Menu)menus.get("order");
-		model.addAttribute("currentMenu",currentMenu);
-		model.addAttribute("activeMenus",activeMenus);
-		//
-		
-	}
+        } else {
+            date = null;
+        }
+
+        if (!StringUtils.isBlank(entityOrder.getOrder().getCustomerEmailAddress())) {
+            java.util.regex.Matcher matcher = pattern.matcher(entityOrder.getOrder().getCustomerEmailAddress());
+
+            if (!matcher.find()) {
+                ObjectError error = new ObjectError("customerEmailAddress", messages.getMessage("Email.order.customerEmailAddress", locale));
+                result.addError(error);
+            }
+        } else {
+            ObjectError error = new ObjectError("customerEmailAddress", messages.getMessage("NotEmpty.order.customerEmailAddress", locale));
+            result.addError(error);
+        }
+
+        if (StringUtils.isBlank(entityOrder.getOrder().getBilling().getFirstName())) {
+            ObjectError error = new ObjectError("billingFirstName", messages.getMessage("NotEmpty.order.billingFirstName", locale));
+            result.addError(error);
+        }
+
+        if (StringUtils.isBlank(entityOrder.getOrder().getBilling().getFirstName())) {
+            ObjectError error = new ObjectError("billingLastName", messages.getMessage("NotEmpty.order.billingLastName", locale));
+            result.addError(error);
+        }
+
+        if (StringUtils.isBlank(entityOrder.getOrder().getBilling().getAddress())) {
+            ObjectError error = new ObjectError("billingAddress", messages.getMessage("NotEmpty.order.billingStreetAddress", locale));
+            result.addError(error);
+        }
+
+        if (StringUtils.isBlank(entityOrder.getOrder().getBilling().getCity())) {
+            ObjectError error = new ObjectError("billingCity", messages.getMessage("NotEmpty.order.billingCity", locale));
+            result.addError(error);
+        }
+
+        if (entityOrder.getOrder().getBilling().getZone() == null) {
+            if (StringUtils.isBlank(entityOrder.getOrder().getBilling().getState())) {
+                ObjectError error = new ObjectError("billingState", messages.getMessage("NotEmpty.order.billingState", locale));
+                result.addError(error);
+            }
+        }
+
+        if (StringUtils.isBlank(entityOrder.getOrder().getBilling().getPostalCode())) {
+            ObjectError error = new ObjectError("billingPostalCode", messages.getMessage("NotEmpty.order.billingPostCode", locale));
+            result.addError(error);
+        }
+
+        com.salesmanager.core.model.order.Order newOrder = orderService.getById(entityOrder.getOrder().getId());
+
+        //If there was a status changed by Admin, we notify the customer
+        if (BooleanUtils.toBoolean(coreConfiguration.getProperty("MAIL_SEND_ORDER_UPDATES"))
+                && (newOrder.getStatus() != null && !newOrder.getStatus().equals(entityOrder.getOrder().getStatus()))) {
+            statusOrCommentsChanged = true;
+            addStatusChangedHistory(entityOrder, locale, orderStatusHistory, newOrder);
+        }
+        //get capturable
+        if (newOrder.getPaymentType().name() != PaymentType.MONEYORDER.name()) {
+            Transaction capturableTransaction = transactionService.getCapturableTransaction(newOrder);
+            if (capturableTransaction != null) {
+                model.addAttribute("capturableTransaction", capturableTransaction);
+            }
+        }
+
+        //get refundable
+        if (newOrder.getPaymentType().name() != PaymentType.MONEYORDER.name()) {
+            Transaction refundableTransaction = transactionService.getRefundableTransaction(newOrder);
+            if (refundableTransaction != null) {
+                model.addAttribute("capturableTransaction", null);//remove capturable
+                model.addAttribute("refundableTransaction", refundableTransaction);
+            }
+        }
+
+        if (result.hasErrors()) {
+            //  somehow we lose data, so reset Order detail info.
+            entityOrder.getOrder().setOrderProducts(orderProducts);
+            entityOrder.getOrder().setOrderTotal(orderTotal);
+            entityOrder.getOrder().setOrderHistory(orderHistory);
+
+            return ControllerConstants.Tiles.Order.ordersEdit;
+            /*	"admin-orders-edit";  */
+        }
+
+        Country deliveryCountry = countryService.getByCode(entityOrder.getOrder().getDelivery().getCountry().getIsoCode());
+        Country billingCountry = countryService.getByCode(entityOrder.getOrder().getBilling().getCountry().getIsoCode());
+        Zone billingZone = null;
+        Zone deliveryZone = null;
+        if (entityOrder.getOrder().getBilling().getZone() != null) {
+            billingZone = zoneService.getByCode(entityOrder.getOrder().getBilling().getZone().getCode());
+        }
+
+        if (entityOrder.getOrder().getDelivery().getZone() != null) {
+            deliveryZone = zoneService.getByCode(entityOrder.getOrder().getDelivery().getZone().getCode());
+        }
+
+        newOrder.setCustomerEmailAddress(entityOrder.getOrder().getCustomerEmailAddress());
+        newOrder.setStatus(entityOrder.getOrder().getStatus());
+
+        newOrder.setDatePurchased(date);
+        newOrder.setLastModified(new Date());
+
+        if (!StringUtils.isBlank(entityOrder.getOrderHistoryComment())) {
+            orderStatusHistory.setComments(entityOrder.getOrderHistoryComment());
+            orderStatusHistory.setCustomerNotified(1);
+            orderStatusHistory.setStatus(entityOrder.getOrder().getStatus());
+            orderStatusHistory.setDateAdded(new Date());
+            orderStatusHistory.setOrder(newOrder);
+            newOrder.getOrderHistory().add(orderStatusHistory);
+            entityOrder.setOrderHistoryComment("");
+            statusOrCommentsChanged = true;
+        }
+
+        newOrder.setDelivery(entityOrder.getOrder().getDelivery());
+        newOrder.setBilling(entityOrder.getOrder().getBilling());
+        newOrder.setCustomerAgreement(entityOrder.getOrder().getCustomerAgreement());
+
+        newOrder.getDelivery().setCountry(deliveryCountry);
+        newOrder.getBilling().setCountry(billingCountry);
+
+        if (billingZone != null) {
+            newOrder.getBilling().setZone(billingZone);
+        }
+
+        if (deliveryZone != null) {
+            newOrder.getDelivery().setZone(deliveryZone);
+        }
+
+        orderService.saveOrUpdate(newOrder);
+        entityOrder.setOrder(newOrder);
+        entityOrder.setBilling(newOrder.getBilling());
+        entityOrder.setDelivery(newOrder.getDelivery());
+        model.addAttribute("order", entityOrder);
+
+        Long customerId = newOrder.getCustomerId();
+
+        if (customerId != null && customerId > 0) {
+
+            try {
+
+                Customer customer = customerService.getById(customerId);
+                if (customer != null) {
+                    model.addAttribute("customer", customer);
+                }
+
+            } catch (Exception e) {
+                LOGGER.error("Error while getting customer for customerId " + customerId, e);
+            }
+
+        }
+
+        List<OrderProductDownload> orderProductDownloads = orderProdctDownloadService.getByOrderId(newOrder.getId());
+        if (CollectionUtils.isNotEmpty(orderProductDownloads)) {
+            model.addAttribute("downloads", orderProductDownloads);
+        }
+
+        /**
+         * send email if admin posted orderHistoryComment
+         *
+         * **/
+
+        if (statusOrCommentsChanged) {
+
+            try {
+
+                Customer customer = customerService.getById(newOrder.getCustomerId());
+                Language lang = store.getDefaultLanguage();
+                if (customer != null) {
+                    lang = customer.getDefaultLanguage();
+                }
+
+                Locale customerLocale = LocaleUtils.getLocale(lang);
+
+                StringBuilder customerName = new StringBuilder();
+                customerName.append(newOrder.getBilling().getFirstName()).append(" ").append(newOrder.getBilling().getLastName());
+
+                Map<String, String> templateTokens = emailUtils.createEmailObjectsMap(request.getContextPath(), store, messages, customerLocale);
+                templateTokens.put(EmailConstants.EMAIL_CUSTOMER_NAME, customerName.toString());
+                templateTokens.put(EmailConstants.EMAIL_TEXT_ORDER_NUMBER, messages.getMessage("email.order.confirmation", new String[]{String.valueOf(newOrder.getId())}, customerLocale));
+                templateTokens.put(EmailConstants.EMAIL_TEXT_DATE_ORDERED, messages.getMessage("email.order.ordered", new String[]{entityOrder.getDatePurchased()}, customerLocale));
+                templateTokens.put(EmailConstants.EMAIL_TEXT_STATUS_COMMENTS, messages.getMessage("email.order.comments", new String[]{entityOrder.getOrderHistoryComment()}, customerLocale));
+                templateTokens.put(EmailConstants.EMAIL_TEXT_DATE_UPDATED, messages.getMessage("email.order.updated", new String[]{DateUtil.formatDate(new Date())}, customerLocale));
+
+                if (BooleanUtils.toBoolean(coreConfiguration.getProperty("MAIL_SEND_ORDER_UPDATES"))) {
+                    //This allows to send every order status update or comments from admin to the customer
+                    addStatusUpdatedInfo(entityOrder, customer, customerLocale, templateTokens);
+                }
+
+                Email email = new Email();
+                email.setFrom(store.getStorename());
+                email.setFromEmail(store.getStoreEmailAddress());
+                email.setSubject(messages.getMessage("email.order.status.title", new String[]{String.valueOf(newOrder.getId())}, customerLocale));
+                email.setTo(entityOrder.getOrder().getCustomerEmailAddress());
+                email.setTemplateName(ORDER_STATUS_TMPL);
+                email.setTemplateTokens(templateTokens);
+
+                emailService.sendHtmlEmail(store, email);
+
+            } catch (Exception e) {
+                LOGGER.error("Cannot send email to customer", e);
+            }
+
+        }
+
+        model.addAttribute("success", "success");
+
+        return ControllerConstants.Tiles.Order.ordersEdit;
+        /*	"admin-orders-edit";  */
+    }
+
+    private void addStatusUpdatedInfo(com.salesmanager.shop.admin.model.orders.Order entityOrder, Customer customer, Locale customerLocale, Map<String, String> templateTokens) {
+        OrderStatusHistory lastHistory = getOrderStatusHistory(entityOrder, customerLocale);
+        String hi = messages.getMessage("label.generic.hi", customerLocale);
+        if (StringUtils.isNotEmpty(lastHistory.getComments())) {
+            templateTokens.put(EmailConstants.EMAIL_TEXT_STATUS_COMMENTS, messages.getMessage("email.order.comments", new String[]{lastHistory.getComments()}, customerLocale));
+        }
+        String[] statusMessageText = {String.valueOf(entityOrder.getOrder().getId()), DateUtil.formatDate(entityOrder.getOrder().getDatePurchased())};
+        String status = messages.getMessage("label.order." + entityOrder.getOrder().getStatus().name(), customerLocale, entityOrder.getOrder().getStatus().name());
+        String[] statusMessage = {DateUtil.formatDate(lastHistory.getDateAdded()), status};
+        if (customer != null) {
+            templateTokens.put(EmailConstants.EMAIL_CUSTOMER_FIRSTNAME, customer.getBilling().getFirstName());
+            templateTokens.put(EmailConstants.EMAIL_CUSTOMER_LASTNAME, customer.getBilling().getLastName());
+        }
+        templateTokens.put(EmailConstants.LABEL_HI, hi);
+        templateTokens.put(EmailConstants.EMAIL_ORDER_STATUS_TEXT, messages.getMessage("email.order.statustext", statusMessageText, customerLocale));
+        templateTokens.put(EmailConstants.EMAIL_ORDER_STATUS, messages.getMessage("email.order.status", statusMessage, customerLocale));
+    }
+
+    private OrderStatusHistory getOrderStatusHistory(com.salesmanager.shop.admin.model.orders.Order entityOrder, Locale customerLocale) {
+        OrderStatusHistory lastHistory = null;
+        List<OrderStatusHistory> lastHistories = orderStatusHistoryService.findByOrder(entityOrder.getOrder());
+        if (CollectionUtils.isEmpty(lastHistories)) {
+            lastHistory = new OrderStatusHistory();
+            lastHistory.setComments(messages.getMessage("label.order.PROCESSING", customerLocale));
+            lastHistory.setDateAdded(new Date());
+        } else {
+            lastHistory = lastHistories.get(0);
+        }
+        return lastHistory;
+    }
+
+    private void addStatusChangedHistory(com.salesmanager.shop.admin.model.orders.Order entityOrder, Locale locale,
+                                         OrderStatusHistory orderStatusHistory, Order newOrder) {
+        orderStatusHistory.setComments(messages.getMessage("email.order.status.changed",
+                new String[]{newOrder.getStatus().name(), entityOrder.getOrder().getStatus().name()}, locale));
+        orderStatusHistory.setCustomerNotified(1);
+        orderStatusHistory.setStatus(entityOrder.getOrder().getStatus());
+        orderStatusHistory.setDateAdded(new Date());
+        orderStatusHistory.setOrder(newOrder);
+        newOrder.getOrderHistory().add(orderStatusHistory);
+    }
+
+    private void setMenu(Model model, HttpServletRequest request) throws Exception {
+
+        //display menu
+        Map<String, String> activeMenus = new HashMap<String, String>();
+        activeMenus.put("order", "order");
+        activeMenus.put("order-list", "order-list");
+
+        @SuppressWarnings("unchecked")
+        Map<String, Menu> menus = (Map<String, Menu>) request.getAttribute("MENUMAP");
+
+        model.addAttribute("activeMenus", activeMenus);
+
+        Menu currentMenu = (Menu) menus.get("order");
+        model.addAttribute("currentMenu", currentMenu);
+        model.addAttribute("activeMenus", activeMenus);
+        //
+
+    }
 
 }

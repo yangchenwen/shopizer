@@ -23,110 +23,108 @@ import com.salesmanager.core.model.common.audit.Auditable;
 import com.salesmanager.core.model.generic.SalesManagerEntity;
 import com.salesmanager.core.model.merchant.MerchantStore;
 
-
 /**
  * Product configuration pre 3.0
  * Contains possible product variations
- * 
+ * <p>
  * color - red
  * size small
- * @author carlsamson
  *
+ * @author carlsamson
  */
 @Entity
 @EntityListeners(value = AuditListener.class)
-@Table(name = "PRODUCT_VARIATION", uniqueConstraints=
+@Table(name = "PRODUCT_VARIATION", uniqueConstraints =
 @UniqueConstraint(columnNames = {"MERCHANT_ID", "PRODUCT_OPTION_ID", "OPTION_VALUE_ID"}))
 public class ProductVariation extends SalesManagerEntity<Long, ProductVariation> implements Auditable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	@Embedded
-	private AuditSection auditSection = new AuditSection();
-	
-	@Id
-	@Column(name = "PRODUCT_VARIANTION_ID", unique=true, nullable=false)
-	@TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "PRODUCT_VARIN_SEQ_NEXT_VAL")
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
-	private Long id;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="MERCHANT_ID", nullable=false)
-	private MerchantStore merchantStore;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="PRODUCT_OPTION_ID", nullable=false)
-	private ProductOption option;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="OPTION_VALUE_ID", nullable=false)
-	private ProductOptionValue productOptionValue;
-	
+    @Embedded
+    private AuditSection auditSection = new AuditSection();
+
+    @Id
+    @Column(name = "PRODUCT_VARIANTION_ID", unique = true, nullable = false)
+    @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "PRODUCT_VARIN_SEQ_NEXT_VAL")
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MERCHANT_ID", nullable = false)
+    private MerchantStore merchantStore;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PRODUCT_OPTION_ID", nullable = false)
+    private ProductOption option;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "OPTION_VALUE_ID", nullable = false)
+    private ProductOptionValue productOptionValue;
+
     @NotEmpty
-    @Column(name="CODE", length=100, nullable=false)
+    @Column(name = "CODE", length = 100, nullable = false)
     private String code;
 
 	
 /*	@ManyToOne(targetEntity = ProductAvailability.class)
 	@JoinColumn(name = "PRODUCT_AVAIL_ID", nullable = false)
 	private ProductAvailability productAvailability;*/
-	
-	@Override
-	public AuditSection getAuditSection() {
-		return auditSection;
-	}
 
-	@Override
-	public void setAuditSection(AuditSection audit) {
-		this.auditSection = auditSection;
-		
-	}
+    @Override
+    public AuditSection getAuditSection() {
+        return auditSection;
+    }
 
-	@Override
-	public Long getId() {
-		return id;
-	}
+    @Override
+    public void setAuditSection(AuditSection audit) {
+        this.auditSection = auditSection;
 
-	@Override
-	public void setId(Long id) {
-		this.id = id;
-		
-	}
+    }
 
-	public MerchantStore getMerchantStore() {
-		return merchantStore;
-	}
+    @Override
+    public Long getId() {
+        return id;
+    }
 
-	public void setMerchantStore(MerchantStore merchantStore) {
-		this.merchantStore = merchantStore;
-	}
+    @Override
+    public void setId(Long id) {
+        this.id = id;
 
-	public ProductOption getOption() {
-		return option;
-	}
+    }
 
-	public void setOption(ProductOption option) {
-		this.option = option;
-	}
+    public MerchantStore getMerchantStore() {
+        return merchantStore;
+    }
 
-	public ProductOptionValue getProductOptionValue() {
-		return productOptionValue;
-	}
+    public void setMerchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+    }
 
-	public void setProductOptionValue(ProductOptionValue productOptionValue) {
-		this.productOptionValue = productOptionValue;
-	}
+    public ProductOption getOption() {
+        return option;
+    }
 
-	public String getCode() {
-		return code;
-	}
+    public void setOption(ProductOption option) {
+        this.option = option;
+    }
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+    public ProductOptionValue getProductOptionValue() {
+        return productOptionValue;
+    }
 
+    public void setProductOptionValue(ProductOptionValue productOptionValue) {
+        this.productOptionValue = productOptionValue;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
 }
